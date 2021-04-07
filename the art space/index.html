@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<title>art</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+/* Fixed sidenav, full height */
+.sidenav {
+}
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: teal;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+
+</style>
+  
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img src="TASdp.jpg" style="width:45%;" class="w3-round"><br><br>
+    <h4><b>The Art Space</b></h4>
+    <p class="w3-text-grey"></p>
+  </div>
+
+
+  <div class="sidenav">
+  <div class="w3-bar-block"> 
+    <button class="dropdown-btn w3-hover-grey">Photo Series 
+        <i class="fa fa-caret-down"></i>
+      </button>
+    <div class="dropdown-container">
+        <a href="#">Landscapes</a>
+        <a href="#">Conceptual</a>
+     </div>
+  
+       
+    
+    <a href="http://ceas.iisc.ernet.in/~jyotirmoy/aul/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+       Personal Blog</a> 
+    
+    <a href="#blogs" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+    Published Blogs</a> 
+    
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+    <i class="fa fa-user fa-fw w3-margin-right"></i>About</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Contact</a>
+    <a href="http://ceas.iisc.ernet.in/~jyotirmoy/" onclick="w3_close()" 
+    class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>Academic page</a>  
+  
+  
+   
+    <a href="https://www.instagram.com/khanhabados" class="w3-bar-item w3-button w3-padding"></div><i class="fa fa-instagram 
+    w3-hover-opacity"></i> instagram </a>
+    
+  </div>  
+
+
+  <script>
+      /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+      var dropdown = document.getElementsByClassName("dropdown-btn");
+      var i;
+      
+      for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+        } else {
+        dropdownContent.style.display = "block";
+        }
+        });
+      }
+      </script>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px">
+
+  <!-- Header -->
+  <header id="art">
+    <a href="#"><img src="celfi1.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container">
+      <img_src="05.jpg">
+    <h1><b> The Art Space</b></h1>
+    <div class="w3-section w3-bottombar w3-padding-16">
+      
+    </div>
+    </div>
+  </header>
+  
+ <!--- Introduction ---->
+  
+   <div class="w3-col l5 w3-container w3-margin-bottom">
+    <img src="index-1.jpg" alt="flower" style="width:80%" >
+    </div>
+    <div class="w3-col l5 w3-container w3-margin-bottom">
+   <p>
+     Recently, photography has become almost as widely practiced an amusement as sex and dancing - which means
+     that, like every mass art form, photography is not practiced by most people as an art. It is merely a social 
+     rite, a defense against anxiety, and a tool of power.
+     <br><br>
+     <I>-Susan Sontag, On photographi</I>
+   </p>
+  </div>
+<!--2nd para-->
+  <div class="w3-col l5 w3-container w3-margin-bottom">
+    <img src="index-2.jpg" alt="flower" style="width:80%" >
+    </div>
+    <div class="w3-col l5 w3-container w3-margin">
+   <p>
+     Photography is a form of nonverbal communication. At its best, a photograph conveys a thought from one person, the 
+     photographer, to another, the viewer. In this respect, photography is similar to other forms of artistic, nonverbal
+     communication such as painting, sculpture, and music.
+     <br><br>
+     <I>-Bruce Barnbaum, The Art of Photography</I>
+   </p>
+  </div>
+  
+  
+    
+ 
+
+  <!-- Footer -->
+  
+ <footer class="w3-col l12 w3-center w3-light-grey w3-padding-32">
+  <p>copyright @ <a href="http://ceas.iisc.ernet.in/~jyotirmoy/" title="Mojo Jyo Jyo" class="w3-hover-text-green">Mojo Jyo Jyo</a></p>
+</footer>
+
+
+ 
+</body>
+</html>
