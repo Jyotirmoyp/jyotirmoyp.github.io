@@ -1,0 +1,351 @@
+<html>
+
+<title>GMT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color:white;
+  position: fixed;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color:red;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color:teal;
+  color: white;
+}
+
+a:link {
+    color: teal;
+    text-decoration: none;
+}
+
+a:visited {
+    color: teal;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+p.main {
+    text-align: justify;
+}
+
+.button {
+  background-color: teal;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {border-radius: 12px;}
+
+</style>
+</head>
+
+
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+    <a href="https://jyotirmoyp.github.io/" class="w3-bar-item w3-button"> Home</a>
+    <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
+    <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
+    <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
+    <a href="https://jyotirmoyp.github.io/conference/" class="w3-bar-item w3-button">Conference</a>
+     <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
+    <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="w3-container w3-teal">
+  <h2>Jyotirmoy's Home Page</h2>
+</div>
+
+
+
+<!--naviation menu ends-->
+
+
+<!-- Visualisation -->
+
+
+
+<div class="w3-col l12">
+  
+  
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4>Simple Visualisation</h4>
+    </div>
+      <div class="w3-container ">
+       <div class="w3-col w3 l8"> 
+       GMT is an open-source tool for visualising colourfull maps. This is widely used in Earth system science discipline. Many of the 
+       features are available in other software packages, like ArcGIS, but they are not free to use. Also, GMT can be combined with 
+       shell script, MATLAB, Python, Fortran which is more adavangtageous for people familiar with coding. 
+      </div> 
+      </div>
+   </div>
+
+<!--------GMT Install---------------->
+
+   <div class="w3-col w3 l8"> 
+    <div id="install"></div>
+     <div class="w3-card w3-margin">
+     <div class="w3-container w3-teal">
+        <h4> Install GMT</h4>
+     </div>
+     <div class="w3-container">
+       <b> Recommended</b>
+       <br> Click <a href="http://gmt.soest.hawaii.edu/projects/gmt/wiki/Installing" target="_blank">GMT 5 Install Instructions</a> 
+       for detailed descriptions. 
+
+       <br> 
+
+       Ubuntu users can install GMT 5 by pasting the following line in the terminal. <br><br>
+        <div class="w3-container w3-light-grey">
+          <TT>sudo apt-get install gmt gmt-dcw gmt-gshhg</TT>
+        </div>
+        <br>
+         For installing older version of GMT (4.18) please visit here. 
+     </div>
+
+    </div>
+</div>
+
+    <!------------ content---------->  
+                
+    <div class="w3-col l3">
+        <div class="w3-card w3-margin">
+          </div>
+          <div class="w3-container w3-margin">
+              <ul>
+                  <li><a href="#install">GMT Install</a></li>
+                  <li><a href="#commands">Basic Commands</a></li>
+                  <li><a href="#more">Map projection</a></li>
+                  <li><a href="#location">Location plots</a></li>
+                </ul>
+            </div>
+        </div>
+      
+      
+      
+      
+      
+      </div>
+
+<!--------Basic commands---------------->
+
+<div class="w3-col w3 l8"> 
+  <div id="commands"></div>
+    <div class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4> GMT Basics</h4>
+    </div>
+    <div class="w3-container">
+      <b>Recommended</b> 
+      <br> Visit <a href="https://www.generic-mapping-tools.org/documentation/" target="_blank"> GMT documentation page</a>
+      for details. 
+      
+      <br>
+      Here, I will put some basic ideas for students who are not much into coding and could get lost in the huge data repository of
+      GMT main page. 
+      <br>
+      <br>
+      <b>Plot Global Map</b>
+      <br><br>
+
+      <div class="w3-container w3-light-grey">
+        <TT>$ gmt pscoast -Rg -Jx0.025id -B30 -W1 > world.ps</TT>
+      </div> <br>
+      All GMT 5 script starts with "gmt". In older version this was not required.
+      <p>
+      <I>pscoast</I><br><br>
+        The command pscoast contains the data for global coastline. 
+        Visit <a href="https://docs.generic-mapping-tools.org/5.4/pscoast.html" target="_blank"> pscoast page</a> for detailed documentation. 
+    </p>
+    <p>
+      <I>-Rg</I><br><br>
+        -R stands for the region of interest. g is global. So, -Rg will plot a global map. 
+        <br>
+        If you are interested to plot Indian coastline, this option will be changed to -R60/100/0/40. 
+        These four numbers are longitude and latitudes
+        in west/east/south/north format. Change these values and play with different maps.
+    </p>
+
+    <p>
+      <I>-Jx0.025id</I><br><br>
+        -Jx stands for the projection type. Jx is for retangular projection. 0.025id stands for size of the map. i is for inches and 
+        d is for diagonal. So, the map is 0.025 inches long along the diagonal of a rectangle. For global map, this dimension works well.
+        You can try finding out how the map size changes by using different values. May try with -Jx0.2id, see how it changes!  
+        
+    </p>
+
+    <p>
+      <I>-B30</I><br><br>
+        -B stands for longitude latitude annotations. For B30, it will annotate the boundary for every 30 degrees. Change into -B60 and see.
+        <br><br>
+        What value of B will you choose for Indian map?  
+        
+    </p>
+
+    <p>
+      <I>-W1</I><br><br>
+        -W stands for thickness of coastline. Change it to W2 and see what happens.
+                
+    </p> 
+
+    <p>
+      <I> world.ps </I><br><br>
+        .ps is a postscript format. This can be converted to eps, jpg, pdf, tiff or png formats. GMT produces ps format files by default.
+                
+    </p> 
+     
+    </div>
+
+   </div>
+</div>
+
+
+<!--------More options---------------->
+
+<div class="w3-col w3 l8"> 
+  <div id="more"></div>
+    <div class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4> Advanced options </h4>
+    </div>
+    <div class="w3-container">
+        <br>
+        Once you are familiar with executing a simple GMT command from the terminal, you can try some more options here.
+        <br> <br> 
+        <b>Map projection</b>
+        <br> 
+          There are tons of GMT projection. Full details can be found in <a href="https://docs.generic-mapping-tools.org/5.4/gmt.html#j-full"
+          target="_blank">J option page</a>. I will put some example of popularly used projections. 
+          <br><br> 
+          <p>
+          <I>Mollweide projection (-JW)</I><br><br>
+          <div class="w3-container w3-light-grey">
+           <TT>$ gmt pscoast -Rd -JW8i -B30WeSn -Wred -Gblue > world.ps </TT>
+           </div>
+           <br>
+
+           Here -Rd will change the centre of the global map. Check how it comes. <br>
+           Putting W(west) S(south) in capital and e(east) n(north) in small letters,
+            the annotations will appear selectively only along the west and south margins. <br>
+           Plot with different W and G options to see how they change the colour of map.
+           </p>
+
+           <p>
+            <I>Mercator (-Jm)</I><br><br>
+            <div class="w3-container w3-light-grey">
+             <TT>$ gmt pscoast -R-170/-50/20/80 -Jm0.05i -B10WeSn -W2,brown -G0/168/170 -Sgray > NA.ps </TT>
+             </div>
+             <br>
+             In Marcator projection, check the distance towards pole in increasing. If the northern/southern latitudes are given as 90/-90, 
+             this projection will fail to produce any map. 
+             <br>
+             -G is to select colour within coastlines. It can take colors like red/green/blue or can be specified from RGB colour values that 
+             comes in a format of 0-255/0-255/0-255. Change these values and see how the colour changes. <br>
+          
+             -S is to select colour outside the coastlines.
+             <br>
+  
+             Here -Rd will change the centre of the global map. Check how it comes. <br>
+             Putting W(west) S(south) in capital and e(east) n(north) in small letters,
+              the annotations will appear selectively only along the west and south margins. <br>
+             Plot with different W and G options to see how they change the colour of map.<br>
+
+             The map looks very dirty because of lots of lakes in the continents? Try using <b>-A1000</b> and see how it changes.
+             Change the valus of A and check. 
+             </p>
+             Try plotting Robinson projection, orthogonal projection after this.
+      
+    </div>
+
+   </div>
+</div>
+
+
+
+<!--------scripts---------------->
+
+<div class="w3-col w3 l8"> 
+  <div id="location"></div>
+    <div class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4> Plot locations in GMT </h4>
+    </div>
+    <div class="w3-container">
+        <br>
+      Let's say, we want to plot a few locations in our map. Co-ordinate are given. 
+      <br>
+      Asansol 23.6 86.9<br>
+      Dhanbad 23.8 86.3<br>
+      Maithon 23.7 86.7<br>
+      Giridih 24.1 86.2<br>
+      We can use psxy command to plot it. To do that, first create a map boundary.
+      <div class="w3-container w3-light-gray">
+        <TT> $ gmt pscoast -R80/90/20/30 -Jx0.5id -B2 -N1 -K > location.ps
+         <br>
+        $ echo 86.9 23.6 | gmt psxy -Sc0.1i -Gred -Jx0.5id -R80/90/20/30 -B2 -A10000 -O -K >> location.ps 
+        </TT>
+      </div>
+
+      
+
+    </div>
+
+   </div>
+</div>
+        
+ 
+
+
+
+
+<!-- End page content -->
+<!-- Footer -->
+<div class=w3-col l12>
+    <footer class="w3-center w3-light-grey w3-padding-32">
+        <p>copyright @ <a href="http://ceas.iisc.ernet.in/~jyotirmoy/" title="Jyo" class="w3-hover-text-green">Jyo</a></p>
+      </footer>
+</div>
+
+
+
+</body>
+<html>
