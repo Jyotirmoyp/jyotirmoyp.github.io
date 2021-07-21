@@ -136,7 +136,7 @@ p.main {
 
        Ubuntu users can install GMT 5 by pasting the following line in the terminal. <br><br>
         <div class="w3-container w3-light-grey">
-          <TT>sudo apt-get install gmt gmt-dcw gmt-gshhg</TT>
+          <TT>$ sudo apt-get install gmt gmt-dcw gmt-gshhg</TT>
         </div>
         <br>
          For installing older version of GMT (4.18) please visit here. 
@@ -156,6 +156,9 @@ p.main {
                   <li><a href="#commands">Basic Commands</a></li>
                   <li><a href="#more">Map projection</a></li>
                   <li><a href="#location">Location plots</a></li>
+                  <li><a href="#scalar">Scalar data plots</a></li>
+                  <li><a href="#vector">Vector data plots</a></li>
+                  <li><a href="#combined">Combined data plots</a></li>
                 </ul>
             </div>
         </div>
@@ -190,6 +193,11 @@ p.main {
       <div class="w3-container w3-light-grey">
         <TT>$ gmt pscoast -Rg -Jx0.025id -B30 -W1 > world.ps</TT>
       </div> <br>
+       
+      <b>Output</b>
+      <br>
+      <img src="world.jpg" style="width: 100%">
+
       All GMT 5 script starts with "gmt". In older version this was not required.
       <p>
       <I>pscoast</I><br><br>
@@ -245,13 +253,11 @@ p.main {
   <div id="more"></div>
     <div class="w3-card w3-margin">
     <div class="w3-container w3-teal">
-      <h4> Advanced options </h4>
+      <h4> Map Projection </h4>
     </div>
     <div class="w3-container">
         <br>
-        Once you are familiar with executing a simple GMT command from the terminal, you can try some more options here.
-        <br> <br> 
-        <b>Map projection</b>
+       
         <br> 
           There are tons of GMT projection. Full details can be found in <a href="https://docs.generic-mapping-tools.org/5.4/gmt.html#j-full"
           target="_blank">J option page</a>. I will put some example of popularly used projections. 
@@ -275,6 +281,7 @@ p.main {
              <TT>$ gmt pscoast -R-170/-50/20/80 -Jm0.05i -B10WeSn -W2,brown -G0/168/170 -Sgray > NA.ps </TT>
              </div>
              <br>
+             <img src="NA.jpg" width="100%">
              In Marcator projection, check the distance towards pole in increasing. If the northern/southern latitudes are given as 90/-90, 
              this projection will fail to produce any map. 
              <br>
@@ -301,7 +308,7 @@ p.main {
 
 
 
-<!--------scripts---------------->
+<!--------location---------------->
 
 <div class="w3-col w3 l8"> 
   <div id="location"></div>
@@ -325,14 +332,91 @@ p.main {
         </TT>
       </div>
 
-      
-
-    </div>
+     </div>
 
    </div>
+  </div>
+
+<!-------- scalar ---------------->
+
+<div class="w3-col w3 l8"> 
+  <div id="scalar"></div>
+   <div class="w3-card w3-margin">
+   <div class="w3-container w3-teal">
+      <h4> Scalar data plot </h4>
+   </div>
+   <div class="w3-container">
+     
+    In Geophysics we want to plot physical quantities on maps. Physical quantities can be scalar, vector or tensor. 
+    For example, we might be interested in looking at what is the mean temperature
+    on Earth surface. Here temperature is a scalar quantity. Using GMT, we can make such maps where different colous on map indiacte 
+    temperautre. 
+
+     <br> 
+      Here is an example how we can plot lithosphere thickness on a global map. I will use <a href="https://www.clintconrad.no/papers/Conrad_GRL2006.pdf"
+      target="_blank">Conrad and Lithgow-Bertelloni (2006)</a> lithosphere thickness data. The data is freely available from 
+      <a href="https://www.clintconrad.no/liththick/Conrad_GRL2006_liththick.dat" target="_blank"> Clint Conrad's website</a>. 
+      This data comes as <a href="https://www.pcmag.com/encyclopedia/term/ascii-file" target="_blank">ascii format</a>. To plot 
+      a scalar field in GMT, we need to convert this ascii format to binary grid files. 
+      <br>
+      <div class="w3-container w3-light-gray">
+        <TT>xyz2grd Conrad_GRL2006_liththick.dat -Rg -I1 -GConrad_GRL2006_liththick.grd </TT>
+      </div>
+      <br> A new grid file has been produced named Conrad_GRL2006_liththick.grd which can be plotted in gmt. 
+      
+    
+      <br>
+       
+   </div>
+
+  </div>
+</div>
+
+
+  </div>
+
+  <!-------- vector ---------------->
+
+<div class="w3-col w3 l8"> 
+  <div id="vector"></div>
+   <div class="w3-card w3-margin">
+   <div class="w3-container w3-teal">
+      <h4> Vector data plot </h4>
+   </div>
+   <div class="w3-container">
+     
+    updating
+      
+    
+      <br>
+       
+   </div>
+
+  </div>
 </div>
         
- 
+
+  <!-------- combined ---------------->
+
+<div class="w3-col w3 l8"> 
+  <div id="combined"></div>
+   <div class="w3-card w3-margin">
+   <div class="w3-container w3-teal">
+      <h4> Combined data plot </h4>
+   </div>
+   <div class="w3-container">
+     
+    updating
+      
+    
+      <br>
+       
+   </div>
+
+  </div>
+</div>
+        
+
 
 
 
