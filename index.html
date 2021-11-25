@@ -31,6 +31,8 @@ a:active {
 p.main {
     text-align: justify;
 }
+
+.mySlides {display:none;}
 </style>
 </head>
 
@@ -70,7 +72,26 @@ p.main {
 <div class="w3-col l4">
   <!-- About Card -->
   <div class="w3-card w3-margin w3-margin-top">
-   <img src="dp.jpg" clas="w3-round" style="width:100%">
+   <img class="mySlides" src="dp.jpg" clas="w3-round" style="width:100%">
+   <img class="mySlides" src="iisc_l.jpg" class="w3-margin" style="width:100%">
+   <img class="mySlides" src="coor.jpg" class="w3-margin" style="width:100%">
+
+   <script>
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+    </script>
     <div class="w3-container w3-white">
           <p>
             Bavarian Research Institute of
@@ -88,13 +109,13 @@ p.main {
       </div>  
   <div class="w3-container w3-margin ">
    	  <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="https://orcid.org/0000-0002-7972-1868" href="https://orcid.org/0000-0002-7972-1868" target="orcid.widget" rel="me noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:2em;margin-right:.5em;" alt="ORCID iD icon" >Orchid</a></div>
-	<br>
+	
 	<a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en"  target="_blank"><img src="https://www.kindpng.com/picc/m/369-3690860_google-scholar-icon-google-scholar-logo-hd-png.png" style="width:2em;margin-right:.5em;"> Scholar </a>
-	<br><br>
+	
 	<a href="https://twitter.com/GeophyJo?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @GeophyJo</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8" ></script>
-   <br><br>
+   
 	 <span id="badgeCont654"><script type="text/javascript" src="https://publons.com/mashlets?el=badgeCont654&rid=AAX-2221-2020"></script></span>
-	<br>  
+	 
     </div> 
     
     
@@ -144,13 +165,12 @@ p.main {
         </div>
         
           <div class="w3-container">
-                <p> <b>1. Origin, evolution and destruction of cratons </b>
-                  <br> During my PhD, I have extensively worked on the problems on cratons' stability using global mantle convection
-                  models. I have developed 3-D spherical forward models of the last 410 Ma to investigate how cratons could have 
-                  evolved under different rheological conditions .
+                <p> 
+                  
+                  2. Dynamics of lower mantle due to grain-size dependent rheology 
                   <br>
-                  Currently, I am adding more complexity to the previous simple forward models to examine how cratons might have
-                  evolved while interacting with a mantle plume.
+                  1. Origin, evolution and destruction of cratons 
+                  
                
                 </p> 
                 
@@ -203,11 +223,7 @@ p.main {
       <h4><b> Future research plans </b></h4>
     </div>  
     <div class="w3-container">
-    <p> I am open to extending my research expertise beyond numerical modeling. I am looking for more <b>interdisciplinary research</b> fields,
-    including <b>space geodesy, geochemistry, and field works</b>. I am quite interested in several regional problems (e.g., evolution of
-    Mt. Fuji, anisotropic structures in and around Caribbean sea, slow-slip earthquake processes of Hikurangi subduction zone) and 
-    global problems (e.g., Origin of cratons, initiation of plate tectonics in the early earth) that will require a complete understanding 
-    of the Earth system. In my post-doc, I am looking forward to a collaborative research network beyond mantle convection modeling. 
+    <p> Effect of grain-size dependent rheology in Earth's evolution
   </p>
 </div>
     </div>
