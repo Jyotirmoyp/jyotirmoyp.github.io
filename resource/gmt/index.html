@@ -360,12 +360,46 @@ p.main {
       a scalar field in GMT, we need to convert this ascii format to binary grid files. 
       <br>
       <div class="w3-container w3-light-gray">
-        <TT>xyz2grd Conrad_GRL2006_liththick.dat -Rg -I1 -GConrad_GRL2006_liththick.grd </TT>
+        <TT>gmt xyz2grd Conrad_GRL2006_liththick.dat -Rg -I1 -GConrad_GRL2006_liththick.grd </TT>
       </div>
       <br> A new grid file has been produced named Conrad_GRL2006_liththick.grd which can be plotted in gmt. 
-      
-    
+      To do this, first we need to make a color scale which will cover the data range. For example, lithosphere thickness
+      will vary from 0-300 km depth. So, we can make a color map from 0-300 with 5 km interval. This can be
+      done using
+      <div class="w3-container w3-light-gray">
+        <TT> gmt makecpt -T0/300/5 -Cseis > color.cpt </TT>
+      </div>
+      <br> Sometimes, we may not know the range of grd file. We can easily find the range by using
+      <div class="w3-container w3-light-gray">
+        <TT>gmt grdinfo $filename </TT>
+      </div>
+      <br> Once we have the grd file and colormap (cpt) ready, we can plot that in a map. This will involve 
+      a few lines. Hence, it is recommended to use a text file and execute that file from terminal. Lines 
+      in the text file will be: 
+      <div class="w3-container w3-light-gray">
+        <TT>gmt pscoast -Rd -Jx0.025id - B30 -W1 -K > liththick.ps 
+            <br>gmt makecpt -T0/300/5 -Cseis > color.cpt 
+            <br>gmt grdimage Conrad_GRL2006_liththick.grd -Ccolor.cpt -R -J -O -K >> liththick.ps 
+            <br>gmt pscoast -R -J -B -W -O -K -A10000 >> liththick.ps 
+        </TT>
+      </div>
+      <br> '<b>K</b>' in pscoast indiacte that the code will continue to next line. <b>O</b> in grdimage
+      indiactes that the image should overlap with the previous map created by pscoast. In this line we 
+      do not need to specify the projection and co-ordinate again (R, J). They will be automatically called
+      from the initially selected values. Once we use grdimage, it will cover the mapoutlines with image file. 
+      To plot the map, we can call pscoast again on top of the image. 
       <br>
+      We need to provide a colorscale to interpret the meaning of colors. This can be added by using psscale command 
+      <br>  
+      <div class="w3-container w3-light-gray">
+        <TT>gmt psscale -4i/-0.45i/2i/0.2i -Ccolor.cpt -B50::/:'thickness (km)' -O -K >> liththick.ps </TT>
+      </div>
+      <br>
+      <b>-4i/-0.45i/2i/0.2i</b> represents y co-ordinate, x co-ordinate, scale length and scale width respectively. 
+      This can be changed accordingly. <b>C</b> calls the colormap which should be plotted. <b>B</b> is the 
+      annotation markers. B50 means annotations will be at every 50 km. 
+      <br>
+      
        
    </div>
 
