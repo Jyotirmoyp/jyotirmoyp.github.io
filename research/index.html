@@ -102,164 +102,126 @@ p.main {
 
 <!-- Visualisation -->
 
-<div class="w3-col l12 w3-margin">
+<div class="w3-col l8 w3-margin">
     <div class="w3-container w3-teal"> 
-        <h4>Research works </h4>
+        <h4>Research Collaborations </h4>
        </div>
        <div class="w3-container">
            <p class="main" style="width: 80%">
-  I am jotting down my research works done in reverse chronological order. The top most one is the 
-  recent most research work that I have published/ going to publish.
+
+
+  <iframe width="600" height="400" seamless frameborder="0" scrolling="no" 
+  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQl7F9xingLxNjWL044AAHYDwPt9Mk2Spgvkptsi0wskdn9ysod7R1Mi_zc9l-ozkDhxmFr-bi5S0eb/pubchart?oid=1247191986&amp;
+  format=interactive"></iframe>
   </p>
 </div>
 </div>
 
+   <!------------ content---------->  
+                
+   <div class="w3-col l3">
+    <div class="w3-card w3-margin">
+      </div>
+      <div class="w3-container w3-margin">
+          <ul>
+              <li><a href="#craton">Craton Dynamics</a></li>
+              <li><a href="#grainSize">Grain size dependent Rheology </a></li>
+              <li><a href="#ore">Layred ore complex</a></li>
+              <li><a href="#crab">crab ecology</a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
 
+
+
+</div>
 <!---------------------timedependent models---------------------->
 
 <div class="w3-col l8 w3-margin">
-    <div id="evolution"></div>
+    <div id="craton"></div>
   <div class="w3-card w3-margin">
     <div class="w3-container w3-teal"> 
-     <h4>Reconstruction and evolution of cratons</h4>
+     <h4>Craton Dynamics</h4>
     </div>
-    <div class="w3-col l7 w3-margin">
+    <div class="w3-col l12 w3-margin">
     <div class="w3-container">
         <p class="main" style="width: 100%">
-            To understand the evolution of cratons we develop time dependent mantle convection models in CitcomS. 
-            Very few studies have attempted such time-dependent approach in a 3-D spherical models to quantify 
-            stability of cratons. Yoshida (2010, 2012) had approached such time-dependent forward mantle convection 
-            models in restricted spherical domain. Also the location of their continental lithosphere was hypothetical.
-            Our study (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X19306545?via%3Dihub" target="_blank" >
-              Paul et al. 2020 </a>) is the first study to model the evolution of cratons for last 410 Ma using
-            realistic location of cratons and reconstructed veolocity boundary condition. 
+          Long-term stability of cratons against the tectonic recycling has remained a big question within Geoscience community. 
+          I develop instanteneous and time-dependent model of craton evolution. My primary goal is to understand at what condition 
+          cratons will remain stable for billion years. Additionaly, I am curious to investigate the reasons why some of the cratons 
+          have undergone recent destruction. 
+          <br> 
+          <br>
+          <b> Inverse relation between traction and strain-rates at the variable base of lithosphere </b>
+          <br> Mantle exerts convective stresses at the base of lithosphere. We calculate traction magnitude and associated strain-rates 
+          at the variable base of lithosphere. We find due to high viscosity and thick lithosphere, cratons experience higher traction 
+          which is consistent with previous studies (Conrad an Lithgow-Bertelloni 2006), but the associated strain-rate deminishes. This 
+          happens due to free-slip boundary condition in our models that closely mimic mobile-lid behavior of present Earth. Hence, strain-rates 
+          are accumulated along the weak plate boundaries, leaving strong cratons almost undeformed.
+          <br>
+          >>[2] <i> <b>J. Paul*,</b> A. Ghosh, C.P. Conrad, 2019. Traction and strain-rate at the base of the lithosphere:
+            An insight into cratonic survival. Geophysical Journal International, 217(2), 1024-1033</i>
+          <br><br>
+        
+          <b>Convective self compression </b>
+        <br>
+          It has been well established in several studies that cratons have elevated tractions within them, particularly along their boundary. 
+          However, a concrete reason was for such higher traction and the nature of such traction was missing. We find in the presence of 
+          thick and highly viscous cratons, traction direction changes and becomes inwaradly convergent along the craton periphery. Our stress 
+          analysis suggests that most of present-day cratons are within a compressive stress regime. We examine the velocity profiles 
+          along cratons, which reveals that due to thich and viscous cratons mantle flow is deflected vertically (mostly downward). This 
+          certainly change some amount of velocity gradients, that in turn elevate traction and impose a compressive stress regime within cratons. 
+          We hypothsize such convective self-compression could be another potential reason for craton's long term stablity. 
+          <br>
+          >> [6] <b>J. Paul*,</b> C.P. Conrad, T.W. Becker, A. Ghosh, 2023. Convective self-compression of cratons and the
+          stabilization of old lithosphere. Geophysical Research Letters, 50, e2022GL101842. <a href="https://doi.org/10.1029/2022GL101842" target="_blank">[Open access]</a>
+          <br>
+          <br>
+          <b>Time-dependent model of craton evolution </b> 
+          <br>
+
+          To understand the evolution of cratons we develop time dependent mantle convection models. 
+           Our study finds that a craton needs to be at least 100x viscous than surrodings and the asthenosphere 
+              should have a viscosity of 10<sup>20</sup> Pa.s or more. 
             <br> 
-            We use a reconstruction model given by Methews et al. 2016 and reconstructed back the location of cratons
-            till 409 Ma. Using the reconstructed locations we develop mantle convection models using reconstructed plate 
-            veolocities as prescribed boundary condition.
-      
+           
+            >> [4] <i><b>J. Paul,</b> A. Ghosh, 2020. Evolution of cratons through the ages: A time-dependent study, 
+              Earth and Planetary Science Letters, , 531, 115962. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X19306545?via%3Dihub" target="_blank" >
+                [Online version] </a></i>
       
           </p>
-            <div class="w3-container"  >
-              <video width="400" height="320" controls loop autoplay>
-                <source src="animation_fast.mp4" type="video/mp4">
-                <source src="movie.ogg" type="video/ogg">
-                </video>
-            </div>
+          <iframe width="420" height="315"
+          src="https://www.youtube.com/watch?v=aaVsnYTrc_A">
+          </iframe>
             <br>
-            <p class="main" style="width: 100%">
-            In our study we use cratons and asthenosphere of different viscosity and investigate which 
-            viscosity combination can help in stability of cratons. 
-            </p>
-            <br>
-            <img src="epsl20s1.jpg" style="width: 100%">
-            <br>
-            <i>Figure from Paul and Ghosh 2020, EPSL</i>
-            <br>
-            <div class="w3-container w3-margin w3-yellow w3-col l5">
-                <a href="https://www.sciencedirect.com/science/article/pii/S0012821X19306545?via%3Dihub" 
-               target="_blank"> <h3>Read more </h3> </a>
-            </div>
+            
           </div>        
       </div>
   </div>        
-  <div class="w3-col l4 w3-margin">
-      <div class="w3-container">
-          <b> Related Publications  </b>
-          <br>4. J. Paul, A. Ghosh, 2020. Evolution of cratons through the ages: A time-dependent study, 
-          Earth and Planetary Science Letters [Online Version]
-          <br>
-          <b>Related conference presenations </b>
-          <br> 12. J. Paul, A. Ghosh, 2020. On survival of cratonic lithosphere. 36th International Geological Congress, Delhi.
-          <br> 11. J. Paul, A. Ghosh, 2019. Evolution of cratons in time-dependent mantle convection models. AGU Fall Meeting, San Francisco [Online version]
-          <br>  9. J. Paul, A. Ghosh, 2019. Time dependent 3-D numerical modeling of the cratonic evolution. Ada Lovelace Workshop, Siena, Italy. [Online version] [Poster]
-          <br>  8. J. Paul, A. Ghosh , 2019, Evolution and survival potential of cratons: A numerical study. IUGG General Assembly, Montreal. [Online version]
-          <br>  7. J. Paul , A. Ghosh, 2018, Stability of cratons since early Phanerozoic. AGU Fall Meeting, Washington DC. [Online version] [Poster]
-      
-      </div>
-  </div>        
+ 
 </div>
 
 
-    <!------------ content---------->  
-                
-    <div class="w3-col l3">
-        <div class="w3-card w3-margin">
-          </div>
-          <div class="w3-container w3-margin">
-              <ul>
-                  <li><a href="#evolution">evolution of cratons</a></li>
-                  <li><a href="#2">global stress-strainrate patterns</a></li>
-                  <li><a href="#ore">Layred ore complex</a></li>
-                  <li><a href="#crab">crab ecology</a></li>
-              </ul>
-            </div>
-        </div>
-      </div>
-  
-  
-  
-  </div>
+ 
   
   <!----------------instanteneous---------------->
 
-<div id="2"></div>
+<div id="grainSize"></div>
 <div class="w3-col l8 w3-margin">
   <div class="w3-card w3-margin">
     <div class="w3-container w3-teal">
-       <h4>Global stress and strain-rates at the base of lithosphere</h4>
+       <h4>Grain size dependent Rheology </h4>
     </div>
-    <div class="w3-col l7 w3-margin">
+    <div class="w3-col l12 w3-margin">
       <div class="w3-container">
-        <img src="traction.jpg" style="width:100%">
-        <br>
-           <p class="main" style="width: 100%">
-            <a href="https://academic.oup.com/gji/article/217/2/1024/5307888?guestAccessKey=0ce95061-6467-40f9-94c8-e68c63d2fbaf" 
-            target="_blank"> This study </a> has developed numerical model of the intensity of present-day 
-              deformation at the base of the lithosphere using a 3-D spherical mantle 
-              convection code <a href="https://geodynamics.org/cig/software/citcoms/" 
-              target="_blank">CitcomS</a>. Here lithosphere thickness is obtained from the model of 
-              <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2005gl025621"
-              target="_blank">Conrad and Lithgow-Bertelloni (2006)</a> and tractions have been calculated at the 
-              variable base
-              of the lithosphere. Traction is the resistive force generated
-              as a response to convective stresses exerted by the mantle. 
-            </p> 
-            <br>
-         <img src="LVV.jpg" style="width:100%">  
-         <p class="main" style="width: 100%">
-           Our model incorporates lateral viscosity variation to specify high viscosity thick cratons
-           and weak plate boundaries. We predict because of high thickness and viscosity 
-           deformation under cratons is very low. Such low intensity of deformation helps 
-           cratons to survive for billions of years.  
-         </p>
-         <img src="model_traction.jpg" style="width: 88%">
-         <img src="model_strainrate.jpg" style="width: 88%;">
-         <br>
-         <I>Figures from Paul et al. 2019, GJI</I>
-         <br>
-         <div class="w3-container w3-margin w3-yellow w3-col l5">
-           <a href="https://academic.oup.com/gji/article/217/2/1024/5307888?guestAccessKey=0ce95061-6467-40f9-94c8-e68c63d2fbaf" 
-          target="_blank"> <h3>Read more </h3> </a>
-         </div>
+        Grain size controls the diffusion creep viscosity, which is the dominant creep mechanism in lower mantle. 
+
+         
         </div>
        </div> 
       </div>
-       <div class="w3-col l4 w3-margin">
-          <div class="w3-container">
-              <b> Related Publications  </b>
-              <br>2. J. Paul, A. Ghosh, C.P. Conrad, 2019. Traction and strain-rate at the base of the lithosphere: 
-              An insight into cratonic survival. Geophysical Journal International. [Online version] [Erratum]
-              <br>
-              <b>Related conference presenations </b>
-              <br>  8. J. Paul, A. Ghosh , 2019, Evolution and survival potential of cratons: A numerical study. IUGG General Assembly, Montreal. [Online version]
-              <br>  6. A. Ghosh, J. Paul , C.P. Conrad, 2018, The Relation Between Tractions and Strain Rate at the Base of the Lithosphere: Key to Understanding Cratonic Stability. AGU Fall Meeting, Washington DC. [Online version] [Poster]
-              <br>  5. J. Paul , A. Ghosh, 2018, Variation of traction and strain rate with lithospheric thickness: An insight into understanding cratonic stability. EGU General Assembly, Vienna. [Online Version] [Poster]
-              <br>  
-         
-    
-          </div>
-       </div>    
+       
   </div>
   
   
