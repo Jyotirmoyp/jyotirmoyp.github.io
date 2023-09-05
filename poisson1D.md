@@ -3,18 +3,13 @@
 
 
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
     <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button"> Home</a>
     <a href="Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
     <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
     <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
     <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
     <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
-    </div>
-  </div>
-</div>
+
 
 
 
