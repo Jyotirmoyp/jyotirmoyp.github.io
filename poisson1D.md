@@ -19,15 +19,6 @@
 
 
 
-<div class="w3-container w3-teal">
-  <h2>hidden teal box </h2>
- 
-  <div class="w3-right w3-hide-small">
-      
-     
-    </div>
-</div>
-
 
 
 <!--naviation menu ends-->
