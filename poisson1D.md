@@ -1,40 +1,6 @@
-<html>
 
 <title>Jyo</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<head>
-<style>
-
-  
-
-
-a:link {
-    color: teal;
-    text-decoration: none;
-}
-
-a:visited {
-    color: teal;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:active {
-    text-decoration: underline;
-}
-
-p.main {
-    text-align: justify;
-}
-
-.mySlides {display:none;}
-</style>
-</head>
 
 
 
