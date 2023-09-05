@@ -1,9 +1,4 @@
-
-
-
-
-
-    [Home](https://jyotirmoyp.github.io)
+[Home](https://jyotirmoyp.github.io)
     
 
 
