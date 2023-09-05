@@ -1,3 +1,71 @@
+<html>
+
+<title>Jyo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+<style>
+
+  
+
+
+a:link {
+    color: teal;
+    text-decoration: none;
+}
+
+a:visited {
+    color: teal;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+p.main {
+    text-align: justify;
+}
+
+.mySlides {display:none;}
+</style>
+</head>
+
+
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+    <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button"> Home</a>
+    <a href="Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
+    <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
+    <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
+    <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
+    <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="w3-container w3-teal">
+  <h2>hidden teal box </h2>
+ 
+  <div class="w3-right w3-hide-small">
+      
+     
+    </div>
+</div>
+
+
+
+<!--naviation menu ends-->
+
 ```py
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
