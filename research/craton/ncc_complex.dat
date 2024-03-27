@@ -1,0 +1,889 @@
+#===============================================================================
+# Scaling
+#===============================================================================
+
+	units = geo
+	# length: km, time: Myr
+
+	unit_temperature = 1.0
+	unit_length      = 1e3
+	unit_viscosity   = 1e21
+	unit_stress      = 1e9
+
+#===============================================================================
+# Time stepping parameters
+#===============================================================================
+
+	dt        = 1.5e-5              # time step
+	dt_min    = 2e-8                # minimum time step (declare divergence if lower value is attempted)
+	dt_max    = 1e-1                # maximum time step
+	inc_dt    = 0.5                 # time step increment per time step (fraction of unit)
+	CFL       = 0.5                 # CFL (Courant-Friedrichs-Lewy) criterion
+	CFLMAX    = 0.8                 # CFL criterion for elasticity
+	time_end  = 200.0                 # simulation end time
+	nstep_ini = 10		        # save output for n initial steps
+	nstep_out = 30                   # save output every n steps
+	nstep_rdb = 10                   # save restart database every n steps
+
+#===============================================================================
+# Grid & discretization parameters
+#===============================================================================
+
+# Number of cells for all segments
+
+	nel_x = 512
+	nel_y = 1		#for 2D models
+	nel_z = 256
+
+# Coordinates of all segments (including start and end points)
+
+	coord_x =  -2000.0  2000.0
+	coord_y =  -4        4
+	coord_z =  -1000.0   100.0
+
+#===============================================================================
+# Free surface
+#===============================================================================
+
+	 erosion_model      = 2                # erosion model [0-none (default), 1-infinitely fast, 2-prescribed rate with given level]
+   	 er_num_phases      = 1                # number of erosion phases
+   	 #er_time_delims     = 0.5           # erosion time delimiters (one less than number)
+     	 er_rates           = 0.2       # constant erosion rates in different time periods
+    	 er_levels          = 1          # levels above which we apply constant erosion rates in different time periods	
+
+
+	surf_use           = 1          # free surface activation flag
+	surf_corr_phase    = 1          # air phase ratio correction flag (due to surface position)
+	surf_level         = 0          # initial level
+	surf_air_phase     = 0          # phase ID of sticky air layer
+	surf_max_angle     = 30.0       # maximum angle with horizon (smoothed if larger)
+	erosion_model      = 0          # erosion model [0-none (default), 1-infinitely fast]
+	sediment_model     = 0          # sedimentation model [0-none (dafault), 1-prescribed rate]
+
+#===============================================================================
+# Boundary conditions
+#===============================================================================
+
+# Background strain rate parameters
+
+#	exx_num_periods  = 1            # number intervals of constant strain rate (x-axis)
+#	exx_strain_rates = 5e-16        # strain rates for each interval
+
+# Free surface top boundary flag
+
+	open_top_bound = 1
+	
+# Inflow velocity boundary condition
+
+    bvel_face_out             =         0                            # do we have outflow @ opposite boundary?
+    bvel_bot                  =        -100.0                         # bottom coordinate of inflow window
+    bvel_face                 =         Right                         # Face identifier  (Left; Right; Front; Back; CompensatingInflow)
+    bvel_top                  =         0.0                         # top coordinate of inflow window
+    bvel_velin                =         -2.0                          # inflow velocity
+#   bvel_velout               =         0.0                          # outflow velocity (if not specified, computed from mass balance)
+    bvel_relax_d              =         100                          # distance over which velocity is reduced
+#   bvel_velbot               =         0   	                     # bottom inflow velocity for use with bvel_face=CompensatingInflow
+#   bvel_veltop               =         0                            # top inflow velocity for use with bvel_face=CompensatingInflow
+#    bvel_temperature_inflow   =        Fixed_thermal_age             # Thermal age of the plate is constant
+#                              =        Constant_T_inflow             # Temperature of the inflow material is constant everywhere
+#    bvel_thermal_age          =        30                            # In dimensional unit. If the user specify this value, he needs to specify the temperature of the mantle and top as well
+#    bvel_temperature_mantle   =        1350                          # In dimensional unit. Temperature of the mantle
+#    bvel_temperature_top      =        0                             # In dimensional unit. temperature of the top
+#   bvel_temperature_constant =        100                           # Constant temperature inflow. 
+    bvel_num_phase            =        1                             # Imposes a stratigraphy of phase injected in the inflow boundary [if undefined, it uses the phase close to the boundary]
+    bvel_phase                =        1	#3 2 1 0                       # phase number of inflow material [if undefined, it uses the phase close to the boundary] from bottom to top
+#   bvel_phase_interval       =       -120 -100 -10 0                # Depth interval of injection of the phase (the interval is defined by num_phase+1 coordinates)
+                                       
+
+
+#===============================================================================
+# Jacobian & residual evaluation parameters
+#===============================================================================
+
+	gravity        = 0.0 0.0 -10.0  # gravity vector
+	FSSA           = 1.0            # free surface stabilization parameter [0 - 1]
+	init_guess     = 1              # initial guess flag
+	p_lim_plast    = 1              # limit pressure at first iteration for plasticity
+	act_steady_temp = 0              # steady-state temperature initial guess activation flag
+    	act_temp_diff  = 1              # temperature diffusion activation flag
+    	act_therm_exp  = 0              # thermal expansion activation flag
+    	T_ref          = 20.0           # reference temperature [C]
+    	p_litho_visc   = 1              # use lithostatic pressure for creep laws
+	p_lim_plast    = 1 
+    #to smoothen temperature profile
+       steady_temp_t   = 0.1            # time for (quasi-)steady-state temperature initial guess
+       nstep_steady    = 20              # number of steps for (quasi-)steady-state temperature initial guess (default = 1)
+       act_heat_rech   = 0              # recharge heat in anomalous bodies after (quasi-)steady-state temperature initial guess (=2: recharge after every diffusion step of initial guess)
+	shear_heat_eff  = 1.0            # shear heating efficiency parameter   [0 - 1]
+        Adiabatic_Heat  = 1.0            # Adiabatic Heating activaction flag and efficiency. [0.0 - 1.0] (e.g. 0.5 means that only 50% of the potential adiabatic heating affects the energy equation)     
+	eta_min        = 1e18           # viscosity upper bound
+	eta_max        = 1e25           # viscosity lower limit
+	eta_ref        = 1e21           # reference viscosity (initial guess)
+	min_cohes      = 1e6            # cohesion lower bound
+	min_fric       = 5.0            # friction lower bound
+	tau_ult        = 1e9            # ultimate yield stress
+	init_lith_pres = 1              # initial pressure with lithostatic pressure (stabilizes compressible setups in the first steps)
+
+#===============================================================================
+# Solver options
+#===============================================================================
+	SolverType 		=	multigrid 	    # solver [direct or multigrid]
+        MGLevels	        =	4			# number of MG levels [default=3]
+
+#       SolverType         = direct          # solver [direct or multigrid]
+#       DirectSolver       = mumps             # mumps/superlu_dist/pastix/umfpack    
+#       DirectPenalty      = 1e3
+
+#===============================================================================
+# Model setup & advection
+#===============================================================================
+
+	msetup         = polygons       # setup type
+	poly_file      = ../Output_512x256_ref_20wz/Polygons.512x1x256.3x3x3.bin
+	temp_file      = ../Temp_ref_20wz.dat
+	nmark_x        = 3              # markers per cell in x-direction
+	nmark_y        = 3              # ...                 y-direction
+	nmark_z        = 3              # ...                 z-direction
+	rand_noise     = 0              # random noise flag
+	bg_phase       = 1              # background phase ID
+	mark_ctrl      = subgrid        # marker control type
+        nmark_sub       = 4                 # max number of same phase markers per subcell (subgrid marker control)
+# temperature on the top & bottom boundaries [usually constant]
+    temp_top       =   0.0
+    temp_bot       =   1600.0
+
+#===============================================================================
+# Output
+#===============================================================================
+
+# Grid output options (output is always active)
+
+	out_file_name       = ncc	 # output file name
+	out_pvd             = 1          # activate writing .pvd file
+	out_phase           = 1
+	out_density         = 1
+	out_visc_total      = 1
+	out_velocity        = 1
+	out_pressure        = 1
+	out_dev_stress      = 1
+	out_j2_dev_stress   = 1
+	out_strain_rate     = 1
+	out_j2_strain_rate  = 1
+	out_plast_strain    = 1
+	out_plast_dissip    = 1
+	out_moment_res      = 1
+	out_cont_res        = 1
+	out_temperature     = 1
+
+# AVD phase viewer output options (requires activation)
+
+	out_avd             = 1          # activate AVD phase output
+	out_avd_pvd         = 1          # activate writing .pvd file
+	out_avd_ref         = 1          # AVD grid refinement factor
+
+# free surface output
+	out_surf            = 1          # activate surface output
+	out_surf_pvd        = 1          # activate writing .pvd file
+	out_surf_velocity   = 1
+	out_surf_topography = 1
+	out_surf_amplitude  = 1
+
+#===============================================================================
+# Material phase parameters
+#===============================================================================
+
+
+#transition of weak zone 1 
+    <PhaseTransitionStart>
+        ID                      =   0         #     Phase_transition law ID
+        Type                    =   Constant  #     [Constant, Clapeyron]: Constant - the phase transition occurs only at a fixed value of the parameter
+        Parameter_transition    =   t         #     [T = Temperature, P = Pressure, Depth = z-coord, X=x-coord, Y=y-coord, APS = accumulated plastic strain, MeltFraction, t = time] parameter that triggers the phase transition
+        ConstantValue           =   2.5         #     Value of the parameter [unit of T,P,z, APS]
+        number_phases           =   1         #     The number of involved phases [default=1]
+        PhaseAbove              =   14         #     Above the chosen value the phase is 1, below it, the value is PhaseBelow
+        PhaseBelow              =   6         #       
+        PhaseDirection          =   BothWays  #     [BothWays=default; BelowToAbove; AboveToBelow] Direction in which transition works
+#        ResetParam              =   APS       #     [APS] Parameter to reset on particles below PT or within box
+    <PhaseTransitionEnd>
+
+#transition of weak zone 2
+    <PhaseTransitionStart>
+
+	ID                      =   1         #     Phase_transition law ID
+        Type                    =   Constant  #     [Constant, Clapeyron]: Constant - the phase transition occurs only at a fixed value of the parameter
+        Parameter_transition    =   t   
+	ConstantValue           =   5         #     Value of the parameter [unit of T,P,z, APS]
+        number_phases           =   1         #     The number of involved phases [default=1]
+        PhaseAbove              =   15         #     Above the chosen value the phase is 1, below it, the value is PhaseBelow
+        PhaseBelow              =   7         #       
+        PhaseDirection          =   BothWays  #     [BothWays=default; BelowToAbove; AboveToBelow] Direction in which transition works
+#       ResetParam              =   APS       #     [APS] Parameter to reset on particles below PT or within box
+    <PhaseTransitionEnd>
+
+
+#transition of weak zone 3
+    <PhaseTransitionStart>
+
+	ID                      =   2         #     Phase_transition law ID
+        Type                    =   Constant  #     [Constant, Clapeyron]: Constant - the phase transition occurs only at a fixed value of the parameter
+        Parameter_transition    =   t   
+	ConstantValue           =   7.5         #     Value of the parameter [unit of T,P,z, APS]
+        number_phases           =   1         #     The number of involved phases [default=1]
+        PhaseAbove              =   16         #     Above the chosen value the phase is 1, below it, the value is PhaseBelow
+        PhaseBelow              =   8         #       
+        PhaseDirection          =   BothWays  #     [BothWays=default; BelowToAbove; AboveToBelow] Direction in which transition works
+#       ResetParam              =   APS       #     [APS] Parameter to reset on particles below PT or within box
+    <PhaseTransitionEnd>
+
+
+#transition of weak zone 4
+    <PhaseTransitionStart>
+
+	ID                      =   3         #     Phase_transition law ID
+        Type                    =   Constant  #     [Constant, Clapeyron]: Constant - the phase transition occurs only at a fixed value of the parameter
+        Parameter_transition    =   t   
+	ConstantValue           =   10         #     Value of the parameter [unit of T,P,z, APS]
+        number_phases           =   1         #     The number of involved phases [default=1]
+        PhaseAbove              =   17         #     Above the chosen value the phase is 1, below it, the value is PhaseBelow
+        PhaseBelow              =   9         #       
+        PhaseDirection          =   BothWays  #     [BothWays=default; BelowToAbove; AboveToBelow] Direction in which transition works
+#       ResetParam              =   APS       #     [APS] Parameter to reset on particles below PT or within box
+    <PhaseTransitionEnd>
+
+#transition of weak zone 5
+    <PhaseTransitionStart>
+
+	ID                      =   4         #     Phase_transition law ID
+        Type                    =   Constant  #     [Constant, Clapeyron]: Constant - the phase transition occurs only at a fixed value of the parameter
+        Parameter_transition    =   t   
+	ConstantValue           =   12.5         #     Value of the parameter [unit of T,P,z, APS]
+        number_phases           =   1         #     The number of involved phases [default=1]
+        PhaseAbove              =   18         #     Above the chosen value the phase is 1, below it, the value is PhaseBelow
+        PhaseBelow              =   10        #       
+        PhaseDirection          =   BothWays  #     [BothWays=default; BelowToAbove; AboveToBelow] Direction in which transition works
+#       ResetParam              =   APS       #     [APS] Parameter to reset on particles below PT or within box
+    <PhaseTransitionEnd>
+
+
+#transition of weak zone 6
+    <PhaseTransitionStart>
+
+	ID                      =   5         #     Phase_transition law ID
+        Type                    =   Constant  #     [Constant, Clapeyron]: Constant - the phase transition occurs only at a fixed value of the parameter
+        Parameter_transition    =   t   
+	ConstantValue           =   15         #     Value of the parameter [unit of T,P,z, APS]
+        number_phases           =   1         #     The number of involved phases [default=1]
+        PhaseAbove              =   19         #     Above the chosen value the phase is 1, below it, the value is PhaseBelow
+        PhaseBelow              =   11         #       
+        PhaseDirection          =   BothWays  #     [BothWays=default; BelowToAbove; AboveToBelow] Direction in which transition works
+#       ResetParam              =   APS       #     [APS] Parameter to reset on particles below PT or within box
+    <PhaseTransitionEnd>
+
+   
+
+<PhaseTransitionStart>
+        ID                      =   6       #     Phase_transition law ID
+        Type                    =   Constant  #     [Constant, Clapeyron]: Constant - the phase transition occurs only at a fixed value of the parameter
+        Parameter_transition    =   Depth        #     [T = Temperature, P = Pressure, Depth = z-coord, X=x-coord, Y=y-coord, APS = accumulated plastic strain, MeltFraction, t = time] parameter that triggers the phase transition
+        ConstantValue           =   -660     #     Value of the parameter [unit of T,P,z, APS]
+        number_phases           =   1         #     The number of involved phases [default=1]
+        PhaseAbove              =   1           #     Above the chosen value the phase is 1, below it, the value is PhaseBelow
+        PhaseBelow              =   2     #       
+        PhaseDirection          =   BothWays  #     [BothWays=default; BelowToAbove; AboveToBelow] Direction in which transition works
+
+    <PhaseTransitionEnd>
+    
+
+    
+##################### 
+######################	phase transition ends    
+    
+## Strain softening parameters
+	<SofteningStart>
+		ID   = 0
+		A    = 0.25
+		APS1 = 0.000001		#Accumulated plastic strain
+		APS2 = 0.01
+	<SofteningEnd>
+
+# sticky-air layer
+	<MaterialStart>
+		ID         = 0
+		rho        = 100
+		
+		# viscous
+		eta        = 1e17
+		
+		# elastic
+		G          = 1.5e10
+		#Kb         = 2.5e10
+		
+        # note: it is a good idea to also give the sticky air plastic parameters
+        #  even when it is effectively only viscous. Reason is that cells that are filled
+        #  with botb air and rocks will than not receive a very large cohesion value
+		
+		# plastic
+		ch         = 40000e6
+		fr         = 30
+		
+        # thermal
+        alpha      = 3e-5   # thermal expansivity
+        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        k          = 100    # thermal conductivity
+	<MaterialEnd>
+
+# Asthenosphere/Upper Mantle
+	<MaterialStart>
+		ID        = 1
+		rho       = 3300
+		
+		# viscous
+		 disl_prof   = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+        	Vn          = 8.5e-6                    # modify activation volume
+        	diff_prof   = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+        	#
+        	eta_st      = 1e19
+		
+		# elastic
+		G         = 6e10
+	#	nu        = 0.25
+		
+		# plastic
+		ch        = 10e6
+		fr        = 30
+
+        # thermal
+        alpha      = 3e-5   # thermal expansivity
+        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        k          = 3.3    # thermal conductivity
+	<MaterialEnd>
+	
+
+
+# Lower mantle
+	<MaterialStart>
+		ID        = 2
+		rho       = 3400
+		
+		# viscous
+		disl_prof   = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+        	Vn          = 8.5e-6                    # modify activation volume
+        	diff_prof   = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+        	#
+        	eta_st      = 1e19
+		
+		# elastic
+		G         = 6e10
+	#	nu        = 0.25
+		
+		# plastic
+		ch        = 10e6
+		fr        = 30
+
+        # thermal
+        alpha      = 3e-5   # thermal expansivity
+        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        k          = 3.3    # thermal conductivity
+	<MaterialEnd>
+			
+# Continental crust
+	<MaterialStart>
+		ID        = 3
+		rho       = 2700
+		
+		# viscous
+		disl_prof = Granite-Tirel_et_al_2008
+		#diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+		eta_st    = 1e19
+		
+		# elastic
+		G         = 4e10
+	#	nu        = 0.25
+		
+		# plastic
+		ch        = 10e6
+		fr        = 30
+
+
+        # thermal
+        alpha      = 3e-5   # thermal expansivity
+        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        k          = 3.3    # thermal conductivity
+	<MaterialEnd>	
+
+			
+# Sclm
+	<MaterialStart>
+		ID        = 4
+		rho       = 2900
+		
+		# viscous
+		disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+		diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+		eta_st    = 1e19
+		
+		# elastic
+		G         = 4e10
+	#	nu        = 0.25
+		
+		# plastic
+		ch        = 10e6
+		fr        = 30
+
+
+        # thermal
+        alpha      = 3e-5   # thermal expansivity
+        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        k          = 3.3    # thermal conductivity
+	<MaterialEnd>	
+
+
+# Craton
+	<MaterialStart>
+		ID        = 5
+		rho       = 3300
+		
+		# viscous
+		disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+		Vn          = 9.5e-5      
+		diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+		Vn          = 1.5e-6 
+		eta_st    = 1e19
+		
+		# elastic
+		G         = 8e10
+	#	nu        = 0.25
+		
+		# plastic
+		ch        = 10e6
+		fr        = 30
+
+        # thermal
+        alpha      = 3e-5   # thermal expansivity
+        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        k          = 3.3    # thermal conductivity
+	<MaterialEnd>
+	
+############ weak phase starts	
+	
+
+# Weak phase 1
+	<MaterialStart>
+		ID        = 6
+		rho       = 3300
+		
+		# viscous
+		disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+		Vn          = 9.5e-5      
+		diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+		Vn          = 1.5e-6 
+		eta_st    = 1e19
+		
+		# elastic
+		G         = 8e10
+	#	nu        = 0.25
+		
+		# plastic
+		ch        = 10e6
+		fr        = 30
+
+        # thermal
+        alpha      = 3e-5   # thermal expansivity
+        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        k          = 3.3    # thermal conductivity
+	<MaterialEnd>
+
+# Weak phase 2
+         <MaterialStart>
+               ID        = 7
+               rho       = 3300
+
+                   # viscous
+               disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+               Vn          = 9.5e-5
+               diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+               Vn          = 1.5e-6
+               eta_st    = 1e19
+               # elastic
+
+               G         = 8e10
+       #       nu        = 0.25
+
+             # plastic
+               ch        = 10e6
+               fr        = 30
+
+             # thermal
+               alpha      = 3e-5   # thermal expansivity
+               Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1     
+	        k          = 3.3    # thermal conductivity     
+        <MaterialEnd>
+
+# Weak phase 3
+         <MaterialStart>
+               ID        = 8
+               rho       = 3300
+
+                   # viscous
+               disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+               Vn          = 9.5e-5
+               diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+               Vn          = 1.5e-6
+               eta_st    = 1e19
+               # elastic
+
+               G         = 8e10
+       #       nu        = 0.25
+
+             # plastic
+               ch        = 10e6
+               fr        = 30
+
+             # thermal
+               alpha      = 3e-5   # thermal expansivity
+               Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1     
+	        k          = 3.3    # thermal conductivity     
+        <MaterialEnd>
+        
+# Weak phase 4
+         <MaterialStart>
+               ID        = 9
+               rho       = 3300
+
+                   # viscous
+               disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+               Vn          = 9.5e-5
+               diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+               Vn          = 1.5e-6
+               eta_st    = 1e19
+               # elastic
+
+               G         = 8e10
+       #       nu        = 0.25
+
+             # plastic
+               ch        = 10e6
+               fr        = 30
+
+             # thermal
+               alpha      = 3e-5   # thermal expansivity
+               Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1     
+	        k          = 3.3    # thermal conductivity     
+        <MaterialEnd>
+        
+        
+# Weak phase 5
+         <MaterialStart>
+               ID        = 10
+               rho       = 3300
+
+                   # viscous
+               disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+               Vn          = 9.5e-5
+               diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+               Vn          = 1.5e-6
+               eta_st    = 1e19
+               # elastic
+
+               G         = 8e10
+       #       nu        = 0.25
+
+             # plastic
+               ch        = 10e6
+               fr        = 30
+
+             # thermal
+               alpha      = 3e-5   # thermal expansivity
+               Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1     
+	        k          = 3.3    # thermal conductivity     
+        <MaterialEnd>
+        
+        
+# Weak phase 6
+         <MaterialStart>
+               ID        = 11
+               rho       = 3300
+
+                   # viscous
+               disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+               Vn          = 9.5e-5
+               diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+               Vn          = 1.5e-6
+               eta_st    = 1e19
+               # elastic
+
+               G         = 8e10
+       #       nu        = 0.25
+
+             # plastic
+               ch        = 10e6
+               fr        = 30
+
+             # thermal
+               alpha      = 3e-5   # thermal expansivity
+               Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1     
+	        k          = 3.3    # thermal conductivity     
+        <MaterialEnd>
+                                        
+
+################  Weak phase after transition
+#### 1st weak phase (bottom most)
+
+	<MaterialStart>
+                ID        = 14
+                rho       = 3300
+
+	 # viscous
+	       disl_prof = Wet_Olivine_disl_creep-Hirth_Kohlstedt_2003_constant_C_OH
+	       En = 440e3
+		diff_prof = Wet_Olivine_diff_creep-Hirth_Kohlstedt_2003_constant_C_OH
+	       En = 260e3
+		eta_st    = 1e19
+	       # elastic
+	        G         = 8e10
+	 #      nu        = 0.25
+	 
+               # plastic
+	        ch        = 10e6
+	        fr        = 30
+
+	 # thermal
+	        alpha      = 3e-5   # thermal expansivity
+	        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+	        k          = 3.3    # thermal conductivity
+	  <MaterialEnd>
+	 
+#### 2nd weak phase 
+
+	<MaterialStart>
+                ID        = 15
+                rho       = 3300
+
+		#viscous 
+		disl_prof = Wet_Olivine_disl_creep-Hirth_Kohlstedt_2003_constant_C_OH
+             	En = 440e3
+		#   Vn          = 1.5e-6
+                diff_prof = Wet_Olivine_diff_creep-Hirth_Kohlstedt_2003_constant_C_OH
+             #   Vn          = 1.5e-6
+                En = 260e3
+		eta_st    = 1e19
+              
+		 # elastic
+		G         = 8e10
+	#	nu        = 0.25
+		
+		#plastic
+		ch        = 10e6
+                fr        = 30
+
+	#	Thermal 
+		alpha      = 3e-5   # thermal expansivity
+                Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+                k          = 3.3    # thermal conductivity
+          <MaterialEnd>
+          
+#### 3rd weak phase 
+
+	<MaterialStart>
+                ID        = 16
+                rho       = 3300
+
+		#viscous 
+		disl_prof = Wet_Olivine_disl_creep-Hirth_Kohlstedt_2003_constant_C_OH
+                En = 440e3
+		diff_prof = Wet_Olivine_diff_creep-Hirth_Kohlstedt_2003_constant_C_OH
+        	En = 260e3
+                eta_st    = 1e19
+              
+		 # elastic
+		G         = 8e10
+	#	nu        = 0.25
+		
+		#plastic
+		ch        = 10e6
+                fr        = 30
+
+	#	Thermal 
+		alpha      = 3e-5   # thermal expansivity
+                Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+                k          = 3.3    # thermal conductivity
+          <MaterialEnd>          
+
+#### 4th weak phase 
+
+	<MaterialStart>
+                ID        = 17
+                rho       = 3300
+
+		#viscous 
+		disl_prof = Wet_Olivine_disl_creep-Hirth_Kohlstedt_2003_constant_C_OH
+               	En = 440e3
+		diff_prof = Wet_Olivine_diff_creep-Hirth_Kohlstedt_2003_constant_C_OH
+             	En = 260e3
+              eta_st    = 1e19
+              
+		 # elastic
+		G         = 8e10
+	#	nu        = 0.25
+		
+		#plastic
+		ch        = 10e6
+                fr        = 30
+
+	#	Thermal 
+		alpha      = 3e-5   # thermal expansivity
+                Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+                k          = 3.3    # thermal conductivity
+          <MaterialEnd>
+
+#### 5th weak phase 
+
+	<MaterialStart>
+                ID        = 18
+                rho       = 3300
+
+		#viscous 
+		disl_prof = Wet_Olivine_disl_creep-Hirth_Kohlstedt_2003_constant_C_OH
+               	En = 440e3
+		diff_prof = Wet_Olivine_diff_creep-Hirth_Kohlstedt_2003_constant_C_OH
+            	En = 260e3
+                eta_st    = 1e19
+              
+		 # elastic
+		G         = 8e10
+	#	nu        = 0.25
+		
+		#plastic
+		ch        = 10e6
+                fr        = 30
+
+	#	Thermal 
+		alpha      = 3e-5   # thermal expansivity
+                Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+                k          = 3.3    # thermal conductivity
+          <MaterialEnd>
+
+
+#### 6th weak phase 
+
+	<MaterialStart>
+                ID        = 19
+                rho       = 3300
+
+		#viscous 
+		disl_prof = Wet_Olivine_disl_creep-Hirth_Kohlstedt_2003_constant_C_OH
+                En = 440e3
+		diff_prof = Wet_Olivine_diff_creep-Hirth_Kohlstedt_2003_constant_C_OH
+                En = 260e3
+                eta_st    = 1e19
+              
+		 # elastic
+		G         = 8e10
+	#	nu        = 0.25
+		
+		#plastic
+		ch        = 10e6
+                fr        = 30
+
+	#	Thermal 
+		alpha      = 3e-5   # thermal expansivity
+                Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+                k          = 3.3    # thermal conductivity
+          <MaterialEnd>
+
+
+################# Phase transition ends ###########################
+
+# Slab
+	<MaterialStart>
+		ID        = 12
+		rho       = 3300
+		
+		# viscous
+		disl_prof = Dry_Olivine_disl_creep-Hirth_Kohlstedt_2003
+		diff_prof = Dry_Olivine_diff_creep-Hirth_Kohlstedt_2003
+		#Vn          = 1.5e-5
+		eta_st    = 1e19
+		
+		# elastic
+		G         = 6e10
+	#	nu        = 0.25
+		
+		# plastic
+		ch        = 10e6
+		fr        = 30
+		chSoftID   = 0      # friction softening law ID
+        	frSoftID   = 0      # cohesion softening law ID
+        	# thermal
+       		alpha      = 3e-5   # thermal expansivity
+        	Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        	k          = 3.3    # thermal conductivity
+	<MaterialEnd>
+
+
+
+# Weak zone
+	<MaterialStart>
+		ID        = 13
+		rho       = 3300
+		
+		# viscous
+		#disl_prof = Dry_Olivine-Ranalli_1995
+		eta	  = 1e19
+		eta_st    = 1e19
+		
+		# elastic
+		G         = 6e10
+	#	nu        = 0.25
+		
+		# plastic
+		ch        = 1e5
+		fr        = 5
+		chSoftID   = 0      # friction softening law ID
+                frSoftID   = 0      # cohesion softening law ID
+
+        # thermal
+        alpha      = 3e-5   # thermal expansivity
+        Cp         = 1.2e3  # specific heat (capacity), J⋅K−1⋅kg−1
+        k          = 3.3    # thermal conductivity
+	<MaterialEnd>
+	
+
+
+
+#===============================================================================
+# PETSc options
+#===============================================================================
+<PetscOptionsStart>
+
+     # LINEAR & NONLINEAR SOLVER OPTIONS
+     #     #-snes_npicard 5
+           -snes_ksp_ew
+           -snes_ksp_ew_rtolmax 1e-2
+           -snes_max_it 20                        
+     
+           -snes_PicardSwitchToNewton_rtol 1e-5   # relative tolerance to switch to Newton (1e-2)
+           #-snes_NewtonSwitchToPicard_it      20     # number of Newton iterations after which we switch back to Picard
+     
+           -js_ksp_type fgmres
+           #-js_ksp_monitor # display how the inner iterations converge
+           -js_ksp_max_it 30
+           # -js_ksp_rtol 1e-6
+           #-js_ksp_atol 1e-6
+     
+          -da_refine_y 1
+          -gmg_pc_mg_levels 4
+          -gmg_pc_mg_galerkin
+          -gmg_pc_mg_type multiplicative
+          -gmg_pc_mg_cycle_type v
+     
+          -gmg_mg_levels_ksp_type richardson
+          -gmg_mg_levels_ksp_richardson_scale 0.5
+          -gmg_mg_levels_ksp_max_it 2
+      	  -gmg_mg_levels_pc_type jacobi
+          -crs_pc_type redundant
+      	  -crs_pc_redundant_number 1
+
+<PetscOptionsEnd>
+
+#===============================================================================
