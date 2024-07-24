@@ -1,198 +1,181 @@
+<!DOCTYPE html>
 <html>
-
-<title>research</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color:white;
-  position: fixed;
-}
-
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-a:link {
-    color: teal;
-    text-decoration: none;
-}
-
-a:visited {
-    color: teal;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:active {
-    text-decoration: underline;
-}
-
-li a:hover:not(.active) {
-  background-color:teal;
-  color: white;
-}
-
-a:link {
-    color: teal;
-    text-decoration: none;
-}
-
-p.main {
-    text-align: justify;
-}
-
-.button {
-  background-color: teal;
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.button1 {border-radius: 12px;}
-
-</style>
+  <title>Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .w3-bar .w3-bar-item {
+      padding: 14px 20px;
+      color: black; /* Set font color to black */
+    }
+    .w3-bar .w3-bar-item:hover {
+      background-color: #ddd;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background-color: white;
+      position: fixed;
+    }
+    li a {
+      display: block;
+      color: #000;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+    a:link {
+      color: teal;
+      text-decoration: none;
+    }
+    a:visited {
+      color: teal;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:active {
+      text-decoration: underline;
+    }
+    li a:hover:not(.active) {
+      background-color: teal;
+      color: white;
+    }
+    .button {
+      background-color: teal;
+      border: none;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .button1 {
+      border-radius: 12px;
+    }
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+    .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+    .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+  </style>
 </head>
 
+<body>
 
-
-<!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+    <div class="w3-bar w3-wide"> 
       <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button"> Home</a>
       <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
       <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
       <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
       <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
       <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
-    
     </div>
   </div>
 </div>
-
-
 
 <div class="w3-container w3-teal">
   <h2>Jyotirmoy's Home Page</h2>
 </div>
 
 
-
-<!--naviation menu ends-->
-
-
-<!-- Visualisation -->
+<!---------------------- Map ------------> 
 
 <div class="w3-col l8 w3-margin">
-    <div class="w3-container w3-teal"> 
-        <h4>Research Collaborations </h4>
-       </div>
-       <div class="w3-container">
-           <p class="main" style="width: 80%">
-	<div class="w3-col l6 w3-margin">
-	<img src="map.png" style="width:100%">
-	</div>
-	<div class="w3-col l5 w3-margin">
-	<a href="https://ceas.iisc.ac.in/~aghosh/index.html" target="_blank">Attreyee Ghosh</a>, IISc Bangalore, India
-	<br>
-	<a href="https://www.clintconrad.no/" target="_blank"> Clint Conrad </a>, University of Oslo, Norway
-	<br>
-	<a href="http://www-udc.ig.utexas.edu/external/becker/" target="_blank">Thorsten Becker</a>, University of Texas, Austin, USA
-	<br>
-	<a href="https://www.staff.uni-bayreuth.de/~bt303373/" target="_blank">Gregor Golabek</a>, University of Bayreuth, Germany
-	<br>
-	<a href="https://katsurabgi.jimdo.com/" target="_blank">Tomo Katsura</a>, University of Bayreuth, Germany
-	<br>
-	<a href="http://jupiter.ethz.ch/~pjt/" target="_blank">Paul Tackley</a>, ETH Zurich, Switzerland
-	<br>
-	<a href="https://scholar.google.com/citations?user=toFHfvQAAAAJ&hl=en" target="_blank">Arne Spang</a>, University of Bayreuth, Germany
-	<br>
-	<a href="https://scholar.google.com/citations?user=we6q2eUAAAAJ&hl=en" target="_blank">Andrea Piccolo</a>, University of Bayreuth, Germany
-	<br>
-	<a href="http://www.jaduniv.edu.in/profile.php?uid=278" traget="_blank">Dipak C Pal</a>, Jadavpur University, India
-	<br>
-	<a href="https://research-portal.st-andrews.ac.uk/en/persons/abu-saeed-baidya" target="_blank">Abu Saeed Baidya</a>, University of St. Andrews, Scotland
-	<br>
-	<a href="https://sites.google.com/site/subhronilindia/Home" target="_blank">Subhronil Mondal</a>, IISER Kolkata, India
-	</div>
-  </p>
-</div>
-</div>
-
-
-   <!------------ content---------->  
-                
-   <div class="w3-col l3">
-    <div class="w3-card w3-margin">
-      </div>
-      <div class="w3-container">
-          <ul>
-              <li><a href="#craton">Craton dynamics</a></li>
-              <li><a href="#grainSize">Grain size dependent Rheology </a></li>
-              <li><a href="#ore">Layred ore complex</a></li>
-              <li><a href="#crab">Crab ecology</a></li>
-          </ul>
-        </div>
-    </div>
+  <div class="w3-container w3-teal">
+    <h4>Research Collaborations</h4>
   </div>
-
-
-
+  <br>
+  <div class="w3-container fade-in">
+    <div id="map"></div>
+    
+  </div>
 </div>
-<!---------------------timedependent models---------------------->
 
-<div class="w3-col l8 w3-margin">
-    <div id="craton"></div>
+
+<!---------------- content -------------->
+<div class="w3-col l3">
+  <div class="w3-card w3-margin"></div>
+  <div class="w3-container">
+    <ul>
+      <li><a href="#craton">Craton dynamics</a></li>
+      <li><a href="#grainSize">Grain size dependent Rheology</a></li>
+      <li><a href="#ore">Layered ore complex</a></li>
+      <li><a href="#crab">Crab ecology</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<!---------- craton ---------->
+
+
+
+<div class="w3-col l8">
+<div id="craton"></div>
   <div class="w3-card w3-margin">
-    <div class="w3-container w3-teal"> 
-     <h4>Craton Dynamics</h4>
+    <div class="w3-container w3-teal">
+      <h4>Craton Dynamics</h4>
     </div>
-    <div class="w3-col l12 w3-margin">
-    <div class="w3-container">
-        <p class="main" style="width: 100%">
-        
-        <img src="150x-stress.png" style="width:100%">
-        
-        Understanding the stability of cratons within tectonically active plates stands as one of the grand challenges in geodynamics. Through the development of numerical models of craton 
-        evolution, my research aims to shed light on why certain cratons have remained stable for over 3 billion years, while others, such as the North China Craton, 
-        have undergone complete destruction.
-        <br>
-        My findings suggest that the combined effects of viscosity and thickness play a crucial role in enhancing the strength of cratons, thereby shielding 
-        them from tectonic recycling. Two key theoretical insights: 
-        <br> 1. <b>Stress and strain-rates exhibit an inverse relationship at the base of the lithosphere </b>, leading to decreased deformation beneath thick cratons. 
-        <br>
-        2. <b>The thickness and viscosity of cratons induce a convective self-compression </b>, further enhancing 
-        their resistance against disintegrating forces. 
-        <br>
-        My research also indicates that cratons require a minimum viscosity of 10<sup>23</sup> Pa.s and that the surrounding asthenosphere 
-        should not have a viscosity lower than 10<sup>20</sup> Pa.s to support their long-term stability.
-        <br>
-        However, cratons face potential thinning or complete destruction under certain circumstances. Thermal weakening induced by mantle plumes, as observed 
-        in the Indian craton, or metasomatic weakening caused by mantle/slab fluids, as seen in the case of the North China Craton, can lead to their demise. 
-        My study delves into these mechanisms of craton destruction and compares the timescales involved in the process.
-        
-        <br>
-        <b>Publications</b>
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4 fade-in">
+          <br>
+          <img src="stress-strain.png" style="width:100%">
+          <div class="w3-center"><font size="1"><i>Paul et al., 2019 </i></font></div>
+          <img src="150x-stress.png" style="width:100%">
+          <div class="w3-center"><font size="1"><i>Paul et al., 2023 </i></font></div>
+          <img src="ncc.png" style="width:100%">
+          <div class="w3-center"><font size="1"><i>Paul et al., in prep. </i></font></div>
+          <br>
+          
+        </div>
+        <div class="w3-col fade-in s8">
+          <p>Understanding the stability of cratons within tectonically active planet like Earth stands as one of the grand challenges in geodynamics. Through the development of 
+          numerical models of   craton 
+         evolution, my research aims to shed light on why certain cratons have remained stable for over 3 billion years, while others, such as the North China Craton, 
+         have undergone complete destruction.
+         <br>
+         My findings suggest that the combined effects of viscosity and thickness play a crucial role in enhancing the strength of cratons, thereby shielding 
+         them from tectonic recycling. Two key theoretical insights: 
+         <br> 1. <b>Stress and strain-rates exhibit an inverse relationship at the base of the lithosphere </b>, leading to decreased deformation beneath thick cratons. 
+         <br>
+         2. <b>The thickness and viscosity of cratons induce a convective self-compression </b>, further enhancing 
+         their resistance against disintegrating forces. 
+         <br>
+         My research also indicates that cratons require a minimum viscosity of 10<sup>23</sup> Pa.s and that the surrounding asthenosphere 
+         should not have a viscosity lower than 10<sup>20</sup> Pa.s to support their long-term stability.
+         <br>
+         However, cratons face potential thinning or complete destruction under certain circumstances. Thermal weakening induced by mantle plumes, as observed 
+         in the Indian craton, or metasomatic weakening caused by mantle/slab fluids, as seen in the case of the North China Craton, can lead to their demise. 
+         My study delves into these mechanisms of craton destruction and compares the timescales involved in the process.
+         <br>
+         <b>Publications</b>
           <br>
           >> [7]  <b>J.Paul*</b>, A. Spang, A. Piccolo. Flat slab induced weakening and destruction of the North China craton, <i>(submitted)</i>
           	<br>
@@ -207,138 +190,112 @@ p.main {
              <br>
           >> [2] <i> <b>J. Paul*,</b> A. Ghosh, C.P. Conrad, 2019. Traction and strain-rate at the base of the lithosphere:
             An insight into cratonic survival. Geophysical Journal International, 217(2), 1024-1033</i>
-          
-      
           </p>
-         
-            <br>
-            
-          </div>        
+          
+        </div>
       </div>
-  </div>        
- 
+    </div>
+  </div>
 </div>
 
 
- 
-  
-  <!----------------instanteneous---------------->
+
+<!-----------------------Grain size ------------->
 
 
-<div class="w3-col l8 w3-margin">
-  <div id="grainSize"></div>
+
+<div class="w3-col l8">
+<div id="grainSize"></div>
   <div class="w3-card w3-margin">
     <div class="w3-container w3-teal">
-       <h4>Grain size dependent Rheology </h4>
+      <h4>Grain size dependent Rheology</h4>
     </div>
-    <div class="w3-col l12 w3-margin">
-      <div class="w3-container">
-	       	 <video width="700" height="520" controls loop>
-  	 <source src="gs_model_web.mp4" type="video/mp4">
-  	 <source src="movie.ogg" type="video/ogg">
-  	</video>
-	      <br>
-        Numerous speculations surround the impact of grain size on mantle dynamics, yet the lack of available data, 
-       whether experimental or natural, poses a substantial challenge in precisely determining this influence. 
-       Recent mineral physics experiments have, however, provided estimates for the grain growth rate of bridgmanite-ferropericlase, 
-       the primary mineral assemblage in the lower mantle. As part of the European Research Council project 
-       <a href='https://cordis.europa.eu/project/id/787527' target="_blank"
-         <b>UltraLVP: Chemistry and transport properties of bridgmanite controlling lower-mantle dynamics</b> </a>, I incorporated bridgmanite-ferropericlase
-         grain growth data into numerical models to investigate the effect of grain size in lower mantle viscosity. 
-         <br>
-         The outcomes of the study revealed no significant impact of grain size on 
-         controlling lower mantle viscosity. This result can be attributed to the slow growth of bridgmanite-ferropericlase compared 
-         to upper mantle olivine grain growth, where small grain sizes have minimal influence on lower mantle viscosity. Conversely, 
-         if forced to increase like olivine, the growth of bridgmanite-ferropericlase grains leads to a dislocation creep-induced deformation, 
-         resulting in grain size-independent viscosity.
-		<br>
-		<b>Publications</b>
-		<br>
-        >> J. Paul*, G. Golabek, A. Rozel, P. Tackley, T. Katsura, H. Fei. Insignificant effect of bridgmanite-ferropericlase 
-        grain size evolution on Earth’s lower mantle viscosity (Under Review). 
-
- 
-
-       
-
-
-         
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+          <br>
+          <img src="grain.jpg" style="width:80%">
         </div>
-       </div> 
+        <div class="w3-col s8">
+          <p>Numerous speculations surround the impact of grain size on mantle dynamics, yet the lack of available data, 
+          whether experimental or natural, poses a substantial challenge in precisely determining this influence. 
+          Recent mineral physics experiments have, however, provided estimates for the grain growth rate of bridgmanite-ferropericlase, 
+          the primary mineral assemblage in the lower mantle. As part of the European Research Council project 
+          <a href='https://cordis.europa.eu/project/id/787527' target="_blank"
+          <b>UltraLVP: Chemistry and transport properties of bridgmanite controlling lower-mantle dynamics</b> </a>, I incorporated bridgmanite-ferropericlase
+          grain growth data into numerical models to investigate the effect of grain size in lower mantle viscosity. 
+          <br>
+          The outcomes of the study revealed no significant impact of grain size on 
+          controlling lower mantle viscosity. This result can be attributed to the slow growth of bridgmanite-ferropericlase compared 
+          to upper mantle olivine grain growth, where small grain sizes have minimal influence on lower mantle viscosity. Conversely, 
+          if forced to increase like olivine, the growth of bridgmanite-ferropericlase grains leads to a dislocation creep-induced deformation, 
+          resulting in grain size-independent viscosity.
+          <br>
+          <b>Publications</b>
+	  <br>
+          >> J. Paul*, G. Golabek, A. Rozel, P. Tackley, T. Katsura, H. Fei. Insignificant effect of bridgmanite-ferropericlase 
+        grain size evolution on Earth’s lower mantle viscosity (Under Review). 
+          </p>
+          
+        </div>
       </div>
-       
-  </div>
-  
-  
-
-
-
-<!---------------------------- ore ---------------------------------------------------->
-
-
-<div class="w3-col l8 w3-margin">
-    <div id="ore"></div>
-    <div class="w3-card w3-margin">
-    <div class="w3-container w3-teal"> 
-     <h4>Layered structure of hydrothermal ore complex and Geostatistics</h4>
     </div>
-    
-    <div class="w3-col l6 w3-margin">
+  </div>
+</div>
 
-    
-        <div class="w3-container">
-            <p class="main" style="width:100%">
-             
-              <img src="khetri.jpg" style="width:100%">
-            This work is part of a project investigating the style of hydrothermal mineralisation and ore formation
+
+<!------- Amphibole---------------->
+
+<div class="w3-col l8">
+<div id="ore"></div>
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4>Layered structure of hydrothermal ore complex and Geostatistics</h4>
+    </div>
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+          <br>
+          <img src="hydro.jpg" style="width:80%">
+          <br><br>
+        </div>
+        <div class="w3-col s8">
+          <p>This work is part of a project investigating the style of hydrothermal mineralisation and ore formation
             in and around Delhi-Aravalli fold belt. I have worked on the geochemical and geostatistical nalysis of amphibole
             originated from the hydrothermal processes. We detected three generations of amphiboles. The last stage of amphibole
             formation (A3) is probably associated with IOCG type mineralisation of this area.
-            </p>
-    </div>
-    <div class="w3-container w3-margin w3-yellow w3-col l5">
-            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0169136815301736" 
-           target="_blank"> <h3>Read more </h3> </a>
-          </div>
-</div>
-</div>
-
-
-<div class="w3-col l4 w3-margin">
-        <div class="w3-container">
-            <b> Related Publications  </b>
-            <br>1. A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay, 2017. Mode of occurrence and geochemistry of 
-            amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight 
-            into the ore-forming process. Ore Geology Reviews.
             <br>
-            <b>Related conference presenations </b>
-            <br> 4. J. Paul, A.S. Baidya, and D.C. Pal, 2015, Origin of alternate amphibole and quartz rich 
-            bands in amphibole bearing quartzite from North Khetri Copper Belt, Rajasthan, India, AGU Fall 
-            Meeting, San Francisco, V23B-3161
+            <b>Publications</b>
             <br>
-            3. A.S. Baidya , J. Paul, and Pal D. C., 2014, Multiple stages of amphibole formation in the 
-            Chandmari Cu-deposit, Khetri copper belt, Rajasthan: implications for changing fluid composition
-             vis-à-vis sulfide mineralization, National Conference on Making of the Indian Continent, 
-             Presidency University, Kolkata. [RG pdf]bility. EGU General Assembly, Vienna. 
-            <br>  
-       
-  
+            1. A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay, 2017. Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari 
+            copper deposits, Rajasthan, India: Insight into the ore-forming process. Ore Geology Reviews. 
+          </p>
+          
         </div>
-     </div>   
-     </div> 
-
-<!---------------------------- crab ---------------------------------------------------->
-
-
-<div class="w3-col l8 w3-margin">
-    <div id="crab"></div>
-  <div class="w3-card w3-margin">
-    <div class="w3-container w3-teal"> 
-     <h4>Abiological factors in crab ecology</h4>
+      </div>
     </div>
-    <div class="w3-container">
-        <p class="main" style="width: 80%">
-         Crabs near chandipur sea beach show a strange behavior in their pattern of burrowing. 
+  </div>
+</div>
+
+
+<!------------------------ Crab --------------------->
+
+
+<div class="w3-col l8">
+<div id="crab"></div>
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4>Ecology of mangrove crab</h4>
+    </div>
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+          <br>
+          <img src="crab.JPG" style="width:80%">
+          <br><br>
+        </div>
+        <div class="w3-col s8">
+          <p>Crabs near chandipur sea beach show a strange behavior in their pattern of burrowing. 
           Larger the burrow diameter, they become more horizontal. All these large burrows are found only in the 
           backshore of the sea beach and they are oriented opposite to the sea. Geometrically they are more complex with "I", "J", and "Y" shaped burrow.
           We explain all these parameter as a result of crab energitics. 
@@ -347,24 +304,77 @@ p.main {
 		<br>
           >> 3. J. Paul, S. Mondal, R. Koyal, D. Sarkar, 2019. Burrow morphology of the ocypodid crab Ocypode ceratophthalma at 
           Chandipur Coast, Eastern India and its implications. Current Science 
-        
-        </p>
-</div>
-</div>
-</div>
-
-
-
-
-<!-- End page content -->
-<!-- Footer -->
-<div class=w3-col l12>
-    <footer class="w3-center w3-light-grey w3-padding-32">
-        <p>copyright @ <a href="http://ceas.iisc.ernet.in/~jyotirmoy/" title="Mojo Jyo Jyo" class="w3-hover-text-green">Mojo Jyo Jyo</a></p>
-      </footer>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
+
+
+<!-------------footer--------->
+
+<div class="w3-col">
+  
+  <footer class="w3-container w3-teal w3-center">
+   <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+  </footer>
+</div>
+
+<!-------------footer--------->
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map').setView([0, 0], 2);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  const locations = [
+    { lat: 12.9716, lng: 77.5946, name: 'Attreyee Ghosh, IISc Bangalore, India', url: 'https://ceas.iisc.ac.in/~aghosh/index.html' },
+    { lat: 59.9111, lng: 10.7528, name: 'Clint Conrad, University of Oslo, Norway', url: 'https://www.clintconrad.no/' },
+    { lat: 30.2849, lng: -97.7341, name: 'Thorsten Becker, University of Texas, Austin, USA', url: 'http://www-udc.ig.utexas.edu/external/becker/' },
+    { lat: 47.3769, lng: 8.5417, name: 'Paul Tackley, ETH Zurich, Switzerland', url: 'http://jupiter.ethz.ch/~pjt/' },
+    { lat: 49.9405, lng: 11.578, name: 'Gregor Golabek', url: 'https://www.staff.uni-bayreuth.de/~bt303373/' },
+    { lat: 49.9450, lng: 11.578, name: 'Gregor Golabek <br> Tomo Katsura <br> Arne Spang <br> Andrea Piccolo <br> University of Bayreuth, Germany', url: 'https://www.staff.uni-bayreuth.de/~bt303373/' },
+    { lat: 22.498, lng: 88.3719, name: 'Dipak C Pal, Jadavpur University, India', url: 'http://www.jaduniv.edu.in/profile.php?uid=278' },
+    { lat: 56.3398, lng: -2.7967, name: 'Abu Saeed Baidya, University of St. Andrews, Scotland', url: 'https://research-portal.st-andrews.ac.uk/en/persons/abu-saeed-baidya' },
+    { lat: 22.5765, lng: 88.4345, name: 'Subhronil Mondal, IISER Kolkata, India', url: 'https://sites.google.com/site/subhronilindia/Home' }
+  ];
+
+  locations.forEach(location => {
+    const marker = L.marker([location.lat, location.lng]).addTo(map);
+    const popupContent = `<a href="${location.url}" target="_blank">${location.name}</a>`;
+    marker.bindPopup(popupContent);
+
+    // Draw lines to the central point (for example: Bangalore, India)
+    const centralLatLng = [59.9139, 10.7528]; // Bangalore
+    if (location.lat !== centralLatLng[0] || location.lng !== centralLatLng[1]) {
+      L.polyline([centralLatLng, [location.lat, location.lng]], { color: 'blue' }).addTo(map);
+    }
+  });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    });
+</script>
 
 </body>
-<html>
+</html>
+

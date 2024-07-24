@@ -1,157 +1,158 @@
+<!DOCTYPE html>
 <html>
-
-<title>outreach</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <head>
-<style>
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color:white;
-  position: fixed;
-}
-
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-a:link {
-    color: teal;
-    text-decoration: none;
-}
-
-a:visited {
-    color: teal;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:active {
-    text-decoration: underline;
-}
-
-p.main {
-    text-align: justify;
-}
-
-.button {
-  background-color: teal;
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.button1 {border-radius: 12px;}
-
-</style>
+  <title>Outreach</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .w3-bar .w3-bar-item {
+      padding: 14px 20px;
+      color: black; /* Set font color to black */
+    }
+    .w3-bar .w3-bar-item:hover {
+      background-color: #ddd;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background-color: white;
+      position: fixed;
+    }
+    li a {
+      display: block;
+      color: #000;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+    a:link {
+      color: teal;
+      text-decoration: none;
+    }
+    a:visited {
+      color: teal;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:active {
+      text-decoration: underline;
+    }
+    li a:hover:not(.active) {
+      background-color: teal;
+      color: white;
+    }
+    .button {
+      background-color: teal;
+      border: none;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .button1 {
+      border-radius: 12px;
+    }
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+    .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+    .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+  </style>
 </head>
 
+<body>
 
-
-<!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+    <div class="w3-bar w3-wide"> 
       <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button"> Home</a>
       <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
       <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
       <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
       <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
       <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
-    
     </div>
   </div>
 </div>
-
-
 
 <div class="w3-container w3-teal">
   <h2>Jyotirmoy's Home Page</h2>
 </div>
 
 
-
 <!--naviation menu ends-->
 
 
-<!-- Visualisation -->
-
-<div class="w3-col l12 w3-margin">
-    <div class="w3-container w3-teal"> 
-        <h4>Outreach </h4>
-       </div>
-       <div class="w3-container">
-           <p class="main" style="width: 80%">
-            With time, I am getting more and more interested in science communication. I started a blog
-            Geoscience Education in 2016, along with my friends. This blog is now quite interactive and getting contributions form
-            various scientists. Later in 2019 I joined as a social media coordinator at the European Geoscience Union, Geodynamics division. 
-            In 2019, I joined as a blog editor at the EGU. Apart from communicating in English, I started communication in 
-            Bengali as well. 
-  </p>
-</div>
-</div>
 
 
-<!---------------------timedependent models---------------------->
+<!---------------------Geoscience Education --------------------->
 
-<div class="w3-col l8 w3-margin">
-    <div id="geoedu"></div>
+<div id="geoedu"></div>
+<div class="w3-col l8">
   <div class="w3-card w3-margin">
-    <div class="w3-container w3-teal"> 
-     <h4>Geoscience Education</h4>
+    <div class="w3-container w3-teal">
+      <h4>SubMachine: Web-based tools for the interactive visualisation</h4>
     </div>
-    <div class="w3-col l12 w3-margin">
-    <div class="w3-container">
-        <p class="main" style="width: 100%">
-          <img src="https://geoedu.weebly.com/uploads/4/4/8/2/44824767/internships_orig.jpg" style="width: 60%">
-          <br><br>
-          <a href="https://geoedu.weebly.com" target="_blank" > Geoscience Education </a> (GE) is an online platform for writing 
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+           <br>
+          <img src="https://geoedu.weebly.com/uploads/4/4/8/2/44824767/internships_orig.jpg" style="width:80%">
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://geoedu.weebly.com" target="_blank" > Geoscience Education </a> (GE) is an online platform for writing 
           science articles (sometimes popular science articles) associated with geological (Earth system sciences-related) facts 
           (problems) lucidly without diluting the actual scientific content. 
           GE articles primarily target all those with minimal experience of traditional geoscience education but have a considerable 
           interest in these subject domains.
           <br> 
-          GE was an initiative by a few geology graduates and science enthusiasts from 2015-16 onwards. Jyotirmoy, Subhronil, and 
-          Anupam joined in the same platform from the beginning. Apart from them, many other subject matter experts and earth science 
-          students helped GE to grow bigger with their contributions. Presently we have the following people in the core team. We also 
-          welcome other people from the Earth system science backgrounds to be a part of GE.  
-          <br>                      
+          GE was an initiative by a few geology graduates and science enthusiasts from 2015-16 onwards. Subhronil, Anupam  and me started the  
+          platform. Apart from us, many other subject matter experts and earth science students helped GE to grow bigger with their contributions. 
+          
           </p>
-           
+          
           <p>
            <b>Selected articles:</b> 
-            <br>
-            3. <a href="https://geoedu.weebly.com/career/geophysics-resource-tools-for-students-self-internship" target="_blank">
+           <br>
+           3. <a href="https://geoedu.weebly.com/career/geophysics-resource-tools-for-students-self-internship" target="_blank">
              Geophysics resource tools for students: Self internship </a>
              <br>
-            2.<a href="https://geoedu.weebly.com/inside-earth/time-before-plate-tectonics" target="_blank"> Time before plate-tectnics </a>
+           2.<a href="https://geoedu.weebly.com/inside-earth/time-before-plate-tectonics" target="_blank"> Time before plate-tectnics </a>
               <br>
-            1. <a href="https://geoedu.weebly.com/career/why-many-geology-students-quit-their-jobs-and-return-to-academia" target="_blank"> 
+           1. <a href="https://geoedu.weebly.com/career/why-many-geology-students-quit-their-jobs-and-return-to-academia" target="_blank"> 
               Why many geology students quit their jobs and return to academia? </a>
           </p>
-            
-            </div>        
+          
+        </div>
       </div>
-  </div>        
-  
-  </div>        
+    </div>
+  </div>
 </div>
+
+
 
 
     <!------------ content---------->  
@@ -159,7 +160,7 @@ p.main {
     <div class="w3-col l3">
         <div class="w3-card w3-margin">
           </div>
-          <div class="w3-container w3-margin">
+           <div class="w3-container">
               <ul>
                   <li><a href="#geoedu">Geoscience Education</a></li>
                   <li><a href="#egugd"> EGU Geodynamics</a></li>
@@ -175,21 +176,29 @@ p.main {
   
   </div>
   
-  <!----------------instanteneous---------------->
+  <!---------------- EGU GD ---------------->
 
 
-<div class="w3-col l8 w3-margin">
-  <div id="egugd"></div>
-  <div class="w3-card w3-margin">
+
+<div class="w3-col l8">
+  <div id="egugd" class="w3-card w3-margin">
     <div class="w3-container w3-teal">
-       <h4>EGU Geodynamics</h4>
+      <h4>European Geoscience Union Blog</h4>
     </div>
-    <div class="w3-col l12 w3-margin">
-      <div class="w3-container">
-        
-        <br>
-           <p class="main" style="width: 100%">
-           I joined as a social media co-ordinator at the European Geoscience Union Geodynamics division team in 2019. In the next year
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+           <br>
+          <img src="https://blogs.egu.eu/divisions/gd/files/2022/01/EGU-illustr-light-700x400.png" style="width:80%">
+          <br><br>
+          <img src="https://blogs.egu.eu/divisions/gd/files/2022/03/Dharwar-view-700x400.jpg" style="width:80%">
+          <br><br>
+          <img src="https://blogs.egu.eu/divisions/gd/files/2021/01/DSC_0344-700x400.jpg" style="width:80%">
+          <br><br>
+          <img src="https://blogs.egu.eu/divisions/gd/files/2020/11/Gambian_classroom_cover.jpg" style="width:80%">
+          </div>
+          <div class="w3-col s8">
+          <p>I joined as a social media co-ordinator at the European Geoscience Union Geodynamics division team in 2019. In the next year
            I became a member of EGU GD blog editorial team, which is run by the early career scientists. 
            </p>
            <br>
@@ -201,7 +210,7 @@ p.main {
             </p>
            <br>
            <b>Articles I wrote for EGU GD blogs: </b> 
-           <br><br>
+           <br>
            4. <a href="https://blogs.egu.eu/divisions/gd/2022/01/19/continental-drift-in-academia/" target="_blank"> Continental drift in academia </a>
            <br>
            3. <a href="https://blogs.egu.eu/divisions/gd/2021/01/13/2021-100th-year-of-the-craton-concept-and-beyond/" target="_blank">
@@ -217,7 +226,7 @@ p.main {
 
             <p>
               <b>Articles I edited for EGU GD blogs: </b> 
-              <br><br>
+              <br>
 
               12. <a href="https://blogs.egu.eu/divisions/gd/2022/02/23/indian-ocean-geoid-low/" target="_blank">Do 
                 lower mantle slabs contribute in generating the Indian Ocean geoid low?</a> by Debanjan Pal
@@ -269,186 +278,236 @@ p.main {
                   Attreyee Ghosh</a> 
 
 
-            </p>
-         
-         </div>
+          
         </div>
-       </div> 
       </div>
-       
+    </div>
   </div>
-  
-  
+</div>
+
+
+
 
 
 
 <!---------------------------- AGU ---------------------------------------------------->
 
 
-<div class="w3-col l8 w3-margin">
-    <div id="agu"></div>
-    <div class="w3-card w3-margin">
-    <div class="w3-container w3-teal"> 
-     <h4>American Geophysical Union</h4>
+<div class="w3-col l8">
+  <div id="agu" class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4>American Geophysical Union: EOS</h4>
     </div>
-    
-    <div class="w3-col l12 w3-margin">
-
-    
-        <div class="w3-container">
-            <p class="main" style="width:100%">
-             
-              <img src="https://eos.org/wp-content/uploads/2021/03/diagram-earth-plate-tectonic-modes.png" style="width:80%">
-              <br>
-            <b>Find the complete article: </b>
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+         <br>
+          <img src="https://i0.wp.com/eos.org/wp-content/uploads/2021/03/fishermen-southern-India-cratonic-rocks.jpg?w=820&ssl=1" style="width:80%">
+           <br><br>
+          <img src="https://eos.org/wp-content/uploads/2021/03/diagram-earth-plate-tectonic-modes.png" style="width:80%">
+         
+        </div>
+        <div class="w3-col s8">
+          <p>Plate tectonics, coupled with convection in the mantle, governs the destructive forces applied to Earth’s lithosphere, 
+          its topmost layer of rock. Whereas oceanic lithosphere is recycled in subduction zones after a couple of hundred million years 
+          or so, continental lithosphere often survives longer but is still ultimately deformed, eroded, and destroyed by forces exerted 
+          by the underlying convective mantle. Thus, on a tectonically active Earth, rocks older than a few billion years should be rare 
+          to nearly nonexistent.  <br>
+          However, such ancient rock, dating back more than 3 billion years (and perhaps even more than 4 billion years), has been found 
+          in different parts of the world (Figure 1). These very old rocks are known as cratons, from the Greek root word κράτος, meaning 
+          strength. Understanding how cratons have survived for such a long time, some almost since the birth of the planet, remains one of 
+          the grand challenges of geodynamics.
+          <br>
+          <b>Find the complete article: </b>
             <a href="https://eos.org/features/cratons-why-are-you-still-here?/" target="_blank">Cratons, Why are you still here?</a>
-            </p>
+          </p>
+          
+        </div>
+      </div>
     </div>
-    
-</div>
+  </div>
 </div>
 
 
-</div>
+
 
 <!---------------------------- AWSAR ---------------------------------------------------->
 
 
-<div class="w3-col l8 w3-margin">
-    <div id="awsar"></div>
-  <div class="w3-card w3-margin">
-    <div class="w3-container w3-teal"> 
-     <h4>Augmenting Writing Skills for Articulating Research</h4>
+
+<div class="w3-col l8">
+  <div id="awsar" class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4>Augmenting Writing Skills for Articulating Research</h4>
     </div>
-    <div class="w3-col l12 w3-margin">
-    <div class="w3-container">
-        <p class="main" style="width: 100%">
-          “<a href="https://www.awsar-dst.in/about" target="_blank"> Augmenting Writing Skills for Articulating Research (AWSAR)”</a> is an initiative that aims to disseminate 
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+         <br>
+          <img src="awsar.jpg" style="width:80%">
+           
+         
+        </div>
+        <div class="w3-col s8">
+          <p>“<a href="https://x.com/awsardst?lang=en" target="_blank"> Augmenting Writing Skills for Articulating Research (AWSAR)”</a> is an initiative that aims to disseminate 
           Indian research stories among the masses in an easy to understand and interesting format to a common man. 
           Under this initiative, PhD Scholars and Post-Doctoral Fellows (PDFs) in Science and Technology (S&T) streams 
           would be encouraged to write at least one popular science article during the tenancy of their fellowship, and 
-          to participate in a national competition."
-
-          <br>
+          to participate in a national competition.
+          <br><br>
           I was won AWSAR award in 2019 for the article: <b>How did the Oldest Part of the Earth Still Survive Today?</b>
-        
-        </p>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
+
+
+
+
 
 
 <!---------------------------- Bigyan ---------------------------------------------------->
 
 
-<div class="w3-col l8 w3-margin">
-  <div id="bengali"></div>
-<div class="w3-card w3-margin">
-  <div class="w3-container w3-teal"> 
-   <h4>বাংলায় লেখালেখি  </h4>
+
+
+<div class="w3-col l8">
+  <div id="bengali" class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4>বাংলায় লেখালেখি </h4>
+    </div>
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+         <br>
+          <img src="https://geoedu.weebly.com/uploads/4/4/8/2/44824767/cover-darwin-kelvin_orig.jpg" style="width:80%">
+           
+         
+        </div>
+        <div class="w3-col s8">
+          <p> I actively pursue geoscience communication in my language, Bengali. I have articuled many articles on social media, e-magazine and prited
+          magazines in bengali. Some e-magazine links are given below: 
+          <br>
+          
+           13. জিওলজি জিওলজি  <I> এ লেভেলে' বিজ্ঞান </I>
+           <a href="https://www.elebele.org/2023/06/28/geology_geology" target="_blank">[Link]</a>
+           <br>
+           12. পৃথিবীতে অক্সিজেনের বিবর্তন: 
+           Review of "Destabilization of deep oxidized mantle drove the Great Oxidation Event", 
+	   O'Neil and Aulbach, 2022, Science Advances, <I>Geoscience Education</I>
+	   <a href="https://geoedu.weebly.com/recent-discovery-news/great-oxygenation-event" target="_blank"> [Link]</a>
+	   <br>		
+	
+      	   11. ডারউইন বনাম কেলভিন: পৃথিবীর বয়সের খোঁজে <I>Geoscience Education</I>
+      	   <a href="https://geoedu.weebly.com/bengali-blog/darwin-vs-kelvin" target="_blank"> [Link]</a>  
+	   <br>
+	   10. পৃথিবীর প্রাচীনতম গ্লোবের খোঁজে <I>Geoscience Education</I>
+	   <a href="https://geoedu.weebly.com/bengali-blog/oldest-globe"  target="_blank"> [Link]</a>
+	   <br>
+	   9. দ্বিতীয় মহাযুদ্ধের ডুবোজাহাজ খুঁজতে গিয়ে ধরা পড়লো পৃথিবীর চৌম্বক ক্ষেত্রের দিক পরিবর্তন <I>Geoscience Education</I>
+	   <a href="https://geoedu.weebly.com/bengali-blog/marine-magnetic-anomaly"  target="_blank"> [Link]</a>
+	   <br>
+           8. ডাইনোসরের বিলুপ্তি থেকে হিমালয়ের উত্থান - এক ভূতাত্ত্বিক অভিযান  <I>Geoscience Education</I>
+	   <a href="https://geoedu.weebly.com/bengali-blog/mass-extinction-himalaya" target="_blank"> [Link]</a>
+	   <br>
+           7. ভারত মহাসাগরের গর্ত: পর্ব ৩: Super plume, 2021, <I>Geoscience Education</I>
+           <a href="https://geoedu.weebly.com/bengali-blog/indian-ocean-geoid-low-3" target="_blank"> [Link]</a>
+          <br>
+          6. ভারত মহাসাগরের গর্ত: পর্ব ২ (Geoid Anomaly), 2021, <I>Geoscience Education</I>
+          <a href="https://geoedu.weebly.com/bengali-blog/indian-ocean-geoid-low-2" target="_blank"> [Link]</a>
+          <br>
+          5. ভারত মহাসাগরের গর্ত: পর্ব ১, 2021, <I>Geoscience Education</I>
+          <a href="https://geoedu.weebly.com/bengali-blog/indian-ocean-geoid-low-1" target="_blank"> [Link]</a>
+          <br>
+          4. লাভার উৎস সন্ধানে, 2021 <I> বিজ্ঞান </I> 
+          <a href="https://bigyan.org.in/2021/09/mystery-of-lava" target="_blank"> [Link] </a>
+          <br>
+          3. পৃথিবীর প্রাচীন পাথর গুলির জীবনযাত্রা, 2021, September <I> বিজ্ঞান কথা, Vigyan Parisar, Govt. of India</I> p. 14-15
+          <a href="https://vigyanprasar.gov.in/wp-content/uploads/vp-bengali-magzine-Bigyan-Katha-v2i9.pdf" target="_blank">[Link]</a>
+          <br>
+          2. ব-দ্বীপের বহিঃপ্রকাশ, 2021 <I> এ লেভেলে' বিজ্ঞান </I>
+          <a href="https://www.elebele.org/2021/08/13/ব-দ্বীপের-বহিঃপ্রকাশ/" target="_blank" > [Link] </a>
+          <br>
+           1. পৃথিবীর গভীর কথা, 2020 <I> বিজ্ঞান </I>
+           <a href="https://bigyan.org.in/2020/11/13/inside-the-earth/" target="_blank" > [Link] </a>
+          <br>
+          </p>
+          
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="w3-col l12 w3-margin">
-  <div class="w3-container">
-      <p class="main" style="width: 100%">
-        <img src="https://bigyan.org.in/wp-content/uploads/2020/10/earth-core-layer.jpg" style="width: 60%">
-        <br>
-        <br>
-
-        13. জিওলজি জিওলজি  <I> এ লেভেলে' বিজ্ঞান </I>
-        <a href="https://www.elebele.org/2023/06/28/geology_geology" target="_blank">[Link]</a>
-        
-        12. পৃথিবীতে অক্সিজেনের বিবর্তন: 
-      	Review of "Destabilization of deep oxidized mantle drove the Great Oxidation Event", 
-	      O'Neil and Aulbach, 2022, Science Advances, <I>Geoscience Education</I>
-	      <a href="https://geoedu.weebly.com/recent-discovery-news/great-oxygenation-event" target="_blank"> [Link]</a>
-	      <br>		
-	
-      	11. ডারউইন বনাম কেলভিন: পৃথিবীর বয়সের খোঁজে <I>Geoscience Education</I>
-      	<a href="https://geoedu.weebly.com/bengali-blog/darwin-vs-kelvin" target="_blank"> [Link]</a>
-	      
-	      <br>
-	
-	      10. পৃথিবীর প্রাচীনতম গ্লোবের খোঁজে <I>Geoscience Education</I>
-	      <a href="https://geoedu.weebly.com/bengali-blog/oldest-globe"  target="_blank"> [Link]</a>
-	      <br>
-	
-	      9. দ্বিতীয় মহাযুদ্ধের ডুবোজাহাজ খুঁজতে গিয়ে ধরা পড়লো পৃথিবীর চৌম্বক ক্ষেত্রের দিক পরিবর্তন <I>Geoscience Education</I>
-	      <a href="https://geoedu.weebly.com/bengali-blog/marine-magnetic-anomaly"  target="_blank"> [Link]</a>
-	
-      	<br>
-	      8. ডাইনোসরের বিলুপ্তি থেকে হিমালয়ের উত্থান - এক ভূতাত্ত্বিক অভিযান  <I>Geoscience Education</I>
-	      <a href="https://geoedu.weebly.com/bengali-blog/mass-extinction-himalaya" target="_blank"> [Link]</a>
-
-        7. ভারত মহাসাগরের গর্ত: পর্ব ৩: Super plume, 2021, <I>Geoscience Education</I>
-        <a href="https://geoedu.weebly.com/bengali-blog/indian-ocean-geoid-low-3" target="_blank"> [Link]</a>
-
-        <br>
-
-        6. ভারত মহাসাগরের গর্ত: পর্ব ২ (Geoid Anomaly), 2021, <I>Geoscience Education</I>
-        <a href="https://geoedu.weebly.com/bengali-blog/indian-ocean-geoid-low-2" target="_blank"> [Link]</a>
-
-        <br>
-
-        5. ভারত মহাসাগরের গর্ত: পর্ব ১, 2021, <I>Geoscience Education</I>
-        <a href="https://geoedu.weebly.com/bengali-blog/indian-ocean-geoid-low-1" target="_blank"> [Link]</a>
-
-        <br>
-
-        4. লাভার উৎস সন্ধানে, 2021 <I> বিজ্ঞান </I> 
-        <a href="https://bigyan.org.in/2021/09/mystery-of-lava" target="_blank"> [Link] </a>
-  
-        <br>
-        3. পৃথিবীর প্রাচীন পাথর গুলির জীবনযাত্রা, 2021, September <I> বিজ্ঞান কথা, Vigyan Parisar, Govt. of India</I> p. 14-15
-        <a href="https://vigyanprasar.gov.in/wp-content/uploads/vp-bengali-magzine-Bigyan-Katha-v2i9.pdf" target="_blank">[Link]</a>
-  
-        <br>
-        2. ব-দ্বীপের বহিঃপ্রকাশ, 2021 <I> এ লেভেলে' বিজ্ঞান </I>
-        <a href="https://www.elebele.org/2021/08/13/ব-দ্বীপের-বহিঃপ্রকাশ/" target="_blank" > [Link] </a>
-
-        <br>
-        1. পৃথিবীর গভীর কথা, 2020 <I> বিজ্ঞান </I>
-        <a href="https://bigyan.org.in/2020/11/13/inside-the-earth/" target="_blank" > [Link] </a>
-<br>
-
-      </p>
-</div>
-</div>
-</div>
 </div>
 
 
-<div class="w3-col l8 w3-margin">
-  <div id="history"></div>
-<div class="w3-card w3-margin">
-  <div class="w3-container w3-teal"> 
-   <h4> ইতিহাসের লেখালেখি </h4>
+
+<div id="history"></div>
+<div class="w3-col l8">
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-teal">
+      <h4>ইতিহাসের লেখালেখি</h4>
+    </div>
+    <div class="w3-container fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+         
+          <img src="01-hutton.png" style="width:80%">
+           
+         
+        </div>
+        <div class="w3-col s8">
+          <br>
+          I am interested in history of geoscience and communicate them in Bengali. Some of the links are given below.
+          <br>
+          4. <a href="https://www.itihasadda.in/battle-of-the-map/" target="_blank"> মানচিত্রের মল্লযুদ্ধ  </a> ২০২৩, ইতিহাস তথ্য ও তর্ক <br>
+          3. <a href="https://www.itihasadda.in/synagogue-islamic-architecture/" target="_blank"> ইহুদি উপাসনালয়ে ইসলামী শৈলী  </a> ২০২৩, ইতিহাস তথ্য ও তর্ক <br>
+          2. <a href="https://www.itihasadda.in/iran-in-films/" target="_blank"> ছবিতে ইরানি ছায়া </a> ২০২৩, ইতিহাস তথ্য ও তর্ক <br>
+          1. <a href="https://www.itihasadda.in/kaaler-yatra/" target="_blank"> কালের যাত্রা </a> ২০২৩, ইতিহাস তথ্য ও তর্ক 
+          </p>
+          
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="w3-col l12 w3-margin">
-  <div class="w3-container">
-      <p class="main" style="width: 100%">
-        2. <a href="https://www.itihasadda.in/iran-in-films/" target="_blank"> ছবিতে ইরানি ছায়া </a> ২০২৩, ইতিহাস তথ্য ও তর্ক <br>
-        1. <a href="https://www.itihasadda.in/kaaler-yatra/" target="_blank"> কালের যাত্রা </a> ২০২৩, ইতিহাস তথ্য ও তর্ক 
+</div>
 
-      
-       
-      
-      </p>
-</div>
-</div>
-</div>
-</div>
+
+
+
+
 
 
 <!-- End page content -->
 <!-- Footer -->
-<div class=w3-col l12>
-    <footer class="w3-center w3-light-grey w3-padding-32">
-        <p>copyright @ <a href="http://ceas.iisc.ernet.in/~jyotirmoy/" title="Mojo Jyo Jyo" class="w3-hover-text-green">Mojo Jyo Jyo</a></p>
-      </footer>
+<div class="w3-col l11 w3-margin">
+  <div class="w3-card w3-margin"></div>
+  <footer class="w3-container w3-teal w3-center w3-margin-top">
+   <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+  </footer>
 </div>
 
 
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    });
+</script>
 
 </body>
 <html>
