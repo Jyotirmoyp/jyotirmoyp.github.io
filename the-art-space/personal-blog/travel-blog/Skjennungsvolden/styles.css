@@ -112,24 +112,15 @@ body {
   border-radius: 4px;
 }
 
-/* Media Query for Mobile Devices */
 @media (max-width: 767px) {
-  .header {
+  .slider {
     flex-direction: column;
-    align-items: flex-start;
   }
-
-  .main-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .photo-frame {
-    width: 100%;
-    margin-top: 20px; /* Add space between the image and the description */
+    width: 80%;
+    margin-bottom: 20px; /* Add space between the image and the description */
   }
-
-   .description {
+  .description {
     position: relative;
     top: auto;
     right: auto;
@@ -137,7 +128,12 @@ body {
     width: 100%;
     margin-bottom: 20px;
   }
-}
+
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
 
   .nav-buttons {
     justify-content: center;
