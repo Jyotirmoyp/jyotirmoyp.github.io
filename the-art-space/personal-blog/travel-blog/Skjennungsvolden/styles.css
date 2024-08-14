@@ -129,10 +129,15 @@ body {
     margin-top: 20px; /* Add space between the image and the description */
   }
 
-  .description {
+   .description {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
     width: 100%;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
+}
 
   .nav-buttons {
     justify-content: center;
