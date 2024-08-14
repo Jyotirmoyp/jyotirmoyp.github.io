@@ -141,7 +141,6 @@ body {
 
   .next-button, .prev-button {
     width: auto;
-    position: relative;
     margin-bottom: 10px;  /* Reduced margin-bottom for a balanced look */
   }
 
