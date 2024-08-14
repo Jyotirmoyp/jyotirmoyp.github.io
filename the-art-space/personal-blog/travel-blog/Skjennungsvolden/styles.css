@@ -125,7 +125,7 @@ body {
   }
 
   .photo-frame {
-    width: 80%;
+    width: 100%;
     margin-top: 20px; /* Add space between the image and the description */
   }
 
