@@ -124,14 +124,15 @@ body {
     align-items: center;
   }
 
-  .photo-frame {
+ .photo-frame {
     width: 100%;
-    margin-bottom: 20px; /* Add space between the image and the description */
   }
 
   .description {
     width: 100%;
+    margin-top: 20px; /* Ensure description is below the image */
   }
+
 
   .nav-buttons {
     justify-content: center;
