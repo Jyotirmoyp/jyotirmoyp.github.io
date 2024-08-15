@@ -133,6 +133,7 @@ body {
     transform: none;
     width: 100%;
     margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
   .main-content {
@@ -149,7 +150,9 @@ body {
     width: auto;
     margin-bottom: 10px;  /* Reduced margin-bottom for a balanced look */
   }
-
+  .slick-prev, .slick-next {
+    bottom: 10px; /* Adjust the position of the buttons */
+  }
   .slide-number {
     margin: 0 10px;
   }
