@@ -8,6 +8,57 @@ body {
   background-color: #f0f0f0;
 }
 
+/* Fixed sidenav, full height */
+.sidenav {
+}
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color:white;
+  position: fixed;
+}
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: teal;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
 .container {
   position: relative;
   width: 100%;
@@ -112,86 +163,6 @@ body {
   border-radius: 4px;
 }
 
-.menu {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-.menu-toggle {
-  background-color: #fff;
-  border: none;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-toggle span {
-  width: 30px;
-  height: 3px;
-  background-color: #333;
-  margin: 5px 0;
-  transition: 0.3s;
-}
-
-.menu-toggle span:first-child {
-  transform: translateY(-10px);
-}
-
-.menu-toggle span:last-child {
-  transform: translateY(10px);
-}
-
-.menu-toggle:hover span {
-  background-color: #666;
-}
-
-.menu-toggle:focus span {
-  background-color: #666;
-  transform: translateY(0);
-}
-
-.menu-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: none;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  width: 150px;
-}
-
-.menu-list li {
-  margin-bottom: 10px;
-}
-
-.menu-list li a {
-  text-decoration: none;
-  color: #333;
-}
-
-.menu-list li a:hover {
-  color: #666;
-}
-
-.menu-toggle:focus + .menu-list {
-  display: block;
-}
-
-.menu-toggle:focus {
-  outline: none;
-}
-
 
 
 }
@@ -206,6 +177,7 @@ body {
     border: none; /* Remove the border around the image on mobile devices */
     box-shadow: none; 
   }
+
  .photo {
     width: auto; /* Allow the image to retain its original width */
     height: auto; /* Allow the image to retain its original height */
