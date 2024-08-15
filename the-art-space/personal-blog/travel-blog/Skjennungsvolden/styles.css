@@ -119,7 +119,9 @@ body {
   }
   .photo-frame {
     width: 100%;
-    margin-bottom: 20px; /* Add space between the image and the description */
+    margin-bottom: 20px; /* Add space between the image and the description */\
+    border: none; /* Remove the border around the image on mobile devices */
+    box-shadow: none; 
   }
  .photo {
     width: auto; /* Allow the image to retain its original width */
