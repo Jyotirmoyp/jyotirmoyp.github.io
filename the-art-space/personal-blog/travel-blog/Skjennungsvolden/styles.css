@@ -115,6 +115,7 @@ body {
 @media (max-width: 767px) {
   .slider {
     flex-direction: column;
+    padding: 20px;
   }
   .photo-frame {
     width: 100%;
