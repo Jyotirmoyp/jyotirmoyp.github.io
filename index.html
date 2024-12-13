@@ -29,11 +29,13 @@
             top: 0;
             z-index: 1000;
         }
- 	.menu-icon {
+
+        .menu-icon {
             display: none;
             font-size: 24px;
             cursor: pointer;
         }
+
         .w3-bar .menu-items {
             display: flex;
             flex-wrap: wrap;
@@ -113,7 +115,8 @@
             max-width: 100%;
             height: auto;
         }
- 	@media (max-width: 768px) {
+
+        @media (max-width: 768px) {
             .menu-icon {
                 display: block;
             }
@@ -298,12 +301,20 @@
         </div>
     </main>
 
+
     <script>
         function closeStickyNote() {
             document.getElementById("stickyNote").style.display = "none";
         }
 
-
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            if (menuItems.style.display === "block") {
+                menuItems.style.display = "none";
+            } else {
+                menuItems.style.display = "block";
+            }
+        }
 
         document.addEventListener("DOMContentLoaded", function () {
             const observer = new IntersectionObserver(entries => {
@@ -319,7 +330,6 @@
             });
         });
     </script>
-
 <!-------------footer--------->
 
 
