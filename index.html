@@ -288,11 +288,12 @@
         </div>
     </main>
 
-    <script>
+     <script>
         function closeStickyNote() {
             document.getElementById("stickyNote").style.display = "none";
         }
-	 function toggleMenu() {
+
+        function toggleMenu() {
             const menuItems = document.querySelector('.menu-items');
             if (menuItems.style.display === "block") {
                 menuItems.style.display = "none";
@@ -300,7 +301,6 @@
                 menuItems.style.display = "block";
             }
         }
-
 
         document.addEventListener("DOMContentLoaded", function () {
             const observer = new IntersectionObserver(entries => {
@@ -316,6 +316,7 @@
             });
         });
     </script>
+
 
 <!-------------footer--------->
 
