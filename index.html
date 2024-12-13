@@ -104,22 +104,6 @@
             max-width: 100%;
             height: auto;
         }
-	@media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
-
-            .w3-bar .menu-items {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .w3-bar .menu-items a {
-                text-align: center;
-                padding: 10px;
-            }
-	}
 
         /* Sticky Note CSS */
         .sticky-note {
@@ -173,10 +157,10 @@
 
 <body>
 
-<div class="w3-top">
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
         <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
-            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
-            <div class="menu-items">
+            <div class="w3-bar w3-wide">
                 <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button">Home</a>
                 <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
                 <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
@@ -288,18 +272,9 @@
         </div>
     </main>
 
-     <script>
+    <script>
         function closeStickyNote() {
             document.getElementById("stickyNote").style.display = "none";
-        }
-
-        function toggleMenu() {
-            const menuItems = document.querySelector('.menu-items');
-            if (menuItems.style.display === "block") {
-                menuItems.style.display = "none";
-            } else {
-                menuItems.style.display = "block";
-            }
         }
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -316,7 +291,6 @@
             });
         });
     </script>
-
 
 <!-------------footer--------->
 
