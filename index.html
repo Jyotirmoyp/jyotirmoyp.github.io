@@ -104,6 +104,22 @@
             max-width: 100%;
             height: auto;
         }
+	@media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .w3-bar .menu-items {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .w3-bar .menu-items a {
+                text-align: center;
+                padding: 10px;
+            }
+	}
 
         /* Sticky Note CSS */
         .sticky-note {
