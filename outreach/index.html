@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Outreach</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-  body {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotirmoy Paul</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <style>
+        body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             color: #333;
@@ -26,6 +28,17 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .w3-bar .menu-items {
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .content {
@@ -103,22 +116,24 @@
             height: auto;
         }
 
-        .button {
-      background-color: teal;
-      border: none;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-    .button1 {
-      border-radius: 12px;
-    }
- 	/* Sticky Note CSS */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .w3-bar .menu-items {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .w3-bar .menu-items a {
+                text-align: center;
+                padding: 10px;
+            }
+        }
+
+        /* Sticky Note CSS */
         .sticky-note {
             position: fixed;
             left: 20px;
@@ -155,39 +170,35 @@
             cursor: pointer;
         }
 
-
-    #map {
-      height: 500px;
-      width: 100%;
-    }
-    .fade-in {
+        .fade-in {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 1s, transform 1s;
         }
-    .fade-in.show {
+
+        .fade-in.show {
             opacity: 1;
             transform: translateY(0);
         }
-  </style>
-
+    </style>
 </head>
 
 <body>
 
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
-    <div class="w3-bar w3-wide"> 
-      <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button"> Home</a>
-      <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
-      <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
-      <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
-      <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
-      <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+            <div class="menu-items">
+                <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button">Home</a>
+                <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
+                <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
+                <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
+                <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
+                <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
 
 
 <!--naviation menu ends-->
@@ -580,27 +591,34 @@
 
 
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        });
 
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    });
-</script>
-
-    <!-- Sticky Note Close Function -->
     <script>
         function closeStickyNote() {
             document.getElementById("stickyNote").style.display = "none";
         }
+
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            if (menuItems.style.display === "block") {
+                menuItems.style.display = "none";
+            } else {
+                menuItems.style.display = "block";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
+            });
+        });
     </script>
 
 </body>
