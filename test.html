@@ -1,461 +1,75 @@
-<html>
-
-<title>Jyo</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-<head>
-<style>
-
-#main{align-content: center;}   
-
-a:link {
-    color: teal;
-    text-decoration: none;
-}
-
-a:visited {
-    color: teal;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:active {
-    text-decoration: underline;
-}
-
-p.main {
-    text-align: justify;
-}
-
-.mySlides {display:none;}
-</style>
 </head>
+<body>
 
-<div id="main">
-
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
-    <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button"> Home</a>
-    <a href="Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
-    <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
-    <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
-    <a href="https://jyotirmoyp.github.io/conference/" class="w3-bar-item w3-button">Conference</a>
-    <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
-    <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
-    </div>
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+  <img class="w3-image" src="/w3images/photographer.jpg" alt="Me" width="1500" height="600">
+  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
+    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">JANE DOE</h1>
+    <h5 class="w3-hide-large" style="white-space:nowrap">JANE DOE</h5>
+    <h3 class="w3-hide-medium w3-hide-small">PHOTOGRAPHER</h3>
   </div>
+  
+  <!-- Navbar (placed at the bottom of the header image) -->
+  <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+    <a href="#" class="w3-bar-item w3-button">Home</a>
+    <a href="#portfolio" class="w3-bar-item w3-button">Portfolio</a>
+    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+  </div>
+</header>
+
+<!-- Navbar on small screens -->
+<div class="w3-center w3-light-grey w3-padding-16 w3-hide-large w3-hide-medium">
+<div class="w3-bar w3-light-grey">
+  <a href="#" class="w3-bar-item w3-button">Home</a>
+  <a href="#portfolio" class="w3-bar-item w3-button">Portfolio</a>
+  <a href="#contact" class="w3-bar-item w3-button">Contact</a>
 </div>
-
-
-
-<div class="w3-container w3-teal">
-  <h2>hidden teal box </h2>
- 
-  <div class="w3-right w3-hide-small">
-      
-     
-    </div>
 </div>
+<!-- Page content -->
+<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
 
+  <!-- Images (Portfolio) -->
+  <img src="/w3images/ocean.jpg" alt="Ocean" class="w3-image" width="1000" height="500">
+  <img src="/w3images/ocean2.jpg" alt="Ocean II" class="w3-image w3-margin-top" width="1000" height="500">
+  <img src="/w3images/falls2.jpg" alt="Falls" class="w3-image w3-margin-top" width="1000" height="500">
+  <img src="/w3images/mountainskies.jpg" alt="Skies" class="w3-image w3-margin-top" width="1000" height="500">
+  <img src="/w3images/mountains2.jpg" alt="Mountains" class="w3-image w3-margin-top" width="1000" height="500">
 
+  <!-- Contact -->
+  <div class="w3-light-grey w3-padding-large w3-padding-32 w3-margin-top" id="contact">
+    <h3 class="w3-center">Contact</h3>
+    <hr>
+    <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus.</p>
 
-<!--naviation menu ends-->
-
-
-
-<!-- Introduction menu -->
-<div class="w3-col l8 w3-center">
-  <!-- About Card -->
-  <div class="w3-card w3-margin w3-margin-top">
-   <img class="mySlides" src="dp.jpg" clas="w3-round" style="width:100%">
-   <img class="mySlides" src="iisc_l.jpg" class="w3-margin" style="width:100%">
-   <img class="mySlides" src="coor.jpg" class="w3-margin" style="width:100%">
-
-   <script>
-    var myIndex = 0;
-    carousel();
-    
-    function carousel() {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
-      }
-      myIndex++;
-      if (myIndex > x.length) {myIndex = 1}    
-      x[myIndex-1].style.display = "block";  
-      setTimeout(carousel, 2000); // Change image every 2 seconds
-    }
-    </script>
-    <div class="w3-container w3-white">
-          <p>
-            Bavarian Research Institute of
-            Experimental Geochemistry and Geophysics (BGI)
- 	<br> University of Bayreuth 
-	<br>e-mail : <a href="mailto:jyotirmoy.paul@uni-bayreuth.de">
-	jyotirmoy.paul@uni-bayreuth.de</a> <br>
-	</p>
-	
-    </div>
-   </div>
-   <!--- Connect--------->
-   <div class=" w3-container w3-margin w3-teal">
-      	    <h4><b> Connect </b></h4>
-      </div>  
-  <div class="w3-container w3-margin ">
-    <div class="w3-col l5">
-   	  <div itemscope itemtype="https://schema.org/Person">
-        <a itemprop="sameAs" content="https://orcid.org/0000-0002-7972-1868" href="https://orcid.org/0000-0002-7972-1868" 
-        target="orcid.widget" rel="me noopener noreferrer" style="vertical-align:top;">
-        <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" 
-        style="width:2em;margin-right:.5em;" alt="ORCID iD icon" >Orchid</a></div>
-        <br>
-	<a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en"  
-        target="_blank"><img src="https://www.kindpng.com/picc/m/369-3690860_google-scholar-icon-google-scholar-logo-hd-png.png" 
-        style="width:2em;margin-right:.5em;"> Scholar </a>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" required name="Name">
       </div>
-      
-	<a href="https://twitter.com/GeophyJo?ref_src=twsrc%5Etfw" 
-        class="twitter-follow-button" data-show-count="false">Follow @GeophyJo</a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" ></script>
-        <br><br>
-	 <span id="badgeCont654"><script type="text/javascript" 
-         src="https://publons.com/mashlets?el=badgeCont654&rid=AAX-2221-2020"></script></span>
-	 
-  </div> 
-    
-    
-  	<!-- Craton Picutre -->
-   
- </div>  
-  
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" required name="Email">
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" required name="Message">
+      </div>
+      <button type="submit" class="w3-button w3-block w3-dark-grey">Send</button>
+    </form><br>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 
-  
-   
-
-<!-- academics -->
-
-  <div class="w3-col l10">
-    <div class="w3-card w3-margin w3-margin-top">
-
-      <div class="w3-container w3-teal">
-        <h4><b> Appointments </b></h4>
-        </div>
-          <div class="w3-container">
-            Post-doctoral Researcher (2021, Nov - Present), Bavarian Research Institute of
-            Experimental Geochemistry and Geophysics (BGI), University of Bayreuth
-            <br> <br>
-        	  <p> Research Associate, IISc, Bangalore (July 2021 - October 2021) 
-          </div>
-
-
-
-
-      <div class="w3-container w3-teal">
-        <h4><b> Education </b></h4>
-        </div>
-          <div class="w3-container">
-        	  <p> PhD, IISc, Bangalore (2015- 2021) 
-        	  <br> Supervisor : <a href 
-        	  ="http://ceas.iisc.ernet.in/~aghosh/index.html" target="_blank"> 
-        	  Prof. Attreyee Ghosh </a>
-        	  <br><br>M.Sc, Applied Geology, Jadavpur University 2015.
-         	 <br><br>B.Sc, Geology, Jadavpur University, 2013.
-         	 <br> </p>
-          </div>
-       
-                
-<!-- Research Interest -->
-        <div class=" w3-container w3-teal">
-      	    <h4><b> Research Interest </b></h4>
-        </div>
-        
-          <div class="w3-container">
-                <p> 
-                  
-                  2. Dynamics of lower mantle due to grain-size dependent rheology 
-                  <br>
-                  1. Origin, evolution and destruction of cratons 
-                  
-               
-                </p> 
-                
-                                        
-          </div>
-          
- <!-- Present Research -->
-           
-         
-          
-       </div>
-     </div>
- </div> 
-
-
-<!--my space-->
-<div class="w3-col l4">
-  <div class="w3-card w3-center w3-margin w3-margin-top">
-   <div class="w3-container w3-teal">
-       
-  <h4><b> Modeling the earth back in time </b> </a></h4>
-    </div>
   </div>
-</div>
-
-<div class="w3-col l4">
-<center>
- <!-- <div class="w3-card w3-center w3-margin w3-margin-top">-->
-  <!-- <img src="ms/zachpass.jpg" clas="w3-round" style="width:100%">  -->
-  
-  <video width="400" height="320" controls loop autoplay>
-  <source src="craton.mp4" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-  </video>
-       
- <!-- <h5><b> <p> To be updated soon </p></b> </a></h5>-->
- </center>
-  </div>
-</div>
-
-
-
-
-
-
-<!-- Important Links -->
-<div class="w3-col l4">
-  <div class="w3-card w3-margin w3-margin-top">
-    <div class="w3-container w3-teal">
-      <h4><b> Future research plans </b></h4>
-    </div>  
-    <div class="w3-container">
-    <p> Effect of grain-size dependent rheology in Earth's evolution
-  </p>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-
-
-<!-- Publications -->
-<div class="w3-col l12">
-  <div class="w3-card w3-margin w3-margin-top">
-    <div class="w3-container w3-teal">
-      <h4><b> Publications </b></h4>
-    </div>  
-<div class="w3-container">
-<p>
-<b>In peer reviewed journals</b>
-
-<br> 5. J. Paul, A. Ghosh, 2021. Could the Reunion plume have thinned the Indian craton?, <I>Geology</I>, in production
-
-<br> 4. J. Paul, A. Ghosh, 2020. Evolution of cratons through the ages: 
-A time-dependent study, <I> Earth and Planetary Science Letters</I> 
-<a href="https://www.sciencedirect.com/science/article/pii/S0012821X19306545?via%3Dihub" 
-target="_blank" > [Online Version] </a>
-
-<br> 3. J. Paul, S. Mondal, R. Koyal, D. Sarkar, 2019. Burrow morphology of 
-the ocypodid crab <I>Ocypode ceratophthalma</I> at Chandipur Coast, Eastern India and 
-its implications. <i>Current Science </i>.
-<a href="https://www.currentscience.ac.in/Volumes/117/04/0699.pdf" target="_blank"> [Online version] </a>
-
-
-<br> 2. J. Paul, A. Ghosh, C.P. Conrad, 2019. Traction and strain-rate at the
- base of the lithosphere: An insight into cratonic survival. <i> Geophysical Journal International.</i> 
- <a href="https://academic.oup.com/gji/advance-article/doi/10.1093/gji/ggz079/5307888?guestAccessKey=0ce95061-6467-40f9-94c8-e68c63d2fbaf" 
- target="_blank" > [Online version] </a>
- <a href="https://academic.oup.com/gji/advance-article/doi/10.1093/gji/ggz491/5610222" target="_blank"> [Erratum] </a>
- 
- 
-<br> 1. A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay, 2017.
- Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight into the ore-forming process.<i> Ore Geology Reviews.</i>
-<a  href="http://www.sciencedirect.com/science/article/pii/S0169136815301736" 
-target="_blank"> [Online Version]</a>
-
-<br><br><b>Conference Presentations </b>
-
-<br>15.<b> J. Paul,</b> A. Ghosh, 2021. Effect of the reunion plume eruption on the Indian craton thickness.
-6th Rock deformation and structures, virtual mode.  
-
-
-<br>14. <b> J. Paul, </b> A. Ghosh, 2021. Interaction of the Indian craton with the Reunion plume.
-EGU General Assembly, Viena. <a href="https://meetingorganizer.copernicus.org/EGU21/EGU21-3726.html" target="_blank" > [Online version] </a> 
-
-
-<br>13. <b> J. Paul, </b> A. Ghosh, 2020. Understanding deformation of cratons in presence of mid-lithospheric discontinuity.
-EGU General Assembly, Viena. <a href="https://meetingorganizer.copernicus.org/EGU2020/EGU2020-704.html" target="_blank" > [Online version] </a> 
-
-<br>12. <b> J. Paul, </b> A. Ghosh, 2020. On survival of cratonic lithosphere. 36th International 
-Geological Congress, Delhi.
-
-<br> 11. <b>J. Paul, </b> A. Ghosh, 2019. Evolution of cratons in time-dependent mantle convection models. 
-AGU Fall Meeting, San Francisco
-<a href ="https://agu.confex.com/agu/fm19/meetingapp.cgi/Paper/534800" target="_blank" > [Online version] </a>
-
-<br> 10. A. Ghosh, <b>J. Paul</b>, Effect of Weak Mid-lithospheric Discontinuities on the Survival of Cratons.
-AGU Fall Meeting, San Francisco.
-<a href="https://agu.confex.com/agu/fm19/meetingapp.cgi/Paper/534700" target="_blank" > [Online version] </a>
-
-<br> 9. J. Paul, A. Ghosh, 2019. Time dependent 3-D numerical modeling of the cratonic evolution.
- Ada Lovelace Workshop, Siena, Italy. 
- <a href = "https://meetings.copernicus.org/2019AdaLovelaceWorkshop/ALWS-2019-book-of-abstracts.pdf" target="_blank"> [Online version] </a>
- <a href = "https://indianinstituteofscience-my.sharepoint.com/:b:/g/personal/jyotirmoyp_iisc_ac_in/EVlFXe2dIJhJvcSYFfutS_ABF8xMiXpHTvX8SS-5ckHMXA?e=O72WyB" target="_blank" > [Poster] </a>
- 
-<br> 8. J. Paul, <b> A. Ghosh </b>, 2019, Evolution and survival potential of cratons: 
-A numerical study. IUGG General Assembly, Montreal. 
-<a href="https://www.czech-in.org/cmPortalV15/CM_W3_Searchable/iugg19/normal#!abstractdetails/0000731800" 
-target="_blank"> [Online version] </a>
-
-<br> 7. <b> J. Paul </b>, A. Ghosh, 2018, Stability of cratons since early Phanerozoic.
-AGU Fall Meeting, Washington DC. 
-<a href = "https://ui.adsabs.harvard.edu/abs/2018AGUFM.T33C0416P/abstract" target = "_blank"> [Online version] </a>
-<a  href="AGU18_p2.pdf" 
-target="_blank"> [Poster]</a>
-
-
-<br> 6. A. Ghosh, <b> J. Paul </b>, C.P. Conrad, 2018, The Relation Between Tractions and Strain Rate at the Base of the Lithosphere:
-Key to Understanding Cratonic Stability.
-AGU Fall Meeting, Washington DC. 
-<a href = "https://ui.adsabs.harvard.edu/abs/2018AGUFMDI51B0020P/abstract"target="_blank"> [Online version] </a>
-<a  href="AGU18_p1.pdf" 
-target="_blank"> [Poster]</a>
-
-<br> 5. <b>  J. Paul </b>, A. Ghosh, 2018, Variation of traction and strain rate 
-with lithospheric thickness: An insight into understanding cratonic stability. EGU General Assembly, 
-Vienna. <a  href="https://meetingorganizer.copernicus.org/EGU2018/EGU2018-617-1.pdf" 
-target="_blank"> [Online Version] </a> <a href="EGU18.pdf" target="_blank"> [Poster]</a>
-
-<br>4. J. Paul, A.S. Baidya, and D.C. Pal, 2015, Origin of alternate 
-amphibole and quartz rich bands in amphibole bearing quartzite from North Khetri Copper Belt, Rajasthan, India, AGU Fall Meeting, San Francisco, V23B-3161 
-<a  href="https://agu.confex.com/agu/fm15/webprogram/Paper63227.html" target="_
-blank"> [Online Version]</a>
-
-<br>3. <b> A.S. Baidya </b>,  J. Paul, and Pal D. C., 2014, Multiple stages of
- amphibole formation in the Chandmari Cu-deposit, Khetri copper belt, Rajasthan: 
- implications for changing fluid composition vis-à-vis sulfide mineralization, National Conference on Making of the     Indian Continent, Presidency University, Kolkata.
-<a  href="https://www.researchgate.net/publication/309951120_Multiple_stages_of_
-amphibole_formation_in_the_Chandmari_Cu_deposit_Khetri_copper_belt_Rajasthan_implications_for_changing_fluid_composition_vis-a-vis_sulfide_mineralization" target="_blank"> [RG pdf]</a>
-
-<br>2. <b>J. Paul</b>, 2014, Diversity of Indian climate and its effect on Indian
- music, 3 rd YES Congress, Dar Es Salaam, Tanzania Abstract Volume
-
-<br>1. <b>J. Paul</b>, and S. Mondal, 2013, Ecological significance of Ocypode 
-crab burrows: A case study from Chandipur, Eastern Coast of India, National 
-Conference on Earth Science in India: Challenges and Emerging Trends, Indian 
-Institute of Technology, Roorkee, Abstract volume.
-</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<!------------------------------------- science blogs ----------------------------------------->
-<div class="w3-col l12">
-  <div class="w3-card w3-margin w3-margin-top">
-    <div class="w3-container w3-teal">
-      <h4><b> Contribution to science blogs </b></h4>
-    </div>  
-<div class="w3-container">
-<p>
-
-4. Cratons, Why Are You Still Here?, 2021 <I> American Geophysical Union, Eos </I>
-<a href="https://eos.org/features/cratons-why-are-you-still-here?/" target="_blank" > [Link] </a>
-<br>
-
-3. 2021: 100th year of the craton concept and beyond, 2021, <I> European Geoscience Union, Geodynamics divsion </I>
-<a href="https://blogs.egu.eu/divisions/gd/2021/01/13/2021-100th-year-of-the-craton-concept-and-beyond/" target="_blank" > [Link] </a>
-<br>
-2. How did the Oldest Part of the Earth Still Survive Today, <I>AWSAR Scheme, Department of Science and Technology, India </I>
-<br>
-1. EGU 2018: Experience of a first time attendee, <I> European Geoscience Union, Geodynamics division </I>
-<a href="https://blogs.egu.eu/divisions/gd/2018/05/17/egu-2018-experience-of-a-first-time-attendee/" target="_blank" > [Link] </a>
-</p>
-
-
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!---------------------- social and historical articles -------------------->
-<div class="w3-col l12">
-  <div class="w3-card w3-margin w3-margin-top">
-    <div class="w3-container w3-teal">
-      <h4><b> Social and historical articles </b></h4>
-    </div>  
-<div class="w3-container">
-<p>
-4. Geoscience in the third world, 2020, <I> European Geoscience Union, Geodynamics divsion </I>
-<a href="https://blogs.egu.eu/divisions/gd/2020/11/04/geoscience-in-the-third-world/" target="_blank" > [Link] </a>
-<br>
-3. Status of academic freedom, 2019, <I> Confluence, Indian Academy of Science </I>
-<a href="http://confluence.ias.ac.in/academic-freedom/" target="_blank" > [Link] </a>
-<br>
-2. The Forgotten Tomb: Inspiration of the Taj Mahal, 2018, <I> Coldnoon </I> 
-<a href="https://coldnoon.com/magazine/dialogues/essays/the-forgotten-tomb-inspiration-of-the-taj-mahal/" target="_blank" > [Link] </a>
-<br>
-1. Celebrating scripts from around the world, 2018, <I> IISc Connect </I>
-<a href="https://connect.iisc.ac.in/2018/03/celebrating-scripts-from-around-the-world/" target="_blank" > [Link] </a>
-
-</p>
-</div>
-</div>
-</div>
-</div>
-
-
-
-<!---------------------- In native langauge -------------------->
-<div class="w3-col l12">
-  <div class="w3-card w3-margin w3-margin-top">
-    <div class="w3-container w3-teal">
-      <h4><b> Science communication in Bengali </b></h4>
-    </div>  
-<div class="w3-container">
-<p>
-  <br>
-  4. লাভার উৎস সন্ধানে, 2021 <I> বিজ্ঞান </I> 
-  <a href="https://bigyan.org.in/2021/09/mystery-of-lava" target="_blank"> [Link] </a>
-  
-  <br>
-  3. পৃথিবীর প্রাচীন পাথর গুলির জীবনযাত্রা, 2021, September <I> বিজ্ঞান কথা, Vigyan Parisar, Govt. of India</I> p. 14-15
-  <a href="https://vigyanprasar.gov.in/wp-content/uploads/vp-bengali-magzine-Bigyan-Katha-v2i9.pdf" target="_blank">[Link]</a>
-  
-  <br>
-  2. ব-দ্বীপের বহিঃপ্রকাশ, 2021 <I> এ লেভেলে' বিজ্ঞান </I>
-  <a href="https://www.elebele.org/2021/08/13/ব-দ্বীপের-বহিঃপ্রকাশ/" target="_blank" > [Link] </a>
-
-  <br>
-  1. পৃথিবীর গভীর কথা, 2020 <I> বিজ্ঞান </I>
-<a href="https://bigyan.org.in/2020/11/13/inside-the-earth/" target="_blank" > [Link] </a>
-<br>
-
-
-</p>
-</div>
-</div>
-</div>
-</div>
 
 <!-- End page content -->
-<!-- Footer -->
-<div class="w3-col 12">
-<footer class="w3-center w3-light-grey w3-padding-32">
-  <p>copyright @ <a href="https://jyotirmoyp.github.io" title="Jyotirmoy" class="w3-hover-text-green">Jyo</a></p>
-</footer>
-</div>
-
-
 </div>
 
 </body>
-<html>
+</html>
