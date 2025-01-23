@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotirmoy Paul</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .w3-bar .w3-bar-item {
+            padding: 14px 20px;
+        }
+
+        .w3-bar .w3-bar-item:hover {
+            background-color: #ddd;
+        }
+
+        .w3-top {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .w3-bar .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .w3-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .w3-container img,
+        .w3-container video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .w3-container h2,
+        .w3-container h3,
+        .w3-container h4 {
+            font-weight: 700;
+        }
+
+        .w3-container p {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        a {
+            color: teal;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .icon-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .row {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .column-left {
+            flex: 1;
+            max-width: 300px;
+            padding: 10px;
+        }
+
+        .column-right {
+            flex: 2;
+            padding: 10px;
+        }
+
+        .figure {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .w3-bar .menu-items {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .w3-bar .menu-items a {
+                text-align: center;
+                padding: 10px;
+            }
+        }
+
+        /* Sticky Note CSS */
+        .sticky-note {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            padding: 15px;
+            background-color: #fffae6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+        .sticky-note h4 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .sticky-note a {
+            display: block;
+            padding: 8px 0;
+            color: #0073e6;
+        }
+
+        .sticky-note a:hover {
+            text-decoration: underline;
+        }
+
+        .sticky-note .closebtn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+	   .people-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .person {
+        flex: 1;
+        max-width: 30%;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .person-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .person h4 {
+        font-size: 18px;
+        margin: 10px 0 5px;
+    }
+
+    .person p {
+        font-size: 14px;
+        color: #555;
+        margin: 5px 0;
+    }
+
+    .person a {
+        color: teal;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .person a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .people-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .person {
+            max-width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+            <div class="menu-items">
+                <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button">Home</a>
+                <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
+                <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
+                <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
+                <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
+                <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Note -->
+    <div id="stickyNote" class="sticky-note">
+        <span class="closebtn" onclick="closeStickyNote()">&times;</span>
+        <h4>News</h4>
+        <div class="icon-list">
+		<p>Sbmitted first abstract for EGU 2025</p>            
+         </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="content">
+        <div class="main-content">
+            <!-- About Me Section -->
+		<div class = 'w3-center'>
+		<h2> BALCONY: </h2> <h6> A Maria Skłodowska-Curie Action project funded Euoprean Union </h6> 
+		</div>
+            <div class="section fade-in">
+                <div class="w3-container">
+		
+		   <img src="cover.png" alt="Profile Picture" class="w3-round">
+                    <br>		    <p></p>
+                </div>
+            </div>
+
+            <!-- Overview Section -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                    <h3>Background</h3>
+                     Cratons, the oldest (>3 Ga) and most stable parts of the Earth's lithosphere, preserve early Earth geological records crucial for 				understanding the habitability and evolution of life, the great oxygenation event, and the formation of ore minerals that are the 			building blocks of modern civilization. The long-term survival of cratons on a tectonically active planet like Earth has been 				attributed to their greater thickness and viscosity, which resist convective shearing from mantle flow beneath them. These same 			properties may also redirect mantle flow (typically downward) around the craton, creating a self-compressive environment.
+                </div>
+            </div>
+
+            <!-- Hypothesis -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                    <h3>Hypothesis</h3>
+			<div class = "w3-center">
+			 <img src="idea.jpg" alt="hypothesis" style="width:70%" class="w3-round">
+			</div>
+			<br> <br>
+                    Our hypothesis proposes that self-compression can increase craton thickness over time (Fig. 1 b). However, this increasing thickness 			leads to viscosity anisotropy at the base of cratons, potentially triggering the formation of drips that remove excess thickness 			(Fig. 1 c). Continuous shearing at the base can reduce grain size, lowering viscosity and further enhancing shearing, which helps 			balance craton thickness (Fig 1 d).
+                </div>
+            </div>
+
+	    <!-- Aim -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                    <h3>Aim</h3>
+                    <i>In this project, BALCONY, we aim to develop global numerical models to investigate the physical mechanisms that maintain the 				thickness of cratonic roots over time through continuous disruption and self-healing. </i>
+                </div>
+            </div>
+
+	    <!-- Objective -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                    <h3>Objective</h3>
+			<ul>
+                    	   <li>Examine the role of self-compression in craton thickening. </li>
+			   <li> Investigate the development of viscous anisotropy and grain size reduction at the base of cratons and their effects on 					craton thickness. </li>
+
+			   <li> Understand the mechanisms that have balanced craton thickness (self-compression, gravitational thickening, and viscous 					anisotropy) for billions of years and their geological implications. </li>
+                </div>
+            </div>
+
+  	   <!-- People Involved Section -->
+	<div class="section fade-in">
+    		<div class="w3-container">
+        		<h3>People Involved</h3>
+        		<div class="people-grid">
+            			<!-- Person 1 -->
+            		<div class="person">
+                		<img src="jp2.jpg" alt="Person 1" class="person-image">
+                		<h4>Jyotirmoy Paul</h4>
+                		<p>PHAB, UiO</p>
+                		<a href="https://jyotirmoyp.github.io/">Personal webpage</a>
+            		</div>
+            			<!-- Person 2 -->
+            		<div class="person">
+                		<img src="conrad.png" alt="Person 2" class="person-image">
+                		<h4>Clint Conrad</h4>
+                		<p>PHAB, UiO</p>
+                		<a href="https://clintconrad.no/">Personal webpage</a>
+            		</div>
+            		<!-- Person 3 -->
+            		<div class="person">
+                		<img src="agi.jpg" alt="Person 3" class="person-image">
+                		<h4> Agnes Kiraly</h4>
+                		<p>PHAB, UiO</p>
+                		<a href="https://www.mn.uio.no/geo/english/people/aca/phab/kiraly/">Personal webpage</a>
+            		</div>
+        		</div>
+    		</div>
+	</div>
+
+    </main>
+
+
+    <script>
+        function closeStickyNote() {
+            document.getElementById("stickyNote").style.display = "none";
+        }
+
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            if (menuItems.style.display === "block") {
+                menuItems.style.display = "none";
+            } else {
+                menuItems.style.display = "block";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+<!-------------footer--------->
+
+
+    <footer class="w3-container w3-teal w3-center w3-margin-top">
+        <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+    </footer>
+
+<!-------------footer--------->
+</body>
+
+</html>
