@@ -251,6 +251,25 @@
         color: white;
     }
 
+   .go-to-top {
+        text-align: right;
+        margin-top: 20px;
+    }
+
+    .go-to-top button {
+        background-color: grey;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .go-to-top button:hover {
+        background-color: darkcyan;
+    }
     @media (max-width: 768px) {
         .menu-bar {
             flex-direction: column;
@@ -312,6 +331,9 @@
                 <div class="w3-container">
                     <h3>Background</h3>
                      Cratons, the oldest (>3 Ga) and most stable parts of the Earth's lithosphere, preserve early Earth geological records crucial for 				understanding the habitability and evolution of life, the great oxygenation event, and the formation of ore minerals that are the 			building blocks of modern civilization. The long-term survival of cratons on a tectonically active planet like Earth has been 				attributed to their greater thickness and viscosity, which resist convective shearing from mantle flow beneath them. These same 			properties may also redirect mantle flow (typically downward) around the craton, creating a self-compressive environment.
+		<div class="go-to-top">
+    			<button onclick="scrollToTop()">Go to Top</button>
+		</div>
                 </div>
             </div>
 
@@ -324,6 +346,9 @@
 			</div>
 			<br> <br>
                     Our hypothesis proposes that self-compression can increase craton thickness over time (Fig. 1 b). However, this increasing thickness 			leads to anisotropic viscosity at the base of cratons, potentially triggering the formation of drips that remove excess thickness 			(Fig. 1 c). Continuous shearing at the base can reduce grain size, lowering viscosity and further enhancing shearing, which helps 			balance craton thickness (Fig 1 d).
+		<div class="go-to-top">
+    			<button onclick="scrollToTop()">Go to Top</button>
+		</div>
                 </div>
             </div>
 
@@ -332,6 +357,10 @@
                 <div class="w3-container">
                     <h3>Aim</h3>
                     <i>In this project, BALCONY, we aim to develop global numerical models to investigate the physical mechanisms that maintain the 				thickness of cratonic roots over time through continuous disruption and self-healing. </i>
+
+		<div class="go-to-top">
+    			<button onclick="scrollToTop()">Go to Top</button>
+		</div>
                 </div>
             </div>
 
@@ -344,6 +373,9 @@
 			   <li> Investigate the development of viscous anisotropy and grain size reduction at the base of cratons and their effects on 					craton thickness. </li>
 
 			   <li> Understand the mechanisms that have balanced craton thickness (self-compression, gravitational thickening, and viscous 					anisotropy) for billions of years and their geological implications. </li>
+		<div class="go-to-top">
+    			<button onclick="scrollToTop()">Go to Top</button>
+		</div>
                 </div>
             </div>
 
@@ -374,7 +406,11 @@
                 		<a href="https://www.mn.uio.no/geo/english/people/aca/phab/kiraly/">Personal webpage</a>
             		</div>
         		</div>
+			<div class="go-to-top">
+    			<button onclick="scrollToTop()">Go to Top</button>
+			</div>
     		</div>
+
 	</div>
 
     </main>
@@ -407,6 +443,14 @@
                 observer.observe(element);
             });
         });
+
+	 // Smooth scroll to the top
+   		function scrollToTop() {
+      		window.scrollTo({
+         	top: 0,
+          	behavior: 'smooth'
+        });
+    }
     </script>
 <!-------------footer--------->
 
