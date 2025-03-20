@@ -2,18 +2,18 @@
   <h2 class="text-2xl mb-4">Photo Series</h2>
   <div class="relative">
     <!-- Gallery Container -->
-    <div id="gallery-container" class="overflow-hidden">
+    <div id="gallery-container">
       <!-- Photos with Captions -->
       <div class="gallery-item">
-        <img src="01.jpg" alt="Photo 1" class="w-full h-auto">
+        <img src="photo1.jpg" alt="Photo 1" class="w-full h-auto">
         <p class="text-center mt-2 text-gray-600">Caption for Photo 1</p>
       </div>
       <div class="gallery-item hidden">
-        <img src="02.jpg" alt="Photo 2" class="w-full h-auto">
+        <img src="photo2.jpg" alt="Photo 2" class="w-full h-auto">
         <p class="text-center mt-2 text-gray-600">Caption for Photo 2</p>
       </div>
       <div class="gallery-item hidden">
-        <img src="03.jpg" alt="Photo 3" class="w-full h-auto">
+        <img src="photo3.jpg" alt="Photo 3" class="w-full h-auto">
         <p class="text-center mt-2 text-gray-600">Caption for Photo 3</p>
       </div>
       <!-- Add more photos as needed -->
@@ -21,43 +21,39 @@
 
     <!-- Navigation Buttons -->
     <div class="flex justify-center gap-4 mt-4">
-      <button id="prev-button" class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <button id="next-button" class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+      <button id="prev-button" class="text-gray-600 hover:text-gray-900">Prev</button>
+      <button id="next-button" class="text-gray-600 hover:text-gray-900">Next</button>
     </div>
   </div>
 </div>
 
 <script>
-  // Gallery Script
+  // Debugging: Log to ensure the script is running
+  console.log("Gallery script loaded");
+
+  // Get all gallery items
   const galleryItems = document.querySelectorAll('.gallery-item');
-  const prevButton = document.getElementById('prev-button');
-  const nextButton = document.getElementById('next-button');
   let currentIndex = 0;
 
-  // Show the current photo
+  // Function to show the current photo
   function showPhoto(index) {
-    galleryItems.forEach((item, i) => {
-      item.classList.toggle('hidden', i !== index);
+    // Hide all gallery items
+    galleryItems.forEach((item) => {
+      item.classList.add('hidden');
     });
+    // Show the current gallery item
+    galleryItems[index].classList.remove('hidden');
   }
 
-  // Next Photo
-  nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % galleryItems.length;
+  // Next button functionality
+  document.getElementById('next-button').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % galleryItems.length; // Loop to the first photo after the last
     showPhoto(currentIndex);
   });
 
-  // Previous Photo
-  prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+  // Previous button functionality
+  document.getElementById('prev-button').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; // Loop to the last photo before the first
     showPhoto(currentIndex);
   });
 
