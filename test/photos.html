@@ -33,10 +33,18 @@
 
   // Get all gallery items
   const galleryItems = document.querySelectorAll('.gallery-item');
+  const prevButton = document.getElementById('prev-button');
+  const nextButton = document.getElementById('next-button');
   let currentIndex = 0;
+
+  // Debugging: Log gallery items and buttons
+  console.log("Gallery items:", galleryItems);
+  console.log("Prev button:", prevButton);
+  console.log("Next button:", nextButton);
 
   // Function to show the current photo
   function showPhoto(index) {
+    console.log("Showing photo at index:", index); // Debugging
     // Hide all gallery items
     galleryItems.forEach((item) => {
       item.classList.add('hidden');
@@ -46,16 +54,26 @@
   }
 
   // Next button functionality
-  document.getElementById('next-button').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % galleryItems.length; // Loop to the first photo after the last
-    showPhoto(currentIndex);
-  });
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      console.log("Next button clicked"); // Debugging
+      currentIndex = (currentIndex + 1) % galleryItems.length; // Loop to the first photo after the last
+      showPhoto(currentIndex);
+    });
+  } else {
+    console.error("Next button not found");
+  }
 
   // Previous button functionality
-  document.getElementById('prev-button').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; // Loop to the last photo before the first
-    showPhoto(currentIndex);
-  });
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      console.log("Previous button clicked"); // Debugging
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; // Loop to the last photo before the first
+      showPhoto(currentIndex);
+    });
+  } else {
+    console.error("Previous button not found");
+  }
 
   // Show the first photo on page load
   showPhoto(currentIndex);
