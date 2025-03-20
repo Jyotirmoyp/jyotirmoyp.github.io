@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/lucide-react"></script>
   <style>
-    /* Custom CSS to position the menu absolutely and make it transparent */
+    /* Custom CSS for the menu */
     #menu-container {
       position: relative;
     }
@@ -20,6 +20,26 @@
       background-color: transparent; /* Fully transparent background */
       z-index: 10; /* Ensure the menu is above other content */
     }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 640px) {
+      #menu {
+        position: fixed; /* Fix the menu to the viewport */
+        top: 56px; /* Adjust based on your navbar height */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95); /* Slightly opaque background for better readability */
+        backdrop-filter: blur(5px); /* Optional: Add a slight blur for better contrast */
+        overflow-y: auto; /* Allow scrolling if the menu is too long */
+      }
+
+      #menu a {
+        padding: 12px 16px; /* Increase padding for better touch targets */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Add a subtle separator between items */
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-gray-100 text-gray-800">
@@ -30,7 +50,7 @@
         <path d="M3 5h18M3 12h18M3 19h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
     </button>
-    <h1 class="text-lg font-light">The Art Space</h1>
+    <h1 class="text-lg font-light">My Website</h1>
   </nav>
 
   <!-- Expandable Menu -->
