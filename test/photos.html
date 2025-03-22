@@ -1,80 +1,92 @@
-<div class="gallery">
-  <h2 class="text-2xl mb-4">Photo Series</h2>
-  <div class="relative">
-    <!-- Gallery Container -->
-    <div id="gallery-container">
-      <!-- Photos with Captions -->
-      <div class="gallery-item">
-        <img src="photo1.jpg" alt="Photo 1" class="w-full h-auto">
-        <p class="text-center mt-2 text-gray-600">Caption for Photo 1</p>
-      </div>
-      <div class="gallery-item hidden">
-        <img src="photo2.jpg" alt="Photo 2" class="w-full h-auto">
-        <p class="text-center mt-2 text-gray-600">Caption for Photo 2</p>
-      </div>
-      <div class="gallery-item hidden">
-        <img src="photo3.jpg" alt="Photo 3" class="w-full h-auto">
-        <p class="text-center mt-2 text-gray-600">Caption for Photo 3</p>
-      </div>
-      <!-- Add more photos as needed -->
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery</title>
 
-    <!-- Navigation Buttons -->
-    <div class="flex justify-center gap-4 mt-4">
-      <button id="prev-button" class="text-gray-600 hover:text-gray-900">Prev</button>
-      <button id="next-button" class="text-gray-600 hover:text-gray-900">Next</button>
+</head>
+<body>
+  <div class="gallery">
+    <h2 class="text-2xl mb-4">Photo Series</h2>
+    <div class="relative">
+      <!-- Gallery Container -->
+      <div id="gallery-container">
+        <!-- Photos with Captions -->
+        <div class="gallery-item">
+          <img src="photo1.jpg" alt="Photo 1" class="w-full h-auto">
+          <p class="text-center mt-2 text-gray-600">Caption for Photo 1</p>
+        </div>
+        <div class="gallery-item hidden">
+          <img src="photo2.jpg" alt="Photo 2" class="w-full h-auto">
+          <p class="text-center mt-2 text-gray-600">Caption for Photo 2</p>
+        </div>
+        <div class="gallery-item hidden">
+          <img src="photo3.jpg" alt="Photo 3" class="w-full h-auto">
+          <p class="text-center mt-2 text-gray-600">Caption for Photo 3</p>
+        </div>
+        <!-- Add more photos as needed -->
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="flex justify-center gap-4 mt-4">
+        <button id="prev-button" class="text-gray-600 hover:text-gray-900">Prev</button>
+        <button id="next-button" class="text-gray-600 hover:text-gray-900">Next</button>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  // Debugging: Log to ensure the script is running
-  console.log("Gallery script loaded");
+  <!-- JavaScript -->
+  <script>
+    // Debugging: Log to ensure the script is running
+    console.log("Gallery script loaded");
 
-  // Get all gallery items
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const prevButton = document.getElementById('prev-button');
-  const nextButton = document.getElementById('next-button');
-  let currentIndex = 0;
+    // Get all gallery items
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+    let currentIndex = 0;
 
-  // Debugging: Log gallery items and buttons
-  console.log("Gallery items:", galleryItems);
-  console.log("Prev button:", prevButton);
-  console.log("Next button:", nextButton);
+    // Debugging: Log gallery items and buttons
+    console.log("Gallery items:", galleryItems);
+    console.log("Prev button:", prevButton);
+    console.log("Next button:", nextButton);
 
-  // Function to show the current photo
-  function showPhoto(index) {
-    console.log("Showing photo at index:", index); // Debugging
-    // Hide all gallery items
-    galleryItems.forEach((item) => {
-      item.classList.add('hidden');
-    });
-    // Show the current gallery item
-    galleryItems[index].classList.remove('hidden');
-  }
+    // Function to show the current photo
+    function showPhoto(index) {
+      console.log("Showing photo at index:", index); // Debugging
+      // Hide all gallery items
+      galleryItems.forEach((item) => {
+        item.style.display = 'none'; // Hide all items
+      });
+      // Show the current gallery item
+      galleryItems[index].style.display = 'block'; // Show the current item
+    }
 
-  // Next button functionality
-  if (nextButton) {
-    nextButton.addEventListener('click', () => {
-      console.log("Next button clicked"); // Debugging
-      currentIndex = (currentIndex + 1) % galleryItems.length; // Loop to the first photo after the last
-      showPhoto(currentIndex);
-    });
-  } else {
-    console.error("Next button not found");
-  }
+    // Next button functionality
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        console.log("Next button clicked"); // Debugging
+        currentIndex = (currentIndex + 1) % galleryItems.length; // Loop to the first photo after the last
+        showPhoto(currentIndex);
+      });
+    } else {
+      console.error("Next button not found");
+    }
 
-  // Previous button functionality
-  if (prevButton) {
-    prevButton.addEventListener('click', () => {
-      console.log("Previous button clicked"); // Debugging
-      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; // Loop to the last photo before the first
-      showPhoto(currentIndex);
-    });
-  } else {
-    console.error("Previous button not found");
-  }
+    // Previous button functionality
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        console.log("Previous button clicked"); // Debugging
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; // Loop to the last photo before the first
+        showPhoto(currentIndex);
+      });
+    } else {
+      console.error("Previous button not found");
+    }
 
-  // Show the first photo on page load
-  showPhoto(currentIndex);
-</script>
+    // Show the first photo on page load
+    showPhoto(currentIndex);
+  </script>
+</body>
+</html>
