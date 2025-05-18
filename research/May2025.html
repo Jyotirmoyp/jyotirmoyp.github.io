@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Research | Jyotirmoy Paul</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f8f9fa;
+      --dark-bg: #2c3e50;
+      --text-color: #333;
+      --text-light: #7f8c8d;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-bg);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-color);
+    }
+
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    /* Navigation */
+    .w3-top {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar {
+      background-color: white;
+      padding: 0 20px;
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-color);
+    }
+
+    .menu-items {
+      display: flex;
+    }
+
+    .menu-items a {
+      padding: 20px 15px;
+      font-weight: 500;
+      color: var(--primary-color);
+      position: relative;
+    }
+
+    .menu-items a:hover {
+      background-color: rgba(52, 152, 219, 0.1);
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+
+    .menu-items a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--secondary-color);
+      transition: var(--transition);
+    }
+
+    .menu-items a:hover:after {
+      width: 100%;
+      left: 0;
+    }
+
+    .art-space-btn {
+      background-color: var(--primary-color);
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-left: 15px;
+      transition: var(--transition);
+    }
+
+    .art-space-btn:hover {
+      background-color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .art-space-btn:after {
+      display: none;
+    }
+
+    /* Main Content */
+    .main-container {
+      max-width: 1200px;
+      margin: 80px auto 40px;
+      padding: 0 20px;
+    }
+
+    /* Research Sections */
+    .research-section {
+      margin-bottom: 60px;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .research-section:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+    }
+
+    .section-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .section-content {
+      padding: 30px;
+    }
+
+    /* Research Cards */
+    .research-card {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .research-images {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .research-text {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .research-figure {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .research-figure img {
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      max-width: 100%;
+      height: auto;
+    }
+
+    .research-figure img:hover {
+      transform: scale(1.02);
+    }
+
+    .research-figure figcaption {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* Key Findings */
+    .key-findings {
+      margin: 20px 0;
+    }
+
+    .finding-card {
+      background: var(--light-bg);
+      padding: 15px;
+      border-radius: var(--border-radius);
+      margin-bottom: 15px;
+    }
+
+    .finding-card h5 {
+      margin-top: 0;
+      color: var(--secondary-color);
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 8px;
+    }
+
+    /* Publications */
+    .publications {
+      margin-top: 30px;
+    }
+
+    .publications h5 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+
+    .publication-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .publication-item {
+      padding: 15px 0;
+      border-bottom: 1px dashed #ddd;
+    }
+
+    .publication-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-number {
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-right: 8px;
+    }
+
+    .pub-authors {
+      color: var(--primary-color);
+    }
+
+    .pub-title {
+      font-style: italic;
+    }
+
+    .pub-link {
+      display: inline-block;
+      margin-top: 5px;
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+
+    /* Map Section */
+    .map-section {
+      margin-bottom: 60px;
+    }
+
+    .map-container {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 20px;
+    }
+
+    #map {
+      width: 100%;
+      height: 600px;
+      border-radius: var(--border-radius);
+    }
+
+    /* Sticky Note */
+    .sticky-note {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 220px;
+      padding: 20px;
+      background-color: #fffae6;
+      box-shadow: var(--box-shadow);
+      border-radius: var(--border-radius);
+      z-index: 1000;
+      border-left: 5px solid var(--secondary-color);
+    }
+
+    .sticky-note h4 {
+      margin-top: 0;
+      color: var(--primary-color);
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .sticky-note ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sticky-note li {
+      margin-bottom: 10px;
+    }
+
+    .sticky-note a {
+      display: block;
+      padding: 8px 10px;
+      background: rgba(52, 152, 219, 0.1);
+      border-radius: 4px;
+      color: var(--primary-color);
+    }
+
+    .sticky-note a:hover {
+      background: var(--secondary-color);
+      color: white;
+      text-decoration: none;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-light);
+    }
+
+    .closebtn:hover {
+      color: var(--accent-color);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .social-links {
+      margin: 20px 0;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      display: inline-block;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .research-card {
+        flex-direction: column;
+      }
+      
+      .research-images, .research-text {
+        flex: none;
+        width: 100%;
+      }
+      
+      .sticky-note {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+      
+      .menu-items {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      }
+      
+      .menu-items.active {
+        display: flex;
+      }
+      
+      .menu-items a {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .art-space-btn {
+        margin: 15px;
+        display: block;
+        text-align: center;
+      }
+      
+      .main-container {
+        margin-top: 60px;
+      }
+      
+      #map {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .section-content {
+        padding: 20px;
+      }
+      
+      .research-figure {
+        margin-bottom: 15px;
+      }
+      
+      .publication-item {
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<div class="w3-top">
+  <div class="navbar">
+    <div class="navbar-container">
+      <div class="logo">Jyotirmoy Paul</div>
+      <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="menu-items" id="menuItems">
+        <a href="https://jyotirmoyp.github.io">Home</a>
+        <a href="https://jyotirmoyp.github.io/cv">CV</a>
+        <a href="https://jyotirmoyp.github.io/resource/">Resources</a>
+        <a href="https://jyotirmoyp.github.io/research/">Research</a>
+        <a href="https://jyotirmoyp.github.io/outreach/">Outreach</a>
+        <a href="https://jyotirmoyp.github.io/the-art-space/" class="art-space-btn">The Art Space</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sticky Note -->
+<div id="stickyNote" class="sticky-note fade-in delay-1">
+  <span class="closebtn" onclick="closeStickyNote()">&times;</span>
+  <h4>Research Topics</h4>
+  <ul>
+    <li><a href="#craton"><i class="fas fa-mountain"></i> Craton Dynamics</a></li>
+    <li><a href="#grainSize"><i class="fas fa-expand"></i> Grain Size Rheology</a></li>
+    <li><a href="#ore"><i class="fas fa-gem"></i> Layered Ore Complex</a></li>
+    <li><a href="#crab"><i class="fas fa-crab"></i> Crab Ecology</a></li>
+  </ul>
+</div>
+
+<!-- Main Content -->
+<main class="main-container">
+  <!-- Map Section -->
+  <section class="map-section fade-in">
+    <h2 class="section-header">Research Collaborations</h2>
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <!-- Craton Dynamics -->
+  <section id="craton" class="research-section fade-in">
+    <h2 class="section-header">Craton Dynamics</h2>
+    <div class="section-content">
+      <div class="research-card">
+        <div class="research-images">
+          <figure class="research-figure">
+            <img src="stress-strain.png" alt="Stress-strain relationship diagram">
+            <figcaption>Paul et al., 2019</figcaption>
+          </figure>
+          <figure class="research-figure">
+            <img src="150x-stress.png" alt="150x stress visualization">
+            <figcaption>Paul et al., 2023</figcaption>
+          </figure>
+          <figure class="research-figure">
+            <img src="ncc.png" alt="North China Craton analysis">
+            <figcaption>Paul et al., in prep.</figcaption>
+          </figure>
+        </div>
+        <div class="research-text">
+          <p class="lead">My research investigates why some cratons survive for billions of years while others (e.g., North China Craton) are destroyed.</p>
+          
+          <div class="key-findings">
+            <div class="finding-card">
+              <h5>Key Findings</h5>
+              <ul>
+                <li><strong>Stability requires:</strong> Viscosity >10<sup>23</sup> Pa·s in cratons and >10<sup>20</sup> Pa·s in asthenosphere</li>
+                <li><strong>Protection mechanisms:</strong> 
+                  <ol>
+                    <li>Inverse stress-strain relationship reduces deformation</li>
+                    <li>Convective self-compression enhances rigidity</li>
+                  </ol>
+                </li>
+                <li><strong>Destruction triggers:</strong> 
+                  <ul>
+                    <li>Thermal weakening (mantle plumes)</li>
+                    <li>Metasomatic weakening (slab fluids)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <p>Numerical models quantify these processes and their timescales.</p>
+          
+          <div class="publications">
+            <h5>Publications</h5>
+            <ul class="publication-list">
+              <li class="publication-item">
+                <span class="pub-number">8.</span>
+                <span class="pub-authors">J. Paul, A. Spang, A. Piccolo</span>
+                <span class="pub-year">(2025).</span>
+                <span class="pub-title">Hydration weakening and destruction of the North China Craton,</span>
+                <span class="pub-journal">Tectonophysics, 908, 230756.</span>
+                <a href="https://www.sciencedirect.com/science/article/pii/S0040195125001428" target="_blank" class="pub-link">DOI:10.1016/j.tecto.2025.230756</a>
+              </li>
+              <li class="publication-item">
+                <span class="pub-number">6.</span>
+                <span class="pub-authors"><b>J. Paul*,</b> C.P. Conrad, T.W. Becker, A. Ghosh</span>
+                <span class="pub-year">(2023).</span>
+                <span class="pub-title">Convective self-compression of cratons and the stabilization of old lithosphere.</span>
+                <span class="pub-journal">Geophysical Research Letters, 50, e2022GL101842.</span>
+                <a href="https://doi.org/10.1029/2022GL101842" target="_blank" class="pub-link">[Open access]</a>
+              </li>
+              <li class="publication-item">
+                <span class="pub-number">5.</span>
+                <span class="pub-authors">J. Paul, A. Ghosh</span>
+                <span class="pub-year">(2022).</span>
+                <span class="pub-title">Could the Reunion plume have thinned the Indian craton?,</span>
+                <span class="pub-journal">Geology</span>
+              </li>
+              <li class="publication-item">
+                <span class="pub-number">4.</span>
+                <span class="pub-authors"><b>J. Paul,</b> A. Ghosh</span>
+                <span class="pub-year">(2020).</span>
+                <span class="pub-title">Evolution of cratons through the ages: A time-dependent study,</span>
+                <span class="pub-journal">Earth and Planetary Science Letters, 531, 115962.</span>
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X19306545?via%3Dihub" target="_blank" class="pub-link">[Online version]</a>
+              </li>
+              <li class="publication-item">
+                <span class="pub-number">2.</span>
+                <span class="pub-authors"><b>J. Paul*,</b> A. Ghosh, C.P. Conrad</span>
+                <span class="pub-year">(2019).</span>
+                <span class="pub-title">Traction and strain-rate at the base of the lithosphere: An insight into cratonic survival.</span>
+                <span class="pub-journal">Geophysical Journal International, 217(2), 1024-1033.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grain Size Rheology -->
+  <section id="grainSize" class="research-section fade-in delay-1">
+    <h2 class="section-header">Grain Size Dependent Rheology</h2>
+    <div class="section-content">
+      <div class="research-card">
+        <div class="research-images">
+          <figure class="research-figure">
+            <img src="grain.jpg" alt="Grain size visualization">
+            <figcaption>Grain size analysis</figcaption>
+          </figure>
+          <figure class="research-figure">
+            <img src="peps_graphical_abs.jpg" alt="PEPs graphical abstract">
+            <figcaption>Graphical abstract</figcaption>
+          </figure>
+        </div>
+        <div class="research-text">
+          <p>Numerous speculations surround the impact of grain size on mantle dynamics, yet the lack of available data, whether experimental or natural, poses a substantial challenge in precisely determining this influence.</p>
+          
+          <p>Recent mineral physics experiments have provided estimates for the grain growth rate of bridgmanite-ferropericlase, the primary mineral assemblage in the lower mantle. As part of the European Research Council project <a href='https://cordis.europa.eu/project/id/787527' target="_blank"><b>UltraLVP: Chemistry and transport properties of bridgmanite controlling lower-mantle dynamics</b></a>, I incorporated bridgmanite-ferropericlase grain growth data into numerical models to investigate the effect of grain size in lower mantle viscosity.</p>
+          
+          <p>The outcomes of the study revealed no significant impact of grain size on controlling lower mantle viscosity. This result can be attributed to the slow growth of bridgmanite-ferropericlase compared to upper mantle olivine grain growth, where small grain sizes have minimal influence on lower mantle viscosity. Conversely, if forced to increase like olivine, the growth of bridgmanite-ferropericlase grains leads to a dislocation creep-induced deformation, resulting in grain size-independent viscosity.</p>
+          
+          <div class="publications">
+            <h5>Publications</h5>
+            <ul class="publication-list">
+              <li class="publication-item">
+                <span class="pub-authors">J. Paul*, G. J. Golabek, A. B. Rozel, P. J. Tackley, T. Katsura and H. Fei</span>
+                <span class="pub-year">(2024).</span>
+                <span class="pub-title">Effect of bridgmanite-ferropericlase grain size evolution on Earth's average mantle viscosity: Implications for mantle convection in early and present-day Earth.</span>
+                <span class="pub-journal">Progress in Earth and Planetary Sciences, 11 (64).</span>
+                <a href='https://doi.org/10.1186/s40645-024-00658-3' target="_blank" class="pub-link">DOI:10.1186/s40645-024-00658-3</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layered Ore Complex -->
+  <section id="ore" class="research-section fade-in delay-2">
+    <h2 class="section-header">Layered Structure of Hydrothermal Ore Complex and Geostatistics</h2>
+    <div class="section-content">
+      <div class="research-card">
+        <div class="research-images">
+          <figure class="research-figure">
+            <img src="hydro.jpg" alt="Hydrothermal ore complex">
+            <figcaption>Hydrothermal mineralization</figcaption>
+          </figure>
+        </div>
+        <div class="research-text">
+          <p>This work is part of a project investigating the style of hydrothermal mineralization and ore formation in and around Delhi-Aravalli fold belt. I have worked on the geochemical and geostatistical analysis of amphibole originated from the hydrothermal processes.</p>
+          
+          <p>We detected three generations of amphiboles. The last stage of amphibole formation (A3) is probably associated with IOCG type mineralization of this area.</p>
+          
+          <div class="publications">
+            <h5>Publications</h5>
+            <ul class="publication-list">
+              <li class="publication-item">
+                <span class="pub-authors">A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay</span>
+                <span class="pub-year">(2017).</span>
+                <span class="pub-title">Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight into the ore-forming process.</span>
+                <span class="pub-journal">Ore Geology Reviews.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Crab Ecology -->
+  <section id="crab" class="research-section fade-in delay-3">
+    <h2 class="section-header">Ecology of Mangrove Crab</h2>
+    <div class="section-content">
+      <div class="research-card">
+        <div class="research-images">
+          <figure class="research-figure">
+            <img src="crab.JPG" alt="Mangrove crab">
+            <figcaption>Crab burrow morphology</figcaption>
+          </figure>
+        </div>
+        <div class="research-text">
+          <p>Crabs near Chandipur sea beach show a strange behavior in their pattern of burrowing. Larger the burrow diameter, they become more horizontal. All these large burrows are found only in the backshore of the sea beach and they are oriented opposite to the sea.</p>
+          
+          <p>Geometrically they are more complex with "I", "J", and "Y" shaped burrow. We explain all these parameters as a result of crab energetics.</p>
+          
+          <div class="publications">
+            <h5>Publications</h5>
+            <ul class="publication-list">
+              <li class="publication-item">
+                <span class="pub-authors">J. Paul, S. Mondal, R. Koyal, D. Sarkar</span>
+                <span class="pub-year">(2019).</span>
+                <span class="pub-title">Burrow morphology of the ocypodid crab Ocypode ceratophthalma at Chandipur Coast, Eastern India and its implications.</span>
+                <span class="pub-journal">Current Science</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-researchgate"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-google-scholar"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  // Define locations data
+  const locations = [
+    { lat: 12.9716, lng: 77.5946, name: 'Attreyee Ghosh, IISc Bangalore, India', url: 'https://ceas.iisc.ac.in/~aghosh/index.html' },
+    { lat: 59.9111, lng: 10.7528, name: 'Clint Conrad, University of Oslo, Norway', url: 'https://www.clintconrad.no/' },
+    { lat: 49.9452, lng: 11.574, name: 'Arne Spang, University of Bayreuth, Germany', url: 'https://scholar.google.com/citations?user=toFHfvQAAAAJ&hl=en' },
+    { lat: 53.8008, lng: -1.5491, name: 'Andrea Piccolo, University of Leeds, Leeds, UK', url: 'https://scholar.google.com/citations?user=we6q2eUAAAAJ&hl=en/' },
+    { lat: 47.3769, lng: 8.5417, name: 'Paul Tackley, ETH Zurich, Switzerland', url: 'http://jupiter.ethz.ch/~pjt/' },
+    { lat: 49.9405, lng: 11.578, name: 'Gregor Golabek, University of Bayreuth, Germany', url: 'https://www.staff.uni-bayreuth.de/~bt303373/' },
+    { lat: 30.2849, lng: -97.7341, name: 'Thorsten Becker, University of Texas, Austin, USA', url: 'http://www-udc.ig.utexas.edu/external/becker/' },
+    { lat: 49.9450, lng: 11.578, name: 'Tomo Katsura, University of Bayreuth, Germany', url: 'https://katsurabgi.jimdoweb.com/' },
+    { lat: 30.2655, lng: 120.1536, name: 'Hongzhan Fei, Zhejiang University, Hangzhou, China', url: 'https://sites.google.com/view/feihongzhan' },
+    { lat: 22.498, lng: 88.3719, name: 'Dipak C Pal, Jadavpur University, India', url: 'http://www.jaduniv.edu.in/profile.php?uid=278' },
+    { lat: 56.3398, lng: -2.7967, name: 'Abu Saeed Baidya, University of St. Andrews, Scotland', url: 'https://research-portal.st-andrews.ac.uk/en/persons/abu-saeed-baidya' },
+    { lat: 22.5765, lng: 88.4345, name: 'Subhronil Mondal, IISER Kolkata, India', url: 'https://sites.google.com/site/subhronilindia/Home' }
+  ];
+
+  // Central point (Oslo, Norway)
+  const centralPoint = { lat: 59.9139, lng: 10.7528, name: 'Current location' };
+
+  // Prepare data for Plotly
+  const markerData = {
+    type: 'scattergeo',
+    mode: 'markers+text',
+    lat: locations.map(loc => loc.lat),
+    lon: locations.map(loc => loc.lng),
+    text: locations.map((_, i) => i+1),
+    textposition: 'top right',
+    textfont: {
+      size: 10,
+      color: 'black'
+    },
+    customdata: locations.map(loc => loc.url),
+    hovertext: locations.map(loc => loc.name),
+    hoverinfo: 'text',
+    marker: {
+      size: 8,
+      color: 'red',
+      line: {
+        width: 1,
+        color: 'black'
+      }
+    },
+    name: 'Collaborators'
+  };
+
+  // Add central point
+  const centralMarker = {
+    type: 'scattergeo',
+    mode: 'markers',
+    lat: [centralPoint.lat],
+    lon: [centralPoint.lng],
+    text: ['Center'],
+    hovertext: [centralPoint.name],
+    hoverinfo: 'text',
+    marker: {
+      size: 12,
+      color: 'blue',
+      symbol: 'star'
+    },
+    name: 'My office'
+  };
+
+  // Create lines from central point to each location
+  const lineData = {
+    type: 'scattergeo',
+    mode: 'lines',
+    lat: [],
+    lon: [],
+    line: {
+      width: 1,
+      color: 'rgba(0, 0, 255, 0.9)'
+    },
+    hoverinfo: 'none',
+    name: 'Connections'
+  };
+
+  locations.forEach(loc => {
+    lineData.lat.push(centralPoint.lat, loc.lat, null);
+    lineData.lon.push(centralPoint.lng, loc.lng, null);
+  });
+
+  // Create the map with orthographic projection
+  const layout = {
+    title: 'Research Collaborations Network',
+    geo: {
+      projection: {
+        type: 'orthographic',
+        rotation: {
+          lon: -30,
+          lat: 30
+        }
+      },
+      showland: true,
+      landcolor: 'rgb(200, 200, 200)',
+      countrycolor: 'rgb(150, 150, 150)',
+      coastlinecolor: 'rgb(100, 100, 100)',
+      showcountries: true,
+      showocean: true,
+      oceancolor: 'rgb(200, 222, 246)',
+      showlakes: true,
+      lakecolor: 'rgb(200, 222, 246)',
+      showrivers: false,
+      bgcolor: 'rgba(0,0,0,0)',
+      framecolor: 'black',
+      framewidth: 1
+    },
+    hovermode: 'closest',
+    margin: {
+      l: 0,
+      r: 0,
+      b: 0,
+      t: 40
+    },
+    showlegend: false,
+    annotations: [
+      {
+        x: 0.5,
+        y: 0,
+        xref: 'paper',
+        yref: 'paper',
+        text: '',
+        showarrow: false,
+        font: {
+          size: 10
+        }
+      }
+    ]
+  };
+
+  // Create a numbered key for the collaborators
+  const collaboratorKey = locations.map((loc, i) => 
+    `${i+1}. <a href="${loc.url}" target="_blank">${loc.name.split('<br>')[0]}</a>`
+  ).join('<br>');
+
+  layout.annotations.push({
+    x: 0.02,
+    y: 0.1,
+    xref: 'paper',
+    yref: 'paper',
+    text: '<b>Collaborators:</b><br>' + collaboratorKey,
+    showarrow: false,
+    align: 'left',
+    bgcolor: 'rgba(255,255,255,0.9)',
+    bordercolor: 'rgba(0,0,0,0.5)',
+    borderpad: 5,
+    font: {
+      size: 10
+    }
+  });
+
+  const config = {
+    responsive: true,
+    displayModeBar: false,
+    scrollZoom: true
+  };
+
+  // Combine all data
+  const data = [lineData, markerData, centralMarker];
+  
+  // Create the plot
+  Plotly.newPlot('map', data, layout, config).then(function() {
+    // Add click handler to open URLs
+    document.getElementById('map').on('plotly_click', function(data) {
+      if (data.points[0].data.name === 'Collaborators') {
+        const pointIndex = data.points[0].pointNumber;
+        window.open(locations[pointIndex].url, '_blank');
+      }
+    });
+  });
+
+  // Menu toggle function
+  function toggleMenu() {
+    const menuItems = document.getElementById('menuItems');
+    menuItems.classList.toggle('active');
+  }
+
+  // Close sticky note
+  function closeStickyNote() {
+    document.getElementById("stickyNote").style.display = "none";
+  }
+
+  // Intersection Observer for animations
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
+
+</body>
+</html>

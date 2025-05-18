@@ -9,190 +9,207 @@
 
 
 
-  <style>
+/* Base Styles */
 body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
 
-        .w3-bar .w3-bar-item {
-            padding: 14px 20px;
-        }
+/* Navigation */
+.w3-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-        .w3-bar .w3-bar-item:hover {
-            background-color: #ddd;
-        }
+.w3-bar .w3-bar-item {
+  padding: 14px 20px;
+}
 
-        .w3-top {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
- 	.menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
+.w3-bar .w3-bar-item:hover {
+  background-color: #ddd;
+}
 
-        .w3-bar .menu-items {
-            display: flex;
-            flex-wrap: wrap;
-        }
+.menu-icon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
 
-        .content {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.w3-bar .menu-items {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-        .section {
-            margin-bottom: 40px;
-            width: 100%;
-        }
+/* Content Layout */
+.content {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-        .w3-container {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
+.section {
+  margin-bottom: 40px;
+  width: 100%;
+}
 
-        .w3-container img,
-        .w3-container video {
-            max-width: 100%;
-            height: auto;
-        }
+/* Containers */
+.w3-container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
 
-        .w3-container h2,
-        .w3-container h3,
-        .w3-container h4 {
-            font-weight: 700;
-        }
+/* Typography */
+.w3-container h2,
+.w3-container h3,
+.w3-container h4 {
+  font-weight: 700;
+}
 
-        .w3-container p {
-            margin: 0;
-            padding: 10px 0;
-        }
+.w3-container p {
+  margin: 0;
+  padding: 10px 0;
+}
 
-        a {
-            color: teal;
-            text-decoration: none;
-        }
+/* Links */
+a {
+  color: teal;
+  text-decoration: none;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+a:hover {
+  text-decoration: underline;
+}
 
-        .icon-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
+/* Media Elements */
+.w3-container img,
+.w3-container video,
+.figure {
+  max-width: 100%;
+  height: auto;
+}
 
-        .row {
-            display: flex;
-            margin-bottom: 20px;
-            justify-content: center;
-            text-align: left;
-        }
+/* Lists */
+.icon-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
-        .column-left {
-            flex: 1;
-            max-width: 300px;
-            padding: 10px;
-        }
+/* Columns */
+.row {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  text-align: left;
+}
 
-        .column-right {
-            flex: 2;
-            padding: 10px;
-        }
+.column-left {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px;
+}
 
-        .figure {
-            max-width: 100%;
-            height: auto;
-        }
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
+.column-right {
+  flex: 2;
+  padding: 10px;
+}
 
-            .w3-bar .menu-items {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
+/* Buttons */
+.button {
+  background-color: teal;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
-            .w3-bar .menu-items a {
-                text-align: center;
-                padding: 10px;
-            }
-        }
+/* Sticky Note */
+.sticky-note {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  padding: 15px;
+  background-color: #fffae6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
+}
 
-        .button {
-      background-color: teal;
-      border: none;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-    .button1 {
-      border-radius: 12px;
-    }
- 	/* Sticky Note CSS */
-        .sticky-note {
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 200px;
-            padding: 15px;
-            background-color: #fffae6;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-        }
+.sticky-note h4 {
+  margin-top: 0;
+  font-size: 18px;
+}
 
-        .sticky-note h4 {
-            margin-top: 0;
-            font-size: 18px;
-        }
+.sticky-note a {
+  display: block;
+  padding: 8px 0;
+  color: #0073e6;
+}
 
-        .sticky-note a {
-            display: block;
-            padding: 8px 0;
-            color: #0073e6;
-        }
+.sticky-note .closebtn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
 
-        .sticky-note a:hover {
-            text-decoration: underline;
-        }
+/* Map */
+#map {
+  width: 100%;
+  height: 600px;
+}
 
-        .sticky-note .closebtn {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 18px;
-            cursor: pointer;
-        }
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
 
+  .w3-bar .menu-items {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
 
-   
-        #map {
-            width: 100%;
-            height: 600px;
-        }
-         
-  </style>
+  .w3-bar .menu-items a {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .row {
+    flex-direction: column;
+  }
+  
+  .column-left,
+  .column-right {
+    max-width: 100%;
+  }
+  
+  .sticky-note {
+    position: static;
+    transform: none;
+    width: auto;
+    margin: 20px 0;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -245,71 +262,239 @@ body {
 
 
 
-
-<div id="craton"></div>
+<div id="craton" class="research-section">
   <div class="w3-container">
-          <h4>Craton Dynamics</h4>
-   
-    <div class="fade-in">
-      <div class="w3-row">
-        <div class="w3-col s4 fade-in">
-          <br>
-          <img src="stress-strain.png" style="width:100%">
-          <div class="w3-center"><font size="1"><i>Paul et al., 2019 </i></font></div>
-          <img src="150x-stress.png" style="width:100%">
-          <div class="w3-center"><font size="1"><i>Paul et al., 2023 </i></font></div>
-          <img src="ncc.png" style="width:100%">
-          <div class="w3-center"><font size="1"><i>Paul et al., in prep. </i></font></div>
-          <br>
+    <h2 class="section-title">Craton Dynamics</h2>
+    
+    <div class="section-content">
+      <div class="research-summary">
+        <p class="lead">My research investigates why some cratons survive for billions of years while others (e.g., North China Craton) are destroyed. Key findings:</p>
+        
+        <div class="image-gallery">
+          <figure class="research-figure fade-in">
+            <img src="stress-strain.png" alt="Stress-strain relationship diagram">
+            <figcaption><small><i>Paul et al., 2019</i></small></figcaption>
+          </figure>
           
-        </div>
-        <div class="w3-col fade-in s8">
-          <p>
-<p>My research investigates why some cratons survive for billions of years while others (e.g., North China Craton) are destroyed. Key findings:</p>
-
-<ul>
-  <li><strong>Stability requires:</strong> Viscosity >10<sup>23</sup> Pa·s in cratons and >10<sup>20</sup> Pa·s in asthenosphere</li>
-  <li><strong>Protection mechanisms:</strong> 
-    <ol>
-      <li>Inverse stress-strain relationship reduces deformation</li>
-      <li>Convective self-compression enhances rigidity</li>
-    </ol>
-  </li>
-  <li><strong>Destruction triggers:</strong> 
-    <ul>
-      <li>Thermal weakening (mantle plumes)</li>
-      <li>Metasomatic weakening (slab fluids)</li>
-    </ul>
-  </li>
-</ul>
-
-<p>Numerical models quantify these processes and their timescales.</p>
-         <br>
-         <b>Publications</b>
-          <br>
-          >>  8. J. Paul, A. Spang, A. Piccolo (2025). Hydration weakening and destruction of the North China Craton, Tectonophysics, 908, 230756, <a href ='https://www.sciencedirect.com/science/article/pii/S0040195125001428' target='_blank'>https://doi.org/10.1016/j.tecto.2025.230756</a>. 
-	<br>
-          >> [6] <b>J. Paul*,</b> C.P. Conrad, T.W. Becker, A. Ghosh, 2023. Convective self-compression of cratons and the
-             stabilization of old lithosphere. Geophysical Research Letters, 50, e2022GL101842. <a href="https://doi.org/10.1029/2022GL101842" target="_blank">[Open access]</a>
-             <br> 
-          >> [5]. J. Paul, A. Ghosh, 2022. Could the Reunion plume have thinned the Indian craton?, Geology
-             <br>
-          >> [4] <i><b>J. Paul,</b> A. Ghosh, 2020. Evolution of cratons through the ages: A time-dependent study, 
-             Earth and Planetary Science Letters, , 531, 115962. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X19306545?via%3Dihub" target="_blank" >
-             [Online version] </a></i>
-             <br>
-          >> [2] <i> <b>J. Paul*,</b> A. Ghosh, C.P. Conrad, 2019. Traction and strain-rate at the base of the lithosphere:
-            An insight into cratonic survival. Geophysical Journal International, 217(2), 1024-1033</i>
-          </p>
+          <figure class="research-figure fade-in">
+            <img src="150x-stress.png" alt="150x stress visualization">
+            <figcaption><small><i>Paul et al., 2023</i></small></figcaption>
+          </figure>
           
+          <figure class="research-figure fade-in">
+            <img src="ncc.png" alt="North China Craton analysis">
+            <figcaption><small><i>Paul et al., in prep.</i></small></figcaption>
+          </figure>
         </div>
+        
+        <div class="key-findings">
+          <div class="finding-card">
+            <h5>Stability Requirements</h5>
+            <ul>
+              <li>Viscosity >10<sup>23</sup> Pa·s in cratons</li>
+              <li>Viscosity >10<sup>20</sup> Pa·s in asthenosphere</li>
+            </ul>
+          </div>
+          
+          <div class="finding-card">
+            <h5>Protection Mechanisms</h5>
+            <ol>
+              <li>Inverse stress-strain relationship reduces deformation</li>
+              <li>Convective self-compression enhances rigidity</li>
+            </ol>
+          </div>
+          
+          <div class="finding-card">
+            <h5>Destruction Triggers</h5>
+            <ul>
+              <li>Thermal weakening (mantle plumes)</li>
+              <li>Metasomatic weakening (slab fluids)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <p class="research-methods">Numerical models quantify these processes and their timescales.</p>
+      </div>
+      
+      <div class="publications-list">
+        <h5>Publications</h5>
+        <ul class="publication-items">
+          <li>
+            <span class="pub-number">8.</span>
+            <span class="pub-authors">J. Paul, A. Spang, A. Piccolo</span>
+            <span class="pub-year">(2025).</span>
+            <span class="pub-title">Hydration weakening and destruction of the North China Craton,</span>
+            <span class="pub-journal">Tectonophysics, 908, 230756.</span>
+            <a href="https://www.sciencedirect.com/science/article/pii/S0040195125001428" target="_blank" class="pub-link">DOI:10.1016/j.tecto.2025.230756</a>
+          </li>
+          
+          <li>
+            <span class="pub-number">6.</span>
+            <span class="pub-authors"><b>J. Paul*,</b> C.P. Conrad, T.W. Becker, A. Ghosh</span>
+            <span class="pub-year">(2023).</span>
+            <span class="pub-title">Convective self-compression of cratons and the stabilization of old lithosphere.</span>
+            <span class="pub-journal">Geophysical Research Letters, 50, e2022GL101842.</span>
+            <a href="https://doi.org/10.1029/2022GL101842" target="_blank" class="pub-link">[Open access]</a>
+          </li>
+          
+          <li>
+            <span class="pub-number">5.</span>
+            <span class="pub-authors">J. Paul, A. Ghosh</span>
+            <span class="pub-year">(2022).</span>
+            <span class="pub-title">Could the Reunion plume have thinned the Indian craton?,</span>
+            <span class="pub-journal">Geology</span>
+          </li>
+          
+          <li>
+            <span class="pub-number">4.</span>
+            <span class="pub-authors"><b>J. Paul,</b> A. Ghosh</span>
+            <span class="pub-year">(2020).</span>
+            <span class="pub-title">Evolution of cratons through the ages: A time-dependent study,</span>
+            <span class="pub-journal">Earth and Planetary Science Letters, 531, 115962.</span>
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X19306545?via%3Dihub" target="_blank" class="pub-link">[Online version]</a>
+          </li>
+          
+          <li>
+            <span class="pub-number">2.</span>
+            <span class="pub-authors"><b>J. Paul*,</b> A. Ghosh, C.P. Conrad</span>
+            <span class="pub-year">(2019).</span>
+            <span class="pub-title">Traction and strain-rate at the base of the lithosphere: An insight into cratonic survival.</span>
+            <span class="pub-journal">Geophysical Journal International, 217(2), 1024-1033.</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </div>
 
-
-
+<style>
+  .research-section {
+    padding: 2rem 0;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .research-figure {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  
+  .research-figure img {
+    max-width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .research-figure img:hover {
+    transform: scale(1.02);
+  }
+  
+  .research-summary {
+    margin-bottom: 2rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .key-findings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .finding-card {
+    flex: 1 1 250px;
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .finding-card h5 {
+    color: #2980b9;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .publications-list {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .publications-list h5 {
+    color: #2c3e50;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+  
+  .publication-items {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .publication-items li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #eee;
+  }
+  
+  .publication-items li:last-child {
+    border-bottom: none;
+  }
+  
+  .pub-number {
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+  
+  .pub-authors {
+    color: #2c3e50;
+  }
+  
+  .pub-title {
+    font-style: italic;
+  }
+  
+  .pub-link {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .pub-link:hover {
+    text-decoration: underline;
+  }
+  
+  .image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+  
+  .image-gallery .research-figure {
+    flex: 1 1 300px;
+    max-width: 100%;
+  }
+</style>
 <!-----------------------Grain size ------------->
 
 
