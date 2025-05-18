@@ -185,6 +185,23 @@ body {
             cursor: pointer;
         }
 
+	.key-insights {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .insight-list {
+            padding-left: 20px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: teal;
+        }
+        .subtext {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 30px;
 
    
         #map {
@@ -248,43 +265,51 @@ body {
 
 <div id="craton"></div>
   <div class="w3-container">
-          <h4>Craton Dynamics</h4>
+          <h3>Craton Dynamics</h3>
    
     <div class="fade-in">
       <div class="w3-row">
-        <div class="w3-col s4 fade-in">
+        <div class="w3-col fade-in">
+
+    <p>Understanding the stability of cratons on a tectonically active planet like Earth remains one of the grand challenges in geodynamics. Through the development of numerical models of craton evolution, my research aims to shed light on why some cratons have remained stable for over 3 billion years, while others, like the North China Craton, have undergone complete destruction.</p>
           <br>
-          <img src="stress-strain.png" style="width:100%">
-          <div class="w3-center"><font size="1"><i>Paul et al., 2019 </i></font></div>
-          <img src="150x-stress.png" style="width:100%">
-          <div class="w3-center"><font size="1"><i>Paul et al., 2023 </i></font></div>
-          <img src="ncc.png" style="width:100%">
-          <div class="w3-center"><font size="1"><i>Paul et al., in prep. </i></font></div>
-          <br>
-          
+	<div class="w3-col fade-in" style="text-align: center;">
+  		<video width="70%" controls>
+    		<source src="Crat_high_visc.mp4" type="video/mp4">
+        	</video>
+   	<div class="w3-center"><small><i>Paul and Ghosh, 2020, EPSL.</i></small></div>
+	</div>
         </div>
-        <div class="w3-col fade-in s8">
-          <p>
-<p>My research investigates why some cratons survive for billions of years while others (e.g., North China Craton) are destroyed. Key findings:</p>
+        <div class="w3-col fade-in">
+         
 
-<ul>
-  <li><strong>Stability requires:</strong> Viscosity >10<sup>23</sup> Pa·s in cratons and >10<sup>20</sup> Pa·s in asthenosphere</li>
-  <li><strong>Protection mechanisms:</strong> 
-    <ol>
-      <li>Inverse stress-strain relationship reduces deformation</li>
-      <li>Convective self-compression enhances rigidity</li>
-    </ol>
-  </li>
-  <li><strong>Destruction triggers:</strong> 
-    <ul>
-      <li>Thermal weakening (mantle plumes)</li>
-      <li>Metasomatic weakening (slab fluids)</li>
-    </ul>
-  </li>
-</ul>
+       
+    <div class="key-insights">
+        <h4>Key Findings</h4>
+        <p>My findings suggest that <span class="highlight">the combination of viscosity and thickness</span> plays a crucial role in enhancing cratonic strength, shielding them from tectonic recycling. Two key theoretical insights emerge:</p>
+        
+        <ol class="insight-list">
+            <li><span class="highlight">Stress and strain rates exhibit an inverse relationship</span> at the lithosphere's base, reducing deformation beneath thick cratons.</li>
+            <li><span class="highlight">Cratonic thickness and viscosity induce convective self-compression</span>, further reinforcing their resistance to disintegration.</li>
+        </ol>
+        
+        <p>My research also indicates that cratons require a <span class="highlight">minimum viscosity of 10²³ Pa·s</span> and that the surrounding asthenosphere must have a viscosity <span class="highlight">no lower than 10²⁰ Pa·s</span> to sustain long-term stability.</p>
+    </div>
+    
+    <h4>Mechanisms of Destruction</h4>
 
-<p>Numerical models quantify these processes and their timescales.</p>
-         <br>
+	<div class="w3-col fade-in" style="text-align: center;">
+  		<video width="70%" controls>
+    		<source src="NCC_ref.mp4" type="video/mp4">
+        	</video>
+   	<div class="w3-center"><small><i>Paul et al., 2025, Tectonophysics.</i></small></div>
+	</div>
+<br>
+          
+    <p>However, cratons can undergo thinning or destruction under certain conditions. <span class="highlight">Thermal weakening</span> by mantle plumes (e.g., the Indian Craton) or <span class="highlight">hydration weakening</span> from mantle/slab fluids (e.g., the North China Craton) can lead to their demise. My work explores these destruction mechanisms and compares their associated timescales.</p>
+    
+    <div class="subtext">
+           <br>
          <b>Publications</b>
           <br>
           >>  8. J. Paul, A. Spang, A. Piccolo (2025). Hydration weakening and destruction of the North China Craton, Tectonophysics, 908, 230756, <a href ='https://www.sciencedirect.com/science/article/pii/S0040195125001428' target='_blank'>https://doi.org/10.1016/j.tecto.2025.230756</a>. 

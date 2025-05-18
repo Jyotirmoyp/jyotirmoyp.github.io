@@ -1,0 +1,40 @@
+<div class="w3-col fade-in">
+  <!-- Python Code Editor -->
+  <textarea id="python-code" rows="10" cols="50" style="width: 50%; font-family: monospace;">
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 2*np.pi, 100)
+y = np.sin(x)
+plt.plot(x, y)
+plt.title("Sine Wave")
+plt.show()
+  </textarea>
+  <br>
+  <button onclick="runPython()">Run Python</button>
+  <div id="output"></div>
+
+  <!-- Load Pyodide -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+  <script>
+    async function runPython() {
+      let pythonCode = document.getElementById("python-code").value;
+      let output = document.getElementById("output");
+      output.innerHTML = "Running...";
+      
+      // Initialize Pyodide
+      let pyodide = await loadPyodide({
+        stdout: (text) => output.innerHTML += text,
+        stderr: (text) => output.innerHTML += `<span style="color:red">${text}</span>`
+      });
+      
+      // Run code
+      try {
+        await pyodide.loadPackage("matplotlib");
+        await pyodide.runPython(pythonCode);
+      } catch (err) {
+        output.innerHTML += `<span style="color:red">Error: ${err}</span>`;
+      }
+    }
+  </script>
+</div>
