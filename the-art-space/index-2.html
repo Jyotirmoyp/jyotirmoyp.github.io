@@ -49,43 +49,42 @@
       padding-bottom: 2rem;
     }
     
-    /* Mobile layout */
-    .image-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1rem;
-      width: 100%;
+    /* Mobile layout - image first, then quote */
+    @media (max-width: 767px) {
+      .mobile-stack {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .image-figure {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      
+      .image-figure img {
+        max-width: 70%;
+        margin: 0 auto;
+      }
+      
+      .quote-container {
+        width: 100%;
+        padding: 0 1rem;
+      }
+      
+      .quote {
+        max-width: 400px;
+        margin: 0 auto;
+        font-size: 0.875rem;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+      }
     }
     
-    .image-figure {
-      width: 100%;
-      text-align: center;
-    }
-    
-    .image-figure img {
-      max-width: 70%;
-      margin: 0 auto;
-    }
-    
-    .quote-container {
-      width: 100%;
-      padding: 0 1rem;
-      text-align: center;
-    }
-    
-    .quote {
-      max-width: 400px;
-      margin: 0 auto;
-      font-size: 0.875rem; /* Smaller text for mobile */
-      text-align: justify; /* Justified text */
-      text-justify: inter-word; /* Better word spacing */
-      hyphens: auto; /* Automatic hyphenation */
-    }
-    
-    /* Desktop specific styles */
+    /* Desktop layout - quote left, image right */
     @media (min-width: 768px) {
-      .content-layout {
+      .desktop-layout {
         display: flex;
         flex-direction: row;
         align-items: flex-end;
@@ -113,12 +112,13 @@
       .quote-container {
         width: 100%;
         padding: 0;
-        text-align: left;
       }
       
       .quote {
         margin: 0;
         max-width: none;
+        font-size: 1rem;
+        text-align: left;
       }
     }
   </style>
@@ -147,7 +147,27 @@
   <!-- Main Content -->
   <main class="flex-grow">
     <div class="content-container p-4 max-w-6xl mx-auto">
-      <div class="content-layout">
+      <!-- Mobile layout (image first, then quote) - shown only on mobile -->
+      <div class="mobile-stack md:hidden">
+        <div class="image-figure">
+          <img src="index-3.jpg" alt="Photography">
+        </div>
+        <div class="quote-container">
+          <div class="quote text-gray-600">
+            <p class="mb-4">
+              Recently, photography has become almost as widely practiced an amusement as sex and dancing - which means
+              that, like every mass art form, photography is not practiced by most people as an art. It is merely a social 
+              rite, a defense against anxiety, and a tool of power.
+            </p>
+            <p class="text-sm italic">
+              — Susan Sontag, <span class="not-italic">On Photography</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Desktop layout (quote left, image right) - shown only on desktop -->
+      <div class="desktop-layout hidden md:flex">
         <div class="left-column">
           <div class="quote-container">
             <div class="quote text-gray-600">
@@ -164,10 +184,8 @@
         </div>
         
         <div class="right-column">
-          <div class="image-wrapper">
-            <div class="image-figure">
-              <img src="index-3.jpg" alt="Photography">
-            </div>
+          <div class="image-figure">
+            <img src="index-3.jpg" alt="Photography">
           </div>
         </div>
       </div>
