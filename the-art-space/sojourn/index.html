@@ -68,7 +68,8 @@
   
   #carousel-caption {
     margin-top: 1rem;
-    text-align: center;
+    text-align: justify;
+    text-justify: inter-word;
     padding: 0 1rem;
   }
 }
@@ -156,9 +157,10 @@
 
 <!-- Main Content -->
 
+<!-- Main Content -->
 <div class="content-container p-4 max-w-6xl mx-auto">
   <div class="desktop-layout">
-    <!-- Left Column for Caption -->
+    <!-- Left Column for Caption (Desktop only) -->
     <div class="left-column">
       <div class="quote-container">
         <div class="quote text-gray-600">
@@ -172,14 +174,19 @@
     <!-- Right Column for Image -->
     <div class="right-column">
       <div class="image-figure">
-        <div class="carousel relative">
+        <div class="carousel">
           <img id="carousel-image" src="01.jpg" alt="Photography" class="transition duration-500 ease-in-out w-full">
-          <!-- Slide Number -->
-          <div id="slide-counter" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-gray-500 text-sm  px-2 py-1 rounded"></div>
-          <!-- Navigation Buttons -->
-          <div class="flex justify-center mt-2 space-x-4">
-            <button id="prev" class="p-2 text-gray-600 hover:text-black">&#10094;</button>
-            <button id="next" class="p-2 text-gray-600 hover:text-black">&#10095;</button>
+          
+          <!-- Mobile-only caption (hidden on desktop) -->
+          <p id="mobile-caption" class="text-gray-400 text-sm mt-4 px-4 md:hidden text-justify"></p>
+          
+          <!-- Navigation controls -->
+          <div class="carousel-controls">
+            <div id="slide-counter" class="text-gray-500 text-sm my-2"></div>
+            <div class="flex justify-center space-x-4">
+              <button id="prev" class="p-2 text-gray-600 hover:text-black">&#10094;</button>
+              <button id="next" class="p-2 text-gray-600 hover:text-black">&#10095;</button>
+            </div>
           </div>
         </div>
       </div>
