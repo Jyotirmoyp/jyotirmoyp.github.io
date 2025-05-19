@@ -46,7 +46,7 @@
     .content-container {
       display: flex;
       flex-direction: column;
-      padding-bottom: 2rem;
+      padding-bottom: 0; /* Remove padding at bottom */
     }
     
     /* Mobile layout - image first, then quote */
@@ -70,6 +70,7 @@
       .quote-container {
         width: 100%;
         padding: 0 1rem;
+        margin-bottom: 1rem; /* Space between quote and footer */
       }
       
       .quote {
@@ -119,6 +120,11 @@
         max-width: none;
         font-size: 1rem;
         text-align: left;
+      }
+      
+      /* Add back padding for desktop */
+      .content-container {
+        padding-bottom: 2rem;
       }
     }
   </style>
@@ -192,7 +198,7 @@
     </div>
   </main>
 
-  <footer class="w3-center w3-margin-top text-gray-600 py-4">
+  <footer class="w3-center w3-margin-top text-gray-600 pb-4 px-4">
     <a href="https://www.instagram.com/khanhabados/" target="_blank"
        rel="noopener noreferrer"
        class="inline-flex items-center text-gray-600 hover:text-pink-600 transition-colors text-2xl">
