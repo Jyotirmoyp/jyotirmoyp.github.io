@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Website</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/lucide-react"></script>
   <style>
     /* Custom CSS for the menu */
@@ -41,35 +42,84 @@
       }
     }
 
-    /* New layout styles */
+    /* Layout styles */
     .content-container {
       display: flex;
       flex-direction: column;
+      padding-bottom: 2rem;
     }
     
+    /* Mobile layout */
     .image-wrapper {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       margin-bottom: 1rem;
-    }
-    
-    .image-caption {
-      width: 33.33%;
-      padding-right: 1rem;
+      width: 100%;
     }
     
     .image-figure {
-      width: 66.66%;
+      width: 100%;
       text-align: center;
     }
     
     .image-figure img {
-      width: 70%;
+      max-width: 70%;
       margin: 0 auto;
+    }
+    
+    .quote-container {
+      width: 100%;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    
+    .quote {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    /* Desktop specific styles */
+    @media (min-width: 768px) {
+      .content-layout {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        min-height: 70vh;
+      }
+      
+      .left-column {
+        width: 33.33%;
+        padding-right: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+      }
+      
+      .right-column {
+        width: 66.66%;
+      }
+      
+      .image-figure img {
+        width: 100%;
+        max-width: none;
+      }
+      
+      .quote-container {
+        width: 100%;
+        padding: 0;
+        text-align: left;
+      }
+      
+      .quote {
+        margin: 0;
+        max-width: none;
+      }
     }
   </style>
 </head>
-<body class="min-h-screen bg-gray-100 text-gray-800">
+<body class="min-h-screen bg-gray-100 text-gray-800 flex flex-col">
   <!-- Navbar -->
   <nav class="flex justify-between items-center p-4">
     <button id="menu-toggle" class="focus:outline-none">
@@ -91,36 +141,43 @@
   </div>
 
   <!-- Main Content -->
-  <div class="content-container p-4 max-w-6xl mx-auto">
-    <div class="image-wrapper">
-      <div class="image-caption">
-        <!-- Caption will go here -->
-      </div>
-      <div class="image-figure">
-        <img src="index-3.jpg" alt="Photography">
-      </div>
-    </div>
-    
-    <div class="flex">
-      <div class="w-3/3 pr-4">
-        <!-- Empty left space -->
-      </div>
-      <div class="w-1/3">
-        <div class="quote text-gray-600">
-          <p class="mb-4">
-            Recently, photography has become almost as widely practiced an amusement as sex and dancing - which means
-            that, like every mass art form, photography is not practiced by most people as an art. It is merely a social 
-            rite, a defense against anxiety, and a tool of power.
-          </p>
-          <p class="text-sm italic">
-            — Susan Sontag, <span class="not-italic">On Photography</span>
-          </p>
+  <main class="flex-grow">
+    <div class="content-container p-4 max-w-6xl mx-auto">
+      <div class="content-layout">
+        <div class="left-column">
+          <div class="quote-container">
+            <div class="quote text-gray-600">
+              <p class="mb-4">
+                Recently, photography has become almost as widely practiced an amusement as sex and dancing - which means
+                that, like every mass art form, photography is not practiced by most people as an art. It is merely a social 
+                rite, a defense against anxiety, and a tool of power.
+              </p>
+              <p class="text-sm italic">
+                — Susan Sontag, <span class="not-italic">On Photography</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="right-column">
+          <div class="image-wrapper">
+            <div class="image-figure">
+              <img src="index-3.jpg" alt="Photography">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 
-
+  <footer class="w3-center w3-margin-top text-gray-600 py-4">
+    <a href="https://www.instagram.com/khanhabados/" target="_blank"
+       rel="noopener noreferrer"
+       class="inline-flex items-center text-gray-600 hover:text-pink-600 transition-colors text-2xl">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <p class="mt-2 text-sm text-gray-500">© Jyotirmoy. All rights reserved.</p>
+  </footer>
 
   <script>
     const menuToggleButton = document.getElementById('menu-toggle');
@@ -130,16 +187,5 @@
       menu.classList.toggle('hidden');
     });
   </script>
-
-    <footer class="w3-center w3-margin-top text-gray-600">
-       <a href="https://www.instagram.com/khanhabados/" target="_blank"
-       rel="noopener noreferrer"
-       class="inline-flex items-center text-gray-600 hover:text-pink-600 transition-colors">
-      <i class="fab fa-instagram mr-2"></i>
-      Follow on Instagram
-    </a>
-    <p class="mt-2 text-sm text-gray-500">© Jyotirmoy. All rights reserved.</p>
-    </footer>
-
 </body>
 </html>
