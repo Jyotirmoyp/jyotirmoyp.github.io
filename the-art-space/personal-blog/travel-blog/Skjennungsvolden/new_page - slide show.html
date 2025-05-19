@@ -7,7 +7,6 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/lucide-react"></script>
   <style>
-    /* Custom CSS for the menu */
     #menu-container {
       position: relative;
     }
@@ -18,7 +17,6 @@
       z-index: 10;
     }
 
-    /* Desktop layout: Menu overlays content */
     @media (min-width: 641px) {
       #menu {
         position: absolute;
@@ -28,7 +26,6 @@
       }
     }
 
-    /* Mobile/Tablet layout: Menu pushes content down */
     @media (max-width: 640px) {
       #menu {
         background-color: rgba(255, 255, 255, 0.95);
@@ -41,36 +38,35 @@
       }
     }
 
-    /* New layout styles */
     .content-container {
       display: flex;
       flex-direction: column;
     }
-    
+
     .image-wrapper {
       display: flex;
       justify-content: center;
       margin-bottom: 1rem;
     }
-    
+
     .image-caption {
       width: 33.33%;
       padding-right: 1rem;
     }
-    
+
     .image-figure {
       width: 66.66%;
       text-align: center;
+      position: relative;
     }
-    
-    .image-figure img {
+
+    .carousel img {
       width: 70%;
       margin: 0 auto;
     }
   </style>
 </head>
 <body class="min-h-screen bg-gray-100 text-gray-800">
-  <!-- Navbar -->
   <nav class="flex justify-between items-center p-4">
     <button id="menu-toggle" class="focus:outline-none">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +76,6 @@
     <h1 class="text-lg font-light"> <a href="https://jyotirmoyp.github.io/"> Home </a></h1>
   </nav>
 
-  <!-- Expandable Menu -->
   <div id="menu-container">
     <div id="menu" class="flex flex-col gap-2 text-gray-600 font-light hidden">
       <a href="#home" class="block p-2 hover:text-gray-900">Home</a>
@@ -90,17 +85,26 @@
     </div>
   </div>
 
-  <!-- Main Content -->
   <div class="content-container p-4 max-w-6xl mx-auto">
     <div class="image-wrapper">
       <div class="image-caption">
-        <!-- Caption will go here -->
+ 	 <p id="carousel-caption" class="text-gray-400 text-sm mt-60 pl-4"></p>
       </div>
+
       <div class="image-figure">
-        <img src="index-3.jpg" alt="Photography">
+        <div class="carousel relative">
+          <img id="carousel-image" src="01.jpg" alt="Photography" class="transition duration-500 ease-in-out">
+	  
+          <div class="absolute top-1/2 left-0 transform -translate-y-1/2">
+            <button id="prev" class="p-2 text-gray-600 hover:text-black">&#10094;</button>
+          </div>
+          <div class="absolute top-1/2 right-0 transform -translate-y-1/2">
+            <button id="next" class="p-2 text-gray-600 hover:text-black">&#10095;</button>
+          </div>
+        </div>
       </div>
     </div>
-    
+
     <div class="flex">
       <div class="w-3/3 pr-4">
         <!-- Empty left space -->
@@ -120,26 +124,52 @@
     </div>
   </div>
 
+ <script>
+  const menuToggleButton = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggleButton.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+  const images = ['02.jpg', '03.jpg', '04.jpg'];
+  const captions = [
+    'A silent street on a foggy morning',
+    'Golden hour in the mountains',
+    'Portrait of a thoughtful stranger'
+  ];
+  let currentIndex = 0;
+
+  const carouselImage = document.getElementById('carousel-image');
+  const carouselCaption = document.getElementById('carousel-caption');
+
+  function updateCarousel() {
+    carouselImage.src = images[currentIndex];
+    carouselCaption.textContent = captions[currentIndex];
+  }
+
+  document.getElementById('prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateCarousel();
+  });
+
+  document.getElementById('next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateCarousel();
+  });
+
+  // Initialize caption on load
+  updateCarousel();
+</script>
 
 
-  <script>
-    const menuToggleButton = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-
-    menuToggleButton.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-  </script>
-
-    <footer class="w3-center w3-margin-top text-gray-600">
-       <a href="https://www.instagram.com/khanhabados/" target="_blank"
-       rel="noopener noreferrer"
-       class="inline-flex items-center text-gray-600 hover:text-pink-600 transition-colors">
+  <footer class="w3-center w3-margin-top text-gray-600">
+    <a href="https://www.instagram.com/khanhabados/" target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center text-gray-600 hover:text-pink-600 transition-colors">
       <i class="fab fa-instagram mr-2"></i>
       Follow on Instagram
     </a>
     <p class="mt-2 text-sm text-gray-500">© 2023 My Space. All rights reserved.</p>
-    </footer>
-
+  </footer>
 </body>
 </html>

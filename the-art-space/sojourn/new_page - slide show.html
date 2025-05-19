@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide-react"></script>
+  <style>
+    #menu-container {
+      position: relative;
+    }
+
+    #menu {
+      width: 100%;
+      background-color: transparent;
+      z-index: 10;
+    }
+
+    @media (min-width: 641px) {
+      #menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: transparent;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #menu {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+      }
+
+      #menu a {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .content-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .image-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .image-caption {
+      width: 33.33%;
+      padding-right: 1rem;
+    }
+
+    .image-figure {
+      width: 66.66%;
+      text-align: center;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 70%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-100 text-gray-800">
+  <nav class="flex justify-between items-center p-4">
+    <button id="menu-toggle" class="focus:outline-none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 5h18M3 12h18M3 19h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+    <h1 class="text-lg font-light"> <a href="https://jyotirmoyp.github.io/"> Home </a></h1>
+  </nav>
+
+  <div id="menu-container">
+    <div id="menu" class="flex flex-col gap-2 text-gray-600 font-light hidden">
+      <a href="jyotirmoyp.github.io/the-art-space/sojourn/" class="block p-2 hover:text-gray-900">Sojourn</a>
+      <a href="#photos" class="block p-2 hover:text-gray-900">Photo Series</a>
+      <a href="#blog" class="block p-2 hover:text-gray-900">Blog</a>
+      <a href="#instagram" class="block p-2 hover:text-gray-900">Instagram</a>
+    </div>
+  </div>
+
+  <div class="content-container p-4 max-w-6xl mx-auto">
+    <div class="image-wrapper">
+      <div class="image-caption">
+ 	 <p id="carousel-caption" class="text-gray-400 text-sm mt-60 pl-4"></p>
+      </div>
+
+      <div class="image-figure">
+        <div class="carousel relative">
+          <img id="carousel-image" src="01.jpg" alt="Photography" class="transition duration-500 ease-in-out">
+	  
+          <div class="absolute top-1/2 left-0 transform -translate-y-1/2">
+            <button id="prev" class="p-2 text-gray-600 hover:text-black">&#10094;</button>
+          </div>
+          <div class="absolute top-1/2 right-0 transform -translate-y-1/2">
+            <button id="next" class="p-2 text-gray-600 hover:text-black">&#10095;</button>
+          </div>
+	  <!-- Slide Number -->
+  <div id="slide-counter" class="text-gray-500 text-sm mt-2"></div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex">
+      <div class="w-3/3 pr-4">
+        <!-- Empty left space -->
+      </div>
+      <div class="w-1/3">
+        <div class="quote text-gray-600">
+          <p class="mb-2">
+            Sojourn
+          </p>
+          <p class="text-sm italic">
+            Bayreuth, Bavaria, <span class="not-italic"> My first stay in abroad</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <script>
+  const slideCounter = document.getElementById('slide-counter');
+  const menuToggleButton = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggleButton.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+  const images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '20.jpg', '21.jpg', '22.jpg', '24.jpg', '25.jpg', '26.jpg', '27.jpg', '28.jpg', '29.jpg', '30.jpg', '31.jpg', '32.jpg', '33.jpg', '34.jpg', '35.jpg', '36.jpg', '37.jpg', '38.jpg', '39.jpg', '40.jpg', '41.jpg', '42.jpg', '43.jpg', '45.jpg', '46.jpg', '47.jpg', '48.jpg', '49.jpg', '50.jpg', '51.jpg', '51a.jpg', '53.jpg', '54.jpg', '55.jpg', '56.jpg', '57.jpg', '58.jpg', '60.jpg', '61.jpg', '62.jpg', '64.jpg', '65.jpg' ];
+  const captions = [
+    ' I came to Bayreuth when the autumn leaves were falling. The streets adorned themselves with the red and yellow hues of natures pigments. I arrived in Bayreuth when every leaf was a flower. The winter was yet to arrive; nevertheless, my warm skin from the land of sun and shadow was already craving for the comforting embrace of warmth.',
+    'Along Richard Wagner Strasse,I saw a collection of modern houses that were different from the traditional Franconian architectures of timber frames and steeply pitched roofs. These homes are distinctly colorful, adding a vibrant touch to the streetscape.',
+    'The city was home to many parks and gardens. One day, I strolled through the famous garden, Ermitage. The air was heavy with moisture, yet filled with the sweet scent of blooming flowers and the gentle rustling of leaves. It felt as though nature itself was whispering secrets. Every leaf was like a flower.', 
+    'Just outside the town, there stands another castle, its ancient walls whispering tales of a bygone era. Fresh snow has just blanketed the outskirts, creating a pristine white canvas that sparkles under the winter sun. This is a typical Franconian landscape, where the harmony between history and nature is evident in every snow-covered tree and every serene, quiet path.',
+
+    'That palace was known as the palace of fantasy. A silent lake nestled nearby, its tranquil waters mirroring the ethereal beauty of the surroundings. A solitary, snow-covered home stood nearby, seemingly untouched and waiting for inhabitants who never arrived.', 
+
+    'As snow blanketed the outskirts, its gentle embrace gradually reached the city. On the 1st of December, the first flakes descended upon the urban landscape, transforming streets into a winter wonderland.',
+
+    'As December arrived, so did the light—Christmas lights adorned the streets and homes. Amidst the pandemic, markets remained closed, leaving only the twinkling lights to illuminate the spirit of the season.',
+
+    'On Christmas Day, the city got a lot of snow. A white chrismas, like a scene from a holiday postcard. The city center stood in tranquil solitude. The quietude was punctuated only by my soft crunch of footsteps in the snow and the chiming of church bells.',
+
+    'The city center had an iconic dinosaur statue, likely inspired by fossils unearthed from nearby regions. This tribute was probably crafted in memory of those ancient remnants.',
+
+    'I was savoring the cityscape amidst the deep snow. Behind the city centre, there lay a park named Hofgarten. Within it, a small pool and a water fountain stood frozen and lifeless.',
+
+    'Near the city flows a small river known as the Rotter Main. On that same day, I strolled along the snowy banks of the River Main, enjoying the serene beauty of the winter landscape reflected in its thin water.',
+
+    'The river meanders into the depths of the jungle, gradually disappearing from view. At the edge of the city, only a handful of colorful houses remain, standing as a testament to human habitation on the verge of wilderness.',
+
+    'I continued walking for several more miles until all signs of human presence—the river, houses, and any semblance of civilization—vanished. Ahead lay only an expansive, eternal snow field, stretching endlessly under the vast sky.',
+
+    'I ascended a bit higher, and from there, I had a panoramic view of the city, the Franconian homeland, stretching across the horizon. In the distance, a solitary figure—a lone lady—was walking along the road that leads back home.',
+
+    'On the 31st of December, I arrived in Bamberg. It was my first break, and luckily, the weather was sunny. I stood near the hanging Rathaus, the most iconic building in the city, marveling at its unique architecture and soaking in the charm of Bamberg.',
+
+    'The Bamberg Cathedral was immense, unlike any cathedral I had ever seen. As the largest in Bavaria, its grandeur was truly awe-inspiring. I spent some time there, basking in the winter sun and absorbing the gothic essence of its architecture.',
+
+    'I used my film camera after a long hiatus, loading a fresh Ektar 100 film into my Canon rangefinder. As sunlight poured over the typical Franconian households, I captured the interplay of sun and shadow, preserving the sublime essence of Franconia in each frame.',
+
+    'I was on my way back home in the evening when I encountered a group of saxophone players in front of a church. They were jamming, singing, and wishing everyone a Happy New Year. It was a joyous and heartfelt scene, becoming my last cherished memory of 2021.',
+
+    'January arrived, and the snow grew thicker. On a Saturday, I joined a Bayreuth city tour to Fichtelgebirge. The tour included free transport and a guided hike to the mountain\'s summit. The hike was delightful, winding through a snow-covered jungle, offering breathtaking views and a serene winter wonderland experience.',
+    
+    "A Russian photographer named Marco was with me. He pointed out the fascinating snow patterns on the tree stems. During high winds, white snow adheres to the side opposite the wind, leaving the other side dark. In the depths of the jungle, amidst towering trees, these patterns created a striking zebra effect. It looked remarkably like a Japanese painting, with nature’s artistry on full display.",
+
+    "There were others in the group as well. I didn't know German, and they knew very little English, so conversation was minimal. A lady brought her dog, who resembled my own Coco, a brown-colored Indie pup. The dog provided me with some company during the hike.",
+
+    "While returning from the mountain, I came across Fichtelsee, a lake that now showed no trace of water under its icy cover. Intrigued, I made a plan to visit this spot again in the summer to witness its true beauty. Indeed, I returned during the warmer months and captured its splendor. I\'ll share a picture of that visit later.",
+
+    "One day in the middle of February, the snow melted in Franconia, and the sun graced us for a few hours. I opened my balcony for the first time in several months. The wind was still crisp and chilly, but the warmth of the sun felt like a drop of water in a barren desert. From my window, I could see the train station, Wegner's opera house, and the distant mountains of Franconian Switzerland. In that moment, I realized just how much the sun truly makes me happy.",
+
+    "And finally, I saw people on the street. They were happy—some were singing, children were running and playing. I could see the glimps of spring in the small Franconian town, bringing with it a renewed sense of joy and life.",
+
+    "In the labyrinth of the medieval city, people wandered through the narrow streets, and a sense of warmth was returning. The city was slowly coming alive again, with laughter echoing off ancient walls and sunlight filtering into the winding alleys.",
+
+    "One weekend, I planned to visit Nuremberg, the largest city of Franconia. Nuremberg, famous for its historical significance—the place where the war ended! Paved with history in every corner, the city quickly became my most beloved place. It was a place where I could spend time and made me happy.",
+
+    "This is the famous city center square, a place steeped in history. Once, a thriving Jewish colony stood here, but it was tragically obliterated during the Black Plague. The square now stands as a reminder of both the city's resilience and the stories it holds, layered within its stones and architecture.",
+
+    " Inside the imperial castle, a couple was basking in the sunlight, leaning comfortably against the characteristic Franconian wall. The warm light cast gentle shadows, blending with the textured stone, as they quietly enjoyed the serene moment amid the castle’s historic grandeur.",
+
+    "The local markets in European cities have a timeless charm, often characterized by their distinctive red and white striped cloth shades. These vibrant canopies line the stalls, creating a cheerful, bustling atmosphere where vendors offer fresh produce, handmade crafts, and local delicacies. The colors add a lively touch to the historic cobblestone streets, embodying the spirit of traditional European marketplaces.",
+
+    "Like Paris, Nuremberg also has a few charming river islands. Though smaller in size, these islands exude a cozy, intimate atmosphere, nestled between the gentle flow of the river. Quaint bridges connect them, and they’re often dotted with old stone buildings, trees, and quiet paths, making them perfect spots for a peaceful stroll or a moment of quiet reflection amidst the city’s historical beauty.",
+
+    "That weekend, daylight saving time had ended, yet the sun lingered in the sky. It was 7:30 pm on the clock, but the world outside still basked in the warm glow of evening light, giving the city an extended touch of brightness and an almost magical feel as day blended seamlessly into night.",
+
+    "Winter still held its grip over the Fichtelgebirge region. Amidst the snowy landscape, I encountered alpacas for the first time. Their thick, soft coats and curious eyes added a touch of warmth to the cold surroundings, making the encounter feel both surreal and unexpectedly heartwarming.",
+
+    "Every summit along the Fichtelgebirge ridge offers a familiar yet breathtaking view: dense Franconian forests stretching endlessly, with vast, open snow fields lying just beyond. The landscape unfolds in layers of dark evergreens and pristine white, a serene contrast that captures the quiet beauty of winter in this rugged region.",
+
+    "During Easter, I set off on my first holiday to the Alps. Traveling from Munich toward Innsbruck, I passed by the stunning Lake Kochelsee. Its tranquil waters reflected the surrounding mountains, creating a picturesque scene that perfectly captured the serene beauty of the Bavarian landscape.",
+
+    "We arrived in Cortina d'Ampezzo, a quaint village nestled near the Italian Dolomites. From my balcony, I was greeted by an awe-inspiring view: jagged mountain peaks rising majestically, dusted with snow, against a clear blue sky. The serene village lay below, surrounded by natures grandeur, making it feel like a scene from a postcard.",
+
+    "For the next few days, we spent our time hiking and driving along the undulating folds of the mountains. The hamlets we passed sparkled in the mountain sun, their charming homes nestled among lush greenery and vibrant wildflowers. Each turn revealed a sublime view, immersing us in the natural beauty and tranquility of the Dolomites.",
+
+    "We landed up at the frozen Lago di Braies, its serene, icy surface shimmering under the sun. We hiked up the mountain, navigating the rugged terrain alongside glacial formations and moraines. The crisp air was invigorating, and the views of the surrounding peaks and valleys made every step of the ascent worthwhile.",
+
+    "A postcard-perfect village appeared along our journey, embodying the charm of the European Alps. With its quaint chalets, flower-laden balconies, and mountain backdrop, it seemed straight out of a fairy tale.",
+
+    "From Italy, I went to visit ETH Zurich. There I traveled into Switzerland, where the peak of summer greeted me with vibrant landscapes. The typical mustard fields were in full bloom, their bright yellow flowers stretching endlessly under the clear blue sky. The fields swayed gently in the warm breeze, creating a stunning contrast against the lush green hills and adding a splash of color to the picturesque Swiss countryside.",
+  
+    "That day was a bit hazy, with the majestic Jungfrau fading softly behind the quaint huts of Kleine Scheidegg. The mountain's towering presence was veiled in a delicate mist, creating a dreamy atmosphere that added to the charm of the tiny village.",
+
+    "After Switzerland, I made my way to Prague, a city that had long been on my bucket list. I spent several enchanting evenings strolling along the banks of the Vltava River. The gentle sounds of the water, combined with the stunning views of the historic architecture, created a magical ambiance. As the sun set, the city lights reflected on the river, transforming the landscape into a shimmering tapestry of gold and amber.",
+
+    "The final summer holiday took me to Croatia, a stunning destination rich in history and natural beauty. Although I had no prior knowledge of Game of Thrones, it was clear that fans of the series would easily recognize this place. The medieval architecture, ancient walls, and limestone landscapes served as the backdrop for many iconic scenes, making it a pilgrimage site for enthusiasts.",
+
+    "The final summer holiday took me to Croatia, a stunning destination rich in history and natural beauty. Although I had no prior knowledge of Game of Thrones, it was clear that fans of the series would easily recognize this place. The medieval architecture, ancient walls, and limestone landscapes served as the backdrop for many iconic scenes, making it a pilgrimage site for enthusiasts.",
+
+    "After the holidays were over, I traveled to Hungary for a conference. Though my time in Budapest was brief, I made the most of it by roaming the city's enchanting streets. A few evenings were simply not enough to fully immerse myself in its rich history and vibrant culture. From the stunning architecture along the Danube to the lively atmosphere of its cafes, I found myself captivated by the charm of Budapest, wishing for just a little more time to explore its hidden gems.",
+
+    "From the vantage point of Buda Castle, the Parliament building of Hungary comes into view, standing as the most iconic structure in the country. Its majestic façade, adorned with intricate details and crowned by stunning domes, is truly a sight to behold. The blend of its impressive size and ornate design makes it a centerpiece of the city, symbolizing Hungary’s heritage and resilience.",
+
+    "One of the things that impressed me in Budapest was the large community markets. These vibrant marketplaces are a staple in Eastern European cities, and I noticed similar ones in Bratislava.",
+
+    "Near the Parliament House, I encountered the poignant memorial known as the Shoes on the Danube. This installation commemorates the Jewish victims of the massacre during the second great war of European nations.",
+
+    "Since I was passing through Vienna on my way to Hungary, I decided to take a halt in my most favorite mainland European city. Vienna was the first city I stepped into in Europe back in 2018, and it still holds that enchanting charm. The beautiful architecture, from the grand palaces to the elegant streets, evokes a sense of timelessness.",
+
+    "After returning from Hungary, I received an invitation from the University of Oslo, allowing me to visit the country I had long desired to explore—Norway. During my short stay, I marveled at the iconic opera house, which is probably the most photographed building in Oslo. Little did I know at that time that I would be fortunate enough to spend a significant phase of my life in this charming city, where breathtaking landscapes and vibrant culture blend seamlessly.",
+
+    "I was strolling around the medieval fortress of Oslo, soaking in the history and ambiance of the surroundings. It was almost 9 PM, and the sun was beginning to dip below the horizon, casting a warm glow over the landscape. Amidst the fading light, I noticed a lone lady still basking in the sun's rays, relishing the last moments of warmth before winter's arrival.",
+
+    "After my long tours, I finally returned home to Franconia. The last phase of autumn lingered in the air, with vibrant leaves still clinging to the trees. The air carried the scent of fallen leaves and the promise of the approaching winter. As I settled back into the familiar rhythm of home, I felt a comforting blend of nostalgia.",
+
+    "Often, I take a stroll along these lonely paths that lead into the jungle of Franconia. Yet, as winter approaches, I can feel the familiar phase of depression creeping in. The dark winter nights stretch endlessly, casting a shadow over my thoughts and emotions.",
+
+    "If you recall the once-frozen lake house, which presented an almost black-and-white picture during the winter, it transforms into the most vibrant place during the fall. The trees surrounding the lake burst into a riot of colors—fiery reds, brilliant oranges, and sunny yellows dance together, reflecting beautifully on the water's surface.",
+
+    "Just a few months ago, this landscape was an eternal snow field, blanketed in a pristine layer of white that stretched as far as the eye could see. For now, however, the vibrant colors of autumn create a striking contrast, reminding us of the ever-changing nature of the seasons. Each moment is fleeting, but the cycle of beauty—be it in snow or fall foliage—connects us to the rhythm of the earth.",
+
+    "The first snow appeared in early November, a fleeting glimpse of winter's arrival. It dusted the ground lightly, creating a delicate layer that sparkled in the morning light.",
+
+    "And again, I found myself back at that same house, where the river disappears into the embrace of the jungle. It was a scene from pre-winter,still green, and colorful.",
+
+    "After two years of COVID-19, the Christmas market finally opened its doors once again, and Nuremberg, renowned for its festive spirit, was a must-visit destination. The air was filled with the sweet scent of roasted almonds, spiced mulled wine, and gingerbread, creating a warm, inviting atmosphere. Twinkling lights adorned the stalls, each brimming with handcrafted gifts and seasonal treats, rekindling the joy of holiday traditions.",
+
+    "Once again, winter has arrived, marking the passage of another year. The lonely corners of the city are once again frozen, wrapped in a blanket of glistening white snow. Streets that were once bustling with life now stand quiet, with only the soft crunch of footsteps breaking the stillness. The bare branches of trees reach out like skeletal hands against the pale sky, creating a haunting beauty in the serene landscape. It's a time for reflection, as the city transforms into a winter wonderland, reminding me of the cyclical nature of time and the quiet beauty that each season brings.",
+
+    "As winter engulfs us, we find ourselves becoming more accepting, relishing the sun's absence over the snow-covered field while gazing towards the picturesque Franconian city.",
+
+
+  ];
+  let currentIndex = 0;
+
+  const carouselImage = document.getElementById('carousel-image');
+  const carouselCaption = document.getElementById('carousel-caption');
+
+  function updateCarousel() {
+    carouselImage.src = images[currentIndex];
+    carouselCaption.textContent = captions[currentIndex];
+    slideCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+  }
+
+  document.getElementById('prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateCarousel();
+  });
+
+  document.getElementById('next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateCarousel();
+  });
+
+  // Initialize caption on load
+  updateCarousel();
+</script>
+
+
+    <footer class="w3-center w3-margin-top text-gray-600  pb-0 mb-0">
+       <a href="https://www.instagram.com/khanhabados/" target="_blank"
+       rel="noopener noreferrer"
+       class="inline-flex items-center text-gray-600 hover:text-pink-600 transition-colors">
+      <i class="fab fa-instagram mr-2"></i>
+      Follow on Instagram
+    </a>
+    <p class="mt-2 text-sm text-gray-500">© Jyotirmoy. All rights reserved.</p>
+    </footer>
+</body>
+</html>
