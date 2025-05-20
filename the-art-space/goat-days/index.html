@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sojourn</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide-react"></script>
+  <style>
+    /* Custom CSS for the menu */
+    #menu-container {
+      position: relative;
+    }
+
+    #menu {
+      width: 100%;
+      background-color: transparent;
+      z-index: 10;
+    }
+
+    /* Desktop layout: Menu overlays content */
+    @media (min-width: 641px) {
+      #menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: transparent;
+      }
+    }
+
+ /* Mobile layout - image first, then quote */
+@media (max-width: 767px) {
+  .desktop-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .left-column, .right-column {
+    width: 100%;
+  }
+  
+  .image-figure {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .image-figure img {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  
+  .quote-container {
+    width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .quote {
+    max-width: 400px;
+    margin: 0 auto;
+    font-size: 0.875rem;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+  }
+  
+  #carousel-caption {
+    margin-top: 1rem;
+    text-align: justify;
+    text-justify: inter-word;
+    padding: 0 1rem;
+  }
+}
+/* Desktop layout - caption left, image right */
+@media (min-width: 768px) {
+  .desktop-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end; /* Align items to bottom */
+    min-height: 70vh;
+  }
+  
+  .left-column {
+    width: 33.33%;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Push content to bottom */
+    height: 100%;
+    padding-bottom: 2rem; /* Add some spacing at bottom */
+  }
+  
+  .right-column {
+    width: 66.66%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .image-figure img {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .quote-container {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .quote {
+    margin: 0;
+    max-width: none;
+    font-size: 1rem;
+    text-align: justify;
+     }
+  
+  #carousel-caption {
+    padding: 0;
+    margin-top: 1rem;
+    text-align: left;
+  }
+  
+  .carousel {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Navigation buttons styling */
+  .carousel .flex {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+  </style>
+</head>
+<body class="min-h-screen bg-gray-100 text-gray-800 flex flex-col">
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4">
+    <button id="menu-toggle" class="focus:outline-none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 5h18M3 12h18M3 19h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+    <h1 class="text-lg font-light"> <a href="https://jyotirmoyp.github.io/the-art-space/"> Home </a></h1>
+  </nav>
+
+  <!-- Expandable Menu -->
+  <div id="menu-container">
+    <div id="menu" class="flex flex-col gap-2 text-gray-600 font-light hidden">
+      
+      <a href="https://jyotirmoyp.github.io/the-art-space/himalaya/" class="block p-2 hover:text-gray-900">Himalaya</a>
+      <a href="https://jyotirmoyp.github.io/the-art-space/sojourn/" class="block p-2 hover:text-gray-900">Sojourn</a>
+      <a href="https://jyotirmoyp.github.io/the-art-space/Hygge/" class="block p-2 hover:text-gray-900">Hygge</a>
+      <a href="https://jyotirmoyp.github.io/the-art-space/loneliness/" class="block p-2 hover:text-gray-900">Loneliness</a>
+
+
+    </div>
+  </div>
+
+<!-- Main Content -->
+
+<!-- Main Content -->
+<div class="content-container p-4 max-w-6xl mx-auto">
+  <div class="desktop-layout">
+    <!-- Left Column for Caption (Desktop only) -->
+    <div class="left-column">
+      <div class="quote-container">
+        <div class="quote text-gray-600">
+          <p class="mb-2">Hygge</p>
+          <p class="text-sm italic">Hygge (/ˈh(j)uːɡə/, H(Y)OO-gə; Danish: [ˈhykə]; Norwegian: [ˈhŷɡːə]) is a word in Danish and Norwegian that describes a cozy, contented mood evoked by comfort and conviviality. As a cultural category with its sets of associated practices, hygge has more or less the same meaning in both places and in both languages; however, the emphasis on hygge as a core part of Danish culture is a recent phenomenon, dating to the late 20th century. In the 21st century, the concept has also been familiarized abroad. <span class="not-italic"> </span></p>
+        </div>
+        <p id="carousel-caption" class="text-gray-400 text-sm mt-4"></p>
+      </div>
+    </div>
+    
+    <!-- Right Column for Image -->
+    <div class="right-column">
+      <div class="image-figure">
+        <div class="carousel">
+          <img id="carousel-image" src="01.jpg" alt="Photography" class="transition duration-500 ease-in-out w-full">
+          
+          <!-- Mobile-only caption (hidden on desktop) -->
+          <p id="mobile-caption" class="text-gray-400 text-sm mt-4 px-4 md:hidden text-justify"></p>
+          
+          <!-- Navigation controls -->
+          <div class="carousel-controls">
+            <div id="slide-counter" class="text-gray-500 text-sm my-2"></div>
+            <div class="flex justify-center space-x-4">
+              <button id="prev" class="p-2 text-gray-600 hover:text-black">&#10094;</button>
+              <button id="next" class="p-2 text-gray-600 hover:text-black">&#10095;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+ <script>
+  const slideCounter = document.getElementById('slide-counter');
+  const menuToggleButton = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggleButton.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+  const images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg' ];
+  const captions = [
+
+  ];
+
+  let currentIndex = 0;
+
+  const carouselImage = document.getElementById('carousel-image');
+  const carouselCaption = document.getElementById('carousel-caption');
+
+function updateCarousel() {
+  carouselImage.src = images[currentIndex];
+  carouselCaption.textContent = captions[currentIndex];
+  slideCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+  
+  // On mobile, we need to re-center the counter
+  if (window.innerWidth <= 767) {
+    slideCounter.style.display = 'inline-block';
+    slideCounter.style.margin = '0.5rem auto';
+  }
+}
+
+  document.getElementById('prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateCarousel();
+  });
+
+  document.getElementById('next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateCarousel();
+  });
+
+  // Initialize caption on load
+  updateCarousel();
+</script>
+
+  </main>
+
+  <footer class="w3-center w3-margin-top text-gray-600 pb-4 px-4">
+    <a href="https://www.instagram.com/khanhabados/" target="_blank"
+       rel="noopener noreferrer"
+       class="inline-flex items-center text-gray-600 hover:text-pink-600 transition-colors text-2xl">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <p class="mt-2 text-sm text-gray-500">© Jyotirmoy. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggleButton = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    menuToggleButton.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
