@@ -29,48 +29,44 @@
       }
     }
 
- /* Mobile layout - image first, then quote */
+/* Mobile layout */
 @media (max-width: 767px) {
-  .desktop-layout {
+  .image-figure img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .mobile-controls {
     display: flex;
     flex-direction: column;
-  }
-  
-  .left-column, .right-column {
+    align-items: center;
     width: 100%;
   }
-  
-  .image-figure {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1rem;
+
+  #slide-counter {
+    order: 1;
+    margin: 0.5rem 0;
   }
-  
-  .image-figure img {
-    max-width: 70%;
-    margin: 0 auto;
+
+  .mobile-controls .flex {
+    order: 2;
+    margin: 0.5rem 0;
   }
-  
-  .quote-container {
-    width: 100%;
-    padding: 0 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .quote {
-    max-width: 400px;
-    margin: 0 auto;
-    font-size: 0.875rem;
+
+  #mobile-caption {
+    order: 3;
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
-  }
-  
-  #carousel-caption {
-    margin-top: 1rem;
-    text-align: justify;
-    text-justify: inter-word;
+    margin: 0.5rem 0 1.5rem;
     padding: 0 1rem;
+    width: 100%;
+  }
+
+  /* Hide desktop caption in mobile */
+  .left-column {
+    display: none;
   }
 }
 /* Desktop layout - caption left, image right */
@@ -171,14 +167,24 @@
       </div>
     </div>
     
-    <!-- Right Column for Image -->
-    <div class="right-column">
-      <div class="image-figure">
-        <div class="carousel">
-          <img id="carousel-image" src="01.jpg" alt="Photography" class="transition duration-500 ease-in-out w-full">
-          
-          <!-- Mobile-only caption (hidden on desktop) -->
-          <p id="mobile-caption" class="text-gray-400 text-sm mt-4 px-4 md:hidden text-justify"></p>
+<!-- Right Column for Image -->
+<div class="right-column">
+  <div class="image-figure">
+    <div class="carousel">
+      <img id="carousel-image" src="01.jpg" alt="Photography" class="transition duration-500 ease-in-out w-full">
+      
+      <!-- Mobile controls in new order -->
+      <div class="mobile-controls">
+        <div id="slide-counter" class="text-gray-500 text-sm my-2 text-center"></div>
+        <div class="flex justify-center space-x-4 mb-4">
+          <button id="prev" class="p-2 text-gray-600 hover:text-black">&#10094;</button>
+          <button id="next" class="p-2 text-gray-600 hover:text-black">&#10095;</button>
+        </div>
+        <p id="mobile-caption" class="text-gray-400 text-sm px-4 text-justify"></p>
+      </div>
+    </div>
+  </div>
+</div>
           
           <!-- Navigation controls -->
           <div class="carousel-controls">
