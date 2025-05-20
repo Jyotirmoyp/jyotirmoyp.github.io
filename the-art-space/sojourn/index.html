@@ -29,45 +29,13 @@
       }
     }
 
-/* Mobile layout */
-@media (max-width: 767px) {
-  .image-figure img {
-    max-width: 100%;
-    margin: 0 auto;
-    display: block;
-  }
-
-  .mobile-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  #slide-counter {
-    order: 1;
-    margin: 0.5rem 0;
-  }
-
-  .mobile-controls .flex {
-    order: 2;
-    margin: 0.5rem 0;
-  }
-
-  #mobile-caption {
-    order: 3;
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-    margin: 0.5rem 0 1.5rem;
-    padding: 0 1rem;
-    width: 100%;
-  }
-
-  /* Hide desktop caption in mobile */
-  .left-column {
-    display: none;
-  }
+function updateCarousel() {
+  carouselImage.src = images[currentIndex];
+  // For desktop (hidden in mobile):
+  carouselCaption.textContent = captions[currentIndex]; 
+  // For mobile:
+  mobileCaption.textContent = captions[currentIndex];
+  slideCounter.textContent = `${currentIndex + 1} / ${images.length}`;
 }
 /* Desktop layout - caption left, image right */
 @media (min-width: 768px) {
@@ -186,19 +154,7 @@
   </div>
 </div>
           
-          <!-- Navigation controls -->
-          <div class="carousel-controls">
-            <div id="slide-counter" class="text-gray-500 text-sm my-2"></div>
-            <div class="flex justify-center space-x-4">
-              <button id="prev" class="p-2 text-gray-600 hover:text-black">&#10094;</button>
-              <button id="next" class="p-2 text-gray-600 hover:text-black">&#10095;</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
   </div>
