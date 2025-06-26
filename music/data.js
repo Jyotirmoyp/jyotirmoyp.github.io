@@ -30,10 +30,10 @@ const musicData = {
         title: "Kheyal",
         gharanas: {
             kirana: {
-                name: "Kirana Gharana",
+                name: "Agra Gharana",
                 artists: {
                     bhimsenJoshi: {
-                        name: "Pandit Bhimsen Joshi",
+                        name: "Ustad Faiyaz Khan",
                         description: "One of the greatest exponents of the Kirana gharana.",
                         youtubeLinks: [
                             {title: "Raga Miyan ki Todi", url: "https://youtube.com/link3"},
@@ -50,7 +50,7 @@ const musicData = {
         title: "Instrumental",
         categories: {
             sitar: {
-                name: "Sitar",
+                name: "Senia Maihar",
                 artists: {
                     raviShankar: {
                         name: "Pandit Ravi Shankar",
