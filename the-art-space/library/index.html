@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Art Space</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide-react"></script>
+  <style>
+    /* Custom CSS for the menu */
+    #menu-container {
+      position: relative;
+    }
+
+    #menu {
+      width: 100%;
+      background-color: transparent;
+      z-index: 10;
+    }
+
+    /* Desktop layout: Menu overlays content */
+    @media (min-width: 641px) {
+      #menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: transparent;
+      }
+    }
+
+      #menu a {
+        padding: 0.25rem 0.5rem; /* Reduced padding */
+        font-size: 0.875rem; /* Slightly smaller font */
+      }
+    }
+
+    /* Mobile/Tablet layout: Menu pushes content down */
+    @media (max-width: 640px) {
+      #menu {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+      }
+
+      #menu a {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    /* Layout styles */
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 0; /* Remove padding at bottom */
+    }
+    
+    /* Mobile layout - image first, then quote */
+    @media (max-width: 767px) {
+      .mobile-stack {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .image-figure {
+        width: 90%;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      
+      .image-figure img {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+      
+      .quote-container {
+        width: 100%;
+        padding: 0 1rem;
+        margin-bottom: 1rem; /* Space between quote and footer */
+      }
+      
+      .quote {
+        max-width: 400px;
+        margin: 0 auto;
+        font-size: 0.875rem;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+      }
+    }
+    
+    /* Desktop layout - quote left, image right */
+    @media (min-width: 768px) {
+      .desktop-layout {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        min-height: 70vh;
+      }
+      
+      .left-column {
+        width: 33.33%;
+        padding-right: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+      }
+      
+      .right-column {
+        width: 66.66%;
+      }
+      
+      .image-figure img {
+        width: 90%;
+        max-width: none;
+      }
+      
+      .quote-container {
+        width: 100%;
+        padding: 0;
+      }
+      
+      .quote {
+        margin: 0;
+        max-width: none;
+        font-size: 1rem;
+        text-align: left;
+      }
+      
+      /* Add back padding for desktop */
+      .content-container {
+        padding-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-100 text-gray-800 flex flex-col">
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4">
+    <button id="menu-toggle" class="focus:outline-none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 5h18M3 12h18M3 19h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+    <h1 class="text-lg font-light"> <a href="https://jyotirmoyp.github.io/the-art-space/"> Home </a></h1>
+  </nav>
+
+  <!-- Expandable Menu -->
+  <div id="menu-container">
+    <div id="menu" class="flex flex-col gap-1 text-gray-600 font-light hidden">
+      <a href="https://jyotirmoyp.github.io/the-art-space/himalaya/" class="block p-2 hover:text-gray-900">Himalaya</a>
+      <a href="https://jyotirmoyp.github.io/the-art-space/sojourn/" class="block p-2 hover:text-gray-900">Sojourn</a>
+      <a href="https://jyotirmoyp.github.io/the-art-space/Hygge/" class="block p-2 hover:text-gray-900">Hygge</a>
+      <a href="https://jyotirmoyp.github.io/the-art-space/loneliness/" class="block p-2 hover:text-gray-900">Loneliness</a>
+      <a href="https://jyotirmoyp.github.io/the-art-space/fra-ingensteds/" class="block p-2 hover:text-gray-900">Fra Ingensteds (From no where)</a>
+      <a href="https://jyotirmoyp.github.io/the-art-space/land-of-midnight-sun/" class="block p-2 hover:text-gray-900">Land of mid-night sun</a>
+
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="flex-grow">
+    <div class="content-container p-4 max-w-6xl mx-auto">
+      <!-- Mobile layout (image first, then quote) - shown only on mobile -->
+      <div class="mobile-stack md:hidden">
+        <div class="image-figure">
+          <img src="index-3.jpg" alt="Photography">
+        </div>
+        <div class="quote-container">
+          <div class="quote text-gray-600">
+            <p class="mb-4">
+              Recently, photography has become almost as widely practiced an amusement as sex and dancing - which means
+              that, like every mass art form, photography is not practiced by most people as an art. It is merely a social 
+              rite, a defense against anxiety, and a tool of power.
+            </p>
+            <p class="text-sm italic">
+              — Susan Sontag, <span class="not-italic">On Photography</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Desktop layout (quote left, image right) - shown only on desktop -->
+      <div class="desktop-layout hidden md:flex">
+        <div class="left-column">
+          <div class="quote-container">
+            <div class="quote text-gray-600">
+              <p class="mb-4">
+                Recently, photography has become almost as widely practiced an amusement as sex and dancing - which means
+                that, like every mass art form, photography is not practiced by most people as an art. It is merely a social 
+                rite, a defense against anxiety, and a tool of power.
+              </p>
+              <p class="text-sm italic">
+                — Susan Sontag, <span class="not-italic">On Photography</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="right-column">
+          <div class="image-figure">
+            <img src="index-3.jpg" alt="Photography">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="w3-center w3-margin-top text-gray-600 pb-4 px-4">
+    <a href="https://www.instagram.com/khanhabados/" target="_blank"
+       rel="noopener noreferrer"
+       class="inline-flex items-center text-gray-600 hover:text-pink-600 transition-colors text-2xl">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <p class="mt-2 text-sm text-gray-500">© Jyotirmoy. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggleButton = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    menuToggleButton.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
