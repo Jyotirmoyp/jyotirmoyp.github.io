@@ -35,6 +35,9 @@
             font-size: 1.4rem;
             flex-shrink: 0;
             flex-grow: 1;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            padding: 0 0.5rem;
         }
         
         .home-link {
@@ -103,14 +106,10 @@
             font-size: 0.9rem;
             text-decoration: none;
             display: inline-block;
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            background-color: #f5f0f5;
         }
         
         .author-tag:hover {
             text-decoration: underline;
-            background-color: #e8e0e8;
         }
         
         .book-genres {
@@ -226,6 +225,8 @@
             align-items: center;
             color: #555;
             font-size: 0.8rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .genre-item:hover, .book-item:hover {
@@ -248,6 +249,7 @@
             margin-right: 0.5rem;
             width: 0.8rem;
             text-align: center;
+            flex-shrink: 0;
         }
         
         footer {
@@ -402,17 +404,18 @@
                 width: 200px;
                 height: 300px;
             }
+            
             .book-title-header {
-                white-space: normal;
-                text-overflow: clip;
-                overflow: visible;
-                text-align: left;
-                padding: 0.5rem;
                 font-size: 1.2rem;
-                line-height: 1.3;
-                hyphens: auto;
-                word-wrap: break-word;
+                text-align: left;
+                padding: 0;
+                -webkit-line-clamp: 2;
+                max-height: 2.6em;
+                white-space: normal;
+                word-break: break-word;
+                overflow-wrap: break-word;
             }
+
             /* Mobile styles for status list */
             .status-list-header {
                 display: none;
@@ -587,13 +590,14 @@
                 rating: 3.7
             },
             {
+                id: 7,
                 title: "Plato and a Platypus Walk Into a Bar: Understanding Philosophy through Jokes",
                 shortTitle: "Plato and a Platypus Walk Into a Bar",
                 author: "Daniel Klein, Thomas Cathcart Galeano",
                 genres: ["Philosophy"],
-                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1477829446i/32810304.jpg",
-                description: "Daniel Klein and Thomas Cathcart take philosophy to task with flair and gusto in this wise and hilarious treasure of a book. Lively, original, and powerfully informative, Plato and a Platypus Walk Into a Bar is an irreverent crash course through the great thinkers and traditions. It’s philosophy for everyone, from the curious layperson to the professor who’s seen it all. Klein and Cathcart have the knack of getting to the core of an issue in a crystal clear line, meaning there’s more room for jokes – good jokes, clever jokes, jokes that’ll have you laughing so hard the people nearby will shoot you strange looks. It’s the philosophy class you wish you’d had and finally, it all makes sense!",
-                publisher: "OneWorld Publications, 2016 (this edition), Original 2007",
+                cover: "https://via.placeholder.com/250x375?text=Plato+Platypus",
+                description: "This entertaining guide to philosophy explains profound ideas through jokes and humor.",
+                publisher: "Philosophy Press",
                 status: "read",
                 progress: 100,
                 rating: 4.5
@@ -652,7 +656,7 @@
             // Display the first book in this genre
             if (filteredBooks.length > 0) {
                 displayBook(filteredBooks[0]);
-                // Update header with first book's title
+                // Update header with first book's full title
                 document.getElementById('bookTitleHeader').textContent = filteredBooks[0].title;
             } else {
                 document.getElementById('bookTitleHeader').textContent = "No Books Found";
@@ -876,40 +880,55 @@
         }
         
         // Update book list display with alphabet indicators
-function updateBookList(booksToShow) {
-    const bookList = document.getElementById('bookList');
-    bookList.innerHTML = '';
-    
-    let lastInitial = '';
-    
-    const sortedBooks = [...booksToShow].sort((a, b) => a.title.localeCompare(b.title));
-    
-    sortedBooks.forEach(book => {
-        const currentInitial = book.title.charAt(0).toUpperCase();
-        const li = document.createElement('li');
-        li.className = 'book-item';
-        
-        // Use shortTitle if available, otherwise use full title
-        const displayTitle = book.shortTitle || book.title;
-        
-        if (currentInitial !== lastInitial) {
-            li.innerHTML = `<span class="alphabet-index">${currentInitial}</span>${displayTitle}`;
-            lastInitial = currentInitial;
-        } else {
-            li.innerHTML = `<span class="alphabet-index" style="visibility: hidden;">${currentInitial}</span>${displayTitle}`;
+        function updateBookList(booksToShow) {
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = '';
+            
+            let lastInitial = '';
+            
+            const sortedBooks = [...booksToShow].sort((a, b) => a.title.localeCompare(b.title));
+            
+            sortedBooks.forEach(book => {
+                const currentInitial = book.title.charAt(0).toUpperCase();
+                const li = document.createElement('li');
+                li.className = 'book-item';
+                
+                if (currentInitial !== lastInitial) {
+                    const span = document.createElement('span');
+                    span.className = 'alphabet-index';
+                    span.textContent = currentInitial;
+                    
+                    const titleSpan = document.createElement('span');
+                    titleSpan.textContent = book.shortTitle || book.title;
+                    
+                    li.appendChild(span);
+                    li.appendChild(titleSpan);
+                    lastInitial = currentInitial;
+                } else {
+                    const span = document.createElement('span');
+                    span.className = 'alphabet-index';
+                    span.style.visibility = 'hidden';
+                    span.textContent = currentInitial;
+                    
+                    const titleSpan = document.createElement('span');
+                    titleSpan.textContent = book.shortTitle || book.title;
+                    
+                    li.appendChild(span);
+                    li.appendChild(titleSpan);
+                }
+                
+                li.addEventListener('click', () => {
+                    displayBook(book);
+                    showBookView();
+                    document.querySelectorAll('.book-item').forEach(item => {
+                        item.classList.remove('active-book');
+                    });
+                    li.classList.add('active-book');
+                });
+                bookList.appendChild(li);
+            });
         }
         
-        li.addEventListener('click', () => {
-            displayBook(book);
-            showBookView();
-            document.querySelectorAll('.book-item').forEach(item => {
-                item.classList.remove('active-book');
-            });
-            li.classList.add('active-book');
-        });
-        bookList.appendChild(li);
-    });
-}
         // Function to render star ratings
         function renderStars(rating, small = false) {
             if (rating === 0) return 'Not rated';
@@ -940,7 +959,7 @@ function updateBookList(booksToShow) {
         function displayBook(book) {
             document.getElementById('bookCover').src = book.cover;
             document.getElementById('bookCover').alt = book.title;
-            document.getElementById('bookTitleHeader').textContent = book.shortTitle || book.title;
+            document.getElementById('bookTitleHeader').textContent = book.title;
             
             // Display author(s) as clickable tag(s)
             const authorContainer = document.getElementById('bookAuthor');
