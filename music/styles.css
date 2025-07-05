@@ -20,6 +20,8 @@ body {
     min-height: 100vh;
 }
 
+
+
 header {
     padding: 0.8rem 1rem;
 }
@@ -49,6 +51,29 @@ main {
     color: #777;
     font-style: italic;
     text-align: center;
+}
+
+/* Header Styles */
+header {
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    position: relative;
+    }
+
+.home-button {
+    
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.home-button:hover {
+    text-color: #008080;
+    color: #008080;
 }
 
 .menu {
@@ -270,7 +295,16 @@ main {
         width: 100%;
         padding: 0.5rem 0;
     }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 0.5rem;
+    }
     
+    .home-button {
+        align-self: flex-end;
+        margin-top: 0.5rem;
+    }
     .artist-content {
         flex-direction: column;
     }
