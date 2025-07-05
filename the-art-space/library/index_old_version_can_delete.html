@@ -15,41 +15,23 @@
         body {
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #f8f8f8;
             color: #555;
             line-height: 1.4;
-            overflow: hidden;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
         
         .book-title-header {
             padding: 1rem;
-            text-align: left;
+            text-align: center;
             font-size: 1.4rem;
             color: #666;
-            flex-shrink: 0;
-            flex-grow: 1;
         }
         
-        .home-link {
-            padding: 1rem;
-            color: #666;
-            text-decoration: none;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-        
-        .main-content {
+        .container {
             display: flex;
             flex: 1;
             padding: 0 1rem;
-            overflow: hidden;
         }
         
         .book-cover-container {
@@ -61,10 +43,9 @@
         }
         
         .book-cover {
-            width: 250px;
-            height: 375px;
-            object-fit: cover;
-            object-position: center;
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
         }
         
         .book-description-container {
@@ -72,13 +53,6 @@
             padding: 1rem;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .book-description-container::-webkit-scrollbar {
-            display: none;
         }
         
         .book-author {
@@ -103,66 +77,38 @@
             flex: 1;
             padding: 1rem;
             font-size: 0.8rem;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
         
         .slider-columns {
             display: flex;
             gap: 0.5rem;
-            height: 100%;
         }
         
         .genre-column, .book-column {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        
-        .genre-list-container, .book-list-container {
-            flex: 1;
-            overflow-y: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .genre-list-container::-webkit-scrollbar,
-        .book-list-container::-webkit-scrollbar {
-            display: none;
         }
         
         .genre-list, .book-list {
             list-style: none;
         }
         
-        .genre-item {
-            padding: 0.2rem 0;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .book-item {
+        .genre-item, .book-item {
             padding: 0.2rem 0;
             cursor: pointer;
             display: flex;
             align-items: center;
-            transition: color 0.3s ease;
         }
         
         .genre-item:hover, .book-item:hover {
-            color: #5fb8b0;
+            color: #777;
         }
         
         .active-book {
             font-style: italic;
-            color: #5fb8b0;
         }
         
         .active-genre {
             font-style: italic;
-            color: #5fb8b0;
         }
         
         .alphabet-index {
@@ -178,18 +124,11 @@
             padding: 1rem;
             font-size: 0.7rem;
             color: #888;
-            flex-shrink: 0;
         }
         
         @media (max-width: 768px) {
-            body {
-                height: auto;
-                overflow: auto;
-            }
-            
-            .main-content {
+            .container {
                 flex-direction: column;
-                height: auto;
             }
             
             .book-cover-container {
@@ -199,30 +138,20 @@
             
             .book-description-container {
                 order: 2;
-                overflow-y: visible;
             }
             
             .book-slider {
                 order: 3;
-                height: 300px;
-            }
-            
-            .book-cover {
-                width: 200px;
-                height: 300px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <div class="book-title-header" id="bookTitleHeader">Select a Book</div>
-        <a class="home-link" href="https://jyotirmoyp.github.io/the-art-space/library/">Home</a>
-    </div>
+    <div class="book-title-header" id="bookTitleHeader">Select a Book</div>
     
-    <div class="main-content">
+    <div class="container">
         <div class="book-cover-container">
-            <img id="bookCover" src="https://via.placeholder.com/250x375?text=Book+Cover" alt="Book Cover" class="book-cover">
+            <img id="bookCover" src="https://via.placeholder.com/300x450?text=Book+Cover" alt="Book Cover" class="book-cover">
         </div>
         
         <div class="book-description-container">
@@ -236,31 +165,28 @@
         <div class="book-slider">
             <div class="slider-columns">
                 <div class="genre-column">
-                    <div class="genre-list-container">
-                        <ul id="genreList" class="genre-list">
-                            <!-- Filled by JavaScript -->
-                        </ul>
-                    </div>
+                    <ul id="genreList" class="genre-list">
+                        <!-- Filled by JavaScript -->
+                    </ul>
                 </div>
                 <div class="book-column">
-                    <div class="book-list-container">
-                        <ul id="bookList" class="book-list">
-                            <!-- Filled by JavaScript -->
-                        </ul>
-                    </div>
+                    <ul id="bookList" class="book-list">
+                        <!-- Filled by JavaScript -->
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
     
     <footer>
-        &copy; <span id="year"></span>
+        &copy; Jyotirmoy Paul <span id="year"></span>
     </footer>
 
     <script>
-        // Book data with consistent cover image sizes
+        // Book data
         const books = [
- 		{
+
+		{
                 title: "Plato and a Platypus Walk Into a Bar: Understanding Philosophy through Jokes",
                 author: "Daniel Klein, Thomas Cathcart Galeano",
                 genre: "Philosophy",
@@ -366,6 +292,8 @@
                 publisher: "Juggernaut Books 2018"
             },
 
+
+
         ];
 
         // Initialize the page
@@ -383,9 +311,10 @@
             // Populate genre list
             const genreList = document.getElementById('genreList');
             genres.forEach(genre => {
+                const firstLetter = genre.charAt(0).toUpperCase();
                 const li = document.createElement('li');
                 li.className = 'genre-item';
-                li.textContent = genre;
+                li.innerHTML = `<span class="alphabet-index">${firstLetter}</span>${genre}`;
                 
                 li.addEventListener('click', () => {
                     // Filter books by selected genre
@@ -415,30 +344,21 @@
             // Display the first book by default
             if (books.length > 0) {
                 displayBook(books[0]);
+                document.querySelector('.book-item').classList.add('active-book');
                 document.querySelector('.genre-item').classList.add('active-genre');
             }
         });
         
-        // Update book list display with alphabet indicators (only showing first occurrence)
+        // Update book list display
         function updateBookList(booksToShow) {
             const bookList = document.getElementById('bookList');
             bookList.innerHTML = '';
             
-            let lastInitial = '';
-            
             booksToShow.forEach(book => {
-                const currentInitial = book.title.charAt(0).toUpperCase();
+                const firstLetter = book.title.charAt(0).toUpperCase();
                 const li = document.createElement('li');
                 li.className = 'book-item';
-                
-                // Only show initial if it's different from the last one
-                if (currentInitial !== lastInitial) {
-                    li.innerHTML = `<span class="alphabet-index">${currentInitial}</span>${book.title}`;
-                    lastInitial = currentInitial;
-                } else {
-                    li.innerHTML = `<span class="alphabet-index" style="visibility: hidden;">${currentInitial}</span>${book.title}`;
-                }
-                
+                li.innerHTML = `<span class="alphabet-index">${firstLetter}</span>${book.title}`;
                 li.addEventListener('click', () => {
                     displayBook(book);
                     // Highlight selected book
