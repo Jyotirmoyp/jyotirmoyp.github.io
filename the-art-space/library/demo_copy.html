@@ -83,8 +83,26 @@
         
         .book-author {
             font-size: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             color: #777;
+        }
+        
+        .book-genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .genre-tag {
+            color: #666;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .genre-tag:hover {
+            color: #5fb8b0;
+            text-decoration: underline;
         }
         
         .book-description {
@@ -140,7 +158,7 @@
         .genre-item {
             padding: 0.2rem 0;
             cursor: pointer;
-            transition: color 0.3s ease;
+            color: #555;
         }
         
         .book-item {
@@ -148,7 +166,7 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            transition: color 0.3s ease;
+            color: #555;
         }
         
         .genre-item:hover, .book-item:hover {
@@ -217,7 +235,7 @@
 <body>
     <div class="header-container">
         <div class="book-title-header" id="bookTitleHeader">Select a Book</div>
-        <a class="home-link">Home</a>
+        <a class="home-link" href="https://jyotirmoyp.github.io/the-art-space/library/">Home</a>
     </div>
     
     <div class="main-content">
@@ -227,6 +245,9 @@
         
         <div class="book-description-container">
             <div id="bookAuthor" class="book-author">from the list</div>
+            <div id="bookGenres" class="book-genres">
+                <!-- Genre tags will be added here -->
+            </div>
             <div id="bookDescription" class="book-description">
                 <p>Click on any book title from the list to display its details here.</p>
             </div>
@@ -258,13 +279,13 @@
     </footer>
 
     <script>
-        // Book data with consistent cover image sizes
+        // Book data with multiple genres support
         const books = [
             {
                 id: 1,
                 title: "Impressionism",
                 author: "James Smith",
-                genre: "Art",
+                genres: ["Art", "History"],
                 cover: "https://via.placeholder.com/250x375?text=Impressionism",
                 description: "A comprehensive guide to Impressionist art, exploring the techniques and philosophies of Monet, Renoir, and their contemporaries.",
                 publisher: "Art World Press"
@@ -273,7 +294,7 @@
                 id: 2,
                 title: "Letter to Vincent",
                 author: "Emma Johnson",
-                genre: "Art",
+                genres: ["Art", "Biography"],
                 cover: "https://via.placeholder.com/250x375?text=Letter+to+Vincent",
                 description: "A fictional correspondence with Vincent van Gogh, imagining his thoughts and struggles through personal letters.",
                 publisher: "Creative Minds Publishing"
@@ -282,7 +303,7 @@
                 id: 3,
                 title: "Song Offerings",
                 author: "Rabindranath Tagore",
-                genre: "Poetry",
+                genres: ["Poetry", "Spirituality"],
                 cover: "https://via.placeholder.com/250x375?text=Song+Offerings",
                 description: "A collection of spiritual poems that earned Tagore the Nobel Prize in Literature, originally published as Gitanjali.",
                 publisher: "Poetry International"
@@ -291,7 +312,7 @@
                 id: 4,
                 title: "Fleur de Mal",
                 author: "Charles Baudelaire",
-                genre: "Poetry",
+                genres: ["Poetry", "Classic"],
                 cover: "https://via.placeholder.com/250x375?text=Fleur+de+Mal",
                 description: "A seminal work in French poetry, known for its exploration of beauty, decadence, and eroticism.",
                 publisher: "Classic Poetry Press"
@@ -300,7 +321,7 @@
                 id: 5,
                 title: "Silk Route",
                 author: "Peter Frankopan",
-                genre: "History",
+                genres: ["History", "Geography"],
                 cover: "https://via.placeholder.com/250x375?text=Silk+Route",
                 description: "A history of the world focusing on the importance of the East and the networks that connected civilizations.",
                 publisher: "Historical Texts"
@@ -309,7 +330,7 @@
                 id: 6,
                 title: "World History",
                 author: "Susan Wise Bauer",
-                genre: "History",
+                genres: ["History", "Reference"],
                 cover: "https://via.placeholder.com/250x375?text=World+History",
                 description: "An engaging narrative of world history from ancient times to the early modern period.",
                 publisher: "Global History Press"
@@ -324,29 +345,19 @@
             // Sort books alphabetically by title
             books.sort((a, b) => a.title.localeCompare(b.title));
             
-            // Get all unique genres
-            const genres = [...new Set(books.map(book => book.genre))];
-            genres.sort();
+            // Get all unique genres from all books
+            const allGenres = [...new Set(books.flatMap(book => book.genres))];
+            allGenres.sort();
             
             // Populate genre list
             const genreList = document.getElementById('genreList');
-            genres.forEach(genre => {
+            allGenres.forEach(genre => {
                 const li = document.createElement('li');
                 li.className = 'genre-item';
                 li.textContent = genre;
                 
                 li.addEventListener('click', () => {
-                    // Filter books by selected genre
-                    const filteredBooks = books.filter(book => book.genre === genre);
-                    
-                    // Update book list to show only books in this genre
-                    updateBookList(filteredBooks);
-                    
-                    // Display the first book in this genre
-                    if (filteredBooks.length > 0) {
-                        displayBook(filteredBooks[0]);
-                    }
-                    
+                    filterByGenre(genre);
                     // Highlight active genre
                     document.querySelectorAll('.genre-item').forEach(item => {
                         item.classList.remove('active-genre');
@@ -357,15 +368,29 @@
                 genreList.appendChild(li);
             });
             
-            // Initial population of book list
+            // Initial population of book list (show all books)
             updateBookList(books);
             
             // Display the first book by default
             if (books.length > 0) {
                 displayBook(books[0]);
-                document.querySelector('.genre-item').classList.add('active-genre');
             }
         });
+        
+        function filterByGenre(genre) {
+            // Filter books that include this genre
+            const filteredBooks = books.filter(book => 
+                book.genres.includes(genre)
+            );
+            
+            // Update book list to show only books in this genre
+            updateBookList(filteredBooks);
+            
+            // Display the first book in this genre
+            if (filteredBooks.length > 0) {
+                displayBook(filteredBooks[0]);
+            }
+        }
         
         // Update book list display with alphabet indicators (only showing first occurrence)
         function updateBookList(booksToShow) {
@@ -374,7 +399,10 @@
             
             let lastInitial = '';
             
-            booksToShow.forEach(book => {
+            // Sort books alphabetically before displaying
+            const sortedBooks = [...booksToShow].sort((a, b) => a.title.localeCompare(b.title));
+            
+            sortedBooks.forEach(book => {
                 const currentInitial = book.title.charAt(0).toUpperCase();
                 const li = document.createElement('li');
                 li.className = 'book-item';
@@ -405,6 +433,28 @@
             document.getElementById('bookCover').alt = book.title;
             document.getElementById('bookTitleHeader').textContent = book.title;
             document.getElementById('bookAuthor').textContent = `by ${book.author}`;
+            
+            // Display genre tags
+            const genresContainer = document.getElementById('bookGenres');
+            genresContainer.innerHTML = '';
+            book.genres.forEach(genre => {
+                const tag = document.createElement('span');
+                tag.className = 'genre-tag';
+                tag.textContent = `#${genre.toLowerCase()}`;
+                tag.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    filterByGenre(genre);
+                    // Highlight the clicked genre in the sidebar
+                    document.querySelectorAll('.genre-item').forEach(item => {
+                        item.classList.remove('active-genre');
+                        if (item.textContent === genre) {
+                            item.classList.add('active-genre');
+                        }
+                    });
+                });
+                genresContainer.appendChild(tag);
+            });
+            
             document.getElementById('bookDescription').innerHTML = `<p>${book.description}</p>`;
             document.getElementById('bookPublisher').textContent = `Publisher: ${book.publisher}`;
         }
