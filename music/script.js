@@ -304,11 +304,16 @@ function showRagaContent(ragaName) {
     });
 }
 
-    function showWelcome() {
-        document.querySelector('.content-area').innerHTML = `
-            <div class="welcome-message">
-                <p>Select from the menu to explore recordings</p>
-            </div>
-        `;
-    }
+function showWelcome() {
+    // Remove active class from all menu items
+    document.querySelectorAll('.menu-header, .subgenre-header, .artist').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    document.querySelector('.content-area').innerHTML = `
+        <div class="welcome-message">
+            <p>Select from the menu to explore recordings</p>
+        </div>
+    `;
+}
 });

@@ -60,6 +60,7 @@ header {
     justify-content: space-between;
     align-items: right;
     position: relative;
+    color: red;
     }
 
 .home-button {
@@ -72,8 +73,7 @@ header {
 }
 
 .home-button:hover {
-    text-color: #008080;
-    color: #008080;
+     color: #008080;
 }
 
 .menu {
