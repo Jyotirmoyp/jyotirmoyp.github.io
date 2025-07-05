@@ -227,6 +227,14 @@
             .book-cover {
                 width: 200px;
                 height: 300px;
+ 	 /* New mobile-specific styles for book items */
+            .book-item {
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+                max-width: 120px; /* Fixed width for mobile */
+                word-wrap: break-word;
+            }
             }
         }
     </style>
