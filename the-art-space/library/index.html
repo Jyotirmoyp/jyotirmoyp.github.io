@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
+    <title>Book Collection</title>
     <style>
         * {
             box-sizing: border-box;
@@ -368,6 +368,15 @@
         
         .hide {
             display: none;
+        }
+        
+        .book-link {
+            color: #555;
+            text-decoration: none;
+        }
+        
+        .book-link:hover {
+            color: #5fb8b0;
         }
         
         @media (max-width: 768px) {
@@ -738,15 +747,19 @@
                 rating: 0
 
              },
-
-
-
         ];
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Add unique IDs to books if they don't have them
+            books.forEach((book, index) => {
+                if (!book.id) {
+                    book.id = index + 1;
+                }
+            });
             
             // Sort books alphabetically by title
             books.sort((a, b) => a.title.localeCompare(b.title));
@@ -834,7 +847,7 @@
                 <ul class="status-list" id="statusList">
                     ${booksByAuthor.map(book => `
                         <li class="status-list-item" data-id="${book.id}">
-                            <div>${book.shortTitle || book.title}</div>
+                            <div><a href="#" class="book-link" data-id="${book.id}">${book.shortTitle || book.title}</a></div>
                             <div>
                                 <span class="status-tag ${book.status}" data-status="${book.status}">
                                     ${book.status === 'read' ? 'Read' : 
@@ -855,17 +868,16 @@
                 </ul>
             `;
             
-            // Add click handlers to list items
-            document.querySelectorAll('.status-list-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    // Don't trigger if clicked on a genre tag or status tag
-                    if (!e.target.classList.contains('genre-tag') && !e.target.classList.contains('status-tag')) {
-                        const bookId = parseInt(this.getAttribute('data-id'));
-                        const book = books.find(b => b.id === bookId);
-                        if (book) {
-                            displayBook(book);
-                            showBookView();
-                        }
+            // Add click handlers to book links
+            document.querySelectorAll('.book-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const bookId = parseInt(this.getAttribute('data-id'));
+                    const book = books.find(b => b.id === bookId);
+                    if (book) {
+                        displayBook(book);
+                        showBookView();
                     }
                 });
             });
@@ -946,7 +958,7 @@
                 <ul class="status-list" id="statusList">
                     ${filteredBooks.map(book => `
                         <li class="status-list-item" data-id="${book.id}">
-                            <div>${book.shortTitle || book.title}</div>
+                            <div><a href="#" class="book-link" data-id="${book.id}">${book.shortTitle || book.title}</a></div>
                             <div class="authors-list">
                                 ${book.author.split(',').map(author => `
                                     <a href="#" class="author-tag" data-author="${author.trim()}">${author.trim()}</a>
@@ -965,17 +977,16 @@
                 </ul>
             `;
             
-            // Add click handlers to list items
-            document.querySelectorAll('.status-list-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    // Don't trigger if clicked on a genre or author tag
-                    if (!e.target.classList.contains('genre-tag') && !e.target.classList.contains('author-tag')) {
-                        const bookId = parseInt(this.getAttribute('data-id'));
-                        const book = books.find(b => b.id === bookId);
-                        if (book) {
-                            displayBook(book);
-                            showBookView();
-                        }
+            // Add click handlers to book links
+            document.querySelectorAll('.book-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const bookId = parseInt(this.getAttribute('data-id'));
+                    const book = books.find(b => b.id === bookId);
+                    if (book) {
+                        displayBook(book);
+                        showBookView();
                     }
                 });
             });
@@ -1037,8 +1048,19 @@
                     span.className = 'alphabet-index';
                     span.textContent = currentInitial;
                     
-                    const titleSpan = document.createElement('span');
+                    const titleSpan = document.createElement('a');
+                    titleSpan.href = '#';
+                    titleSpan.className = 'book-link';
                     titleSpan.textContent = book.shortTitle || book.title;
+                    titleSpan.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        displayBook(book);
+                        showBookView();
+                        document.querySelectorAll('.book-item').forEach(item => {
+                            item.classList.remove('active-book');
+                        });
+                        li.classList.add('active-book');
+                    });
                     
                     li.appendChild(span);
                     li.appendChild(titleSpan);
@@ -1049,21 +1071,24 @@
                     span.style.visibility = 'hidden';
                     span.textContent = currentInitial;
                     
-                    const titleSpan = document.createElement('span');
+                    const titleSpan = document.createElement('a');
+                    titleSpan.href = '#';
+                    titleSpan.className = 'book-link';
                     titleSpan.textContent = book.shortTitle || book.title;
+                    titleSpan.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        displayBook(book);
+                        showBookView();
+                        document.querySelectorAll('.book-item').forEach(item => {
+                            item.classList.remove('active-book');
+                        });
+                        li.classList.add('active-book');
+                    });
                     
                     li.appendChild(span);
                     li.appendChild(titleSpan);
                 }
                 
-                li.addEventListener('click', () => {
-                    displayBook(book);
-                    showBookView();
-                    document.querySelectorAll('.book-item').forEach(item => {
-                        item.classList.remove('active-book');
-                    });
-                    li.classList.add('active-book');
-                });
                 bookList.appendChild(li);
             });
         }
