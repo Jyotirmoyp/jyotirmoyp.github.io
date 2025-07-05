@@ -64,7 +64,7 @@ header {
     }
 
 .home-button {
-    
+    color: grey;
     text-decoration: none;
     font-size: 0.9rem;
     padding: 0.3rem 0.8rem;
