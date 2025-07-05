@@ -167,8 +167,10 @@
             display: flex;
             align-items: center;
             color: #555;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
-        
         .genre-item:hover, .book-item:hover {
             color: #5fb8b0;
         }
@@ -283,6 +285,7 @@
         const books = [
             {
 		title: "Plato and a Platypus Walk Into a Bar: Understanding Philosophy through Jokes",
+		shortTitle: "Plato and a Platypus Walk Into a Bar",
                 author: "Daniel Klein, Thomas Cathcart Galeano",
                 genres: ["Philosophy"],
                 cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1477829446i/32810304.jpg",
@@ -292,7 +295,7 @@
             {
                 title: "Sophie's World",
                 author: "Jostein Gaarder",
-                genres: ["Philosophy", "Classic"],
+                genres: ["Philosophy"],
                 cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1444038633i/25909216.jpg",
                 description: "When 14-year-old Sophie encounters a mysterious mentor who introduces her to philosophy, mysteries deepen in her own life. Why does she keep getting postcards addressed to another girl? Who is the other girl? And who, for that matter, is Sophie herself? To solve the riddle, she uses her new knowledge of philosophy, but the truth is far stranger than she could have imagined.",
                 publisher: "Orion Publishing Group, 2015 (This edition), Original 1995"
@@ -310,7 +313,7 @@
             {
                 title: "আরণ্যক",
                 author: "বিভূতিভূষণ বন্দ্যোপাধ্যায় (Bibhutibhushan Bandyopadhyay)",
-                genres: ["Bengali Classic"],
+                genres: ["Bengali Fiction"],
                 cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1676811673i/3084276.jpg",
                 description: "'Aranyak' is a simple and uncomplicated story. The protagonist Satyacharan has gone to an estate in Bhagalpur after getting a job of a manager. Initially his urban lifestyle might have revolted against the lonely jungle life but gradually nature hypnotized Satyacharan. Gradually he can not even resist a moment's absence from the forest. Satyacharan and his partner Jugalprasad, a perfect match to the nature-loving soul of Satyacharan decorated the forest by planting many rare species of herbs and saplings. But Satyacharan is an estate manager. He has to destroy this creation of the forest-Goddess against his own will and distribute it amongst the local people. Age old gigantic trees as well as plants and herbs of rare species are getting destroyed with the sharp axes. This results in a deep feeling of guilt and sadness at the end of the novel.",
                 publisher: "মিত্র​ ও ঘোষ, 1976"
@@ -337,12 +340,15 @@
     
             {
                 title: "Mapping the Great Game: Explorers, Spies and Maps in 19th-century Asia",
+		shortTitle: "Mapping the Great Game",
                 author: "Riaz Dean",
-                genres: ["History", "Geography"],
+                genres: ["History", "Geopolitics"],
                 cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1572266175i/44496326.jpg",
                 description: "Although the ultimate prize of the Great Game played out between Great Britain and Imperial Russia in the 19th century was India, most of the intrigue and action took place along its northern frontier in Afghanistan, Turkestan and Tibet. Maps and knowledge of the enemy were crucial elements in Britain’s struggle to defend the ‘jewel in the crown.’ <br> <br> The Great Trigonometrical Survey of India had been founded in the 18th century with the aim of creating a detailed map of the country. While most people today are readily able to identify the world’s highest mountain, few know of the man, George Everest, after whom it was named, or the accomplishment that earned him this singular honor. Under his leadership, the Survey of India mapped the Great Arc, which was then lauded as ‘one of the greatest works in the whole history of science,’ though it cost more in monetary terms and human lives than many contemporary Indian wars. <br> <br> Much of the work of the Survey was undertaken by native Indians, known as Pundits, who were trained to explore, spy out and map Central Asia and Tibet. They did this at great personal risk and with meager resources, while traveling entirely on foot. They would be the first to reveal the mysteries of the forbidden city of Lhasa, and discover the true course of Tibet’s mighty Tsangpo River. They were the greatest group of explorers the world has seen in recent history – yet they remain the classic unsung heroes of the British Raj. <br> <br> The story of these extraordinary pioneers who explored much of Asia during the 19th century to fill in large portions of its map, and spy out the region for military reasons is often forgotten, but Riaz Dean’s vivid account of their exploits, their adventurous spirit and their tenacity in the face of great adversity, all set within the context of the Great Game and the Survey of India, will finally bring them the attention they deserve.",
                 publisher: "Casemate, 2019"
             },
+
+
             {
                 title: "The Handmaid's Tale",
                 author: "Margaret Atwood",
@@ -355,6 +361,7 @@
 
             {
                 title: "Annapurna: The First Conquest of an 8000-Metre Peak",
+		shortTitle: "Annapurna",
                 author: "Maurice Herzog",
                 genres: ["Expedition", "History"],
                 cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1320448575i/11364723.jpg",
@@ -364,6 +371,7 @@
 
             {
                 title: "Winter 8000: Climbing the World’s Highest Mountains in the Coldest Season",
+		shortTitle: "Winter 8000",
                 author: "Bernadette McDonald",
                  genres: ["Expedition", "History"],
                 cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1599572008i/51359969.jpg",
@@ -387,6 +395,16 @@
                 cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1429675610i/24886648.jpg",
                 description: "Although Yugoslavia managed to avoid becoming involved in WWII until 1941, German armies invaded in April of that year and the Yugoslavian defense collapsed in less than two weeks. The state of Slovenia was split up amongst Germany, Hungary and Italy. Partisan groups, under the leadership of Josip Tito, managed to liberate the state by 1945, and then began a period of relative calm, under the benevolent rule of Tito. A Communist, he began to distance himself from the Soviet Union, looking to western economic models as Yugoslavia struggled to rebuild. During the thirty years following the war, a Yugoslavian passport was one of the best in the world, and Yugoslavians could travel freely during this time, if they had the money. Most did not. <br> <br> But alpinists did. Through centralized government programs that established elaborate training régimes and state-supported expeditions abroad, Yugoslavian alpinists began making impressive climbs in the Himalaya as early as 1960. By the early 70’s, they had advanced to the 8000ers. Although not exclusively Slovenian, the teams were – not surprisingly – dominated by Slovenian climbers, since Slovenia is blessed with the Julian Alps. A fiercely steep range of limestone peaks, the Julian Alps provided the ideal training ground for Slovenian climbers, in both summer and winter. The brooding north faces and razor-sharp ridges taught them the skills they would need on the highest mountains on earth – the Himalaya.",
                 publisher: "Penguin Classics 2006 (this edition) Original 1922"
+            },
+
+            {
+                title: "Colliding Continents: A Geological Exploration of the Himalaya, Karakoram, and Tibet",
+		shortTitle: "Colliding Continents",
+                author: "Bernadette McDonald",
+                genres: ["Expedition", "Science"],
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1355960484i/16248454.jpg",
+                description: "The Himalaya is the greatest mountain range on the highest, longest, youngest, the most tectonically active, and the most spectacular of all. Unimaginable geological forces created these spectacular peaks. Indeed, the crash of the Indian plate into Asia is the biggest known collision in geological history, giving birth to the Himalaya and Karakoram, one of the most remote and savage places on Earth. <br> <br> In this beautifully illustrated book, featuring spectacular color photographs throughout, one of the most experienced field geologists of our time presents a rich account of the geological forces that were involved in creating these monumental ranges. Over three decades, Mike Searle has transformed our understanding of this vast region. To gather his vital geological evidence, he has had to deploy his superb skills as a mountaineer, spending weeks at time in remote and dangerous locations. Searle weaves his own first-hand tales of discovery with an engaging explanation of the processes that formed these impressive peaks. His narrative roughly follows his career, from his early studies in the north west Himalaya of Ladakh, Zanskar and Kashmir, through several expeditions to the Karakoram ranges (including climbs on K2, Masherbrum, and the Trango Towers, and the crossing of Snow Lake, the world's largest ice cap outside polar regions), to his later explorations around Everest, Makalu, Sikkim and in Tibet and South East Asia. The book offers a fascinating first-hand account of a major geologist at work-the arduous labor, the eureka moments, and the days of sheer beauty, such as his trek to Kathmandu, over seven days through magnificent rhododendron forests ablaze in pinks, reds and white and through patches of bamboo jungle with hanging mosses. <br> <br> Filled with satellite images, aerial views, and the author's own photographs of expeditions, Colliding Continents offers a vivid account of the origins and present state of the greatest mountain range on Earth.",
+                publisher: "Oxford University Press, 2013"
             },
 
             {
@@ -454,14 +472,13 @@
             }
         }
         
-        // Update book list display with alphabet indicators (only showing first occurrence)
+        // Update book list display with truncated titles
         function updateBookList(booksToShow) {
             const bookList = document.getElementById('bookList');
             bookList.innerHTML = '';
             
             let lastInitial = '';
             
-            // Sort books alphabetically before displaying
             const sortedBooks = [...booksToShow].sort((a, b) => a.title.localeCompare(b.title));
             
             sortedBooks.forEach(book => {
@@ -469,17 +486,19 @@
                 const li = document.createElement('li');
                 li.className = 'book-item';
                 
-                // Only show initial if it's different from the last one
+                // Use shortTitle if available, otherwise truncate long titles
+                const displayTitle = book.shortTitle || 
+                                    (book.title.length > 20 ? book.title.substring(0, 17) + '...' : book.title);
+                
                 if (currentInitial !== lastInitial) {
-                    li.innerHTML = `<span class="alphabet-index">${currentInitial}</span>${book.title}`;
+                    li.innerHTML = `<span class="alphabet-index">${currentInitial}</span>${displayTitle}`;
                     lastInitial = currentInitial;
                 } else {
-                    li.innerHTML = `<span class="alphabet-index" style="visibility: hidden;">${currentInitial}</span>${book.title}`;
+                    li.innerHTML = `<span class="alphabet-index" style="visibility: hidden;">${currentInitial}</span>${displayTitle}`;
                 }
                 
                 li.addEventListener('click', () => {
                     displayBook(book);
-                    // Highlight selected book
                     document.querySelectorAll('.book-item').forEach(item => {
                         item.classList.remove('active-book');
                     });
@@ -488,6 +507,7 @@
                 bookList.appendChild(li);
             });
         }
+
         
         // Display the selected book
         function displayBook(book) {
