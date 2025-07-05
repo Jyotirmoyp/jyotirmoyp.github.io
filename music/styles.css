@@ -32,6 +32,7 @@ h1 {
     letter-spacing: -0.3px;
 }
 
+/* Desktop Layout */
 main {
     display: flex;
     flex: 1;
@@ -57,6 +58,51 @@ main {
     padding: 0.5rem 0;
 }
 
+/* Mobile Layout */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    
+    .content-area {
+        order: 1;
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .menu {
+        order: 3;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+    
+    .artist-content {
+        flex-direction: column;
+    }
+    
+    .artist-image {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    /* Mobile menu toggle */
+    .menu-header::before,
+    .subgenre-header::before {
+        content: none;
+    }
+    
+    .menu-items,
+    .artist-items {
+        display: none;
+    }
+    
+    .menu-section.expanded .menu-items,
+    .subgenre-section.expanded .artist-items {
+        display: block;
+    }
+}
+
+/* Common Styles for Both Layouts */
 .menu-section {
     margin-bottom: 0.5rem;
 }
