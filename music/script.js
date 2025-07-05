@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Database with descriptions
+    // Enhanced database with raga information
     const database = {
         'Dhrupad': {
             description: 'The oldest form of Hindustani classical music, characterized by its spiritual nature and strict adherence to rhythmic cycles. Dhrupad typically consists of four sections: alap, jor, jhala, and composition in fixed rhythm.',
@@ -11,15 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
                             image: 'mohiuddin.jpg',
                             description: 'Senior exponent of Dagar Vani with a career spanning five decades. Known for his profound alap and mastery over rare ragas.',
                             recordings: [
-                                {title: 'Raga Yaman - Live at Dover Lane (1987)', url: 'https://youtube.com/example1'},
-                                {title: 'Raga Bhairav - Morning Concert', url: 'https://youtube.com/example2'}
+                                {title: 'Raga Yaman - Live at Dover Lane (1987)', url: 'https://youtube.com/example1', raga: 'yaman'},
+                                {title: 'Raga Bhairav - Morning Concert', url: 'https://youtube.com/example2', raga: 'bhairav'}
                             ]
                         },
                         'Nancy Lesh': {
                             image: 'nancy.jpg',
                             description: 'Western disciple who adapted Dhrupad to contemporary contexts while maintaining traditional purity.',
                             recordings: [
-                                {title: 'Raga Malkauns - Workshop Demonstration', url: 'https://youtube.com/example3'}
+                                {title: 'Raga Malkauns - Workshop Demonstration', url: 'https://youtube.com/example3', raga: 'malkauns'}
                             ]
                         }
                     }
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             image: 'fahimuddin.jpg',
                             description: 'Representative of Khandar Vani with exceptional command over rhythm and laya.',
                             recordings: [
-                                {title: 'Raga Darbari - Live Performance', url: 'https://youtube.com/example4'}
+                                {title: 'Raga Darbari - Live Performance', url: 'https://youtube.com/example4', raga: 'darbari'}
                             ]
                         }
                     }
@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             image: 'faiyaz.jpg',
                             description: 'The legendary founder of Agra gharana, known for his majestic voice and complex taan patterns.',
                             recordings: [
-                                {title: 'Raga Multani - Rare Recording', url: 'https://youtube.com/example5'}
+                                {title: 'Raga Multani - Rare Recording', url: 'https://youtube.com/example5', raga: 'multani'},
+                                {title: 'Raga Yaman - Evening Concert', url: 'https://youtube.com/example7', raga: 'yaman'}
                             ]
                         }
                     }
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             image: 'mansur.jpg',
                             description: 'Master of Jaipur-Atrauli gharana with unparalleled command over rare ragas and intricate taans.',
                             recordings: [
-                                {title: 'Raga Basanti Kedar - Live Concert', url: 'https://youtube.com/example6'}
+                                {title: 'Raga Basanti Kedar - Live Concert', url: 'https://youtube.com/example6', raga: 'basanti kedar'}
                             ]
                         }
                     }
@@ -115,6 +116,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Function to process hashtags in descriptions
+    function processHashtags(text) {
+        return text.replace(/(Raga\s)(\w+)/gi, function(match, p1, p2) {
+            return `${p1}<a href="#" class="raga-link" data-raga="${p2.toLowerCase()}">#${p2.toLowerCase()}</a>`;
+        });
+    }
+
+    // Handle raga link clicks
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('raga-link')) {
+            e.preventDefault();
+            const ragaName = e.target.getAttribute('data-raga');
+            showRagaContent(ragaName);
+        }
+    });
+
     function showGenreContent(genreName) {
         const genreData = database[genreName];
         if (!genreData) return;
@@ -122,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.content-area').innerHTML = `
             <h2>${genreName}</h2>
             <div class="genre-description">
-                ${genreData.description}
+                ${processHashtags(genreData.description)}
             </div>
             <p>Select a gharana from the menu to explore artists.</p>
         `;
@@ -135,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.content-area').innerHTML = `
             <h2>${genreName} • ${gharanaName}</h2>
             <div class="gharana-description">
-                ${gharanaData.description}
+                ${processHashtags(gharanaData.description)}
             </div>
             <p>Select an artist from the menu to view recordings.</p>
         `;
@@ -147,7 +164,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const recordingsHtml = artistData.recordings?.map(rec => `
             <div class="recording">
-                <a class="youtube-link" href="${rec.url}" target="_blank">${rec.title}</a>
+                <a class="youtube-link" href="${rec.url}" target="_blank">${rec.title.replace(/(Raga\s)(\w+)/gi, 
+                    (match, p1, p2) => `${p1}<a href="#" class="raga-link" data-raga="${p2.toLowerCase()}">#${p2.toLowerCase()}</a>`)}
+                </a>
             </div>
         `).join('') || '<p>No recordings available</p>';
         
@@ -159,10 +178,62 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="images/${artistData.image}" alt="${artistName}">
                 </div>
                 <div class="artist-info">
-                    <p>${artistData.description}</p>
+                    <p>${processHashtags(artistData.description)}</p>
                     <h4>Recordings</h4>
                     ${recordingsHtml}
                 </div>
+            </div>
+        `;
+    }
+
+    function showRagaContent(ragaName) {
+        // Collect all recordings for this raga
+        const recordings = [];
+        
+        // Search through database for matching ragas
+        for (const genreName in database) {
+            for (const gharanaName in database[genreName].gharana) {
+                for (const artistName in database[genreName].gharana[gharanaName].artists) {
+                    const artist = database[genreName].gharana[gharanaName].artists[artistName];
+                    artist.recordings?.forEach(rec => {
+                        if (rec.raga === ragaName) {
+                            recordings.push({
+                                artist: artistName,
+                                title: rec.title,
+                                url: rec.url,
+                                genre: genreName,
+                                gharana: gharanaName
+                            });
+                        }
+                    });
+                }
+            }
+        }
+        
+        // Sort recordings alphabetically by artist name
+        recordings.sort((a, b) => a.artist.localeCompare(b.artist));
+        
+        // Generate HTML
+        const ragaDisplayName = ragaName.split(' ').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        
+        const recordingsHtml = recordings.length > 0 ?
+            recordings.map(rec => `
+                <div class="recording">
+                    <a class="youtube-link" href="${rec.url}" target="_blank">
+                        ${ragaDisplayName} by ${rec.artist} (${rec.gharana} ${rec.genre})
+                    </a>
+                </div>
+            `).join('') :
+            '<p>No recordings found for this raga</p>';
+        
+        document.querySelector('.content-area').innerHTML = `
+            <h2>Raga ${ragaDisplayName}</h2>
+            <div class="raga-description">
+                <p>All recordings of ${ragaDisplayName} in the archive:</p>
+            </div>
+            <div class="recordings-list">
+                ${recordingsHtml}
             </div>
         `;
     }
