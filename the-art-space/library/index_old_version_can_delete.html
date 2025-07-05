@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Book Collection</title>
     <style>
         * {
@@ -378,7 +379,20 @@
         .book-link:hover {
             color: #5fb8b0;
         }
-        
+         .icon-link {
+            color: #aaa; /* Light gray */
+            text-decoration: none;
+            font-size: 1.2em;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+        .icon-link:hover {
+            color: #888; /* Slightly darker gray on hover */
+        }
+        .icon-links {
+            display: flex;
+            align-items: center;
+        }
         @media (max-width: 768px) {
             body {
                 height: auto;
@@ -482,7 +496,14 @@
 <body>
     <div class="header-container">
         <div class="book-title-header" id="bookTitleHeader">Select a Book</div>
-        <a class="home-link" href="https://jyotirmoyp.github.io/the-art-space/library/">Home</a>
+        <div class="icon-links">
+            <a class="icon-link" href="https://jyotirmoyp.github.io/the-art-space/library/" title="Home">
+                <i class="fas fa-home"></i> <!-- Matched home icon -->
+            </a>
+            <a class="icon-link" href="YOUR_BOOK_LINK_HERE" title="Books">
+                <i class="fas fa-book"></i> <!-- Exact same book icon as your reference -->
+            </a>
+        </div>
     </div>
     
     <div class="main-content">
