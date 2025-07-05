@@ -412,11 +412,45 @@
                 height: 300px;
             }
             
-            .status-list-header,
+            /* Updated mobile styles for status list */
+            .status-list-header {
+                display: none;
+            }
+            
             .status-list-item {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.3rem;
+                padding: 0.4rem 0;
+                border-bottom: 1px solid #eee;
+                align-items: center;
+            }
+            
+            .status-list-item > div {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+            }
+            
+            .status-list-item > div:not(:last-child)::after {
+                content: "•";
+                color: #ccc;
+                margin-left: 0.3rem;
+            }
+            
+            .status-list-genres {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+            
+            .status-list-rating {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
             }
         }
+    </style>
     </style>
 </head>
 <body>
@@ -494,7 +528,7 @@
             },
             {
                 id: 3,
-                title: "Song Offerings",
+                title: "bong Offerings",
                 author: "Rabindranath Tagore",
                 genres: ["Poetry", "Spirituality"],
                 cover: "https://via.placeholder.com/250x375?text=Song+Offerings",
@@ -506,7 +540,7 @@
             },
             {
                 id: 4,
-                title: "Fleur de Mal",
+                title: "Pleur de Mal",
                 author: "Charles Baudelaire",
                 genres: ["Poetry", "Classic"],
                 cover: "https://via.placeholder.com/250x375?text=Fleur+de+Mal",

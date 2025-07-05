@@ -90,10 +90,11 @@
             display: none;
         }
         
-        .book-author {
-            font-size: 0.9rem;
+        .book-authors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
             margin-bottom: 0.5rem;
-            color: #555;
         }
         
         .author-tag {
@@ -101,10 +102,15 @@
             cursor: pointer;
             font-size: 0.9rem;
             text-decoration: none;
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            background-color: #f5f0f5;
         }
         
         .author-tag:hover {
             text-decoration: underline;
+            background-color: #e8e0e8;
         }
         
         .book-genres {
@@ -273,21 +279,6 @@
             background-color: #e0f2f1;
         }
         
-        .author-tag {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            color: #8e6c88;
-            background-color: #f5f0f5;
-            margin-bottom: 0.5rem;
-        }
-        
-        .author-tag:hover {
-            background-color: #e8e0e8;
-        }
-        
         .progress-container {
             width: 100%;
             margin-top: 0.3rem;
@@ -412,7 +403,7 @@
                 height: 300px;
             }
             
-            /* Updated mobile styles for status list */
+            /* Mobile styles for status list */
             .status-list-header {
                 display: none;
             }
@@ -449,8 +440,19 @@
                 align-items: center;
                 gap: 0.3rem;
             }
+            
+            .authors-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+            
+            .authors-list::after {
+                content: "•";
+                color: #ccc;
+                margin-left: 0.3rem;
+            }
         }
-    </style>
     </style>
 </head>
 <body>
@@ -466,7 +468,7 @@
             </div>
             
             <div class="book-description-container" id="bookDescriptionContainer">
-                <div id="bookAuthor" class="book-author"></div>
+                <div id="bookAuthor" class="book-authors"></div>
                 <div id="bookGenres" class="book-genres"></div>
                 <div id="bookRating" class="book-rating"></div>
                 <div id="bookDescription" class="book-description">
@@ -528,7 +530,7 @@
             },
             {
                 id: 3,
-                title: "bong Offerings",
+                title: "Song Offerings",
                 author: "Rabindranath Tagore",
                 genres: ["Poetry", "Spirituality"],
                 cover: "https://via.placeholder.com/250x375?text=Song+Offerings",
@@ -540,7 +542,7 @@
             },
             {
                 id: 4,
-                title: "Pleur de Mal",
+                title: "Fleur de Mal",
                 author: "Charles Baudelaire",
                 genres: ["Poetry", "Classic"],
                 cover: "https://via.placeholder.com/250x375?text=Fleur+de+Mal",
@@ -573,6 +575,19 @@
                 status: "read",
                 progress: 100,
                 rating: 3.7
+            },
+            {
+                id: 7,
+                title: "Plato and a Platypus Walk Into a Bar: Understanding Philosophy through Jokes",
+                shortTitle: "Plato and a Platypus Walk Into a Bar",
+                author: "Daniel Klein, Thomas Cathcart Galeano",
+                genres: ["Philosophy"],
+                cover: "https://via.placeholder.com/250x375?text=Plato+Platypus",
+                description: "This entertaining guide to philosophy explains profound ideas through jokes and humor.",
+                publisher: "Philosophy Press",
+                status: "read",
+                progress: 100,
+                rating: 4.5
             }
         ];
 
@@ -641,7 +656,7 @@
         function filterByAuthor(author) {
             // Filter books by this author
             const filteredBooks = books.filter(book => 
-                book.author === author
+                book.author.includes(author)
             );
             
             // Show author's books in status list view
@@ -667,7 +682,7 @@
                 <ul class="status-list" id="statusList">
                     ${booksByAuthor.map(book => `
                         <li class="status-list-item" data-id="${book.id}">
-                            <div>${book.title}</div>
+                            <div>${book.shortTitle || book.title}</div>
                             <div>
                                 <span class="status-tag ${book.status}" data-status="${book.status}">
                                     ${book.status === 'read' ? 'Read' : 
@@ -779,9 +794,11 @@
                 <ul class="status-list" id="statusList">
                     ${filteredBooks.map(book => `
                         <li class="status-list-item" data-id="${book.id}">
-                            <div>${book.title}</div>
-                            <div>
-                                <a href="#" class="author-tag" data-author="${book.author}">${book.author}</a>
+                            <div>${book.shortTitle || book.title}</div>
+                            <div class="authors-list">
+                                ${book.author.split(',').map(author => `
+                                    <a href="#" class="author-tag" data-author="${author.trim()}">${author.trim()}</a>
+                                `).join('')}
                             </div>
                             <div class="status-list-genres">
                                 ${book.genres.map(genre => `
@@ -850,38 +867,40 @@
         }
         
         // Update book list display with alphabet indicators
-        function updateBookList(booksToShow) {
-            const bookList = document.getElementById('bookList');
-            bookList.innerHTML = '';
-            
-            let lastInitial = '';
-            
-            const sortedBooks = [...booksToShow].sort((a, b) => a.title.localeCompare(b.title));
-            
-            sortedBooks.forEach(book => {
-                const currentInitial = book.title.charAt(0).toUpperCase();
-                const li = document.createElement('li');
-                li.className = 'book-item';
-                
-                if (currentInitial !== lastInitial) {
-                    li.innerHTML = `<span class="alphabet-index">${currentInitial}</span>${book.title}`;
-                    lastInitial = currentInitial;
-                } else {
-                    li.innerHTML = `<span class="alphabet-index" style="visibility: hidden;">${currentInitial}</span>${book.title}`;
-                }
-                
-                li.addEventListener('click', () => {
-                    displayBook(book);
-                    showBookView();
-                    document.querySelectorAll('.book-item').forEach(item => {
-                        item.classList.remove('active-book');
-                    });
-                    li.classList.add('active-book');
-                });
-                bookList.appendChild(li);
-            });
+function updateBookList(booksToShow) {
+    const bookList = document.getElementById('bookList');
+    bookList.innerHTML = '';
+    
+    let lastInitial = '';
+    
+    const sortedBooks = [...booksToShow].sort((a, b) => a.title.localeCompare(b.title));
+    
+    sortedBooks.forEach(book => {
+        const currentInitial = book.title.charAt(0).toUpperCase();
+        const li = document.createElement('li');
+        li.className = 'book-item';
+        
+        // Use shortTitle if available, otherwise use full title
+        const displayTitle = book.shortTitle || book.title;
+        
+        if (currentInitial !== lastInitial) {
+            li.innerHTML = `<span class="alphabet-index">${currentInitial}</span>${displayTitle}`;
+            lastInitial = currentInitial;
+        } else {
+            li.innerHTML = `<span class="alphabet-index" style="visibility: hidden;">${currentInitial}</span>${displayTitle}`;
         }
         
+        li.addEventListener('click', () => {
+            displayBook(book);
+            showBookView();
+            document.querySelectorAll('.book-item').forEach(item => {
+                item.classList.remove('active-book');
+            });
+            li.classList.add('active-book');
+        });
+        bookList.appendChild(li);
+    });
+}
         // Function to render star ratings
         function renderStars(rating, small = false) {
             if (rating === 0) return 'Not rated';
@@ -912,20 +931,26 @@
         function displayBook(book) {
             document.getElementById('bookCover').src = book.cover;
             document.getElementById('bookCover').alt = book.title;
-            document.getElementById('bookTitleHeader').textContent = book.title;
+            document.getElementById('bookTitleHeader').textContent = book.shortTitle || book.title;
             
-            // Display author as clickable tag
+            // Display author(s) as clickable tag(s)
             const authorContainer = document.getElementById('bookAuthor');
             authorContainer.innerHTML = '';
-            const authorTag = document.createElement('a');
-            authorTag.className = 'author-tag';
-            authorTag.href = '#';
-            authorTag.textContent = book.author;
-            authorTag.addEventListener('click', (e) => {
-                e.preventDefault();
-                filterByAuthor(book.author);
+            authorContainer.className = 'book-authors';
+            
+            // Split authors by comma and trim whitespace
+            const authors = book.author.split(',').map(a => a.trim());
+            authors.forEach(author => {
+                const authorTag = document.createElement('a');
+                authorTag.className = 'author-tag';
+                authorTag.href = '#';
+                authorTag.textContent = author;
+                authorTag.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    filterByAuthor(author);
+                });
+                authorContainer.appendChild(authorTag);
             });
-            authorContainer.appendChild(authorTag);
             
             // Display genre tags
             const genresContainer = document.getElementById('bookGenres');
