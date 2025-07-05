@@ -103,13 +103,14 @@
         .author-tag {
             color: #8e6c88;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-decoration: none;
             display: inline-block;
         }
         
         .author-tag:hover {
-            text-decoration: underline;
+            text-decoration: bold;
+	    color: #8f8c88;
         }
         
         .book-genres {
@@ -131,6 +132,7 @@
         }
         
         .book-rating {
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
@@ -518,86 +520,80 @@
         // Book data with multiple genres support and reading status
         const books = [
             {
-                id: 1,
-                title: "Impressionism",
-                author: "James Smith",
-                genres: ["Art", "History"],
-                cover: "https://via.placeholder.com/250x375?text=Impressionism",
-                description: "A comprehensive guide to Impressionist art, exploring the techniques and philosophies of Monet, Renoir, and their contemporaries.",
-                publisher: "Art World Press",
-                status: "read",
-                progress: 100,
+                title: "Sophie's World",
+                author: "Jostein Gaarder",
+                genres: ["Philosophy"],
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1444038633i/25909216.jpg",
+                description: "When 14-year-old Sophie encounters a mysterious mentor who introduces her to philosophy, mysteries deepen in her own life. Why does she keep getting postcards addressed to another girl? Who is the other girl? And who, for that matter, is Sophie herself? To solve the riddle, she uses her new knowledge of philosophy, but the truth is far stranger than she could have imagined.",
+                publisher: "Orion Publishing Group, 2015 (This edition), Original 1995",
+                status: "currently-reading",
+                progress: 76,
                 rating: 4.2
             },
             {
-                id: 2,
-                title: "Letter to Vincent",
-                author: "Emma Johnson",
-                genres: ["Art", "Biography"],
-                cover: "https://via.placeholder.com/250x375?text=Letter+to+Vincent",
-                description: "A fictional correspondence with Vincent van Gogh, imagining his thoughts and struggles through personal letters.",
+                title: "Football in Sun and Shadow",
+                author: "Eduardo Galeano",
+                genres: ["Sports", "History"],
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1524234500i/38310134.jpg",
+                description: "Football is a pleasure that hurts' <br> <br>This unashamedly emotional history of football is a homage to the romance and drama, 					spectacle and passion of a 'great pagan mass'. Through stories of superstition, heartbreak, tragedy, luck, heroes and 					villains, those who lived for football and those who died for it, Eduardo Galeano celebrates the glory of a game that - 				however much the rich and powerful try to control it - still retains its magic.",
                 publisher: "Creative Minds Publishing",
-                status: "currently-reading",
-                progress: 50,
-                rating: 3.4
+                status: "read",
+                progress: 100,
+                rating: 5
             },
             {
-                id: 3,
-                title: "Song Offerings",
-                author: "Rabindranath Tagore",
-                genres: ["Poetry", "Spirituality"],
-                cover: "https://via.placeholder.com/250x375?text=Song+Offerings",
-                description: "A collection of spiritual poems that earned Tagore the Nobel Prize in Literature, originally published as Gitanjali.",
-                publisher: "Poetry International",
-                status: "currently-reading",
-                progress: 70,
+                title: "আরণ্যক",
+                author: "বিভূতিভূষণ বন্দ্যোপাধ্যায় (Bibhutibhushan Bandyopadhyay)",
+                genres: ["Bengali Fiction"],
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1676811673i/3084276.jpg",
+                description: "'Aranyak' is a simple and uncomplicated story. The protagonist Satyacharan has gone to an estate in Bhagalpur after getting a job of a manager. Initially his urban lifestyle might have revolted against the lonely jungle life but gradually nature hypnotized Satyacharan. Gradually he can not even resist a moment's absence from the forest. Satyacharan and his partner Jugalprasad, a perfect match to the nature-loving soul of Satyacharan decorated the forest by planting many rare species of herbs and saplings. But Satyacharan is an estate manager. He has to destroy this creation of the forest-Goddess against his own will and distribute it amongst the local people. Age old gigantic trees as well as plants and herbs of rare species are getting destroyed with the sharp axes. This results in a deep feeling of guilt and sadness at the end of the novel.",
+                publisher: "মিত্র​ ও ঘোষ, 1976",
+                status: "read",
+                progress: 100,
+                rating: 5
+            },
+            {
+                title: "The Music Room",
+                author: "Namita Devidayal",
+                genres: ["Music"],
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1427388052i/6240326.jpg",
+                description: "When Namita is ten years old, her mother takes her to Kennedy Bridge, a seamy neighborhood in Bombay, home to hookers and dance girls. There, in a cramped one-room apartment lives Dhondutai, the last living disciple of two of the finest Indian classical singers of the twentieth century: the legendary Alladiya Khan and the great songbird Kesarbai Kerkar. Namita begins to learn singing from Dhondutai, at first reluctantly and then, as the years pass, with growing passion. Dhondutai sees in her a second Kesarbai, but does Namita have the dedication to give herself up completely to the discipline like her teacher? Or will there always be too many late nights and cigarettes? And where do love and marriage fit into all of this? <br> <br>  A bestseller in India, where it was a literary sensation, The Music Room is a deeply moving meditation on how traditions and life lessons are passed along generations, on the sacrifices made by women through the ages, and on a largely unknown, but vital aspect of Indian life and culture that will utterly fascinate American readers.",
+                publisher: "Random House, 2009",
+                status: "read",
+                progress: 100,
                 rating: 4.8
             },
             {
-                id: 4,
-                title: "Fleur de Mal",
-                author: "Charles Baudelaire",
-                genres: ["Poetry", "Classic"],
-                cover: "https://via.placeholder.com/250x375?text=Fleur+de+Mal",
-                description: "A seminal work in French poetry, known for its exploration of beauty, decadence, and eroticism.",
-                publisher: "Classic Poetry Press",
-                status: "about-to-read",
-                progress: 0,
-                rating: 0
+                title: "Notes from Deep Time",
+                author: "Helen Gordon",
+                genres: ["Science"],
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1593957127i/50353808.jpg",
+                description: "From the secret fossils of London to the 3-billion-year-old rocks of the Scottish Highlands, and from state-of-the-art Californian laboratories to one of the world's most dangerous volcanic complexes hidden beneath the green hills of western Naples, set out on an adventure to those parts of the world where the Earth's life-story is written into the landscape. <br> <br> Helen Gordon turns a novelist's eye on the extraordinary scientists who are piecing together this planetary drama. She gets to grips with the theory that explains how it all works - plate tectonics, a breakthrough as significant in its way as evolution or quantum mechanics, but much younger than either, and still with many secrets to reveal. And she looks to the future of our world, with or without us. <br> <br> On the cusp of what may be Earth's next cataclysmic transformation, it's time to understand how we fit into the big picture.",
+                publisher: "Profile books, 2021",
+                status: "read",
+                progress: 100,
+                rating: 4.5
             },
             {
-                id: 5,
-                title: "Silk Route",
-                author: "Peter Frankopan",
-                genres: ["History", "Geography"],
-                cover: "https://via.placeholder.com/250x375?text=Silk+Route",
-                description: "A history of the world focusing on the importance of the East and the networks that connected civilizations.",
-                publisher: "Historical Texts",
-                status: "about-to-read",
-                progress: 0,
-                rating: 0
-            },
-            {
-                id: 6,
-                title: "World History",
-                author: "Susan Wise Bauer",
-                genres: ["History", "Reference"],
-                cover: "https://via.placeholder.com/250x375?text=World+History",
-                description: "An engaging narrative of world history from ancient times to the early modern period.",
-                publisher: "Global History Press",
+                title: "Mapping the Great Game: Explorers, Spies and Maps in 19th-century Asia",
+		shortTitle: "Mapping the Great Game",
+                author: "Riaz Dean",
+                genres: ["History", "Geopolitics"],
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1572266175i/44496326.jpg",
+                description: "Although the ultimate prize of the Great Game played out between Great Britain and Imperial Russia in the 19th century was India, most of the intrigue and action took place along its northern frontier in Afghanistan, Turkestan and Tibet. Maps and knowledge of the enemy were crucial elements in Britain’s struggle to defend the ‘jewel in the crown.’ <br> <br> The Great Trigonometrical Survey of India had been founded in the 18th century with the aim of creating a detailed map of the country. While most people today are readily able to identify the world’s highest mountain, few know of the man, George Everest, after whom it was named, or the accomplishment that earned him this singular honor. Under his leadership, the Survey of India mapped the Great Arc, which was then lauded as ‘one of the greatest works in the whole history of science,’ though it cost more in monetary terms and human lives than many contemporary Indian wars. <br> <br> Much of the work of the Survey was undertaken by native Indians, known as Pundits, who were trained to explore, spy out and map Central Asia and Tibet. They did this at great personal risk and with meager resources, while traveling entirely on foot. They would be the first to reveal the mysteries of the forbidden city of Lhasa, and discover the true course of Tibet’s mighty Tsangpo River. They were the greatest group of explorers the world has seen in recent history – yet they remain the classic unsung heroes of the British Raj. <br> <br> The story of these extraordinary pioneers who explored much of Asia during the 19th century to fill in large portions of its map, and spy out the region for military reasons is often forgotten, but Riaz Dean’s vivid account of their exploits, their adventurous spirit and their tenacity in the face of great adversity, all set within the context of the Great Game and the Survey of India, will finally bring them the attention they deserve.",
+                publisher: "Casemate, 201",
                 status: "read",
                 progress: 100,
                 rating: 3.7
             },
             {
-                id: 7,
                 title: "Plato and a Platypus Walk Into a Bar: Understanding Philosophy through Jokes",
                 shortTitle: "Plato and a Platypus Walk Into a Bar",
                 author: "Daniel Klein, Thomas Cathcart Galeano",
                 genres: ["Philosophy"],
-                cover: "https://via.placeholder.com/250x375?text=Plato+Platypus",
-                description: "This entertaining guide to philosophy explains profound ideas through jokes and humor.",
-                publisher: "Philosophy Press",
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1477829446i/32810304.jpg",
+                description: "Daniel Klein and Thomas Cathcart take philosophy to task with flair and gusto in this wise and hilarious treasure of a book. Lively, original, and powerfully informative, Plato and a Platypus Walk Into a Bar is an irreverent crash course through the great thinkers and traditions. It’s philosophy for everyone, from the curious layperson to the professor who’s seen it all. Klein and Cathcart have the knack of getting to the core of an issue in a crystal clear line, meaning there’s more room for jokes – good jokes, clever jokes, jokes that’ll have you laughing so hard the people nearby will shoot you strange looks. It’s the philosophy class you wish you’d had and finally, it all makes sense!",
+                publisher: "OneWorld Publications, 2016 (this edition), Original 2007",
                 status: "read",
                 progress: 100,
                 rating: 4.5
