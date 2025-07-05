@@ -255,15 +255,10 @@ main {
 
 /* Mobile Layout */
 @media (max-width: 768px) {
-    .content-image, .artist-image {
-        width: 100%;
-        text-align: center;
+    main {
+        flex-direction: column;
     }
     
-    .content-image img, .artist-image img {
-        max-height: 200px;
-    }
-}
     .content-area {
         order: 1;
         width: 100%;
