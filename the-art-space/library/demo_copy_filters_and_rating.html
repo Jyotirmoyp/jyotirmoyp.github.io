@@ -125,6 +125,29 @@
             text-decoration: underline;
         }
         
+        .book-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stars-container {
+            display: flex;
+            position: relative;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+        
+        .stars-filled {
+            position: absolute;
+            display: flex;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #ffc107;
+        }
+        
         .book-description {
             margin-bottom: 1rem;
             color: #555;
@@ -300,7 +323,7 @@
         
         .status-list-header {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 0.5rem;
             padding: 0.2rem 0;
             font-weight: bold;
@@ -311,7 +334,7 @@
         
         .status-list-item {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 0.5rem;
             padding: 0.2rem 0;
         }
@@ -324,6 +347,28 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.3rem;
+        }
+        
+        .status-list-rating {
+            display: flex;
+            align-items: center;
+        }
+        
+        .small-stars-container {
+            display: flex;
+            position: relative;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        .small-stars-filled {
+            position: absolute;
+            display: flex;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #ffc107;
         }
         
         .hide {
@@ -389,6 +434,7 @@
             <div class="book-description-container" id="bookDescriptionContainer">
                 <div id="bookAuthor" class="book-author"></div>
                 <div id="bookGenres" class="book-genres"></div>
+                <div id="bookRating" class="book-rating"></div>
                 <div id="bookDescription" class="book-description">
                     <p>Click on any book title from the list to display its details here.</p>
                 </div>
@@ -431,7 +477,8 @@
                 description: "A comprehensive guide to Impressionist art, exploring the techniques and philosophies of Monet, Renoir, and their contemporaries.",
                 publisher: "Art World Press",
                 status: "read",
-                progress: 100
+                progress: 100,
+                rating: 4.2
             },
             {
                 id: 2,
@@ -442,7 +489,8 @@
                 description: "A fictional correspondence with Vincent van Gogh, imagining his thoughts and struggles through personal letters.",
                 publisher: "Creative Minds Publishing",
                 status: "currently-reading",
-                progress: 50
+                progress: 50,
+                rating: 3.4
             },
             {
                 id: 3,
@@ -453,7 +501,8 @@
                 description: "A collection of spiritual poems that earned Tagore the Nobel Prize in Literature, originally published as Gitanjali.",
                 publisher: "Poetry International",
                 status: "currently-reading",
-                progress: 70
+                progress: 70,
+                rating: 4.8
             },
             {
                 id: 4,
@@ -464,7 +513,8 @@
                 description: "A seminal work in French poetry, known for its exploration of beauty, decadence, and eroticism.",
                 publisher: "Classic Poetry Press",
                 status: "about-to-read",
-                progress: 0
+                progress: 0,
+                rating: 0
             },
             {
                 id: 5,
@@ -475,7 +525,8 @@
                 description: "A history of the world focusing on the importance of the East and the networks that connected civilizations.",
                 publisher: "Historical Texts",
                 status: "about-to-read",
-                progress: 0
+                progress: 0,
+                rating: 0
             },
             {
                 id: 6,
@@ -486,7 +537,8 @@
                 description: "An engaging narrative of world history from ancient times to the early modern period.",
                 publisher: "Global History Press",
                 status: "read",
-                progress: 100
+                progress: 100,
+                rating: 3.7
             }
         ];
 
@@ -576,6 +628,7 @@
                     <div>Title</div>
                     <div>Status</div>
                     <div>Genres</div>
+                    <div>Rating</div>
                 </div>
                 <ul class="status-list" id="statusList">
                     ${booksByAuthor.map(book => `
@@ -592,6 +645,9 @@
                                 ${book.genres.map(genre => `
                                     <a href="#" class="genre-tag" data-genre="${genre}">${genre}</a>
                                 `).join(', ')}
+                            </div>
+                            <div class="status-list-rating">
+                                ${renderStars(book.rating, true)}
                             </div>
                         </li>
                     `).join('')}
@@ -684,6 +740,7 @@
                     <div>Title</div>
                     <div>Author</div>
                     <div>Genres</div>
+                    <div>Rating</div>
                 </div>
                 <ul class="status-list" id="statusList">
                     ${filteredBooks.map(book => `
@@ -696,6 +753,9 @@
                                 ${book.genres.map(genre => `
                                     <a href="#" class="genre-tag" data-genre="${genre}">${genre}</a>
                                 `).join(', ')}
+                            </div>
+                            <div class="status-list-rating">
+                                ${renderStars(book.rating, true)}
                             </div>
                         </li>
                     `).join('')}
@@ -788,6 +848,32 @@
             });
         }
         
+        // Function to render star ratings
+        function renderStars(rating, small = false) {
+            if (rating === 0) return 'Not rated';
+            
+            const fullStars = Math.floor(rating);
+            const partialStar = rating - fullStars;
+            const emptyStars = 5 - Math.ceil(rating);
+            
+            const containerClass = small ? 'small-stars-container' : 'stars-container';
+            const filledClass = small ? 'small-stars-filled' : 'stars-filled';
+            
+            // Calculate width for partial star (percentage)
+            const partialWidth = partialStar * 100;
+            
+            return `
+                <div class="${containerClass}">
+                    ${'★'.repeat(5)}
+                    <div class="${filledClass}" style="width: ${(fullStars + partialStar) * 20}%">
+                        ${'★'.repeat(fullStars)}
+                        ${partialStar > 0 ? `<span style="width: ${partialWidth}%">★</span>` : ''}
+                    </div>
+                </div>
+                <span>${rating.toFixed(1)}</span>
+            `;
+        }
+        
         // Display the selected book
         function displayBook(book) {
             document.getElementById('bookCover').src = book.cover;
@@ -827,6 +913,18 @@
                 });
                 genresContainer.appendChild(tag);
             });
+            
+            // Display rating
+            const ratingContainer = document.getElementById('bookRating');
+            ratingContainer.innerHTML = '';
+            if (book.rating > 0) {
+                ratingContainer.innerHTML = `
+                    <span style="margin-right: 0.5rem;">Rating:</span>
+                    ${renderStars(book.rating)}
+                `;
+            } else {
+                ratingContainer.innerHTML = '<span>Not rated yet</span>';
+            }
             
             document.getElementById('bookDescription').innerHTML = `<p>${book.description}</p>`;
             document.getElementById('bookPublisher').textContent = `Publisher: ${book.publisher}`;
