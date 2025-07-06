@@ -4,67 +4,848 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost World of Hindustani Music</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #222;
+            letter-spacing: 0.5px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            min-height: 70vh;
+        }
+
+        /* Navigation styles - moved to right */
+        .navigation {
+            width: 25%;
+            padding-left: 20px;
+            border-left: 1px solid #ddd;
+            order: 2;
+        }
+
+        .menu {
+            list-style: none;
+            max-height: 70vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .menu::-webkit-scrollbar {
+            display: none;
+        }
+
+        .menu-item {
+            margin-bottom: 3px;
+        }
+
+        .menu-header {
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 6px 8px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-header:hover {
+            background-color: #eee;
+        }
+
+        .menu-header::after {
+            content: '+';
+            font-size: 1rem;
+        }
+
+        .menu-header.expanded::after {
+            content: '-';
+        }
+
+        .submenu {
+            list-style: none;
+            padding-left: 15px;
+            display: none;
+        }
+
+        .submenu li {
+            padding: 4px 6px;
+            cursor: pointer;
+            margin-bottom: 2px;
+            transition: all 0.3s;
+            border-left: 1px solid #ddd;
+            font-size: 0.85rem;
+        }
+
+        .submenu li:hover {
+            border-left-color: #666;
+            background-color: #f5f5f5;
+        }
+
+        .submenu .menu-header {
+            font-size: 0.85rem;
+        }
+
+        /* Content styles */
+        .content {
+            width: 75%;
+            padding-right: 20px;
+        }
+
+        .info-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .info-header {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-header h2 {
+            font-weight: 350;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        #info-image {
+            max-width: 100%;
+            max-height: 300px;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 3px;
+            display: block;
+        }
+
+        .content-image {
+            max-width: 100%;
+            max-height: 200px;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 3px;
+            display: block;
+        }
+
+        .image-caption {
+            font-size: 0.8rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        #info-description {
+            font-size: 0.9rem;
+        }
+
+        #info-description p {
+            margin-bottom: 10px;
+        }
+
+        #info-description h3 {
+            font-size: 1.1rem;
+            margin: 15px 0 8px 0;
+            font-weight: 400;
+        }
+
+        .links {
+            margin-top: 15px;
+        }
+
+        .links a {
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            padding: 4px 8px;
+            background: #eee;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+
+        .links a:hover {
+            background: #ddd;
+        }
+
+        .raga-links {
+            margin: 15px 0;
+        }
+
+        .raga-link {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .raga-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            color: #555;
+        }
+
+        .raga-tag:hover {
+            background: #e0e0e0;
+        }
+
+        /* Raga listing page styles */
+        .raga-list {
+            margin-top: 20px;
+        }
+
+        .raga-list h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .raga-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .raga-item:last-child {
+            border-bottom: none;
+        }
+
+        .raga-recording {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .raga-meta {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .raga-meta a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .raga-meta a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .navigation, .content {
+                width: 100%;
+                padding: 0;
+            }
+            
+            .navigation {
+                border-left: none;
+                border-top: 1px solid #ddd;
+                padding-top: 20px;
+                margin-top: 20px;
+                order: initial;
+            }
+            
+            .menu {
+                max-height: 200px;
+            }
+            
+            header h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Lost World of Hindustani Music</h1>
-		<a href="#" class="home-button">Home</a>
         </header>
         
-        <main>
-            <div class="content-area">
-                <div class="welcome-message">
-                    <p>Select from the menu to explore recordings</p>
-                </div>
-            </div>
-            
-            <div class="menu">
-                <!-- Dhrupad Section -->
-                <div class="menu-section">
-                    <div class="menu-header">Dhrupad</div>
-                    <div class="menu-items">
-                        <div class="subgenre-section">
-                            <div class="subgenre-header">Dagar Vani</div>
-                            <div class="artist-items">
-                                <div class="artist">Ustad Mohiuddin Dagar</div>
-                                <div class="artist">Nancy Lesh</div>
-                            </div>
-                        </div>
-                        <div class="subgenre-section">
-                            <div class="subgenre-header">Khandar Vani</div>
-                            <div class="artist-items">
-                                <div class="artist">Ustad Rahim Fahimuddin Dagar</div>
-                            </div>
-                        </div>
+        <div class="content-wrapper">
+            <main class="content">
+                <div class="info-panel" id="main-content">
+                    <div class="info-header">
+                        <h2 id="info-title">Welcome</h2>
+                        <img id="info-image" src="" alt="" style="display: none;">
                     </div>
+                    <div id="info-description">
+                        <p>Select a style, gharana, or artist from the navigation to learn more about the rich heritage of Hindustani classical music.</p>
+                        <img class="content-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Tansen_%28cropped%29.jpg/320px-Tansen_%28cropped%29.jpg" alt="Tansen, the legendary musician">
+                        <p class="image-caption">Tansen, one of the nine jewels in Akbar's court and a pioneer of Hindustani classical music</p>
+                    </div>
+                    <div id="info-links" class="links"></div>
+                    <div id="raga-links" class="raga-links"></div>
                 </div>
                 
-                <!-- Kheyal Section -->
-                <div class="menu-section">
-                    <div class="menu-header">Kheyal</div>
-                    <div class="menu-items">
-                        <div class="subgenre-section">
-                            <div class="subgenre-header">Agra</div>
-                            <div class="artist-items">
-                                <div class="artist">Ustad Faiyaz Khan</div>
-                            </div>
-                        </div>
-                        <div class="subgenre-section">
-                            <div class="subgenre-header">Jaipur</div>
-                            <div class="artist-items">
-                                <div class="artist">Pt. Mallikarjun Mansur</div>
-				<div class="artist">Kesar Bai Kerkar</div>
-
-                            </div>
-                        </div>
+                <!-- Raga listing page (hidden by default) -->
+                <div id="raga-page" class="info-panel" style="display: none;">
+                    <div class="info-header">
+                        <h2 id="raga-page-title">List of Raga Recordings</h2>
                     </div>
+                    <div id="raga-page-content" class="raga-list"></div>
                 </div>
-            </div>
-        </main>
+            </main>
+            
+            <nav class="navigation">
+                <ul id="main-menu" class="menu"></ul>
+            </nav>
+        </div>
     </div>
-    
-    <script src="script.js"></script>
+
+    <script>
+        // Music data with YouTube links and raga information
+        const musicData = {
+            styles: [
+                {
+                    id: "dhrupad",
+                    name: "Dhrupad",
+                    description: `
+                        <p>Dhrupad is the oldest surviving form of Indian Classical music and traces its origin to the chanting of vedic hymns and mantras.</p>
+                        <img class="content-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rudra_veena.jpg/320px-Rudra_veena.jpg" alt="Rudra Veena">
+                        <p class="image-caption">The Rudra Veena, a classical instrument often used in Dhrupad</p>
+                    `,
+                    history: "Dhrupad evolved from the older chanting style called Prabandha and was formalized in the 15th century by Raja Man Singh Tomar of Gwalior.",
+                    characteristics: "Characterized by its solemn, meditative quality, Dhrupad is performed with a tanpura and pakhawaj. It has a strict formal structure with alap, jor, jhala, and composition sections.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rudra_veena.jpg/320px-Rudra_veena.jpg",
+                    gharanas: ["dagar", "khandar"],
+                    links: [
+                        { title: "Learn more", url: "https://en.wikipedia.org/wiki/Dhrupad" }
+                    ]
+                },
+                // ... other styles ...
+            ],
+            
+            gharanas: [
+                {
+                    id: "dagar",
+                    name: "Dagar Vani",
+                    description: `
+                        <p>The Dagar gharana is the foremost proponent of the Dhrupad style of singing, known for its purity and spiritual approach.</p>
+                        <img class="content-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Zia_Moinuddin_Dagar.jpg/320px-Zia_Moinuddin_Dagar.jpg" alt="Zia Moinuddin Dagar">
+                        <p class="image-caption">Ustad Zia Moinuddin Dagar with his Rudra Veena</p>
+                    `,
+                    founder: "Brahmanand Swami (16th century)",
+                    origin: "Originally from Rajasthan, later based in Delhi and other parts of North India",
+                    characteristics: "Emphasis on alap, precise intonation, and meditative development of ragas. Uses the 'Dagar vani' style which focuses on the deeper aspects of sound.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Zia_Moinuddin_Dagar.jpg/320px-Zia_Moinuddin_Dagar.jpg",
+                    artists: ["mohiuddin_dagar", "nancy_lesh"],
+                    links: [
+                        { title: "Dagar Tradition", url: "https://en.wikipedia.org/wiki/Dagar_family" }
+                    ]
+                },
+                // ... other gharanas ...
+            ],
+            
+            artists: [
+                {
+                    id: "mohiuddin_dagar",
+                    name: "Ustad Mohiuddin Dagar",
+                    description: `
+                        <p>One of the most revered Dhrupad singers of the 20th century, known for his deep, resonant voice and spiritual approach to music.</p>
+                        <img class="content-image" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTo3J_Gvf8rZ3QScew-MGKi9grMmeA3V05GPMVRj8cdrWrC67xagA6vis1sh3CoiMNpysu1LykaB8J--znC2dpyN9nF64lmGzCCH8KaU7NK" alt="Moinuddin and Aminuddin Dagar">
+                        <p class="image-caption">Ustad Moinuddin Dagar (right) with his brother Aminuddin Dagar</p>
+                    `,
+                    birth: "1920",
+                    death: "1966",
+                    contribution: "He was instrumental in keeping the Dagar tradition alive during difficult times and trained many disciples including his younger brother Zia Moinuddin Dagar.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Moinuddin_and_Aminuddin_Dagar.jpg/320px-Moinuddin_and_Aminuddin_Dagar.jpg",
+                    ragas: [
+                        {
+                            name: "Yaman",
+                            url: "https://www.youtube.com/watch?v=q5trNs7M3MU",
+                            tags: ["yaman"]
+                        },
+                        {
+                            name: "Bhoop",
+                            url: "https://www.youtube.com/watch?v=example1",
+                            tags: ["bhoop"]
+                        }
+                    ],
+                    links: [
+                        { title: "Biography", url: "https://en.wikipedia.org/wiki/Moinuddin_Dagar" }
+                    ]
+                },
+
+                {
+                    id: "nancy_lesh",
+                    name: "Nancy lesh",
+                    description: `
+                        <p>One of the most revered Dhrupad singers of the 20th century, known for his deep, resonant voice and spiritual approach to music.</p>
+                        <img class="content-image" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTo3J_Gvf8rZ3QScew-MGKi9grMmeA3V05GPMVRj8cdrWrC67xagA6vis1sh3CoiMNpysu1LykaB8J--znC2dpyN9nF64lmGzCCH8KaU7NK" alt="Moinuddin and Aminuddin Dagar">
+                        <p class="image-caption">Ustad Moinuddin Dagar (right) with his brother Aminuddin Dagar</p>
+                    `,
+                    birth: "1920",
+                    death: "1966",
+                    contribution: "He was instrumental in keeping the Dagar tradition alive during difficult times and trained many disciples including his younger brother Zia Moinuddin Dagar.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Moinuddin_and_Aminuddin_Dagar.jpg/320px-Moinuddin_and_Aminuddin_Dagar.jpg",
+                    ragas: [
+                        {
+                            name: "Yaman",
+                            url: "https://www.youtube.com/watch?v=q5trNs7M3MU",
+                            tags: ["yaman"]
+                        },
+                        {
+                            name: "Bhoop",
+                            url: "https://www.youtube.com/watch?v=example1",
+                            tags: ["bhoop"]
+                        }
+                    ],
+                    links: [
+                        { title: "Biography", url: "https://en.wikipedia.org/wiki/Moinuddin_Dagar" }
+                    ]
+                },
+
+                {
+                    id: "bhimsen_joshi",
+                    name: "Pandit Bhimsen Joshi",
+                    description: `
+                        <p>One of the most celebrated Indian vocalists of the Kirana gharana, known for his powerful voice and mastery over khayal singing.</p>
+                        <img class="content-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bhimsen_Joshi.jpg/320px-Bhimsen_Joshi.jpg" alt="Bhimsen Joshi">
+                        <p class="image-caption">Pandit Bhimsen Joshi in performance</p>
+                    `,
+                    birth: "February 4, 1922",
+                    death: "January 24, 2011",
+                    contribution: "Popularized Hindustani classical music among masses while maintaining its purity. Known for his renditions of ragas like Miyan ki Todi, Puriya Kalyan, and Multani.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bhimsen_Joshi.jpg/320px-Bhimsen_Joshi.jpg",
+                    ragas: [
+                        {
+                            name: "Yaman",
+                            url: "https://www.youtube.com/watch?v=S0ioBZItZ2A",
+                            tags: ["yaman"]
+                        },
+                        {
+                            name: "Miyan ki Todi",
+                            url: "https://www.youtube.com/watch?v=example2",
+                            tags: ["todi"]
+                        }
+                    ],
+                    links: [
+                        { title: "Wikipedia", url: "https://en.wikipedia.org/wiki/Bhimsen_Joshi" }
+                    ]
+                },
+                // ... other artists ...
+            ],
+            
+            // Raga index for quick lookup
+            ragaIndex: {
+                "yaman": [
+                    {
+                        artistId: "moinuddin_dagar",
+                        recording: "https://www.youtube.com/watch?v=q5trNs7M3MU"
+                    },
+                    {
+                        artistId: "bhimsen_joshi",
+                        recording: "https://www.youtube.com/watch?v=S0ioBZItZ2A"
+                    }
+                ]
+            }
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            buildMenu();
+            showWelcomeContent();
+            
+            // Add event delegation for menu clicks
+            document.getElementById('main-menu').addEventListener('click', function(e) {
+                const header = e.target.closest('.menu-header');
+                if (!header) return;
+                
+                e.stopPropagation();
+                
+                const submenu = header.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    header.classList.toggle('expanded');
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                }
+                
+                const type = header.getAttribute('data-type');
+                const id = header.getAttribute('data-id');
+                
+                if (type === 'style') {
+                    showStyleContent(id);
+                } else if (type === 'gharana') {
+                    showGharanaContent(id);
+                }
+            });
+            
+            // Add click handlers for artist items
+            document.getElementById('main-menu').addEventListener('click', function(e) {
+                const artistItem = e.target.closest('li[data-type="artist"]');
+                if (!artistItem) return;
+                
+                const artistId = artistItem.getAttribute('data-id');
+                showArtistContent(artistId);
+            });
+        });
+
+        function buildMenu() {
+            const mainMenu = document.getElementById('main-menu');
+            mainMenu.innerHTML = '';
+            
+            // Create Styles level
+            musicData.styles.forEach(style => {
+                const styleItem = document.createElement('li');
+                styleItem.className = 'menu-item';
+                
+                const styleHeader = document.createElement('div');
+                styleHeader.className = 'menu-header';
+                styleHeader.textContent = style.name;
+                styleHeader.setAttribute('data-type', 'style');
+                styleHeader.setAttribute('data-id', style.id);
+                
+                const styleSubmenu = document.createElement('ul');
+                styleSubmenu.className = 'submenu';
+                
+                // Create Gharanas for this style
+                style.gharanas.forEach(gharanaId => {
+                    const gharana = musicData.gharanas.find(g => g.id === gharanaId);
+                    if (!gharana) return;
+                    
+                    const gharanaItem = document.createElement('li');
+                    gharanaItem.className = 'menu-item';
+                    
+                    const gharanaHeader = document.createElement('div');
+                    gharanaHeader.className = 'menu-header';
+                    gharanaHeader.textContent = gharana.name;
+                    gharanaHeader.setAttribute('data-type', 'gharana');
+                    gharanaHeader.setAttribute('data-id', gharana.id);
+                    
+                    const gharanaSubmenu = document.createElement('ul');
+                    gharanaSubmenu.className = 'submenu';
+                    
+                    // Create Artists for this gharana
+                    gharana.artists.forEach(artistId => {
+                        const artist = musicData.artists.find(a => a.id === artistId);
+                        if (!artist) return;
+                        
+                        const artistItem = document.createElement('li');
+                        artistItem.textContent = artist.name;
+                        artistItem.setAttribute('data-type', 'artist');
+                        artistItem.setAttribute('data-id', artist.id);
+                        
+                        gharanaSubmenu.appendChild(artistItem);
+                    });
+                    
+                    gharanaItem.appendChild(gharanaHeader);
+                    gharanaItem.appendChild(gharanaSubmenu);
+                    styleSubmenu.appendChild(gharanaItem);
+                });
+                
+                styleItem.appendChild(styleHeader);
+                styleItem.appendChild(styleSubmenu);
+                mainMenu.appendChild(styleItem);
+            });
+        }
+
+        function showWelcomeContent() {
+            document.getElementById('info-title').textContent = 'Welcome to Lost World of Hindustani Music';
+            document.getElementById('info-image').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('raga-page').style.display = 'none';
+        }
+
+        function showStyleContent(styleId) {
+            const style = musicData.styles.find(s => s.id === styleId);
+            if (!style) return;
+            
+            document.getElementById('info-title').textContent = style.name;
+            
+            let description = style.description;
+            if (style.history) {
+                description += `<h3>History</h3><p>${style.history}</p>`;
+            }
+            if (style.characteristics) {
+                description += `<h3>Characteristics</h3><p>${style.characteristics}</p>`;
+            }
+            
+            document.getElementById('info-description').innerHTML = description;
+            
+            const imageElement = document.getElementById('info-image');
+            if (style.image) {
+                imageElement.src = style.image;
+                imageElement.alt = style.name;
+                imageElement.style.display = 'block';
+            } else {
+                imageElement.style.display = 'none';
+            }
+            
+            const linksContainer = document.getElementById('info-links');
+            linksContainer.innerHTML = '';
+            if (style.links) {
+                style.links.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.textContent = link.title;
+                    a.target = '_blank';
+                    linksContainer.appendChild(a);
+                });
+            }
+            
+            document.getElementById('raga-links').innerHTML = '';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('raga-page').style.display = 'none';
+        }
+
+        function showGharanaContent(gharanaId) {
+            const gharana = musicData.gharanas.find(g => g.id === gharanaId);
+            if (!gharana) return;
+            
+            document.getElementById('info-title').textContent = gharana.name;
+            
+            let description = gharana.description;
+            if (gharana.founder) {
+                description += `<p><strong>Founder:</strong> ${gharana.founder}</p>`;
+            }
+            if (gharana.origin) {
+                description += `<p><strong>Origin:</strong> ${gharana.origin}</p>`;
+            }
+            if (gharana.characteristics) {
+                description += `<h3>Characteristics</h3><p>${gharana.characteristics}</p>`;
+            }
+            
+            document.getElementById('info-description').innerHTML = description;
+            
+            const imageElement = document.getElementById('info-image');
+            if (gharana.image) {
+                imageElement.src = gharana.image;
+                imageElement.alt = gharana.name;
+                imageElement.style.display = 'block';
+            } else {
+                imageElement.style.display = 'none';
+            }
+            
+            const linksContainer = document.getElementById('info-links');
+            linksContainer.innerHTML = '';
+            if (gharana.links) {
+                gharana.links.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.textContent = link.title;
+                    a.target = '_blank';
+                    linksContainer.appendChild(a);
+                });
+            }
+            
+            document.getElementById('raga-links').innerHTML = '';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('raga-page').style.display = 'none';
+        }
+
+        function showArtistContent(artistId) {
+            const artist = musicData.artists.find(a => a.id === artistId);
+            if (!artist) return;
+            
+            document.getElementById('info-title').textContent = artist.name;
+            
+            let description = artist.description;
+            if (artist.birth) {
+                description += `<p><strong>Born:</strong> ${artist.birth}</p>`;
+            }
+            if (artist.death) {
+                description += `<p><strong>Died:</strong> ${artist.death}</p>`;
+            }
+            if (artist.contribution) {
+                description += `<h3>Contributions</h3><p>${artist.contribution}</p>`;
+            }
+            
+            document.getElementById('info-description').innerHTML = description;
+            
+            const imageElement = document.getElementById('info-image');
+            if (artist.image) {
+                imageElement.src = artist.image;
+                imageElement.alt = artist.name;
+                imageElement.style.display = 'block';
+            } else {
+                imageElement.style.display = 'none';
+            }
+            
+            const linksContainer = document.getElementById('info-links');
+            linksContainer.innerHTML = '';
+            if (artist.links) {
+                artist.links.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.textContent = link.title;
+                    a.target = '_blank';
+                    linksContainer.appendChild(a);
+                });
+            }
+            
+            // Show raga links for this artist
+            const ragaLinksContainer = document.getElementById('raga-links');
+            ragaLinksContainer.innerHTML = '';
+            
+            if (artist.ragas && artist.ragas.length > 0) {
+                const ragaHeader = document.createElement('h3');
+                ragaHeader.textContent = 'Raga Recordings';
+                ragaLinksContainer.appendChild(ragaHeader);
+                
+                artist.ragas.forEach(raga => {
+                    const ragaLink = document.createElement('div');
+                    ragaLink.className = 'raga-link';
+                    
+                    const youtubeLink = document.createElement('a');
+                    youtubeLink.href = raga.url;
+                    youtubeLink.textContent = `Rag ${raga.name}`;
+                    youtubeLink.target = '_blank';
+                    ragaLink.appendChild(youtubeLink);
+                    
+                    // Add tags that link to raga listing pages
+                    if (raga.tags && raga.tags.length > 0) {
+                        raga.tags.forEach(tag => {
+                            const tagLink = document.createElement('a');
+                            tagLink.className = 'raga-tag';
+                            tagLink.href = '#';
+                            tagLink.textContent = `#${tag}`;
+                            tagLink.onclick = (e) => {
+                                e.preventDefault();
+                                showRagaPage(tag);
+                            };
+                            ragaLink.appendChild(tagLink);
+                        });
+                    }
+                    
+                    ragaLinksContainer.appendChild(ragaLink);
+                });
+            }
+            
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('raga-page').style.display = 'none';
+        }
+
+        function showRagaPage(ragaName) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('raga-page').style.display = 'block';
+            
+            document.getElementById('raga-page-title').textContent = `List of ${ragaName.charAt(0).toUpperCase() + ragaName.slice(1)} Raga Recordings`;
+            
+            const ragaPageContent = document.getElementById('raga-page-content');
+            ragaPageContent.innerHTML = '';
+            
+            if (musicData.ragaIndex[ragaName]) {
+                musicData.ragaIndex[ragaName].forEach(recording => {
+                    const artist = musicData.artists.find(a => a.id === recording.artistId);
+                    if (!artist) return;
+                    
+                    // Find which gharana this artist belongs to
+                    let artistGharana = null;
+                    let artistStyle = null;
+                    
+                    for (const gharana of musicData.gharanas) {
+                        if (gharana.artists.includes(artist.id)) {
+                            artistGharana = gharana;
+                            break;
+                        }
+                    }
+                    
+                    for (const style of musicData.styles) {
+                        if (artistGharana && style.gharanas.includes(artistGharana.id)) {
+                            artistStyle = style;
+                            break;
+                        }
+                    }
+                    
+                    const ragaItem = document.createElement('div');
+                    ragaItem.className = 'raga-item';
+                    
+                    const recordingLink = document.createElement('div');
+                    recordingLink.className = 'raga-recording';
+                    
+                    const youtubeLink = document.createElement('a');
+                    youtubeLink.href = recording.recording;
+                    youtubeLink.textContent = 'Recording';
+                    youtubeLink.target = '_blank';
+                    recordingLink.appendChild(youtubeLink);
+                    ragaItem.appendChild(recordingLink);
+                    
+                    const metaInfo = document.createElement('div');
+                    metaInfo.className = 'raga-meta';
+                    
+                    // Artist link
+                    const artistLink = document.createElement('a');
+                    artistLink.href = '#';
+                    artistLink.textContent = artist.name;
+                    artistLink.onclick = (e) => {
+                        e.preventDefault();
+                        showArtistContent(artist.id);
+                    };
+                    metaInfo.appendChild(artistLink);
+                    
+                    metaInfo.appendChild(document.createTextNode(' • '));
+                    
+                    // Gharana link
+                    if (artistGharana) {
+                        const gharanaLink = document.createElement('a');
+                        gharanaLink.href = '#';
+                        gharanaLink.textContent = artistGharana.name;
+                        gharanaLink.onclick = (e) => {
+                            e.preventDefault();
+                            showGharanaContent(artistGharana.id);
+                        };
+                        metaInfo.appendChild(gharanaLink);
+                    }
+                    
+                    metaInfo.appendChild(document.createTextNode(' • '));
+                    
+                    // Style link
+                    if (artistStyle) {
+                        const styleLink = document.createElement('a');
+                        styleLink.href = '#';
+                        styleLink.textContent = artistStyle.name;
+                        styleLink.onclick = (e) => {
+                            e.preventDefault();
+                            showStyleContent(artistStyle.id);
+                        };
+                        metaInfo.appendChild(styleLink);
+                    }
+                    
+                    ragaItem.appendChild(metaInfo);
+                    ragaPageContent.appendChild(ragaItem);
+                });
+            } else {
+                ragaPageContent.innerHTML = `<p>No recordings found for ${ragaName}.</p>`;
+            }
+        }
+    </script>
 </body>
 </html>
