@@ -355,23 +355,19 @@
             ],
             
             gharanas: [
-                {
-                    id: "dagar",
-                    name: "Dagar Vani",
-                    description: `
-                        <p>The Dagar gharana is the foremost proponent of the Dhrupad style of singing, known for its purity and spiritual approach.</p>
-                        <img class="content-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Zia_Moinuddin_Dagar.jpg/320px-Zia_Moinuddin_Dagar.jpg" alt="Zia Moinuddin Dagar">
-                        <p class="image-caption">Ustad Zia Moinuddin Dagar with his Rudra Veena</p>
-                    `,
-                    founder: "Brahmanand Swami (16th century)",
-                    origin: "Originally from Rajasthan, later based in Delhi and other parts of North India",
-                    characteristics: "Emphasis on alap, precise intonation, and meditative development of ragas. Uses the 'Dagar vani' style which focuses on the deeper aspects of sound.",
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Zia_Moinuddin_Dagar.jpg/320px-Zia_Moinuddin_Dagar.jpg",
-                    artists: ["mohiuddin_dagar", "nancy_lesh"],
-                    links: [
-                        { title: "Dagar Tradition", url: "https://en.wikipedia.org/wiki/Dagar_family" }
-                    ]
-                },
+		    {
+    			id: "dagar",
+    			name: "Dagar Vani",
+    			description: `
+        		<p>The Dagar gharana is the foremost proponent of the Dhrupad style of singing</p>
+        		<img class="content-image" src="IMAGE_URL" alt="Zia Moinuddin Dagar">
+        		<p class="image-caption">IMAGE_CAPTION</p>
+    			`,
+    			artists: ["mohiuddin_dagar", "nancy_lesh"],
+    			links: [
+        			{ title: "Dagar Tradition", url: "https://en.wikipedia.org/wiki/Dagar_vani" }
+    			]
+		    }
                 // ... other gharanas ...
             ],
             
@@ -626,50 +622,38 @@
             document.getElementById('raga-page').style.display = 'none';
         }
 
-        function showGharanaContent(gharanaId) {
-            const gharana = musicData.gharanas.find(g => g.id === gharanaId);
-            if (!gharana) return;
-            
-            document.getElementById('info-title').textContent = gharana.name;
-            
-            let description = gharana.description;
-            if (gharana.founder) {
-                description += `<p><strong>Founder:</strong> ${gharana.founder}</p>`;
-            }
-            if (gharana.origin) {
-                description += `<p><strong>Origin:</strong> ${gharana.origin}</p>`;
-            }
-            if (gharana.characteristics) {
-                description += `<h3>Characteristics</h3><p>${gharana.characteristics}</p>`;
-            }
-            
-            document.getElementById('info-description').innerHTML = description;
-            
-            const imageElement = document.getElementById('info-image');
-            if (gharana.image) {
-                imageElement.src = gharana.image;
-                imageElement.alt = gharana.name;
-                imageElement.style.display = 'block';
-            } else {
-                imageElement.style.display = 'none';
-            }
-            
-            const linksContainer = document.getElementById('info-links');
-            linksContainer.innerHTML = '';
-            if (gharana.links) {
-                gharana.links.forEach(link => {
-                    const a = document.createElement('a');
-                    a.href = link.url;
-                    a.textContent = link.title;
-                    a.target = '_blank';
-                    linksContainer.appendChild(a);
-                });
-            }
-            
-            document.getElementById('raga-links').innerHTML = '';
-            document.getElementById('main-content').style.display = 'block';
-            document.getElementById('raga-page').style.display = 'none';
+    function showGharanaContent(gharanaId) {
+    	const gharana = musicData.gharanas.find(g => g.id === gharanaId);
+        if (!gharana) return;
+    
+        document.getElementById('info-title').textContent = gharana.name;
+        document.getElementById('info-description').innerHTML = gharana.description || '<p>No description available.</p>';
+    
+        const imageElement = document.getElementById('info-image');
+        if (gharana.image) {
+            imageElement.src = gharana.image;
+            imageElement.alt = gharana.name;
+            imageElement.style.display = 'block';
+        } else {
+            imageElement.style.display = 'none';
         }
+    
+        const linksContainer = document.getElementById('info-links');
+        linksContainer.innerHTML = '';
+        if (gharana.links) {
+            gharana.links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.textContent = link.title;
+                a.target = '_blank';
+                linksContainer.appendChild(a);
+            });
+        }
+    
+        document.getElementById('raga-links').innerHTML = '';
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('raga-page').style.display = 'none';
+}
 
         function showArtistContent(artistId) {
             const artist = musicData.artists.find(a => a.id === artistId);
