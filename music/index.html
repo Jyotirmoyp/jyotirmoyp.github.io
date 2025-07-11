@@ -343,8 +343,6 @@
                         <img class="content-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rudra_veena.jpg/320px-Rudra_veena.jpg" alt="Rudra Veena">
                         <p class="image-caption">The Rudra Veena, a classical instrument often used in Dhrupad</p>
                     `,
-                    history: "Dhrupad evolved from the older chanting style called Prabandha and was formalized in the 15th century by Raja Man Singh Tomar of Gwalior.",
-                    characteristics: "Characterized by its solemn, meditative quality, Dhrupad is performed with a tanpura and pakhawaj. It has a strict formal structure with alap, jor, jhala, and composition sections.",
                     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rudra_veena.jpg/320px-Rudra_veena.jpg",
                     gharanas: ["dagar", "khandar", "gauhar", "nahar"],
                     links: [
@@ -456,9 +454,7 @@
                         <img class="content-image" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTo3J_Gvf8rZ3QScew-MGKi9grMmeA3V05GPMVRj8cdrWrC67xagA6vis1sh3CoiMNpysu1LykaB8J--znC2dpyN9nF64lmGzCCH8KaU7NK" alt="Moinuddin and Aminuddin Dagar">
                         <p class="image-caption">Ustad Moinuddin Dagar (right) with his brother Aminuddin Dagar</p>
                     `,
-                    birth: "1920",
-                    death: "1966",
-                    contribution: "He was instrumental in keeping the Dagar tradition alive during difficult times and trained many disciples including his younger brother Zia Moinuddin Dagar.",
+                   
                     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Moinuddin_and_Aminuddin_Dagar.jpg/320px-Moinuddin_and_Aminuddin_Dagar.jpg",
                     ragas: [
                         {
@@ -634,13 +630,7 @@
             document.getElementById('info-title').textContent = style.name;
             
             let description = style.description;
-            if (style.history) {
-                description += `<h3>History</h3><p>${style.history}</p>`;
-            }
-            if (style.characteristics) {
-                description += `<h3>Characteristics</h3><p>${style.characteristics}</p>`;
-            }
-            
+                       
             document.getElementById('info-description').innerHTML = description;
             
             const imageElement = document.getElementById('info-image');
@@ -702,6 +692,8 @@
         document.getElementById('raga-page').style.display = 'none';
 }
 
+
+
         function showArtistContent(artistId) {
             const artist = musicData.artists.find(a => a.id === artistId);
             if (!artist) return;
@@ -709,15 +701,7 @@
             document.getElementById('info-title').textContent = artist.name;
             
             let description = artist.description;
-            if (artist.birth) {
-                description += `<p><strong>Born:</strong> ${artist.birth}</p>`;
-            }
-            if (artist.death) {
-                description += `<p><strong>Died:</strong> ${artist.death}</p>`;
-            }
-            if (artist.contribution) {
-                description += `<h3>Contributions</h3><p>${artist.contribution}</p>`;
-            }
+
             
             document.getElementById('info-description').innerHTML = description;
             
