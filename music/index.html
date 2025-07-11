@@ -16,38 +16,39 @@
         body {
             background-color: #f8f8f8;
             color: #333;
-            line-height: 1.5;
+            line-height: 1.4; /* Tighter line spacing */
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px; /* Reduced padding */
         }
 
         header {
             text-align: center;
-            padding: 20px 0;
+            padding: 15px 0; /* Reduced padding */
             border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduced margin */
         }
 
         header h1 {
-            font-size: 2rem;
+            font-size: 1.8rem; /* Smaller title */
             font-weight: 300;
             color: #222;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px; /* Reduced letter spacing */
         }
 
         .content-wrapper {
             display: flex;
             min-height: 70vh;
+            gap: 15px; /* Added gap between columns */
         }
 
-        /* Navigation styles - moved to right */
+        /* Navigation styles - tighter and smaller */
         .navigation {
-            width: 25%;
-            padding-left: 20px;
+            width: 22%; /* Slightly narrower */
+            padding-left: 10px; /* Reduced padding */
             border-left: 1px solid #ddd;
             order: 2;
         }
@@ -55,26 +56,44 @@
         .menu {
             list-style: none;
             max-height: 70vh;
-            overflow-y: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .menu::-webkit-scrollbar {
-            display: none;
+            overflow-y: scroll; /* Changed to scroll */
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+            padding: 5px;
+            /* Smooth scrolling */
+            scroll-behavior: smooth;
+            /* Hide scrollbar Chrome/Safari */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            /* Animation for appearing/disappearing items */
+            mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 20px,
+                black calc(100% - 20px),
+                transparent 100%
+            );
+            -webkit-mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 20px,
+                black calc(100% - 20px),
+                transparent 100%
+            );
         }
 
         .menu-item {
-            margin-bottom: 3px;
+            margin-bottom: 2px; /* Reduced margin */
         }
 
         .menu-header {
-            font-size: 0.9rem;
+            font-size: 0.8rem; /* Smaller font */
             font-weight: 500;
-            padding: 6px 8px;
+            padding: 4px 6px; /* Tighter padding */
             cursor: pointer;
-            border-radius: 3px;
-            transition: background-color 0.3s;
+            border-radius: 2px; /* Smaller radius */
+            transition: background-color 0.2s;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -86,7 +105,7 @@
 
         .menu-header::after {
             content: '+';
-            font-size: 1rem;
+            font-size: 0.9rem; /* Smaller icon */
         }
 
         .menu-header.expanded::after {
@@ -95,17 +114,18 @@
 
         .submenu {
             list-style: none;
-            padding-left: 15px;
+            padding-left: 12px; /* Reduced indentation */
             display: none;
+            margin-top: 2px; /* Reduced spacing */
         }
 
         .submenu li {
-            padding: 4px 6px;
+            padding: 3px 5px; /* Tighter padding */
             cursor: pointer;
-            margin-bottom: 2px;
-            transition: all 0.3s;
+            margin-bottom: 1px; /* Reduced spacing */
+            transition: all 0.2s;
             border-left: 1px solid #ddd;
-            font-size: 0.85rem;
+            font-size: 0.75rem; /* Smaller font */
         }
 
         .submenu li:hover {
@@ -114,7 +134,13 @@
         }
 
         .submenu .menu-header {
-            font-size: 0.85rem;
+            font-size: 0.75rem; /* Smaller font */
+        }
+
+        /* Content styles */
+        .content {
+            width: 78%; /* Adjusted width */
+            padding-right: 15px; /* Reduced padding */
         }
 
         /* Content styles */
@@ -350,6 +376,21 @@
                     ]
                 },
 		
+
+		                {
+                    id: "kheyal",
+                    name: "Kheyal",
+                    description: `
+                        <p>Dhrupad is the oldest surviving form of Indian Classical music and traces its origin to the chanting of vedic hymns and 			mantras.</p>
+                        <img class="content-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rudra_veena.jpg/320px-Rudra_veena.jpg" 		alt="Rudra Veena">
+                        <p class="image-caption">The Rudra Veena, a classical instrument often used in Dhrupad</p>
+                    `,
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rudra_veena.jpg/320px-Rudra_veena.jpg",
+                    gharanas: ["agra", "Jaipur", "Gwalior", "Kirana"],
+                    links: [
+                        { title: "Learn more", url: "https://en.wikipedia.org/wiki/Dhrupad" }
+                    ]
+                },
                 // ... other styles ...
             ],
             
@@ -407,6 +448,20 @@
         		<p class="image-caption">IMAGE_CAPTION</p>
     			`,
     			artists: ["mohiuddin_dagar", "nancy_lesh"],
+    			links: [
+        			{ title: "Dagar Tradition", url: "https://en.wikipedia.org/wiki/Dagar_vani"}
+    			]
+		    },
+
+		    {
+    			id: "agra",
+    			name: "Agra",
+    			description: `
+        		<p>DESCRIPTION</p>
+        		<img class="content-image" src="IMAGE_URL" alt="Zia Moinuddin Dagar">
+        		<p class="image-caption">IMAGE_CAPTION</p>
+    			`,
+    			artists: ["faiyaz_khan", "lalith_rao"],
     			links: [
         			{ title: "Dagar Tradition", url: "https://en.wikipedia.org/wiki/Dagar_vani"}
     			]
@@ -474,17 +529,15 @@
                 },
 
                 {
-                    id: "bhimsen_joshi",
-                    name: "Pandit Bhimsen Joshi",
+                    id: "faiyaz_khan",
+                    name: "Faiyaz Khan",
                     description: `
                         <p>One of the most celebrated Indian vocalists of the Kirana gharana, known for his powerful voice and mastery over khayal singing.</p>
                         <img class="content-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bhimsen_Joshi.jpg/320px-Bhimsen_Joshi.jpg" alt="Bhimsen Joshi">
                         <p class="image-caption">Pandit Bhimsen Joshi in performance</p>
                     `,
-                    birth: "February 4, 1922",
-                    death: "January 24, 2011",
-                    contribution: "Popularized Hindustani classical music among masses while maintaining its purity. Known for his renditions of ragas like Miyan ki Todi, Puriya Kalyan, and Multani.",
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bhimsen_Joshi.jpg/320px-Bhimsen_Joshi.jpg",
+                   
+                    image: "https://upload.wikimedia.org/wikipedia/commons/a/a8/FAIYAZ_KHAN.jpg",
                     ragas: [
                         {
                             name: "Yaman",
@@ -861,6 +914,23 @@
                 ragaPageContent.innerHTML = `<p>No recordings found for ${ragaName}.</p>`;
             }
         }
+
+
+	 // Add smooth scrolling behavior
+        document.addEventListener('DOMContentLoaded', function() {
+            const menu = document.querySelector('.menu');
+            
+            // Enable momentum scrolling on iOS
+            menu.addEventListener('touchstart', function() {
+                this.style.overflowY = 'scroll';
+            }, { passive: true });
+            
+            menu.addEventListener('touchend', function() {
+                this.style.overflowY = 'scroll';
+            }, { passive: true });
+        });
+
+
     </script>
 </body>
 </html>
