@@ -703,7 +703,8 @@
 		publisher: "Bodley Head, 2020",
                 status: "currently-reading",
                 progress: 30,
-                rating: 3.7
+                rating: 3.7, 
+		
             },
 
            {
@@ -802,6 +803,21 @@
 		status: "about-to-read",
                 progress: 100,
                 rating: 0
+		
+             },
+
+           {
+                title: "The Golden Road: How Ancient India Transformed the World",
+                shortTitle: "The Golden Road",
+		author: "William Dalrymple",
+		genres: ["History"],
+                cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1715854421i/201608148.jpg",
+                description: "For most of its modern history, India was fated to be on the receiving end of cultural influence from other civilisations. But this isn't the complete story. A full millennium earlier, India's major cultural exports – religion, art, technology, astronomy, mathematics, medicine, language and literature – were shaping civilisations, travelling as far as Afghanistan in the West and Japan in the East. Out of India came pioneering merchants, astronomers and astrologers, scientists and mathematicians, surgeons and sculptors, as well as holy men, monks and missionaries. In The Golden Road, legendary historian William Dalrymple highlights India's oft-forgotten position as a crucial economic and civilisational hub at the heart of the ancient and early medieval history of Eurasia. From Angkor to Ayutthaya, The Golden Road traces the cultural flow of Indian religions, languages, artistic and architectural forms and mathematics throughout the world. In this groundbreaking tome, Dalrymple draws from a lifetime of scholarship to reinstate India as the great intellectual and philosophical superpower of ancient Asia.",
+                publisher: " Bloomsbury Publishing, 2024",
+		status: "currently-reading",
+                progress: 7,
+                rating: 0,
+		isHome: true,	
 
              },
 
@@ -848,11 +864,22 @@
             // Initial population of book list (show all books)
             updateBookList(books);
             
-            // Display the first book by default
-            if (books.length > 0) {
-                displayBook(books[0]);
-            }
-        });
+            // Find and display the home book (or first book if none marked as home)
+        const homeBook = books.find(book => book.isHome) || books[0];
+        if (homeBook) {
+            displayBook(homeBook);
+            // Highlight the home book in the list
+            setTimeout(() => {
+                const bookItems = document.querySelectorAll('.book-item');
+                bookItems.forEach(item => {
+                    if (item.textContent.includes(homeBook.title) || 
+                        (homeBook.shortTitle && item.textContent.includes(homeBook.shortTitle))) {
+                        item.classList.add('active-book');
+                    }
+                });
+            }, 100);
+        }
+    });
         
         function filterByGenre(genre) {
             // Filter books that include this genre
