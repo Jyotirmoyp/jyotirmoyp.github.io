@@ -116,32 +116,13 @@
             height: auto;
         }
 
-
-
         .bluesky-icon {
             width: 32px;
             height: 32px;
             margin-right: 8px;
         }
 
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
-
-            .w3-bar .menu-items {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .w3-bar .menu-items a {
-                text-align: center;
-                padding: 10px;
-            }
-        }
-
-        /* Sticky Note CSS */
+        /* Desktop Sticky Note */
         .sticky-note {
             position: fixed;
             left: 20px;
@@ -188,51 +169,133 @@
             opacity: 1;
             transform: translateY(0);
         }
-	    .publications-list {
-        list-style-type: none;
-        padding-left: 0;
-        line-height: 1.6;
-    }
+        
+        .publications-list {
+            list-style-type: none;
+            padding-left: 0;
+            line-height: 1.6;
+        }
 
-    .publications-list li {
-        margin-bottom: 15px;
-        padding-left: 2em;
-        text-indent: -2em;
-    }
+        .publications-list li {
+            margin-bottom: 15px;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
 
-    .pub-number {
-        font-weight: bold;
-        margin-right: 5px;
-    }
+        .pub-number {
+            font-weight: bold;
+            margin-right: 5px;
+        }
 
-    .pub-authors {
-        font-style: italic;
-    }
+        .pub-authors {
+            font-style: italic;
+        }
 
-    .pub-title {
-        font-weight: 500;
-    }
+        .pub-title {
+            font-weight: 500;
+        }
 
-    .pub-journal {
-        font-style: italic;
-    }
+        .pub-journal {
+            font-style: italic;
+        }
 
-    .pub-link {
-        margin-left: 8px;
-        padding: 2px 6px;
-        background-color: #f0f0f0;
-        border-radius: 3px;
-        font-size: 0.85em;
-        text-decoration: none;
-    }
+        .pub-link {
+            margin-left: 8px;
+            padding: 2px 6px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            font-size: 0.85em;
+            text-decoration: none;
+        }
 
-    .pub-link:hover {
-        background-color: #e0e0e0;
-    }
+        .pub-link:hover {
+            background-color: #e0e0e0;
+        }
 
-    a {
-        word-break: break-word;
-    }
+        a {
+            word-break: break-word;
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .w3-bar .menu-items {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .w3-bar .menu-items a {
+                text-align: center;
+                padding: 10px;
+            }
+            
+            /* Hide sticky note on mobile */
+            .sticky-note {
+                display: none;
+            }
+            
+            /* Mobile Connect Menu */
+            .mobile-connect {
+                display: none;
+                background-color: #f8f8f8;
+                padding: 15px;
+                text-align: center;
+            }
+            
+            .mobile-connect.active {
+                display: block;
+            }
+            
+            .connect-toggle {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                background-color: #f0f0f0;
+                border: none;
+                cursor: pointer;
+                text-align: center;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+            
+            .connect-toggle:hover {
+                background-color: #e0e0e0;
+            }
+            
+            /* Connect menu icons */
+            .connect-icon {
+                width: 40px;
+                height: 40px;
+                margin: 5px;
+                vertical-align: middle;
+            }
+            
+            .connect-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 10px 0;
+            }
+            
+            .connect-item a {
+                display: flex;
+                align-items: center;
+                color: #333;
+            }
+        }
+
+        /* Desktop-specific styles */
+        @media (min-width: 769px) {
+            /* Hide all mobile connect elements on desktop */
+            .mobile-connect,
+            .connect-toggle {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -251,9 +314,56 @@
                 <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
             </div>
         </div>
+        
+        <!-- Mobile Connect Menu (only visible on mobile) -->
+        <div class="mobile-connect" id="mobileConnect">
+            <h4>Connect</h4>
+            <div class="connect-item">
+                <a href="https://twitter.com/GeophyJo" target="_blank">
+                    <img src="https://abs.twimg.com/favicons/twitter.ico" alt="Twitter" class="connect-icon">
+                    <span>Twitter</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://orcid.org/0000-0002-7972-1868" target="_blank">
+                    <img src="https://orcid.org/assets/vectors/orcid.logo.svg" alt="ORCID" class="connect-icon">
+                    <span>ORCID</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky" class="connect-icon">
+                    <span>Bluesky</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">
+                    <img src="https://scholar.google.com/intl/en/scholar/images/1x/scholar_logo_64dp.png" alt="Google Scholar" class="connect-icon">
+                    <span>Google Scholar</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://www.linkedin.com/in/jyotirmoy-paul-213580356/" target="_blank">
+                    <img src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" alt="LinkedIn" class="connect-icon">
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://publons.com/researcher/3811932/jyotirmoy-paul/" target="_blank">
+                    <img src="https://publons.com/static/images/favicons/favicon.ico" alt="Publons" class="connect-icon">
+                    <span>Publons</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57208082848" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Scopus_logo.svg/1024px-Scopus_logo.svg.png" alt="Scopus" class="connect-icon">
+                    <span>Scopus</span>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <!-- Sticky Note -->
+    <!-- Desktop Sticky Note -->
     <div id="stickyNote" class="sticky-note">
         <span class="closebtn" onclick="closeStickyNote()">&times;</span>
         <h4>Connect</h4>
@@ -264,9 +374,9 @@
                 <img src="https://orcid.org/assets/vectors/orcid.logo.svg" style="width: 45%;">
             </a>
 
-   	   <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank" class="bluesky-link" aria-label="Bluesky Profile">
-        	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky Logo" 			class="bluesky-icon">    	   </a>
-
+           <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank" class="bluesky-link" aria-label="Bluesky Profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky Logo" class="bluesky-icon">
+           </a>
 
             <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">
                 <img src="https://scholar.google.com/intl/en/scholar/images/1x/scholar_logo_64dp.png" style="width: 50%;">
@@ -287,13 +397,16 @@
 
     <!-- Main content -->
     <main class="content">
+        <!-- Connect Toggle Button (Mobile only) -->
+        <button class="connect-toggle" onclick="toggleConnectMenu()">Connect with Me ▼</button>
+        
         <div class="main-content">
             <!-- About Me Section -->
             <div class="section fade-in">
                 <div class="w3-container">
-		   <div class="w3-center">
+                   <div class="w3-center">
                     <h2>Jyotirmoy Paul</h2>
-		    </div>
+                    </div>
                     <img class="mySlides" src="dp.jpg" alt="Profile Picture" class="w3-round">
                     <img class="mySlides" src="coor.jpg" alt="Profile Picture" class="w3-round">
                     <img class="mySlides" src="iisc_l.jpg" alt="Profile Picture" class="w3-round">
@@ -315,7 +428,7 @@
                             setTimeout(carousel, 2000); // Change image every 2 seconds
                         }
                     </script>
-		    <p> I am a solid Earth geophysicist studying the dynamics and evolution of Earth's deep interior. My research focuses on continental 			cratons—the ancient, stable cores of continents—and the mechanisms that have preserved them for billions of years. Using numerical 			models of mantle convection, I investigate the thermo-chemico-mechanical processes governing craton stability, grain size dependent 			rheology, providing insights into the long-term evolution of Earth's lithosphere and mantle.
+                    <p> I am a solid Earth geophysicist studying the dynamics and evolution of Earth's deep interior. My research focuses on continental cratons—the ancient, stable cores of continents—and the mechanisms that have preserved them for billions of years. Using numerical models of mantle convection, I investigate the thermo-chemico-mechanical processes governing craton stability, grain size dependent rheology, providing insights into the long-term evolution of Earth's lithosphere and mantle.
                     <p>Email: <a href="mailto:jyotirmoy.paul@geo.uio.no">jyotirmoy.paul@geo.uio.no</a></p>
                 </div>
             </div>
@@ -344,97 +457,82 @@
                 </div>
             </div>
 
-  
- <!-- Publications Section -->
-<div class="section fade-in">
-    <div class="w3-container">
-        <h3>Recent Publications</h3>
-        <p>Click here for <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">Full list of publications</a></p>
-        
-        <ul class="publications-list">
-            <li>
-                <span class="pub-number">8.</span>
-                <span class="pub-authors">J. Paul, A. Spang, A. Piccolo (2025).</span>
-                <span class="pub-title">Hydration weakening and destruction of the North China Craton,</span>
-                <span class="pub-journal">Tectonophysics, 908, 230756,</span>
-                <a href="https://www.sciencedirect.com/science/article/pii/S0040195125001428" target="_blank">https://doi.org/10.1016/j.tecto.2025.230756</a>.
-            </li>
+            <!-- Publications Section -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                    <h3>Recent Publications</h3>
+                    <p>Click here for <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">Full list of publications</a></p>
+                    
+                    <ul class="publications-list">
+                        <li>
+                            <span class="pub-number">8.</span>
+                            <span class="pub-authors">J. Paul, A. Spang, A. Piccolo (2025).</span>
+                            <span class="pub-title">Hydration weakening and destruction of the North China Craton,</span>
+                            <span class="pub-journal">Tectonophysics, 908, 230756,</span>
+                            <a href="https://www.sciencedirect.com/science/article/pii/S0040195125001428" target="_blank">https://doi.org/10.1016/j.tecto.2025.230756</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">7.</span>
+                            <span class="pub-authors">J. Paul, G. J. Golabek, A. B. Rozel, P. J. Tackley, T. Katsura and H. Fei (2024).</span>
+                            <span class="pub-title">Effect of bridgmanite-ferropericlase grain size evolution on Earth's average mantle viscosity: Implications for mantle convection in early and present-day Earth.</span>
+                            <span class="pub-journal">Progress in Earth and Planetary Sciences, 11 (64),</span>
+                            <a href="https://doi.org/10.1186/s40645-024-00658-3" target="_blank">https://doi.org/10.1186/s40645-024-00658-3</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">6.</span>
+                            <span class="pub-authors">J. Paul, C.P. Conrad, T.W. Becker, A. Ghosh (2023).</span>
+                            <span class="pub-title">Convective self-compression of cratons and the stabilization of old lithosphere,</span>
+                            <span class="pub-journal">Geophysical Research Letters, 50, e2022GL101842,</span>
+                            <a href="https://doi.org/10.1029/2022GL101842" target="_blank">https://doi.org/10.1029/2022GL101842</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">5.</span>
+                            <span class="pub-authors">J. Paul, A. Ghosh (2022).</span>
+                            <span class="pub-title">Could the Reunion plume have thinned the Indian craton?,</span>
+                            <span class="pub-journal">Geology, 50(3): 346-350.</span>
+                            <a href="https://doi.org/10.1130/G49492.1" target="_blank">https://doi.org/10.1130/G49492.1</a>
+                            <a href="https://iisc.ac.in/tracking-the-movement-of-the-indian-plate-since-the-last-mass-extinction/" target="_blank" class="pub-link">[IISc News]</a>
+                            <a href="https://blogs.egu.eu/divisions/gd/2022/03/30/journey-of-the-indian-plate/" target="_blank" class="pub-link">[EGU Geodynamics blog]</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">4.</span>
+                            <span class="pub-authors">J. Paul, A. Ghosh (2020).</span>
+                            <span class="pub-title">Evolution of cratons through the ages: A time-dependent study,</span>
+                            <span class="pub-journal">Earth and Planetary Science Letters 531, p.115962</span>
+                            <a href="https://doi.org/10.1016/j.epsl.2019.115962" target="_blank">https://doi.org/10.1016/j.epsl.2019.115962</a>
+                            <a href="https://eos.org/features/cratons-why-are-you-still-here?/" target="_blank" class="pub-link">[AGU Eos]</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">3.</span>
+                            <span class="pub-authors">J. Paul, S. Mondal, R. Koyal, D. Sarkar (2019).</span>
+                            <span class="pub-title">Burrow morphology of the ocypodid crab Ocypode ceratophthalma at Chandipur Coast, Eastern India and its implications.</span>
+                            <span class="pub-journal">Current Science</span>
+                            <a href="https://www.jstor.org/stable/27138320" target="_blank" class="pub-link">[Online version]</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">2.</span>
+                            <span class="pub-authors">J. Paul, A. Ghosh, C.P. Conrad (2019).</span>
+                            <span class="pub-title">Traction and strain-rate at the base of the lithosphere: An insight into cratonic survival.</span>
+                            <span class="pub-journal">Geophysical Journal International, 217(2): 1024-1039</span>
+                            <a href="https://doi.org/10.1093/gji/ggz079" target="_blank">https://doi.org/10.1093/gji/ggz079</a>
+                            <a href="https://doi.org/10.1093/gji/ggz491" target="_blank" class="pub-link">[Erratum]</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">1.</span>
+                            <span class="pub-authors">A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay (2017).</span>
+                            <span class="pub-title">Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight into the ore-forming process.</span>
+                            <span class="pub-journal">Ore Geology Reviews, 80:1092-1110</span>
+                            <a href="https://doi.org/10.1016/j.oregeorev.2016.08.032" target="_blank">https://doi.org/10.1016/j.oregeorev.2016.08.032</a>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-            <li>
-                <span class="pub-number">7.</span>
-                <span class="pub-authors">J. Paul, G. J. Golabek, A. B. Rozel, P. J. Tackley, T. Katsura and H. Fei (2024).</span>
-                <span class="pub-title">Effect of bridgmanite-ferropericlase grain size evolution on Earth's average mantle viscosity: Implications for mantle convection in early and present-day Earth.</span>
-                <span class="pub-journal">Progress in Earth and Planetary Sciences, 11 (64),</span>
-                <a href="https://doi.org/10.1186/s40645-024-00658-3" target="_blank">https://doi.org/10.1186/s40645-024-00658-3</a>.
-            </li>
-
-            <li>
-                <span class="pub-number">6.</span>
-                <span class="pub-authors">J. Paul, C.P. Conrad, T.W. Becker, A. Ghosh (2023).</span>
-                <span class="pub-title">Convective self-compression of cratons and the stabilization of old lithosphere,</span>
-                <span class="pub-journal">Geophysical Research Letters, 50, e2022GL101842,</span>
-                <a href="https://doi.org/10.1029/2022GL101842" target="_blank">https://doi.org/10.1029/2022GL101842</a>.
-            </li>
-
-            <li>
-                <span class="pub-number">5.</span>
-                <span class="pub-authors">J. Paul, A. Ghosh (2022).</span>
-                <span class="pub-title">Could the Reunion plume have thinned the Indian craton?,</span>
-                <span class="pub-journal">Geology, 50(3): 346-350.</span>
-                <a href="https://doi.org/10.1130/G49492.1" target="_blank">https://doi.org/10.1130/G49492.1</a>
-                <a href="https://iisc.ac.in/tracking-the-movement-of-the-indian-plate-since-the-last-mass-extinction/" target="_blank" class="pub-link">[IISc News]</a>
-                <a href="https://blogs.egu.eu/divisions/gd/2022/03/30/journey-of-the-indian-plate/" target="_blank" class="pub-link">[EGU Geodynamics blog]</a>.
-            </li>
-
-            <li>
-                <span class="pub-number">4.</span>
-                <span class="pub-authors">J. Paul, A. Ghosh (2020).</span>
-                <span class="pub-title">Evolution of cratons through the ages: A time-dependent study,</span>
-                <span class="pub-journal">Earth and Planetary Science Letters 531, p.115962</span>
-                <a href="https://doi.org/10.1016/j.epsl.2019.115962" target="_blank">https://doi.org/10.1016/j.epsl.2019.115962</a>
-                <a href="https://eos.org/features/cratons-why-are-you-still-here?/" target="_blank" class="pub-link">[AGU Eos]</a>.
-            </li>
-
-            <li>
-                <span class="pub-number">3.</span>
-                <span class="pub-authors">J. Paul, S. Mondal, R. Koyal, D. Sarkar (2019).</span>
-                <span class="pub-title">Burrow morphology of the ocypodid crab Ocypode ceratophthalma at Chandipur Coast, Eastern India and its implications.</span>
-                <span class="pub-journal">Current Science</span>
-                <a href="https://www.jstor.org/stable/27138320" target="_blank" class="pub-link">[Online version]</a>.
-            </li>
-
-            <li>
-                <span class="pub-number">2.</span>
-                <span class="pub-authors">J. Paul, A. Ghosh, C.P. Conrad (2019).</span>
-                <span class="pub-title">Traction and strain-rate at the base of the lithosphere: An insight into cratonic survival.</span>
-                <span class="pub-journal">Geophysical Journal International, 217(2): 1024-1039</span>
-                <a href="https://doi.org/10.1093/gji/ggz079" target="_blank">https://doi.org/10.1093/gji/ggz079</a>
-                <a href="https://doi.org/10.1093/gji/ggz491" target="_blank" class="pub-link">[Erratum]</a>.
-            </li>
-
-            <li>
-                <span class="pub-number">1.</span>
-                <span class="pub-authors">A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay (2017).</span>
-                <span class="pub-title">Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight into the ore-forming process.</span>
-                <span class="pub-journal">Ore Geology Reviews, 80:1092-1110</span>
-                <a href="https://doi.org/10.1016/j.oregeorev.2016.08.032" target="_blank">https://doi.org/10.1016/j.oregeorev.2016.08.032</a>.
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!-------------footer--------->
-
-
-    <footer class="w3-container w3-teal w3-center w3-margin-top">
-        <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
-    </footer>
-
-<!-------------footer--------->
-
-
+        <footer class="w3-container w3-teal w3-center w3-margin-top">
+            <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+        </footer>
     </main>
-
 
     <script>
         function closeStickyNote() {
@@ -445,8 +543,23 @@
             const menuItems = document.querySelector('.menu-items');
             if (menuItems.style.display === "block") {
                 menuItems.style.display = "none";
+                // Also hide the connect menu when main menu is closed
+                document.getElementById('mobileConnect').classList.remove('active');
             } else {
                 menuItems.style.display = "block";
+            }
+        }
+        
+        function toggleConnectMenu() {
+            const connectMenu = document.getElementById('mobileConnect');
+            const button = document.querySelector('.connect-toggle');
+            
+            if (connectMenu.classList.contains('active')) {
+                connectMenu.classList.remove('active');
+                button.innerHTML = 'Connect with Me ▼';
+            } else {
+                connectMenu.classList.add('active');
+                button.innerHTML = 'Connect with Me ▲';
             }
         }
 
@@ -462,9 +575,16 @@
             document.querySelectorAll('.fade-in').forEach(element => {
                 observer.observe(element);
             });
+            
+            // Load Twitter widget only on desktop
+            if (window.innerWidth > 768) {
+                const twitterScript = document.createElement('script');
+                twitterScript.src = 'https://platform.twitter.com/widgets.js';
+                twitterScript.charset = 'utf-8';
+                twitterScript.async = true;
+                document.body.appendChild(twitterScript);
+            }
         });
     </script>
-
 </body>
-
 </html>
