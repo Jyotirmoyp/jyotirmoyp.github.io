@@ -188,6 +188,51 @@
             opacity: 1;
             transform: translateY(0);
         }
+	    .publications-list {
+        list-style-type: none;
+        padding-left: 0;
+        line-height: 1.6;
+    }
+
+    .publications-list li {
+        margin-bottom: 15px;
+        padding-left: 2em;
+        text-indent: -2em;
+    }
+
+    .pub-number {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    .pub-authors {
+        font-style: italic;
+    }
+
+    .pub-title {
+        font-weight: 500;
+    }
+
+    .pub-journal {
+        font-style: italic;
+    }
+
+    .pub-link {
+        margin-left: 8px;
+        padding: 2px 6px;
+        background-color: #f0f0f0;
+        border-radius: 3px;
+        font-size: 0.85em;
+        text-decoration: none;
+    }
+
+    .pub-link:hover {
+        background-color: #e0e0e0;
+    }
+
+    a {
+        word-break: break-word;
+    }
     </style>
 </head>
 
@@ -378,54 +423,17 @@
     </div>
 </div>
 
-<style>
-    .publications-list {
-        list-style-type: none;
-        padding-left: 0;
-        line-height: 1.6;
-    }
+<!-------------footer--------->
 
-    .publications-list li {
-        margin-bottom: 15px;
-        padding-left: 2em;
-        text-indent: -2em;
-    }
 
-    .pub-number {
-        font-weight: bold;
-        margin-right: 5px;
-    }
+    <footer class="w3-container w3-teal w3-center w3-margin-top">
+        <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+    </footer>
 
-    .pub-authors {
-        font-style: italic;
-    }
+<!-------------footer--------->
 
-    .pub-title {
-        font-weight: 500;
-    }
 
-    .pub-journal {
-        font-style: italic;
-    }
-
-    .pub-link {
-        margin-left: 8px;
-        padding: 2px 6px;
-        background-color: #f0f0f0;
-        border-radius: 3px;
-        font-size: 0.85em;
-        text-decoration: none;
-    }
-
-    .pub-link:hover {
-        background-color: #e0e0e0;
-    }
-
-    a {
-        word-break: break-word;
-    }
-</style>
-    </main>
+</main>
 
 
     <script>
@@ -456,14 +464,7 @@
             });
         });
     </script>
-<!-------------footer--------->
 
-
-    <footer class="w3-container w3-teal w3-center w3-margin-top">
-        <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
-    </footer>
-
-<!-------------footer--------->
 </body>
 
 </html>
