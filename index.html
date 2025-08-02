@@ -116,6 +116,8 @@
             height: auto;
         }
 
+
+
         .bluesky-icon {
             width: 32px;
             height: 32px;
@@ -137,59 +139,20 @@
                 text-align: center;
                 padding: 10px;
             }
-            
-            /* Mobile-specific connect menu */
-            .mobile-connect {
-                display: none;
-                background-color: #f8f8f8;
-                padding: 15px;
-                text-align: center;
-            }
-            
-            .mobile-connect.active {
-                display: block;
-            }
-            
-            .connect-toggle {
-                display: block;
-                width: 100%;
-                padding: 10px;
-                background-color: #f0f0f0;
-                border: none;
-                cursor: pointer;
-                text-align: center;
-                font-weight: bold;
-            }
-            
-            .connect-toggle:hover {
-                background-color: #e0e0e0;
-            }
-            
-            /* Hide sticky note on mobile */
-            .sticky-note {
-                display: none;
-            }
         }
 
-        /* Desktop sticky note */
-        @media (min-width: 769px) {
-            .sticky-note {
-                position: fixed;
-                left: 20px;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 200px;
-                padding: 15px;
-                background-color: #fffae6;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                border-radius: 8px;
-                z-index: 1000;
-            }
-            
-            /* Hide mobile connect menu on desktop */
-            .mobile-connect {
-                display: none;
-            }
+        /* Sticky Note CSS */
+        .sticky-note {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            padding: 15px;
+            background-color: #fffae6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
         }
 
         .sticky-note h4 {
@@ -225,73 +188,51 @@
             opacity: 1;
             transform: translateY(0);
         }
-        
-        .publications-list {
-            list-style-type: none;
-            padding-left: 0;
-            line-height: 1.6;
-        }
+	    .publications-list {
+        list-style-type: none;
+        padding-left: 0;
+        line-height: 1.6;
+    }
 
-        .publications-list li {
-            margin-bottom: 15px;
-            padding-left: 2em;
-            text-indent: -2em;
-        }
+    .publications-list li {
+        margin-bottom: 15px;
+        padding-left: 2em;
+        text-indent: -2em;
+    }
 
-        .pub-number {
-            font-weight: bold;
-            margin-right: 5px;
-        }
+    .pub-number {
+        font-weight: bold;
+        margin-right: 5px;
+    }
 
-        .pub-authors {
-            font-style: italic;
-        }
+    .pub-authors {
+        font-style: italic;
+    }
 
-        .pub-title {
-            font-weight: 500;
-        }
+    .pub-title {
+        font-weight: 500;
+    }
 
-        .pub-journal {
-            font-style: italic;
-        }
+    .pub-journal {
+        font-style: italic;
+    }
 
-        .pub-link {
-            margin-left: 8px;
-            padding: 2px 6px;
-            background-color: #f0f0f0;
-            border-radius: 3px;
-            font-size: 0.85em;
-            text-decoration: none;
-        }
+    .pub-link {
+        margin-left: 8px;
+        padding: 2px 6px;
+        background-color: #f0f0f0;
+        border-radius: 3px;
+        font-size: 0.85em;
+        text-decoration: none;
+    }
 
-        .pub-link:hover {
-            background-color: #e0e0e0;
-        }
+    .pub-link:hover {
+        background-color: #e0e0e0;
+    }
 
-        a {
-            word-break: break-word;
-        }
-        
-        /* Connect menu icons */
-        .connect-icon {
-            width: 40px;
-            height: 40px;
-            margin: 5px;
-            vertical-align: middle;
-        }
-        
-        .connect-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px 0;
-        }
-        
-        .connect-item a {
-            display: flex;
-            align-items: center;
-            color: #333;
-        }
+    a {
+        word-break: break-word;
+    }
     </style>
 </head>
 
@@ -310,56 +251,9 @@
                 <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
             </div>
         </div>
-        
-        <!-- Mobile Connect Menu (only visible on mobile) -->
-        <div class="mobile-connect" id="mobileConnect">
-            <h4>Connect</h4>
-            <div class="connect-item">
-                <a href="https://twitter.com/GeophyJo" target="_blank">
-                    <img src="https://abs.twimg.com/favicons/twitter.ico" alt="Twitter" class="connect-icon">
-                    <span>Twitter</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://orcid.org/0000-0002-7972-1868" target="_blank">
-                    <img src="https://orcid.org/assets/vectors/orcid.logo.svg" alt="ORCID" class="connect-icon">
-                    <span>ORCID</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky" class="connect-icon">
-                    <span>Bluesky</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">
-                    <img src="https://scholar.google.com/intl/en/scholar/images/1x/scholar_logo_64dp.png" alt="Google Scholar" class="connect-icon">
-                    <span>Google Scholar</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://www.linkedin.com/in/jyotirmoy-paul-213580356/" target="_blank">
-                    <img src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" alt="LinkedIn" class="connect-icon">
-                    <span>LinkedIn</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://publons.com/researcher/3811932/jyotirmoy-paul/" target="_blank">
-                    <img src="https://publons.com/static/images/favicons/favicon.ico" alt="Publons" class="connect-icon">
-                    <span>Publons</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://www.scopus.com/authid/detail.uri?authorId=57208082848" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Scopus_logo.svg/1024px-Scopus_logo.svg.png" alt="Scopus" class="connect-icon">
-                    <span>Scopus</span>
-                </a>
-            </div>
-        </div>
     </div>
 
-    <!-- Desktop Sticky Note -->
+    <!-- Sticky Note -->
     <div id="stickyNote" class="sticky-note">
         <span class="closebtn" onclick="closeStickyNote()">&times;</span>
         <h4>Connect</h4>
@@ -370,8 +264,9 @@
                 <img src="https://orcid.org/assets/vectors/orcid.logo.svg" style="width: 45%;">
             </a>
 
-           <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank" class="bluesky-link" aria-label="Bluesky Profile">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky Logo"             class="bluesky-icon">           </a>
+   	   <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank" class="bluesky-link" aria-label="Bluesky Profile">
+        	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky Logo" 			class="bluesky-icon">    	   </a>
+
 
             <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">
                 <img src="https://scholar.google.com/intl/en/scholar/images/1x/scholar_logo_64dp.png" style="width: 50%;">
@@ -392,16 +287,13 @@
 
     <!-- Main content -->
     <main class="content">
-        <!-- Connect Toggle Button (Mobile only) -->
-        <button class="connect-toggle" onclick="toggleConnectMenu()">Connect with Me ▼</button>
-        
         <div class="main-content">
             <!-- About Me Section -->
             <div class="section fade-in">
                 <div class="w3-container">
-                   <div class="w3-center">
+		   <div class="w3-center">
                     <h2>Jyotirmoy Paul</h2>
-                    </div>
+		    </div>
                     <img class="mySlides" src="dp.jpg" alt="Profile Picture" class="w3-round">
                     <img class="mySlides" src="coor.jpg" alt="Profile Picture" class="w3-round">
                     <img class="mySlides" src="iisc_l.jpg" alt="Profile Picture" class="w3-round">
@@ -423,7 +315,7 @@
                             setTimeout(carousel, 2000); // Change image every 2 seconds
                         }
                     </script>
-                    <p> I am a solid Earth geophysicist studying the dynamics and evolution of Earth's deep interior. My research focuses on continental             cratons—the ancient, stable cores of continents—and the mechanisms that have preserved them for billions of years. Using numerical             models of mantle convection, I investigate the thermo-chemico-mechanical processes governing craton stability, grain size dependent             rheology, providing insights into the long-term evolution of Earth's lithosphere and mantle.
+		    <p> I am a solid Earth geophysicist studying the dynamics and evolution of Earth's deep interior. My research focuses on continental 			cratons—the ancient, stable cores of continents—and the mechanisms that have preserved them for billions of years. Using numerical 			models of mantle convection, I investigate the thermo-chemico-mechanical processes governing craton stability, grain size dependent 			rheology, providing insights into the long-term evolution of Earth's lithosphere and mantle.
                     <p>Email: <a href="mailto:jyotirmoy.paul@geo.uio.no">jyotirmoy.paul@geo.uio.no</a></p>
                 </div>
             </div>
@@ -541,7 +433,7 @@
 <!-------------footer--------->
 
 
-</main>
+    </main>
 
 
     <script>
@@ -553,23 +445,8 @@
             const menuItems = document.querySelector('.menu-items');
             if (menuItems.style.display === "block") {
                 menuItems.style.display = "none";
-                // Also hide the connect menu when main menu is closed
-                document.getElementById('mobileConnect').classList.remove('active');
             } else {
                 menuItems.style.display = "block";
-            }
-        }
-        
-        function toggleConnectMenu() {
-            const connectMenu = document.getElementById('mobileConnect');
-            const button = document.querySelector('.connect-toggle');
-            
-            if (connectMenu.classList.contains('active')) {
-                connectMenu.classList.remove('active');
-                button.innerHTML = 'Connect with Me ▼';
-            } else {
-                connectMenu.classList.add('active');
-                button.innerHTML = 'Connect with Me ▲';
             }
         }
 
@@ -585,15 +462,6 @@
             document.querySelectorAll('.fade-in').forEach(element => {
                 observer.observe(element);
             });
-            
-            // Load Twitter widget only on desktop
-            if (window.innerWidth > 768) {
-                const twitterScript = document.createElement('script');
-                twitterScript.src = 'https://platform.twitter.com/widgets.js';
-                twitterScript.charset = 'utf-8';
-                twitterScript.async = true;
-                document.body.appendChild(twitterScript);
-            }
         });
     </script>
 

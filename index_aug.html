@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotirmoy Paul</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .w3-bar .w3-bar-item {
+            padding: 14px 20px;
+        }
+
+        .w3-bar .w3-bar-item:hover {
+            background-color: #ddd;
+        }
+
+        .w3-top {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .w3-bar .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .w3-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .w3-container img,
+        .w3-container video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .w3-container h2,
+        .w3-container h3,
+        .w3-container h4 {
+            font-weight: 700;
+        }
+
+        .w3-container p {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        a {
+            color: teal;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .icon-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .row {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .column-left {
+            flex: 1;
+            max-width: 300px;
+            padding: 10px;
+        }
+
+        .column-right {
+            flex: 2;
+            padding: 10px;
+        }
+
+        .figure {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .bluesky-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+        }
+
+        /* Desktop Sticky Note */
+        .sticky-note {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            padding: 15px;
+            background-color: #fffae6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+        .sticky-note h4 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .sticky-note a {
+            display: block;
+            padding: 8px 0;
+            color: #0073e6;
+        }
+
+        .sticky-note a:hover {
+            text-decoration: underline;
+        }
+
+        .sticky-note .closebtn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .publications-list {
+            list-style-type: none;
+            padding-left: 0;
+            line-height: 1.6;
+        }
+
+        .publications-list li {
+            margin-bottom: 15px;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        .pub-number {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .pub-authors {
+            font-style: italic;
+        }
+
+        .pub-title {
+            font-weight: 500;
+        }
+
+        .pub-journal {
+            font-style: italic;
+        }
+
+        .pub-link {
+            margin-left: 8px;
+            padding: 2px 6px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            font-size: 0.85em;
+            text-decoration: none;
+        }
+
+        .pub-link:hover {
+            background-color: #e0e0e0;
+        }
+
+        a {
+            word-break: break-word;
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .w3-bar .menu-items {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .w3-bar .menu-items a {
+                text-align: center;
+                padding: 10px;
+            }
+            
+            /* Hide sticky note on mobile */
+            .sticky-note {
+                display: none;
+            }
+            
+            /* Mobile Connect Menu */
+            .mobile-connect {
+                display: none;
+                background-color: #f8f8f8;
+                padding: 15px;
+                text-align: center;
+            }
+            
+            .mobile-connect.active {
+                display: block;
+            }
+            
+            .connect-toggle {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                background-color: #f0f0f0;
+                border: none;
+                cursor: pointer;
+                text-align: center;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+            
+            .connect-toggle:hover {
+                background-color: #e0e0e0;
+            }
+            
+            /* Connect menu icons */
+            .connect-icon {
+                width: 40px;
+                height: 40px;
+                margin: 5px;
+                vertical-align: middle;
+            }
+            
+            .connect-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 10px 0;
+            }
+            
+            .connect-item a {
+                display: flex;
+                align-items: center;
+                color: #333;
+            }
+        }
+
+        /* Desktop-specific styles */
+        @media (min-width: 769px) {
+            /* Hide all mobile connect elements on desktop */
+            .mobile-connect,
+            .connect-toggle {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+            <div class="menu-items">
+                <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button">Home</a>
+                <a href="https://jyotirmoyp.github.io/cv" class="w3-bar-item w3-button">CV</a>
+                <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
+                <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
+                <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
+                <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Connect Menu (only visible on mobile) -->
+        <div class="mobile-connect" id="mobileConnect">
+            <h4>Connect</h4>
+            <div class="connect-item">
+                <a href="https://twitter.com/GeophyJo" target="_blank">
+                    <img src="https://abs.twimg.com/favicons/twitter.ico" alt="Twitter" class="connect-icon">
+                    <span>Twitter</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://orcid.org/0000-0002-7972-1868" target="_blank">
+                    <img src="https://orcid.org/assets/vectors/orcid.logo.svg" alt="ORCID" class="connect-icon">
+                    <span>ORCID</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky" class="connect-icon">
+                    <span>Bluesky</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">
+                    <img src="https://scholar.google.com/intl/en/scholar/images/1x/scholar_logo_64dp.png" alt="Google Scholar" class="connect-icon">
+                    <span>Google Scholar</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://www.linkedin.com/in/jyotirmoy-paul-213580356/" target="_blank">
+                    <img src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" alt="LinkedIn" class="connect-icon">
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://publons.com/researcher/3811932/jyotirmoy-paul/" target="_blank">
+                    <img src="https://publons.com/static/images/favicons/favicon.ico" alt="Publons" class="connect-icon">
+                    <span>Publons</span>
+                </a>
+            </div>
+            <div class="connect-item">
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57208082848" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Scopus_logo.svg/1024px-Scopus_logo.svg.png" alt="Scopus" class="connect-icon">
+                    <span>Scopus</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Sticky Note -->
+    <div id="stickyNote" class="sticky-note">
+        <span class="closebtn" onclick="closeStickyNote()">&times;</span>
+        <h4>Connect</h4>
+        <div class="icon-list">
+            <a href="https://twitter.com/GeophyJo" class="twitter-follow-button">Follow @GeophyJo</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a href="https://orcid.org/0000-0002-7972-1868" target="orcid.widget">
+                <img src="https://orcid.org/assets/vectors/orcid.logo.svg" style="width: 45%;">
+            </a>
+
+           <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank" class="bluesky-link" aria-label="Bluesky Profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky Logo" class="bluesky-icon">
+           </a>
+
+            <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">
+                <img src="https://scholar.google.com/intl/en/scholar/images/1x/scholar_logo_64dp.png" style="width: 50%;">
+            </a>
+
+            <a href="https://www.linkedin.com/in/jyotirmoy-paul-213580356/" target="_blank">
+                <img src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" style="width: 60%;">
+            </a>
+
+            <span id="badgeCont654">
+                <script type="text/javascript" src="https://publons.com/mashlets?el=badgeCont654&rid=AAX-2221-2020"></script>
+            </span>
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=57208082848" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Scopus_logo.svg/1024px-Scopus_logo.svg.png" style="width: 40%;">
+            </a>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="content">
+        <!-- Connect Toggle Button (Mobile only) -->
+        <button class="connect-toggle" onclick="toggleConnectMenu()">Connect with Me ▼</button>
+        
+        <div class="main-content">
+            <!-- About Me Section -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                   <div class="w3-center">
+                    <h2>Jyotirmoy Paul</h2>
+                    </div>
+                    <img class="mySlides" src="dp.jpg" alt="Profile Picture" class="w3-round">
+                    <img class="mySlides" src="coor.jpg" alt="Profile Picture" class="w3-round">
+                    <img class="mySlides" src="iisc_l.jpg" alt="Profile Picture" class="w3-round">
+                    <script>
+                        var myIndex = 0;
+                        carousel();
+
+                        function carousel() {
+                            var i;
+                            var x = document.getElementsByClassName("mySlides");
+                            for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "none";
+                            }
+                            myIndex++;
+                            if (myIndex > x.length) {
+                                myIndex = 1
+                            }
+                            x[myIndex - 1].style.display = "block";
+                            setTimeout(carousel, 2000); // Change image every 2 seconds
+                        }
+                    </script>
+                    <p> I am a solid Earth geophysicist studying the dynamics and evolution of Earth's deep interior. My research focuses on continental cratons—the ancient, stable cores of continents—and the mechanisms that have preserved them for billions of years. Using numerical models of mantle convection, I investigate the thermo-chemico-mechanical processes governing craton stability, grain size dependent rheology, providing insights into the long-term evolution of Earth's lithosphere and mantle.
+                    <p>Email: <a href="mailto:jyotirmoy.paul@geo.uio.no">jyotirmoy.paul@geo.uio.no</a></p>
+                </div>
+            </div>
+
+            <!-- Appointments Section -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                    <h3>Appointments</h3>
+                    <ul>
+                        <li>2024 - Present: <a href='https://www.mn.uio.no/geo/english/people/aca/phab/jyotirmp/' target="_blank">Marie Skłodowska-Curie Fellow</a>, Centre for Planetary Habitability, University of Oslo</li>
+                        <li>2021 - 2024: <a href="https://www.bgi.uni-bayreuth.de/?page=4&lng=en&mode=s&id=374" target="_blank">Post-doctoral Researcher</a>, Bavarian Research Institute of Experimental Geochemistry and Geophysics (BGI), University of Bayreuth</li>
+                        <li>July 2021 - October 2021: Research Associate, IISc, Bangalore</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                    <h3>Education</h3>
+                    <ul>
+                        <li>PhD, IISc, Bangalore (2015-2021) - <a href="https://shodhganga.inflibnet.ac.in/handle/10603/426053" target="_blank">PhD Thesis</a> - Supervisor: <a href="https://ceas.iisc.ac.in/~aghosh/index.html" target="_blank">Prof. Attreyee Ghosh</a></li>
+                        <li>M.Sc, Applied Geology, Jadavpur University (2015)</li>
+                        <li>B.Sc, Geology, Jadavpur University (2013)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Publications Section -->
+            <div class="section fade-in">
+                <div class="w3-container">
+                    <h3>Recent Publications</h3>
+                    <p>Click here for <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">Full list of publications</a></p>
+                    
+                    <ul class="publications-list">
+                        <li>
+                            <span class="pub-number">8.</span>
+                            <span class="pub-authors">J. Paul, A. Spang, A. Piccolo (2025).</span>
+                            <span class="pub-title">Hydration weakening and destruction of the North China Craton,</span>
+                            <span class="pub-journal">Tectonophysics, 908, 230756,</span>
+                            <a href="https://www.sciencedirect.com/science/article/pii/S0040195125001428" target="_blank">https://doi.org/10.1016/j.tecto.2025.230756</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">7.</span>
+                            <span class="pub-authors">J. Paul, G. J. Golabek, A. B. Rozel, P. J. Tackley, T. Katsura and H. Fei (2024).</span>
+                            <span class="pub-title">Effect of bridgmanite-ferropericlase grain size evolution on Earth's average mantle viscosity: Implications for mantle convection in early and present-day Earth.</span>
+                            <span class="pub-journal">Progress in Earth and Planetary Sciences, 11 (64),</span>
+                            <a href="https://doi.org/10.1186/s40645-024-00658-3" target="_blank">https://doi.org/10.1186/s40645-024-00658-3</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">6.</span>
+                            <span class="pub-authors">J. Paul, C.P. Conrad, T.W. Becker, A. Ghosh (2023).</span>
+                            <span class="pub-title">Convective self-compression of cratons and the stabilization of old lithosphere,</span>
+                            <span class="pub-journal">Geophysical Research Letters, 50, e2022GL101842,</span>
+                            <a href="https://doi.org/10.1029/2022GL101842" target="_blank">https://doi.org/10.1029/2022GL101842</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">5.</span>
+                            <span class="pub-authors">J. Paul, A. Ghosh (2022).</span>
+                            <span class="pub-title">Could the Reunion plume have thinned the Indian craton?,</span>
+                            <span class="pub-journal">Geology, 50(3): 346-350.</span>
+                            <a href="https://doi.org/10.1130/G49492.1" target="_blank">https://doi.org/10.1130/G49492.1</a>
+                            <a href="https://iisc.ac.in/tracking-the-movement-of-the-indian-plate-since-the-last-mass-extinction/" target="_blank" class="pub-link">[IISc News]</a>
+                            <a href="https://blogs.egu.eu/divisions/gd/2022/03/30/journey-of-the-indian-plate/" target="_blank" class="pub-link">[EGU Geodynamics blog]</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">4.</span>
+                            <span class="pub-authors">J. Paul, A. Ghosh (2020).</span>
+                            <span class="pub-title">Evolution of cratons through the ages: A time-dependent study,</span>
+                            <span class="pub-journal">Earth and Planetary Science Letters 531, p.115962</span>
+                            <a href="https://doi.org/10.1016/j.epsl.2019.115962" target="_blank">https://doi.org/10.1016/j.epsl.2019.115962</a>
+                            <a href="https://eos.org/features/cratons-why-are-you-still-here?/" target="_blank" class="pub-link">[AGU Eos]</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">3.</span>
+                            <span class="pub-authors">J. Paul, S. Mondal, R. Koyal, D. Sarkar (2019).</span>
+                            <span class="pub-title">Burrow morphology of the ocypodid crab Ocypode ceratophthalma at Chandipur Coast, Eastern India and its implications.</span>
+                            <span class="pub-journal">Current Science</span>
+                            <a href="https://www.jstor.org/stable/27138320" target="_blank" class="pub-link">[Online version]</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">2.</span>
+                            <span class="pub-authors">J. Paul, A. Ghosh, C.P. Conrad (2019).</span>
+                            <span class="pub-title">Traction and strain-rate at the base of the lithosphere: An insight into cratonic survival.</span>
+                            <span class="pub-journal">Geophysical Journal International, 217(2): 1024-1039</span>
+                            <a href="https://doi.org/10.1093/gji/ggz079" target="_blank">https://doi.org/10.1093/gji/ggz079</a>
+                            <a href="https://doi.org/10.1093/gji/ggz491" target="_blank" class="pub-link">[Erratum]</a>.
+                        </li>
+                        <li>
+                            <span class="pub-number">1.</span>
+                            <span class="pub-authors">A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay (2017).</span>
+                            <span class="pub-title">Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight into the ore-forming process.</span>
+                            <span class="pub-journal">Ore Geology Reviews, 80:1092-1110</span>
+                            <a href="https://doi.org/10.1016/j.oregeorev.2016.08.032" target="_blank">https://doi.org/10.1016/j.oregeorev.2016.08.032</a>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="w3-container w3-teal w3-center w3-margin-top">
+            <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script>
+        function closeStickyNote() {
+            document.getElementById("stickyNote").style.display = "none";
+        }
+
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            if (menuItems.style.display === "block") {
+                menuItems.style.display = "none";
+                // Also hide the connect menu when main menu is closed
+                document.getElementById('mobileConnect').classList.remove('active');
+            } else {
+                menuItems.style.display = "block";
+            }
+        }
+        
+        function toggleConnectMenu() {
+            const connectMenu = document.getElementById('mobileConnect');
+            const button = document.querySelector('.connect-toggle');
+            
+            if (connectMenu.classList.contains('active')) {
+                connectMenu.classList.remove('active');
+                button.innerHTML = 'Connect with Me ▼';
+            } else {
+                connectMenu.classList.add('active');
+                button.innerHTML = 'Connect with Me ▲';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Load Twitter widget only on desktop
+            if (window.innerWidth > 768) {
+                const twitterScript = document.createElement('script');
+                twitterScript.src = 'https://platform.twitter.com/widgets.js';
+                twitterScript.charset = 'utf-8';
+                twitterScript.async = true;
+                document.body.appendChild(twitterScript);
+            }
+        });
+    </script>
+</body>
+</html>
