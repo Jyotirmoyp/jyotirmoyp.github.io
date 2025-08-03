@@ -14,7 +14,7 @@
     }
 
     #menu {
-      width: 100%;
+      width: auto;
       background-color: transparent;
       z-index: 10;
     }
@@ -132,6 +132,21 @@
       .content-container {
         padding-bottom: 2rem;
       }
+               .icon-link {
+            color: #aaa; /* Light gray */
+            text-decoration: none;
+            font-size: 1.2em;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+        .icon-link:hover {
+            color: #888; /* Slightly darker gray on hover */
+        }
+        .icon-links {
+            display: flex;
+            align-items: center;
+        }
+
     }
   </style>
 </head>
@@ -143,7 +158,22 @@
         <path d="M3 5h18M3 12h18M3 19h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
     </button>
-    <h1 class="text-lg font-light"> <a href="https://jyotirmoyp.github.io/the-art-space/"> Home </a></h1>
+           <div class="header-container">
+        <div class="icon-links">
+
+	    <a class="icon-link" href="https://jyotirmoyp.github.io/the-art-space/buy-prints" title="Buy Prints">
+                </i>    Buy Prints         </a>
+
+            <a class="icon-link" href="https://jyotirmoyp.github.io/the-art-space/" title="Books">
+                <i class="fas fa-camera"></i> <!-- Exact same book icon as your reference -->
+            </a>
+            <a class="icon-link" href="https://jyotirmoyp.github.io/khanhabados" title="Home">
+                <i class="fas fa-home"></i> <!-- Matched home icon -->
+            </a>
+	    
+
+        </div>
+    </div>
   </nav>
 
   <!-- Expandable Menu -->
