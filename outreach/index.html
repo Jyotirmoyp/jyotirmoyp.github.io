@@ -229,6 +229,21 @@
             .connect-toggle {
                 display: block;
             }
+	.video-container {
+            position: relative;
+	    width: 80%;
+            padding-bottom: 4.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 100%;
+            border: none;
+        }
         }
     </style>
 </head>
@@ -276,6 +291,7 @@
       <div class="icon-list">
         <ul>
           <li><a href="#media">Media Coverage</a></li>
+	  <li><a href="#video">Public talks/ video</a></li>
           <li><a href="#geoedu">Geoscience Education</a></li>
           <li><a href="#egugd">EGU Geodynamics</a></li>
           <li><a href="#agu">AGU Eos</a></li>
@@ -292,15 +308,50 @@
       <h4>Media Coverage</h4>
       <div class="fade-in">
         <div class="w3-row">
-          <div class="w3-col s4">
+          <div class="w3-col s6">
             <br>
             <img src="https://image.forskning.no/2528985.webp?imageId=2528985&width=2116&height=1208&format=webp" style="width:80%">
           </div>
-          <div class="w3-col s8">
+          <div class="w3-col s6">
             <p>Norwegian science meida <a href="https://www.forskning.no/" target="_blank" > forskning.no/ </a> covered our research 
             on craton. <a href='https://www.forskning.no/geologi/norge-ligger-oppa-en-merkelig-og-urgammel-del-av-jordskorpa/2528929' target='_blank'>Read
-            the Norwegian Article: <br> Norge ligger oppå en merkelig og urgammel del av jordskorpa
-            </a> 
+            the Norwegian Article: <br> Norge ligger oppå en merkelig og urgammel del av jordskorpa  </a> 
+
+	   <br> English article: <a href='https://www.sciencenorway.no/geology/norway-sits-atop-a-strange-and-ancient-part-of-the-earths-crust/2531628' 		target='_blank'> Norway sits atop a strange and ancient part of the Earth's crust </a>
+
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!---------------------Public talks--------------------->
+    <div id="video"></div>
+    <div class="w3-container">
+      <h4>Public Talks/ video</h4>
+      <div class="fade-in">
+        <div class="w3-row">
+          <div class="w3-col s6">
+            <br>
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/NznMI9naTSc" 
+                                    allowfullscreen></iframe>
+                 </div>
+          </div>
+          <div class="w3-col s6">
+            <p>During my PhD days, I made this video as a part of IEEE-IISc ComSoc Chapter research communication competition. It won the second prize.             </a> 
+          </div>
+        </div>
+
+          <div class="w3-col s6">
+            <br>
+		<div class="video-container">
+		<iframe src="https://www.youtube.com/embed/E6qwv2jViRg" 
+                                    allowfullscreen></iframe>
+                 </div>
+          </div>
+          <div class="w3-col s6">
+            <p> A Podcast with Umayer        </a> 
           </div>
         </div>
       </div>
@@ -312,11 +363,11 @@
       <h4>Geoscience Education</h4>
       <div class="fade-in">
         <div class="w3-row">
-          <div class="w3-col s4">
+          <div class="w3-col s6">
             <br>
             <img src="https://geoedu.weebly.com/uploads/4/4/8/2/44824767/internships_orig.jpg" style="width:80%">
           </div>
-          <div class="w3-col s8">
+          <div class="w3-col s12">
             <p><a href="https://geoedu.weebly.com" target="_blank" > Geoscience Education </a> (GE) is an online platform for writing 
             science articles (sometimes popular science articles) associated with geological (Earth system sciences-related) facts 
             (problems) lucidly without diluting the actual scientific content. 
@@ -349,7 +400,7 @@
         <h4>European Geoscience Union Blog</h4>
         <div class="fade-in">
           <div class="w3-row">
-            <div class="w3-col s4">
+            <div class="w3-col s6">
               <br>
               <img src="https://blogs.egu.eu/divisions/gd/files/2022/01/EGU-illustr-light-700x400.png" style="width:80%">
               <br><br>
@@ -359,7 +410,7 @@
               <br><br>
               <img src="https://blogs.egu.eu/divisions/gd/files/2020/11/Gambian_classroom_cover.jpg" style="width:80%">
             </div>
-            <div class="w3-col s8">
+            <div class="w3-col s6">
               <p>I joined as a social media co-ordinator at the European Geoscience Union Geodynamics division team in 2019. In the next year
               I became a member of EGU GD blog editorial team, which is run by the early career scientists. 
               </p>
@@ -445,13 +496,12 @@
         <h4>American Geophysical Union: EOS</h4>
         <div class="fade-in">
           <div class="w3-row">
-            <div class="w3-col s4">
+            <div class="w3-col s6">
               <br>
               <img src="https://i0.wp.com/eos.org/wp-content/uploads/2021/03/fishermen-southern-India-cratonic-rocks.jpg?w=820&ssl=1" style="width:80%">
-              <br><br>
               <img src="https://eos.org/wp-content/uploads/2021/03/diagram-earth-plate-tectonic-modes.png" style="width:80%">
             </div>
-            <div class="w3-col s8">
+            <div class="w3-col s6">
               <p>Plate tectonics, coupled with convection in the mantle, governs the destructive forces applied to Earth's lithosphere, 
               its topmost layer of rock. Whereas oceanic lithosphere is recycled in subduction zones after a couple of hundred million years 
               or so, continental lithosphere often survives longer but is still ultimately deformed, eroded, and destroyed by forces exerted 
