@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost World of Hindustani Classical Music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.5;
+            padding: 12px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .header {
+            padding: 8px 0;
+            margin-bottom: 12px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .header-content {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .header h1 {
+            font-weight: 400;
+            font-size: 1.7rem;
+            letter-spacing: -0.5px;
+            color: #444;
+            margin-bottom: 4px;
+        }
+        
+        .header p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .icon-container {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .icon-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        
+        .icon-link:hover {
+            color: #333;
+        }
+        
+        .main-container {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+            min-height: 0;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .content-inner {
+            overflow-y: auto;
+            flex: 1;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .content-inner::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .welcome {
+            margin-bottom: 20px;
+        }
+        
+        .welcome h2 {
+            font-weight: 400;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: #444;
+        }
+        
+        .welcome p {
+            color: #555;
+            margin-bottom: 10px;
+            max-width: 700px;
+            font-size: 0.9rem;
+        }
+        
+        .menu-container {
+            width: 270px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .menu-title {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            text-align: center;
+        }
+        
+        .menu-scroll {
+            overflow-y: auto;
+            flex: 1;
+            padding: 8px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .menu-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .menu {
+            list-style: none;
+            font-size: 0.82rem;
+        }
+        
+        .menu > li {
+            margin-bottom: 5px;
+        }
+        
+        .menu-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 8px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+            border-radius: 3px;
+            color: #444;
+            font-size: 0.82rem;
+        }
+        
+        .menu-label:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .menu-label::after {
+            content: '+';
+            font-size: 0.9rem;
+        }
+        
+        .menu-label.expanded::after {
+            content: '-';
+        }
+        
+        .submenu {
+            list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-left: 16px;
+        }
+        
+        .submenu.expanded {
+            max-height: 1000px;
+        }
+        
+        .submenu li {
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #555;
+            font-size: 0.8rem;
+        }
+        
+        .submenu li:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .submenu li::after {
+            content: '+';
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .submenu li.expanded::after {
+            content: '-';
+        }
+        
+        .artist-menu {
+            list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-left: 16px;
+            font-size: 0.78rem;
+        }
+        
+        .artist-menu.expanded {
+            max-height: 1000px;
+        }
+        
+        .artist-menu li {
+            padding: 3px 8px;
+            transition: all 0.2s ease;
+            border-radius: 2px;
+        }
+        
+        .artist-menu li:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .artist-menu a {
+            color: #555;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .artist-menu a:hover {
+            color: #000;
+        }
+        
+        .sample-content {
+            margin-top: 12px;
+        }
+        
+        .sample-content h3 {
+            font-weight: 400;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #444;
+        }
+        
+        .sample-content p {
+            color: #555;
+            margin-bottom: 12px;
+            max-width: 700px;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .menu-container {
+                width: 100%;
+                height: 220px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .icon-container {
+                position: static;
+                justify-content: center;
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Lost World of Hindustani Classical Music</h1>
+            <p>Preserving the heritage of Indian classical music traditions</p>
+        </div>
+        <div class="icon-container">
+            <a href="/" class="icon-link" title="Home">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="https://jyotirmoyp.github.io/music/" class="icon-link" title="Music">
+                <i class="fas fa-music"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <main class="content">
+            <div class="content-inner">
+                <div class="welcome">
+                    <h2>Discover the Lost World</h2>
+                    <p>This archive preserves rare recordings of Hindustani classical music, organized by style, gharana, and artist.</p>
+                    <p>Explore the different musical traditions and discover the rich heritage of India's classical music through the ages.</p>
+                </div>
+                
+                <div class="sample-content">
+                    <h3>About Hindustani Classical Music</h3>
+                    <p>Hindustani classical music is one of the oldest forms of music in the world, with roots in the ancient religious Vedic hymns, tribal chants, devotional temple music, and folk music.</p>
+                    
+                    <h3>Dhrupad Tradition</h3>
+                    <p>Dhrupad is the oldest surviving form of Indian Classical music, originating from the chanting of Vedic hymns. The nature of Dhrupad music is spiritual, seeking to induce feelings of peace and contemplation.</p>
+                    
+                    <h3>Kheyal Style</h3>
+                    <p>Kheyal is a form of vocal music whose name comes from the Arabic word "khayal" meaning imagination. This style allows more improvisation and ornamentation than Dhrupad.</p>
+                    
+                    <h3>Instrumental Music</h3>
+                    <p>Indian classical instrumental music has developed extensively over centuries. Instruments like sitar, sarod, tabla, shehnai, and flute have been used to create deeply spiritual and meditative music.</p>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="menu-container">
+            <div class="menu-title">
+                <span>Explore Collections</span>
+            </div>
+            <div class="menu-scroll">
+                <ul class="menu">
+                    <li>
+                        <div class="menu-label" onclick="navigateAndToggle('dhrupad', 'Dhrupad/index.html')">Dhrupad</div>
+                        <ul class="submenu" id="dhrupad">
+                            <li onclick="navigateAndToggle('dagar', 'Dhrupad/Dagar/index.html')">Dagar</li>
+                            <div class="artist-menu" id="dagar">
+                                <li><a href="Dhrupad/Dagar/mohiuddin_dagar/index.html">Mohiuddin Dagar</a></li>
+                                <li><a href="Dhrupad/Dagar/pusparaj_koshti/index.html">Pushparaj Koshti</a></li>
+                                <li><a href="Dhrupad/Dagar/nancy_lesh/index.html">Nancy Lesh</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('nauhar', 'Dhrupad/Nauhar/index.html')">Nauhar</li>
+                            <div class="artist-menu" id="nauhar">
+                                <li><a href="Dhrupad/Nauhar/artist1/index.html">Rudra Veena Player 1</a></li>
+                                <li><a href="Dhrupad/Nauhar/artist2/index.html">Vocalist 1</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('khandar', 'Dhrupad/Khandar/index.html')">Khandar</li>
+                            <div class="artist-menu" id="khandar">
+                                <li><a href="Dhrupad/Khandar/artist1/index.html">Artist 1</a></li>
+                                <li><a href="Dhrupad/Khandar/artist2/index.html">Artist 2</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('gauhar', 'Dhrupad/Gauhar/index.html')">Gauhar</li>
+                            <div class="artist-menu" id="gauhar">
+                                <li><a href="Dhrupad/Gauhar/gauhar_khan/index.html">Gauhar Khan</a></li>
+                                <li><a href="Dhrupad/Gauhar/other_artist/index.html">Other Artist</a></li>
+                            </div>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <div class="menu-label" onclick="navigateAndToggle('kheyal', 'Kheyal/index.html')">Kheyal</div>
+                        <ul class="submenu" id="kheyal">
+                            <li onclick="navigateAndToggle('agra', 'Kheyal/Agra/index.html')">Agra</li>
+                            <div class="artist-menu" id="agra">
+                                <li><a href="Kheyal/Agra/faiyaz_khan/index.html">Faiyaz Khan</a></li>
+                                <li><a href="Kheyal/Agra/khadim_hussain_khan/index.html">Khadim Hussain Khan</a></li>
+                                <li><a href="Kheyal/Agra/latafat_hussain_khan/index.html">Latafat Hussain Khan</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('jaipur', 'Kheyal/Jaipur/index.html')">Jaipur</li>
+                            <div class="artist-menu" id="jaipur">
+                                <li><a href="Kheyal/Jaipur/alladiya_khan/index.html">Alladiya Khan</a></li>
+                                <li><a href="Kheyal/Jaipur/kesarbai_kerkar/index.html">Kesarbai Kerkar</a></li>
+                                <li><a href="Kheyal/Jaipur/mogubai_kurdikar/index.html">Mogubai Kurdikar</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('kirana', 'Kheyal/Kirana/index.html')">Kirana</li>
+                            <div class="artist-menu" id="kirana">
+                                <li><a href="Kheyal/Kirana/abdul_karim_khan/index.html">Abdul Karim Khan</a></li>
+                                <li><a href="Kheyal/Kirana/hirabai_barodekar/index.html">Hirabai Barodekar</a></li>
+                                <li><a href="Kheyal/Kirana/bhimsen_joshi/index.html">Bhimsen Joshi</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('gwalior', 'Kheyal/Gwalior/index.html')">Gwalior</li>
+                            <div class="artist-menu" id="gwalior">
+                                <li><a href="Kheyal/Gwalior/naththan_khan/index.html">Naththan Khan</a></li>
+                                <li><a href="Kheyal/Gwalior/vishnu_digambar_paluskar/index.html">Vishnu Digambar Paluskar</a></li>
+                                <li><a href="Kheyal/Gwalior/dv_paluskar/index.html">DV Paluskar</a></li>
+                            </div>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <div class="menu-label" onclick="navigateAndToggle('instrumental', 'Instrumental/index.html')">Instrumental</div>
+                        <ul class="submenu" id="instrumental">
+                            <li onclick="navigateAndToggle('senia', 'Instrumental/Senia_Bangash/index.html')">Senia Bangash</li>
+                            <div class="artist-menu" id="senia">
+                                <li><a href="Instrumental/Senia_Bangash/vilayat_khan/index.html">Ustad Vilayat Khan</a></li>
+                                <li><a href="Instrumental/Senia_Bangash/shahid_parvez/index.html">Ustad Shahid Parvez</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('maihar', 'Instrumental/Maihar/index.html')">Maihar</li>
+                            <div class="artist-menu" id="maihar">
+                                <li><a href="Instrumental/Maihar/ravi_shankar/index.html">Ravi Shankar</a></li>
+                                <li><a href="Instrumental/Maihar/ali_akbar_khan/index.html">Ali Akbar Khan</a></li>
+                                <li><a href="Instrumental/Maihar/annapurna_devi/index.html">Annapurna Devi</a></li>
+                                <li><a href="Instrumental/Maihar/nikhil_banerjee/index.html">Nikhil Banerjee</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('other_inst', 'Instrumental/Other/index.html')">Other Traditions</li>
+                            <div class="artist-menu" id="other_inst">
+                                <li><a href="Instrumental/Other/hariprasad_chaurasia/index.html">Hariprasad Chaurasia</a></li>
+                                <li><a href="Instrumental/Other/zakir_hussain/index.html">Zakir Hussain</a></li>
+                                <li><a href="Instrumental/Other/shivkumar_sharma/index.html">Shivkumar Sharma</a></li>
+                            </div>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <div class="menu-label" onclick="navigateAndToggle('baj', 'Baj/index.html')">Baj</div>
+                        <ul class="submenu" id="baj">
+                            <li onclick="navigateAndToggle('lucknow', 'Baj/Lucknow/index.html')">Lucknow</li>
+                            <div class="artist-menu" id="lucknow">
+                                <li><a href="Baj/Lucknow/biru_mishra/index.html">Ustad Biru Mishra</a></li>
+                                <li><a href="Baj/Lucknow/afaq_hussain_khan/index.html">Ustad Afaq Hussain Khan</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('farukkabad', 'Baj/Farukkabad/index.html')">Farukkabad</li>
+                            <div class="artist-menu" id="farukkabad">
+                                <li><a href="Baj/Farukkabad/hussain_baksh/index.html">Ustad Hussain Baksh</a></li>
+                                <li><a href="Baj/Farukkabad/ahmad_jan_thirakwa/index.html">Ustad Ahmad Jan Thirakwa</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('delhi', 'Baj/Delhi/index.html')">Delhi</li>
+                            <div class="artist-menu" id="delhi">
+                                <li><a href="Baj/Delhi/inam_ali_khan/index.html">Ustad Inam Ali Khan</a></li>
+                                <li><a href="Baj/Delhi/latif_ahmed_khan/index.html">Ustad Latif Ahmed Khan</a></li>
+                            </div>
+                            
+                            <li onclick="navigateAndToggle('puran', 'Baj/Puran/index.html')">Puran</li>
+                            <div class="artist-menu" id="puran">
+                                <li><a href="Baj/Puran/artist1/index.html">Artist 1</a></li>
+                                <li><a href="Baj/Puran/artist2/index.html">Artist 2</a></li>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+    
+    <footer class="footer">
+        <p>Lost World of Hindustani Classical Music &copy; 2023 | Preserving musical heritage for future generations</p>
+    </footer>
+
+    <script>
+        // Function to navigate and toggle menu
+        function navigateAndToggle(menuId, url) {
+            // Toggle the menu
+            const menu = document.getElementById(menuId);
+            if (menu.classList.contains('submenu')) {
+                const label = menu.previousElementSibling;
+                menu.classList.toggle('expanded');
+                label.classList.toggle('expanded');
+            } else if (menu.classList.contains('artist-menu')) {
+                const label = menu.previousElementSibling;
+                menu.classList.toggle('expanded');
+                label.classList.toggle('expanded');
+            }
+            
+            // Navigate to the URL
+            window.location.href = url;
+        }
+        
+        // Open first menu by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const dhrupadMenu = document.getElementById('dhrupad');
+            const dhrupadLabel = dhrupadMenu.previousElementSibling;
+            dhrupadMenu.classList.add('expanded');
+            dhrupadLabel.classList.add('expanded');
+        });
+    </script>
+</body>
+</html>
