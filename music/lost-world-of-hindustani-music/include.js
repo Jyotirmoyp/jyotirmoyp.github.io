@@ -1,56 +1,75 @@
 function includeHTML() {
     var z, i, elmnt, file, xhttp;
-    /* Loop through a collection of all HTML elements: */
     z = document.getElementsByTagName("*");
     for (i = 0; i < z.length; i++) {
         elmnt = z[i];
-        /*search for elements with a certain atrribute:*/
         file = elmnt.getAttribute("include-html");
         if (file) {
-            /* Make an HTTP request using the attribute value as the file name: */
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4) {
                     if (this.status == 200) {
                         elmnt.innerHTML = this.responseText;
-                        // After loading the navigation, initialize it
+                        // Re-initialize navigation after content is loaded
                         initNavigation();
                     }
                     if (this.status == 404) {
                         elmnt.innerHTML = "Page not found.";
                     }
-                    /* Remove the attribute, and call this function once more: */
                     elmnt.removeAttribute("include-html");
+                    includeHTML();
                 }
             }
             xhttp.open("GET", file, true);
             xhttp.send();
-            /* Exit the function: */
             return;
         }
     }
 }
 
-function initNavigation() {
-    // Function to navigate and toggle menu
-    window.navigateAndToggle = function(menuId, url) {
-        // Toggle the menu
-        const menu = document.getElementById(menuId);
-        if (menu && menu.classList.contains('submenu')) {
-            const label = menu.previousElementSibling;
-            menu.classList.toggle('expanded');
-            label.classList.toggle('expanded');
-        } else if (menu && menu.classList.contains('artist-menu')) {
-            const label = menu.previousElementSibling;
-            menu.classList.toggle('expanded');
-            label.classList.toggle('expanded');
-        }
-        
-        // Navigate to the URL if provided
-        if (url) {
-            window.location.href = url;
-        }
+// Global function for navigation
+function navigateAndToggle(menuId, url) {
+    // Toggle the menu
+    const menu = document.getElementById(menuId);
+    if (menu && menu.classList.contains('submenu')) {
+        const label = menu.previousElementSibling;
+        menu.classList.toggle('expanded');
+        label.classList.toggle('expanded');
+    } else if (menu && menu.classList.contains('artist-menu')) {
+        const label = menu.previousElementSibling;
+        menu.classList.toggle('expanded');
+        label.classList.toggle('expanded');
     }
+    
+    // Navigate to the URL if provided
+    if (url) {
+        window.location.href = url;
+    }
+}
+
+function initNavigation() {
+    // Add event listeners to all menu items
+    const menuLabels = document.querySelectorAll('.menu-label');
+    menuLabels.forEach(label => {
+        // Remove existing onclick to avoid duplicates
+        label.removeAttribute('onclick');
+        label.addEventListener('click', function() {
+            const menuId = this.nextElementSibling.id;
+            const url = this.getAttribute('data-url');
+            navigateAndToggle(menuId, url);
+        });
+    });
+    
+    const submenuItems = document.querySelectorAll('.submenu > li');
+    submenuItems.forEach(item => {
+        // Remove existing onclick to avoid duplicates
+        item.removeAttribute('onclick');
+        item.addEventListener('click', function() {
+            const menuId = this.nextElementSibling.id;
+            const url = this.getAttribute('data-url');
+            navigateAndToggle(menuId, url);
+        });
+    });
     
     // Auto-expand current section based on URL
     const path = window.location.pathname;
@@ -72,5 +91,4 @@ function initNavigation() {
             }
         }
     }
-    // Add similar logic for other sections
 }
