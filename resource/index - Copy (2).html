@@ -45,6 +45,7 @@
             padding: 20px;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section {
@@ -120,25 +121,51 @@
         .sticky-note {
             position: fixed;
             left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 100px; /* Positioned below the main menu */
             width: 200px;
-            padding: 15px;
+            padding: 10px; /* Reduced padding */
             background-color: #fffae6;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            z-index: 1000;
+            z-index: 999; /* Lower z-index than menu */
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .sticky-note h4 {
-            margin-top: 0;
-            font-size: 18px;
+            margin: 5px 0; /* Reduced margin */
+            font-size: 16px; /* Slightly smaller font */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sticky-note h4:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .sticky-note h4.collapsed:after {
+            transform: rotate(-90deg);
+        }
+
+        .sticky-note ul {
+            margin: 5px 0; /* Reduced margin */
+            padding-left: 15px; /* Reduced padding */
+            display: block;
+        }
+
+        .sticky-note ul.collapsed {
+            display: none;
         }
 
         .sticky-note a {
             display: block;
-            padding: 8px 0;
+            padding: 5px 0; /* Reduced padding */
             color: #0073e6;
+            font-size: 14px; /* Slightly smaller font */
         }
 
         .sticky-note a:hover {
@@ -167,8 +194,8 @@
         /* Mobile Connect Menu */
         .mobile-connect {
             display: none;
-            background-color: #f8f8f8;
-            padding: 15px;
+            background-color: #fffae6;
+            padding: 10px 15px; /* Reduced padding */
             margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -192,16 +219,36 @@
         }
         
         .mobile-connect h4 {
-            margin-top: 0;
-            text-align: center;
+            margin: 5px 0; /* Reduced margin */
+            font-size: 16px; /* Slightly smaller font */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-connect h4:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .mobile-connect h4.collapsed:after {
+            transform: rotate(-90deg);
         }
         
         .mobile-connect ul {
-            padding-left: 20px;
+            padding-left: 15px; /* Reduced padding */
+            display: block;
+            margin: 5px 0; /* Reduced margin */
+        }
+
+        .mobile-connect ul.collapsed {
+            display: none;
         }
         
         .mobile-connect li {
-            margin-bottom: 8px;
+            margin-bottom: 5px; /* Reduced margin */
         }
 
         @media (max-width: 768px) {
@@ -258,13 +305,21 @@
         
         <!-- Mobile Connect Menu -->
         <div class="mobile-connect" id="mobileConnect">
-            <h4>List of Important Tools</h4>
-            <ul>
+            <h4 onclick="toggleSection('mobileVizSection')">Visualization/database</h4>
+            <ul id="mobileVizSection">
                 <li><a href="#submachine">Submachine</a></li>
                 <li><a href="#gplates">GPlates</a></li>
                 <li><a href="#paraview">Paraview</a></li>
                 <li><a href="#gmt">GMT</a></li>
                 <li><a href="#atlas">Atlas of Underworld</a></li>
+            </ul>
+            
+            <h4 onclick="toggleSection('mobileMantleSection')">Open source mantle convection codes</h4>
+            <ul id="mobileMantleSection" class="collapsed">
+                <li><a href="#citcoms">CitcomS</a></li>
+                <li><a href="#lamem">LaMEM</a></li>
+                <li><a href="#aspect">ASPECT</a></li>
+                <li><a href="#underworld">Underworld</a></li>
             </ul>
         </div>
 
@@ -273,14 +328,22 @@
     <!-- Desktop Sticky Note -->
     <div id="stickyNote" class="sticky-note">
         <span class="closebtn" onclick="closeStickyNote()">&times;</span>
-        <h4>List of important tools</h4>
-       <ul>
-      <li><a href="#submachine">Submachine</a></li>
-      <li><a href="#gplates">GPlates</a></li>
-      <li><a href="#paraview">Paraview</a></li>
-      <li><a href="#gmt">GMT</a></li>
-      <li><a href="#atlas">Atlas of Underworld</a></li>
-    </ul>
+        <h4 onclick="toggleSection('desktopVizSection')">Visualization/database</h4>
+        <ul id="desktopVizSection">
+            <li><a href="#submachine">Submachine</a></li>
+            <li><a href="#gplates">GPlates</a></li>
+            <li><a href="#paraview">Paraview</a></li>
+            <li><a href="#gmt">GMT</a></li>
+            <li><a href="#atlas">Atlas of Underworld</a></li>
+        </ul>
+        
+        <h4 onclick="toggleSection('desktopMantleSection')">Open source mantle convection codes</h4>
+        <ul id="desktopMantleSection" class="collapsed">
+            <li><a href="#citcoms">CitcomS</a></li>
+            <li><a href="#lamem">LaMEM</a></li>
+            <li><a href="#aspect">ASPECT</a></li>
+            <li><a href="#underworld">Underworld</a></li>
+        </ul>
     </div>
 
 <!--------submachine---------------->
@@ -410,6 +473,95 @@
   </div>
 </div>
 
+<!---------------------- Mantle Convection codes ------------------------->
+
+<!-------- CitcomS---------------->
+  <div id="citcoms">
+  <div class="w3-container">
+          <h4> CitcomS</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://geodynamics.org/resources/1745/download/cover-small-citcoms.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://github.com/geodynamics/citcoms" target="_blank">CitcomS</a> 	  
+       	  is a finite element code designed to solve thermal convection problems relevant to earth’s mantle released
+under the GNU General Public License (see Appendix D on page 97). Written in C, the code runs on a variety of
+parallel processing computers, including shared and distributed memory platforms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-------- LaMEM---------------->
+  <div id="lamem">
+  <div class="w3-container">
+          <h4> LaMEM </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://opengraph.githubassets.com/fca1759b01f917a84b8bff61c74b9283bfacfd4beecd79175e7ed7912551d0df/UniMainzGeo/LaMEM" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://github.com/UniMainzGeo/LaMEM" target="_blank">LaMEM</a> 	  
+       	   (Lithosphere and Mantle Evolution Model) is a parallel 3D numerical code that can be used to simulate various thermo-mechanical geodynamical processes such as mantle-lithosphere interaction for rocks that have visco-elasto-plastic rheologies. It was developed to better understand geological processes, particularly related to the dynamics of the crust and lithosphere and their interaction with the mantle. It can also be used to solve geomechanical problems, includes (compressible) poroelasticity, has a gravity solver and an (adjoint) inversion framework. The code uses a marker-in-cell approach with a staggered finite difference discretization and is built on top of PETSc such that it can run on anything from a laptop to a massively parallel machine.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------- ASPECT---------------->
+  <div id="aspect">
+  <div class="w3-container">
+          <h4> ASPECT </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://aspect-documentation.readthedocs.io/en/latest/_images/aspect_logo.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://aspect-documentation.readthedocs.io/en/latest/" target="_blank">ASPECT</a> 	  
+       	  is a code to simulate problems in thermal convection. Its primary focus is on the simulation of processes in the Earth’s mantle, but its design is more general than that.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------- Underworld ---------------->
+  <div id="underworld">
+  <div class="w3-container">
+          <h4> Underworld </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://nbviewer.org/github/underworldcode/underworld2/blob/main/docs/UWGeodynamics/tutorials/images/Tutorial4.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://underworld2.readthedocs.io/en/latest/index.html" target="_blank">Underworld</a> 	  
+       	  is a Python API (Application Programming Interface) which provides functionality for the modelling of geodynamics processes, and is designed to work (almost) seamlessly across PC, cloud and HPC infrastructure. Primarily the API consists of a set of Python classes from which numerical geodynamics models may be constructed. The API also provides the tools required for inline analysis and data management. For scalability across multiprocessor platforms, MPI (Message Passing Interface) is leveraged, and for performant operation all heavy computations are executed within a statically typed layer.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- End page content -->
 <!-------------footer--------->
     <footer class="w3-container w3-teal w3-center w3-margin-top">
@@ -440,6 +592,19 @@
             } else {
                 connectMenu.classList.add('active');
                 button.innerHTML = 'List of Important Tools ▲';
+            }
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const header = section.previousElementSibling;
+            
+            if (section.classList.contains('collapsed')) {
+                section.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+            } else {
+                section.classList.add('collapsed');
+                header.classList.add('collapsed');
             }
         }
 

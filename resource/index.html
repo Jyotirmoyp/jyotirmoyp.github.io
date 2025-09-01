@@ -273,13 +273,20 @@
     <!-- Desktop Sticky Note -->
     <div id="stickyNote" class="sticky-note">
         <span class="closebtn" onclick="closeStickyNote()">&times;</span>
-        <h4>List of important tools</h4>
+        <h4>Visualization/data base</h4>
        <ul>
       <li><a href="#submachine">Submachine</a></li>
       <li><a href="#gplates">GPlates</a></li>
       <li><a href="#paraview">Paraview</a></li>
       <li><a href="#gmt">GMT</a></li>
       <li><a href="#atlas">Atlas of Underworld</a></li>
+	</ul>
+	<h4> Open source mantle convection codes </h4>
+	<ul>
+      <li><a href="#citcoms">CitcomS</a></li>
+      <li><a href="#lamem">LaMEM</a></li>
+      <li><a href="#aspect">ASPECT</a></li>
+      <li><a href="#underworld">Underworld</a></li>
     </ul>
     </div>
 
@@ -409,6 +416,95 @@
     </div>
   </div>
 </div>
+
+<!---------------------- Mantle Convection codes ------------------------->
+
+<!-------- CitcomS---------------->
+  <div id="citcoms">
+  <div class="w3-container">
+          <h4> CitcomS</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://geodynamics.org/resources/1745/download/cover-small-citcoms.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://github.com/geodynamics/citcoms" target="_blank">CitcomS</a> 	  
+       	  is a finite element code designed to solve thermal convection problems relevant to earth’s mantle released
+under the GNU General Public License (see Appendix D on page 97). Written in C, the code runs on a variety of
+parallel processing computers, including shared and distributed memory platforms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-------- LaMEM---------------->
+  <div id="lamem">
+  <div class="w3-container">
+          <h4> LaMEM </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://opengraph.githubassets.com/fca1759b01f917a84b8bff61c74b9283bfacfd4beecd79175e7ed7912551d0df/UniMainzGeo/LaMEM" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://github.com/UniMainzGeo/LaMEM" target="_blank">LaMEM</a> 	  
+       	   (Lithosphere and Mantle Evolution Model) is a parallel 3D numerical code that can be used to simulate various thermo-mechanical geodynamical processes such as mantle-lithosphere interaction for rocks that have visco-elasto-plastic rheologies. It was developed to better understand geological processes, particularly related to the dynamics of the crust and lithosphere and their interaction with the mantle. It can also be used to solve geomechanical problems, includes (compressible) poroelasticity, has a gravity solver and an (adjoint) inversion framework. The code uses a marker-in-cell approach with a staggered finite difference discretization and is built on top of PETSc such that it can run on anything from a laptop to a massively parallel machine.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------- ASPECT---------------->
+  <div id="aspect">
+  <div class="w3-container">
+          <h4> ASPECT </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://aspect-documentation.readthedocs.io/en/latest/_images/aspect_logo.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://aspect-documentation.readthedocs.io/en/latest/" target="_blank">ASPECT</a> 	  
+       	  is a code to simulate problems in thermal convection. Its primary focus is on the simulation of processes in the Earth’s mantle, but its design is more general than that.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------- Underworld ---------------->
+  <div id="underworld">
+  <div class="w3-container">
+          <h4> Underworld </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://nbviewer.org/github/underworldcode/underworld2/blob/main/docs/UWGeodynamics/tutorials/images/Tutorial4.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://underworld2.readthedocs.io/en/latest/index.html" target="_blank">Underworld</a> 	  
+       	  is a Python API (Application Programming Interface) which provides functionality for the modelling of geodynamics processes, and is designed to work (almost) seamlessly across PC, cloud and HPC infrastructure. Primarily the API consists of a set of Python classes from which numerical geodynamics models may be constructed. The API also provides the tools required for inline analysis and data management. For scalability across multiprocessor platforms, MPI (Message Passing Interface) is leveraged, and for performant operation all heavy computations are executed within a statically typed layer.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <!-- End page content -->
 <!-------------footer--------->
