@@ -1,379 +1,700 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>music</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Archive Mind Map</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #f9f7f1, #f2efe5);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #d4af37;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-weight: 400;
+            font-size: 2.5rem;
+            color: #3a3a3a;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .icon-container {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icon-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+        
+        .icon-link:hover {
+            color: #d4af37;
+        }
+        
+        .mindmap-container {
+            flex: 1;
+            display: flex;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .mindmap {
+            flex: 1;
+            padding: 30px;
+            overflow: auto;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='%23f9f7f1'/%3E%3Cpath d='M0 0v100' stroke='%23e6e2d6' stroke-width='1' fill='none'/%3E%3C/svg%3E") repeat;
+            position: relative;
+        }
+        
+        .mindmap::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d4af37;
+            opacity: 0.5;
+        }
+        
+        .node {
+            margin-left: 60px;
+            margin-bottom: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .node::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 15px;
+            height: 2px;
+            width: 30px;
+            background: #d4af37;
+        }
+        
+        .node-main {
+            background: #fff;
+            border-left: 4px solid #d4af37;
+            border-radius: 0 8px 8px 0;
+            padding: 15px 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .node-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: #fcf9f0;
+        }
+        
+        .node-title {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: #3a3a3a;
+        }
+        
+        .node-toggle {
+            font-size: 1.1rem;
+            color: #888;
+            transition: transform 0.3s ease;
+        }
+        
+        .node.expanded .node-toggle {
+            transform: rotate(90deg);
+        }
+        
+        .node-children {
+            margin-top: 15px;
+            margin-left: 30px;
+            display: none;
+            border-left: 2px dashed #e6e2d6;
+            padding-left: 20px;
+        }
+        
+        .node.expanded .node-children {
+            display: block;
+        }
+        
+        .child-node {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .child-node::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 12px;
+            height: 2px;
+            width: 15px;
+            background: #a58c5c;
+        }
+        
+        .child-main {
+            background: #fff;
+            border: 1px solid #e6e2d6;
+            border-radius: 6px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .child-main:hover {
+            background: #f7f4e9;
+            border-color: #d4af37;
+        }
+        
+        .child-title {
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .child-toggle {
+            font-size: 1rem;
+            color: #888;
+            transition: transform 0.3s ease;
+        }
+        
+        .child-node.expanded .child-toggle {
+            transform: rotate(90deg);
+        }
+        
+        .artist-list {
+            margin-top: 10px;
+            margin-left: 20px;
+            display: none;
+            border-left: 1px dotted #e6e2d6;
+            padding-left: 15px;
+        }
+        
+        .child-node.expanded .artist-list {
+            display: block;
+        }
+        
+        .artist-item {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: #f9f7f1;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .artist-item:hover {
+            background: #f2efe5;
+            transform: translateX(5px);
+        }
+        
+        .artist-item a {
+            color: #5a5a5a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .artist-item a:hover {
+            color: #d4af37;
+        }
+        
+        .artist-item i {
+            font-size: 0.9rem;
+        }
+        
+        .content-panel {
+            width: 50%;
+            padding: 30px;
+            background: #fff;
+            border-left: 1px solid #e6e2d6;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .content-panel.active {
+            display: block;
+        }
+        
+        .content-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f2efe5;
+        }
+        
+        .content-header h2 {
+            font-weight: 500;
+            color: #3a3a3a;
+            margin-bottom: 10px;
+        }
+        
+        .content-body {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .content-body p {
+            margin-bottom: 20px;
+        }
+        
+        .close-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-panel:hover {
+            color: #d4af37;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #e6e2d6;
+        }
+        
+        @media (max-width: 900px) {
+            .mindmap-container {
+                flex-direction: column;
+            }
+            
+            .content-panel {
+                width: 100%;
+                border-left: none;
+                border-top: 1px solid #e6e2d6;
+            }
+            
+            .icon-container {
+                position: static;
+                transform: none;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .node {
+                margin-left: 30px;
+            }
+            
+            .node::before {
+                left: -20px;
+                width: 15px;
+            }
+        }
+    </style>
 </head>
-<body id="music">
-
-<!-- Sidebar on click -->
-<nav class="w3-sidebar w3-bar-block w3-white w3-card w3-animate-left w3-xxlarge" style="display:none;z-index:2" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-display-topright w3-text-teal">Close
-    <i class="fa fa-remove"></i>
-  </a>
-  <a href="#" class="w3-bar-item w3-button">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
-  <a href="#" class="w3-bar-item w3-button">Link 4</a>
-  <a href="#" class="w3-bar-item w3-button">Link 5</a>
-</nav>
-
-<!-- Navbar -->
-<div class="w3-top">
- <div class="w3-bar w3-theme-d2 w3-left-align">
-  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Home</a>
-  <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Gharana</a>
-  <a href="#work" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Ragas</a>
-  <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Regions</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">About me</a>
-    <div class="w3-dropdown-hover w3-hide-small">
-    <button class="w3-button" title="Notifications">Dropdown <i class="fa fa-caret-down"></i></button>     
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-      <a href="#" class="w3-bar-item w3-button">Link</a>
-      <a href="#" class="w3-bar-item w3-button">Link</a>
-      <a href="#" class="w3-bar-item w3-button">Link</a>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Lost World of Hindustani Classical Music</h1>
+            <p>Explore the rich heritage through an interactive mind map</p>
+            <div class="icon-container">
+                <a href="/" class="icon-link" title="Home">
+                    <i class="fas fa-home"></i>
+                </a>
+                <a href="https://jyotirmoyp.github.io/music/" class="icon-link" title="Music">
+                    <i class="fas fa-music"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="mindmap-container">
+            <div class="mindmap">
+                <div class="node expanded">
+                    <div class="node-main">
+                        <div class="node-title">Dhrupad</div>
+                        <div class="node-toggle"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="node-children">
+                        <div class="child-node expanded">
+                            <div class="child-main">
+                                <div class="child-title">Dagar</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Mohiuddin Dagar
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Pushparaj Koshti
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Nancy Lesh
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="child-node">
+                            <div class="child-main">
+                                <div class="child-title">Nauhar</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Rudra Veena Player 1
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Vocalist 1
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="child-node">
+                            <div class="child-main">
+                                <div class="child-title">Khandar</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Artist 1
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Artist 2
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="node">
+                    <div class="node-main">
+                        <div class="node-title">Kheyal</div>
+                        <div class="node-toggle"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="node-children">
+                        <div class="child-node">
+                            <div class="child-main">
+                                <div class="child-title">Agra</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Faiyaz Khan
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Khadim Hussain Khan
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Latafat Hussain Khan
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="child-node">
+                            <div class="child-main">
+                                <div class="child-title">Jaipur</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Alladiya Khan
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Kesarbai Kerkar
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Mogubai Kurdikar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="node">
+                    <div class="node-main">
+                        <div class="node-title">Instrumental</div>
+                        <div class="node-toggle"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="node-children">
+                        <div class="child-node">
+                            <div class="child-main">
+                                <div class="child-title">Senia Bangash</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Ustad Vilayat Khan
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Ustad Shahid Parvez
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="child-node">
+                            <div class="child-main">
+                                <div class="child-title">Maihar</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Ravi Shankar
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Ali Akbar Khan
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Annapurna Devi
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Nikhil Banerjee
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="node">
+                    <div class="node-main">
+                        <div class="node-title">Baj</div>
+                        <div class="node-toggle"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="node-children">
+                        <div class="child-node">
+                            <div class="child-main">
+                                <div class="child-title">Lucknow</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Ustad Biru Mishra
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Ustad Afaq Hussain Khan
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="child-node">
+                            <div class="child-main">
+                                <div class="child-title">Farukkabad</div>
+                                <div class="child-toggle"><i class="fas fa-chevron-right"></i></div>
+                            </div>
+                            <div class="artist-list">
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Ustad Hussain Baksh
+                                    </a>
+                                </div>
+                                <div class="artist-item">
+                                    <a href="#">
+                                        <i class="fas fa-user"></i>
+                                        Ustad Ahmad Jan Thirakwa
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-panel" id="contentPanel">
+                <button class="close-panel" id="closePanel">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="content-header">
+                    <h2 id="panelTitle">Dhrupad Tradition</h2>
+                </div>
+                <div class="content-body" id="panelContent">
+                    <p>Dhrupad is the oldest surviving form of Indian Classical music, originating from the chanting of Vedic hymns. The nature of Dhrupad music is spiritual, seeking to induce feelings of peace and contemplation rather than merely to entertain.</p>
+                    
+                    <p>Dhrupad evolved from the earlier chanting style known as Prabandha, with its present form crystallizing in the 15th and 16th centuries during the reign of Emperor Akbar.</p>
+                    
+                    <p>Dhrupad is characterized by its solemnity, emphasis on lyrical content, and minimal use of ornamentation compared to other forms like Khyal.</p>
+                    
+                    <p>The Dagar family has been instrumental in preserving and promoting the Dhrupad tradition for generations.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Lost World of Hindustani Classical Music &copy; 2023 | Preserving musical heritage for future generations</p>
+        </div>
     </div>
-  </div>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
- </div>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
-    <a href="#team" class="w3-bar-item w3-button">Team</a>
-    <a href="#work" class="w3-bar-item w3-button">Work</a>
-    <a href="#pricing" class="w3-bar-item w3-button">Price</a>
-    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-    <a href="#" class="w3-bar-item w3-button">Search</a>
-  </div>
-</div>
-
-<!-- Image Header -->
-<div class="w3-display-container w3-animate-opacity">
-  <img src="cover-main.jpg" alt="tansen" style="width:100%;min-height:350px;max-height:600px;">
-  <div class="w3-container w3-display-bottomleft w3-margin-bottom">  
-    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-xlarge w3-theme w3-hover-teal" title="Go To W3.CSS">LEARN W3.CSS</button>
-  </div>
-</div>
-
-<!-- Modal -->
-<div id="id01" class="w3-modal">
-  <div class="w3-modal-content w3-card-4 w3-animate-top">
-    <header class="w3-container w3-teal w3-display-container"> 
-      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-display-topright"><i class="fa fa-remove"></i></span>
-      <h4>Oh snap! We just showed you a modal..</h4>
-      <h5>Because we can <i class="fa fa-smile-o"></i></h5>
-    </header>
-    <div class="w3-container">
-      <p>Cool huh? Ok, enough teasing around..</p>
-      <p>Go to our <a class="w3-text-teal" href="/w3css/default.asp">W3.CSS Tutorial</a> to learn more!</p>
-    </div>
-    <footer class="w3-container w3-teal">
-      <p>Modal footer</p>
-    </footer>
-  </div>
-</div>
-
-
-
-<!-- Team Container -->
-<div class="w3-container w3-padding-64 w3-center" id="team">
-  <h2>Dhrupad Vani</h2>
-  <p> </p>
-  
-  <div class="w3-row"><br>
-  
-  <div class="w3-quarter">
-    <img src="agra-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-    <h3>Dagar</h3>
-    <p> Founder : Swami Haridas Dagur</p>
-  </div>
-  
-  <div class="w3-quarter">
-    <img src="gwalior-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-    <h3>Gauhar</h3>
-    <p> Founder: Tansen </p>
-  </div>
-  
-  <div class="w3-quarter">
-    <img src="jaipur-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-    <h3>Khandar</h3>
-    <p> Founder : Naubat Khan</p>
-  </div>
-  
-  <div class="w3-quarter">
-    <img src="jaipur-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-    <h3>Nauhar</h3>
-    <p>Founder : Nayak Gopal</p>
-  </div>
-  
-  </div>
-  </div>
-
-<!-- Team Container -->
-<div class="w3-container w3-padding-64 w3-center" id="team">
-<h2>Kheyal Gharanas</h2>
-<p> </p>
-
-<div class="w3-row"><br>
-
-<div class="w3-quarter">
-  <img src="agra-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Agra</h3>
-  <p></p>
-</div>
-
-<div class="w3-quarter">
-  <img src="gwalior-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Gwalior</h3>
-  <p></p>
-</div>
-
-<div class="w3-quarter">
-  <img src="jaipur-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Jaipur</h3>
-  <p></p>
-</div>
-
-<div class="w3-quarter">
-  <img src="jaipur-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Kirana</h3>
-  <p>Fixer</p>
-</div>
-
-</div>
-
-<!------4 packs -->
-<div class="w3-row"><br>
-
-  <div class="w3-quarter">
-    <img src="agra-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-    <h3>Agra</h3>
-    <p></p>
-  </div>
-  
-  <div class="w3-quarter">
-    <img src="gwalior-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-    <h3>Gwalior</h3>
-    <p></p>
-  </div>
-  
-  <div class="w3-quarter">
-    <img src="jaipur-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-    <h3>Jaipur</h3>
-    <p></p>
-  </div>
-  
-  <div class="w3-quarter">
-    <img src="jaipur-cover.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-    <h3>Kirana</h3>
-    <p>Fixer</p>
-  </div>
-  </div>
-
-</div>
-
-<!-- Work Row -->
-<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
-
-<div class="w3-quarter">
-<h2>Our Work</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-<div class="w3-quarter">
-<div class="w3-card w3-white">
-  <img src="/w3images/snow.jpg" alt="Snow" style="width:100%">
-  <div class="w3-container">
-  <h3>Customer 1</h3>
-  <h4>Trade</h4>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  </div>
-  </div>
-</div>
-
-<div class="w3-quarter">
-<div class="w3-card w3-white">
-  <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
-  <div class="w3-container">
-  <h3>Customer 2</h3>
-  <h4>Trade</h4>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  </div>
-  </div>
-</div>
-
-<div class="w3-quarter">
-<div class="w3-card w3-white">
-  <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%">
-  <div class="w3-container">
-  <h3>Customer 3</h3>
-  <h4>Trade</h4>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  </div>
-  </div>
-</div>
-
-</div>
-
-<!-- Container -->
-<div class="w3-container" style="position:relative">
-  <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
-  style="position:absolute;top:-28px;right:24px">+</a>
-</div>
-
-<!-- Pricing Row -->
-<div class="w3-row-padding w3-center w3-padding-64" id="pricing">
-    <h2>PRICING</h2>
-    <p>Choose a pricing plan that fits your needs.</p><br>
-    <div class="w3-third w3-margin-bottom">
-      <ul class="w3-ul w3-border w3-hover-shadow">
-        <li class="w3-theme">
-          <p class="w3-xlarge">Basic</p>
-        </li>
-        <li class="w3-padding-16"><b>10GB</b> Storage</li>
-        <li class="w3-padding-16"><b>10</b> Emails</li>
-        <li class="w3-padding-16"><b>10</b> Domains</li>
-        <li class="w3-padding-16"><b>Endless</b> Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide"><i class="fa fa-usd"></i> 10</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-theme-l5 w3-padding-24">
-          <button class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Sign Up</button>
-        </li>
-      </ul>
-    </div>
-
-    <div class="w3-third w3-margin-bottom">
-      <ul class="w3-ul w3-border w3-hover-shadow">
-        <li class="w3-theme-l2">
-          <p class="w3-xlarge">Pro</p>
-        </li>
-        <li class="w3-padding-16"><b>25GB</b> Storage</li>
-        <li class="w3-padding-16"><b>25</b> Emails</li>
-        <li class="w3-padding-16"><b>25</b> Domains</li>
-        <li class="w3-padding-16"><b>Endless</b> Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide"><i class="fa fa-usd"></i> 25</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-theme-l5 w3-padding-24">
-          <button class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Sign Up</button>
-        </li>
-      </ul>
-    </div>
-
-    <div class="w3-third w3-margin-bottom">
-      <ul class="w3-ul w3-border w3-hover-shadow">
-        <li class="w3-theme">
-          <p class="w3-xlarge">Premium</p>
-        </li>
-        <li class="w3-padding-16"><b>50GB</b> Storage</li>
-        <li class="w3-padding-16"><b>50</b> Emails</li>
-        <li class="w3-padding-16"><b>50</b> Domains</li>
-        <li class="w3-padding-16"><b>Endless</b> Support</li>
-        <li class="w3-padding-16">
-          <h2 class="w3-wide"><i class="fa fa-usd"></i> 50</h2>
-          <span class="w3-opacity">per month</span>
-        </li>
-        <li class="w3-theme-l5 w3-padding-24">
-          <button class="w3-button w3-teal w3-padding-large"><i class="fa fa-check"></i> Sign Up</button>
-        </li>
-      </ul>
-    </div>
-</div>
-
-<!-- Contact Container -->
-<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
-  <div class="w3-row">
-    <div class="w3-col m5">
-    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
-      <h3>Address</h3>
-      <p>Swing by for a cup of coffee, or whatever.</p>
-      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Chicago, US</p>
-      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  +00 1515151515</p>
-      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  test@test.com</p>
-    </div>
-    <div class="w3-col m7">
-      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
-      <div class="w3-section">      
-        <label>Name</label>
-        <input class="w3-input" type="text" name="Name" required>
-      </div>
-      <div class="w3-section">      
-        <label>Email</label>
-        <input class="w3-input" type="text" name="Email" required>
-      </div>
-      <div class="w3-section">      
-        <label>Message</label>
-        <input class="w3-input" type="text" name="Message" required>
-      </div>  
-      <input class="w3-check" type="checkbox" checked name="Like">
-      <label>I Like it!</label>
-      <button type="submit" class="w3-button w3-right w3-theme">Send</button>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Image of location/map -->
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
-
-<!-- Footer -->
-<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
-  <h4>Follow Us</h4>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
-  <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-
-  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
-    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
-    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
-    <i class="fa fa-chevron-circle-up"></i></span></a>
-  </div>
-</footer>
-
-<script>
-// Script for side navigation
-function w3_open() {
-  var x = document.getElementById("mySidebar");
-  x.style.width = "300px";
-  x.style.paddingTop = "10%";
-  x.style.display = "block";
-}
-
-// Close side navigation
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-
-// Used to toggle the menu on smaller screens when clicking on the menu button
-function openNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle nodes
+            const nodeElements = document.querySelectorAll('.node-main, .child-main');
+            
+            nodeElements.forEach(element => {
+                element.addEventListener('click', function() {
+                    const parent = this.parentElement;
+                    parent.classList.toggle('expanded');
+                    
+                    // If it's a main node, show content in the panel
+                    if (this.classList.contains('node-main')) {
+                        const title = this.querySelector('.node-title').textContent;
+                        showContent(title);
+                    }
+                });
+            });
+            
+            // Artist items click
+            const artistItems = document.querySelectorAll('.artist-item a');
+            
+            artistItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const artistName = this.textContent.trim();
+                    showContent(artistName);
+                });
+            });
+            
+            // Close panel button
+            const closePanel = document.getElementById('closePanel');
+            const contentPanel = document.getElementById('contentPanel');
+            
+            closePanel.addEventListener('click', function() {
+                contentPanel.classList.remove('active');
+            });
+            
+            // Function to show content in the panel
+            function showContent(title) {
+                const panelTitle = document.getElementById('panelTitle');
+                const panelContent = document.getElementById('panelContent');
+                
+                panelTitle.textContent = title;
+                
+                // Simple content mapping (in a real app, you'd fetch this from a server)
+                const contentMap = {
+                    'Dhrupad': '<p>Dhrupad is the oldest surviving form of Indian Classical music, originating from the chanting of Vedic hymns. The nature of Dhrupad music is spiritual, seeking to induce feelings of peace and contemplation rather than merely to entertain.</p><p>Dhrupad evolved from the earlier chanting style known as Prabandha, with its present form crystallizing in the 15th and 16th centuries during the reign of Emperor Akbar.</p>',
+                    'Kheyal': '<p>Kheyal is a form of vocal music in North India. Its name comes from the Arabic word "khayal" which means imagination. This style allows more improvisation and ornamentation than Dhrupad.</p><p>The Gwalior gharana is the oldest and most elaborate of the kheyal gayaki (singing style).</p>',
+                    'Instrumental': '<p>Indian classical instrumental music has developed extensively over the centuries. Instruments like sitar, sarod, tabla, shehnai, and flute have been used to create deeply spiritual and meditative music.</p>',
+                    'Baj': '<p>Baj refers to the style and technique of playing tabla. Different gharanas (schools) have developed their own distinctive styles of playing, each with its own repertoire of compositions and techniques.</p>',
+                    'Dagar': '<p>The Dagar family is one of the most influential families in Dhrupad, with a lineage that can be traced back to the 16th century. Their style is characterized by deep, meditative alaaps and precise rhythmic patterns.</p>',
+                    'Mohiuddin Dagar': '<p>Mohiuddin Dagar was a renowned Dhrupad vocalist from the Dagar family tradition. He was known for his deep, resonant voice and mastery of the alap.</p>'
+                };
+                
+                panelContent.innerHTML = contentMap[title] || `<p>Content about ${title} will be displayed here. This is a preview of the mind map interface.</p>`;
+                contentPanel.classList.add('active');
+            }
+            
+            // Auto-expand first node and show its content
+            showContent('Dhrupad');
+        });
+    </script>
 </body>
 </html>
