@@ -45,6 +45,7 @@
             padding: 20px;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section {
@@ -120,25 +121,51 @@
         .sticky-note {
             position: fixed;
             left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 100px; /* Positioned below the main menu */
             width: 200px;
-            padding: 15px;
+            padding: 10px; /* Reduced padding */
             background-color: #fffae6;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            z-index: 1000;
+            z-index: 999; /* Lower z-index than menu */
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .sticky-note h4 {
-            margin-top: 0;
-            font-size: 18px;
+            margin: 5px 0; /* Reduced margin */
+            font-size: 16px; /* Slightly smaller font */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sticky-note h4:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .sticky-note h4.collapsed:after {
+            transform: rotate(-90deg);
+        }
+
+        .sticky-note ul {
+            margin: 5px 0; /* Reduced margin */
+            padding-left: 15px; /* Reduced padding */
+            display: block;
+        }
+
+        .sticky-note ul.collapsed {
+            display: none;
         }
 
         .sticky-note a {
             display: block;
-            padding: 8px 0;
+            padding: 5px 0; /* Reduced padding */
             color: #0073e6;
+            font-size: 14px; /* Slightly smaller font */
         }
 
         .sticky-note a:hover {
@@ -167,8 +194,8 @@
         /* Mobile Connect Menu */
         .mobile-connect {
             display: none;
-            background-color: #f8f8f8;
-            padding: 15px;
+            background-color: #fffae6;
+            padding: 10px 15px; /* Reduced padding */
             margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -192,16 +219,36 @@
         }
         
         .mobile-connect h4 {
-            margin-top: 0;
-            text-align: center;
+            margin: 5px 0; /* Reduced margin */
+            font-size: 16px; /* Slightly smaller font */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-connect h4:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .mobile-connect h4.collapsed:after {
+            transform: rotate(-90deg);
         }
         
         .mobile-connect ul {
-            padding-left: 20px;
+            padding-left: 15px; /* Reduced padding */
+            display: block;
+            margin: 5px 0; /* Reduced margin */
+        }
+
+        .mobile-connect ul.collapsed {
+            display: none;
         }
         
         .mobile-connect li {
-            margin-bottom: 8px;
+            margin-bottom: 5px; /* Reduced margin */
         }
 
         @media (max-width: 768px) {
@@ -258,13 +305,21 @@
         
         <!-- Mobile Connect Menu -->
         <div class="mobile-connect" id="mobileConnect">
-            <h4>List of Important Tools</h4>
-            <ul>
+            <h4 onclick="toggleSection('mobileVizSection')">Visualization/database</h4>
+            <ul id="mobileVizSection">
                 <li><a href="#submachine">Submachine</a></li>
                 <li><a href="#gplates">GPlates</a></li>
                 <li><a href="#paraview">Paraview</a></li>
                 <li><a href="#gmt">GMT</a></li>
                 <li><a href="#atlas">Atlas of Underworld</a></li>
+            </ul>
+            
+            <h4 onclick="toggleSection('mobileMantleSection')">Open source mantle convection codes</h4>
+            <ul id="mobileMantleSection" class="collapsed">
+                <li><a href="#citcoms">CitcomS</a></li>
+                <li><a href="#lamem">LaMEM</a></li>
+                <li><a href="#aspect">ASPECT</a></li>
+                <li><a href="#underworld">Underworld</a></li>
             </ul>
         </div>
 
@@ -273,21 +328,22 @@
     <!-- Desktop Sticky Note -->
     <div id="stickyNote" class="sticky-note">
         <span class="closebtn" onclick="closeStickyNote()">&times;</span>
-        <h4>Visualization/data base</h4>
-       <ul>
-      <li><a href="#submachine">Submachine</a></li>
-      <li><a href="#gplates">GPlates</a></li>
-      <li><a href="#paraview">Paraview</a></li>
-      <li><a href="#gmt">GMT</a></li>
-      <li><a href="#atlas">Atlas of Underworld</a></li>
-	</ul>
-	<h4> Open source mantle convection codes </h4>
-	<ul>
-      <li><a href="#citcoms">CitcomS</a></li>
-      <li><a href="#lamem">LaMEM</a></li>
-      <li><a href="#aspect">ASPECT</a></li>
-      <li><a href="#underworld">Underworld</a></li>
-    </ul>
+        <h4 onclick="toggleSection('desktopVizSection')">Visualization/database</h4>
+        <ul id="desktopVizSection">
+            <li><a href="#submachine">Submachine</a></li>
+            <li><a href="#gplates">GPlates</a></li>
+            <li><a href="#paraview">Paraview</a></li>
+            <li><a href="#gmt">GMT</a></li>
+            <li><a href="#atlas">Atlas of Underworld</a></li>
+        </ul>
+        
+        <h4 onclick="toggleSection('desktopMantleSection')">Open source mantle convection codes</h4>
+        <ul id="desktopMantleSection" class="collapsed">
+            <li><a href="#citcoms">CitcomS</a></li>
+            <li><a href="#lamem">LaMEM</a></li>
+            <li><a href="#aspect">ASPECT</a></li>
+            <li><a href="#underworld">Underworld</a></li>
+        </ul>
     </div>
 
 <!--------submachine---------------->
@@ -388,7 +444,7 @@
       		 <br> <br> I have some basic <a href="https://jyotirmoyp.github.io/resource/gmt/" target="_blank"> GMT resources </a> 
       		 for students who are new in coding and are getting lost in huge repository of the GMT website. 
        	 
-         	<a href="https://jyotirmoyp.github.io/resource/gmt/">Check out some GMT instructions  here </a>
+         	<a href="https://jyotirmoyp.github.io/resource/gmt/">Check out some GMT instructions here </a>
           </p>
         </div>
       </div>
@@ -536,6 +592,19 @@ parallel processing computers, including shared and distributed memory platforms
             } else {
                 connectMenu.classList.add('active');
                 button.innerHTML = 'List of Important Tools ▲';
+            }
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const header = section.previousElementSibling;
+            
+            if (section.classList.contains('collapsed')) {
+                section.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+            } else {
+                section.classList.add('collapsed');
+                header.classList.add('collapsed');
             }
         }
 
