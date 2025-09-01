@@ -302,8 +302,10 @@
             }
         }
     </style>
+
+
 </head>
-<body>
+<body onload="includeHTML()"> <!-- ADD THIS -->
     <div class="header">
         <div class="header-content">
             <h1>Lost World of Hindustani Classical Music</h1>
@@ -318,8 +320,6 @@
             </a>
         </div>
     </div>
-
-
     
     <div class="main-container">
         <main class="content">
@@ -352,16 +352,5 @@
     </footer>
 
     <script src="../include.js"></script>
-    <script>
-        // Open first menu by default
-        document.addEventListener('DOMContentLoaded', function() {
-            const dhrupadMenu = document.getElementById('dhrupad');
-            if (dhrupadMenu) {
-                const dhrupadLabel = dhrupadMenu.previousElementSibling;
-                dhrupadMenu.classList.add('expanded');
-                dhrupadLabel.classList.add('expanded');
-            }
-        });
-    </script>
 </body>
 </html>
