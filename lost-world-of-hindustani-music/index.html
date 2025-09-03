@@ -318,6 +318,20 @@
             .header-image {
                 height: 100px;
             }
+	        display: flex;
+    		flex-direction: column;
+   		min-height: 100vh;
+	    }
+
+	    .main-container {
+    	    flex: 1;
+    	    overflow: hidden;
+	}
+
+.menu-scroll {
+    max-height: calc(100vh - 400px); /* Adjust based on your header/footer height */
+    overflow-y: auto;
+}
         }
     </style>
 </head>

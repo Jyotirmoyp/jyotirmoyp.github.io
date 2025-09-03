@@ -53,9 +53,8 @@ function initNavigation() {
     menuLabels.forEach(label => {
         // Remove existing onclick to avoid duplicates
         label.removeAttribute('onclick');
-        label.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const menuId = this.getAttribute('data-menu-id') || this.nextElementSibling.id;
+        label.addEventListener('click', function() {
+            const menuId = this.nextElementSibling.id;
             const url = this.getAttribute('data-url');
             navigateAndToggle(menuId, url);
         });
@@ -65,19 +64,10 @@ function initNavigation() {
     submenuItems.forEach(item => {
         // Remove existing onclick to avoid duplicates
         item.removeAttribute('onclick');
-        item.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const menuId = this.getAttribute('data-menu-id') || this.nextElementSibling.id;
+        item.addEventListener('click', function() {
+            const menuId = this.nextElementSibling.id;
             const url = this.getAttribute('data-url');
             navigateAndToggle(menuId, url);
-        });
-    });
-    
-    // Add event listeners for artist menu items to prevent propagation
-    const artistMenuItems = document.querySelectorAll('.artist-menu a');
-    artistMenuItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.stopPropagation();
         });
     });
     
@@ -100,55 +90,5 @@ function initNavigation() {
                 }
             }
         }
-    }
-}
-
-// Update the navigateAndToggle function
-function navigateAndToggle(menuId, url) {
-    // Toggle the menu
-    const menu = document.getElementById(menuId);
-    if (menu) {
-        const isExpanded = menu.classList.contains('expanded');
-        
-        // Close all menus at the same level first
-        const parent = menu.parentElement;
-        if (parent) {
-            const siblings = parent.querySelectorAll('.submenu.expanded, .artist-menu.expanded');
-            siblings.forEach(sibling => {
-                if (sibling !== menu) {
-                    sibling.classList.remove('expanded');
-                    const siblingLabel = sibling.previousElementSibling;
-                    if (siblingLabel && siblingLabel.classList.contains('expanded')) {
-                        siblingLabel.classList.remove('expanded');
-                    }
-                }
-            });
-        }
-        
-        // Toggle the current menu
-        menu.classList.toggle('expanded');
-        
-        // Toggle the label
-        const label = menu.previousElementSibling;
-        if (label && (label.classList.contains('menu-label') || label.classList.contains('submenu-label'))) {
-            label.classList.toggle('expanded');
-        }
-        
-        // If we're collapsing, also collapse any nested expanded menus
-        if (!menu.classList.contains('expanded')) {
-            const nestedMenus = menu.querySelectorAll('.submenu.expanded, .artist-menu.expanded');
-            nestedMenus.forEach(nestedMenu => {
-                nestedMenu.classList.remove('expanded');
-                const nestedLabel = nestedMenu.previousElementSibling;
-                if (nestedLabel && nestedLabel.classList.contains('expanded')) {
-                    nestedLabel.classList.remove('expanded');
-                }
-            });
-        }
-    }
-    
-    // Navigate to the URL if provided
-    if (url) {
-        window.location.href = url;
     }
 }
