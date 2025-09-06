@@ -1,3 +1,23 @@
+<style>
+.menu-container {
+  height: 100vh;          /* full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-scroll {
+  flex: 1;                /* take remaining space */
+  overflow-y: auto;       /* scroll only inside this area */
+  padding-right: 0.5rem;  /* optional, prevents scrollbar from covering text */
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+</style>
+
 <aside class="menu-container">
   <div class="menu-title"></div>
   <div class="menu-scroll">
