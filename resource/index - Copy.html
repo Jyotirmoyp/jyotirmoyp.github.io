@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Resource</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-body {
-             font-family: 'Roboto', sans-serif;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotirmoy Paul</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             color: #333;
             margin: 0;
@@ -28,10 +30,22 @@ body {
             z-index: 1000;
         }
 
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .w3-bar .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
         .content {
             padding: 20px;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section {
@@ -102,118 +116,245 @@ body {
             max-width: 100%;
             height: auto;
         }
-    .button {
-      background-color: teal;
-      border: none;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-    .button1 {
-      border-radius: 12px;
-    }
-        .sticky-note {
+
+        /* Vertical Navigation Menu CSS - Desktop only */
+        .vertical-nav {
             position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 200px;
-            padding: 15px;
-            background-color: #fffae6;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-        }
-
-        .sticky-note h4 {
-            margin-top: 0;
-            font-size: 18px;
-        }
-
-        .sticky-note a {
-            display: block;
+            left: 10px;
+            top: 100px;
+            width: 180px;
+            background-color: #f8f8f8;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 999;
+            max-height: 80vh;
+            overflow-y: auto;
             padding: 8px 0;
-            color: #0073e6;
+            font-size: 13px;
         }
 
-        .sticky-note a:hover {
-            text-decoration: underline;
-        }
-
-        .sticky-note .closebtn {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 18px;
+        .vertical-nav h4 {
+            margin: 0;
+            padding: 8px 12px;
+            font-size: 14px;
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-weight: normal;
+            border-bottom: 1px solid #eaeaea;
         }
 
-    .fade-in {
+        .vertical-nav h4:after {
+            content: '▼';
+            font-size: 10px;
+            transition: transform 0.3s;
+        }
+
+        .vertical-nav h4.collapsed:after {
+            transform: rotate(-90deg);
+        }
+
+        .vertical-nav ul {
+            margin: 0;
+            padding: 2px 0;
+            display: none;
+        }
+
+        .vertical-nav ul.active {
+            display: block;
+        }
+
+        .vertical-nav li {
+            list-style: none;
+            margin: 0;
+        }
+
+        .vertical-nav a {
+            display: block;
+            padding: 2px 12px;
+            color: #777;
+            font-size: 12px;
+            transition: background-color 0.2s;
+        }
+
+        .vertical-nav a:hover {
+            background-color: #eaeaea;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .fade-in {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 1s, transform 1s;
         }
-    .fade-in.show {
+
+        .fade-in.show {
             opacity: 1;
             transform: translateY(0);
         }
-  </style>
+
+        /* Mobile Connect Menu */
+        .mobile-connect {
+            display: none;
+            background-color: #fffae6;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-connect.active {
+            display: block;
+        }
+        
+        .connect-toggle {
+            display: none;
+            width: 100%;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .mobile-connect h4 {
+            margin: 5px 0;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-connect h4:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .mobile-connect h4.collapsed:after {
+            transform: rotate(-90deg);
+        }
+        
+        .mobile-connect ul {
+            padding-left: 15px;
+            display: none;
+            margin: 5px 0;
+        }
+
+        .mobile-connect ul.active {
+            display: block;
+        }
+        
+        .mobile-connect li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .w3-bar .menu-items {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .w3-bar .menu-items a {
+                text-align: center;
+                padding: 10px;
+            }
+            
+            /* Hide vertical nav on mobile */
+            .vertical-nav {
+                display: none;
+            }
+            
+            /* Show connect toggle on mobile */
+            .connect-toggle {
+                display: block;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
-    <div class="w3-bar w3-wide"> 
-      <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button"> Home</a>
-      <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
-      <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
-      <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
-      <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
-      <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+            <div class="menu-items">
+                <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button">Home</a>
+                <a href="https://jyotirmoyp.github.io/cv" class="w3-bar-item w3-button">CV</a>
+                <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
+                <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
+                <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
+                <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
-
 
 <!--naviation menu ends-->
 
  <main class="content">
+        <!-- Mobile Connect Toggle Button -->
+        <button class="connect-toggle" onclick="toggleConnectMenu()">List of Important Tools ▼</button>
+        
+        <!-- Mobile Connect Menu -->
+        <div class="mobile-connect" id="mobileConnect">
+            <h4 onclick="toggleSection('mobileVizSection')">Visualization/database</h4>
+            <ul id="mobileVizSection">
+                <li><a href="#submachine">Submachine</a></li>
+                <li><a href="#gplates">GPlates</a></li>
+                <li><a href="#paraview">Paraview</a></li>
+                <li><a href="#gmt">GMT</a></li>
+                <li><a href="#atlas">Atlas of Underworld</a></li>
+            </ul>
+            
+            <h4 onclick="toggleSection('mobileMantleSection')">Open source mantle convection codes</h4>
+            <ul id="mobileMantleSection">
+                <li><a href="#citcoms">CitcomS</a></li>
+                <li><a href="#lamem">LaMEM</a></li>
+                <li><a href="#aspect">ASPECT</a></li>
+                <li><a href="#underworld">Underworld</a></li>
+            </ul>
+        </div>
+
         <div class="main-content">
 
-
-    <!-- Sticky Note -->
-    <div id="stickyNote" class="sticky-note">
-        <span class="closebtn" onclick="closeStickyNote()">&times;</span>
-        <h4>List of important tools</h4>
-       <ul>
-      <li><a href="#submachine">Submachine</a></li>
-      <li><a href="#gplates">GPlates</a></li>
-      <li><a href="#paraview">Paraview</a></li>
-      <li><a href="#gmt">GMT</a></li>
-    </ul>
-
-
-        </div>
+    <!-- Desktop Vertical Navigation Menu -->
+    <div id="verticalNav" class="vertical-nav">
+        <h4 onclick="toggleSection('desktopVizSection')">Visualization/database</h4>
+        <ul id="desktopVizSection">
+            <li><a href="#submachine">Submachine</a></li>
+            <li><a href="#gplates">GPlates</a></li>
+            <li><a href="#paraview">Paraview</a></li>
+            <li><a href="#gmt">GMT</a></li>
+            <li><a href="#atlas">Atlas of Underworld</a></li>
+        </ul>
+        
+        <h4 onclick="toggleSection('desktopMantleSection')">Open source mantle convection codes</h4>
+        <ul id="desktopMantleSection">
+            <li><a href="#citcoms">CitcomS</a></li>
+            <li><a href="#lamem">LaMEM</a></li>
+            <li><a href="#aspect">ASPECT</a></li>
+            <li><a href="#underworld">Underworld</a></li>
+        </ul>
     </div>
-
-
-
 
 <!--------submachine---------------->
 
-
 <div id="submachine"></div>
-
   <div class="w3-container">
           <h4>SubMachine: Web-based tools for the interactive visualisation</h4>
-   
     <div class="fade-in">
       <div class="w3-row">
         <div class="w3-col s4">
@@ -232,24 +373,10 @@ body {
     </div>
   </div>
 </div>
-</div>
-
-
-       
-
-      
-      
-      
-      
-      
-     
 
 <!--------GPlates---------------->
-
-
   <div id="gplates">
     <div class = "w3-container">
-
           <h4> GPlates: Desktop software for the interactive visualisation of plate-tectonics</h4>
         <div class="fade-in">
       <div class="w3-row">
@@ -272,24 +399,16 @@ body {
       		quite handy for plotting 3-D images of earth in a spherical cell.<br> <br>
       		
           </p>
-         
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-
 <!--------Paraview---------------->
-
-
-
-
   <div  id="paraview">
 	<div class = "w3-container">
           <h4> Paraview</h4>
-  
     <div class="fade-in">
       <div class="w3-row">
         <div class="w3-col s4">
@@ -300,32 +419,19 @@ body {
        	is an open-source, multi-platform data analysis and visualization application. 
       		ParaView users can quickly build visualizations to analyze their data using 
       		qualitative and quantitative techniques. The data exploration can be done 
-      		interactively in 3D or programmatically using ParaView’s batch processing 
+      		interactively in 3D or programmatically using ParaView's batch processing 
       		capabilities.
-
-      		
           </p>
-          
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-
-
 <!--------gmt---------------->
-
-
-
   <div id="gmt">
   <div class="w3-container">
-
           <h4> Generic Mapping Tool: An open-source, code based geophysical map plotting tool</h4>
-  
     <div class="fade-in">
       <div class="w3-row">
         <div class="w3-col s4">
@@ -343,10 +449,51 @@ body {
       		 for students who are new in coding and are getting lost in huge repository of the GMT website. 
        	 
          	<a href="https://jyotirmoyp.github.io/resource/gmt/">Check out some GMT instructions here </a>
-
-      		
           </p>
-          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------- atlas of the underworld---------------->
+  <div id="atlas">
+  <div class="w3-container">
+          <h4> The Atlas of the underworld</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://www.atlas-of-the-underworld.org/wp-content/uploads/2020/10/AotU_logo.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://www.atlas-of-the-underworld.org/" target="_blank">The Atlas of the underworld</a> 
+      		 is the first complete mapping of subducted plates in the Earth's mantle and their geological interpretation.
+       	 <br> <br> 
+       	 This website covers the structure of Earth's entire mantle and its plate tectonic evolution of the last 300 million years. Every geological record is under active study by the geological community, and undoubtedly improvements can be made on the geological interpretations or the tomographic imaging and interpretation of the slabs. Therefore, we provide a 'post-publication peer review' system through a forum below every slab where you can leave references to new published information and its implication or alternative geological interpretations. We would appreciate if this forum would be used for geoscientific debate only.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------- Mantle Convection codes ------------------------->
+
+<!-------- CitcomS---------------->
+  <div id="citcoms">
+  <div class="w3-container">
+          <h4> CitcomS</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://geodynamics.org/resources/1745/download/cover-small-citcoms.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://github.com/geodynamics/citcoms" target="_blank">CitcomS</a> 	  
+       	  is a finite element code designed to solve thermal convection problems relevant to earth's mantle released
+under the GNU General Public License (see Appendix D on page 97). Written in C, the code runs on a variety of
+parallel processing computers, including shared and distributed memory platforms.
+          </p>
         </div>
       </div>
     </div>
@@ -355,46 +502,140 @@ body {
 
 
 
+<!-------- LaMEM---------------->
+  <div id="lamem">
+  <div class="w3-container">
+          <h4> LaMEM </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://opengraph.githubassets.com/fca1759b01f917a84b8bff61c74b9283bfacfd4beecd79175e7ed7912551d0df/UniMainzGeo/LaMEM" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://github.com/UniMainzGeo/LaMEM" target="_blank">LaMEM</a> 	  
+       	   (Lithosphere and Mantle Evolution Model) is a parallel 3D numerical code that can be used to simulate various thermo-mechanical geodynamical processes such as mantle-lithosphere interaction for rocks that have visco-elasto-plastic rheologies. It was developed to better understand geological processes, particularly related to the dynamics of the crust and lithosphere and their interaction with the mantle. It can also be used to solve geomechanical problems, includes (compressible) poroelasticity, has a gravity solver and an (adjoint) inversion framework. The code uses a marker-in-cell approach with a staggered finite difference discretization and is built on top of PETSc such that it can run on anything from a laptop to a massively parallel machine.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
+<!-------- ASPECT---------------->
+  <div id="aspect">
+  <div class="w3-container">
+          <h4> ASPECT </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://aspect-documentation.readthedocs.io/en/latest/_images/aspect_logo.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://aspect-documentation.readthedocs.io/en/latest/" target="_blank">ASPECT</a> 	  
+       	  is a code to simulate problems in thermal convection. Its primary focus is on the simulation of processes in the Earth's mantle, but its design is more general than that.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------- Underworld ---------------->
+  <div id="underworld">
+  <div class="w3-container">
+          <h4> Underworld </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://nbviewer.org/github/underworldcode/underworld2/blob/main/docs/UWGeodynamics/tutorials/images/Tutorial4.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://underworld2.readthedocs.io/en/latest/index.html" target="_blank">Underworld</a> 	  
+       	  is a Python API (Application Programming Interface) which provides functionality for the modelling of geodynamics processes, and is designed to work (almost) seamlessly across PC, cloud and HPC infrastructure. Primarily the API consists of a set of Python classes from which numerical geodynamics models may be constructed. The API also provides the tools required for inline analysis and data management. For scalability across multiprocessor platforms, MPI (Message Passing Interface) is leveraged, and for performant operation all heavy computations are executed within a statically typed layer.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
 <!-- End page content -->
 <!-------------footer--------->
-
-
     <footer class="w3-container w3-teal w3-center w3-margin-top">
         <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
     </footer>
 
-<!-------------footer--------->
+    <script>
+        function toggleMenu() {
+            const menuItems = document.querySelector('.menu-items');
+            if (menuItems.style.display === "block") {
+                menuItems.style.display = "none";
+            } else {
+                menuItems.style.display = "block";
+            }
+        }
+        
+        function toggleConnectMenu() {
+            const connectMenu = document.getElementById('mobileConnect');
+            const button = document.querySelector('.connect-toggle');
+            
+            if (connectMenu.classList.contains('active')) {
+                connectMenu.classList.remove('active');
+                button.innerHTML = 'List of Important Tools ▼';
+            } else {
+                connectMenu.classList.add('active');
+                button.innerHTML = 'List of Important Tools ▲';
+            }
+        }
 
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const header = section.previousElementSibling;
+            
+            if (section.classList.contains('active')) {
+                section.classList.remove('active');
+                header.classList.add('collapsed');
+            } else {
+                section.classList.add('active');
+                header.classList.remove('collapsed');
+            }
+        }
 
+        // Initialize both menus as closed
+        document.addEventListener("DOMContentLoaded", function () {
+            // Close all sections in desktop menu
+            document.getElementById('desktopVizSection').classList.remove('active');
+            document.getElementById('desktopMantleSection').classList.remove('active');
+            document.querySelector('#desktopVizSection').previousElementSibling.classList.add('collapsed');
+            document.querySelector('#desktopMantleSection').previousElementSibling.classList.add('collapsed');
+            
+            // Close all sections in mobile menu
+            document.getElementById('mobileVizSection').classList.remove('active');
+            document.getElementById('mobileMantleSection').classList.remove('active');
+            document.querySelector('#mobileVizSection').previousElementSibling.classList.add('collapsed');
+            document.querySelector('#mobileMantleSection').previousElementSibling.classList.add('collapsed');
+            
+            // Initialize fade-in animations
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            });
 
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
             });
         });
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    });
-</script>
-
-    <!-- Sticky Note Close Function -->
-    <script>
-        function closeStickyNote() {
-            document.getElementById("stickyNote").style.display = "none";
-        }
     </script>
 
 </body>
-<html>
+</html>
