@@ -1,9 +1,7 @@
 function includeHTML() {
-  const elements = document.querySelectorAll('[include-html]');
-  elements.forEach(el => {
-    const file = el.getAttribute('include-html');
-    fetch(file)
-      .then(resp => resp.text())
+  document.querySelectorAll('[include-html]').forEach(el => {
+    fetch(el.getAttribute('include-html'))
+      .then(r => r.text())
       .then(data => {
         el.innerHTML = data;
         initNavigation();
@@ -13,24 +11,22 @@ function includeHTML() {
 
 function initNavigation() {
 
-  // TEXT → NAVIGATION
+  // TEXT → NAVIGATE
   document.querySelectorAll('.menu-text').forEach(text => {
     text.onclick = e => {
       e.stopPropagation();
-      const url = text.dataset.url;
-      if (url) window.location.href = url;
+      window.location.href = text.dataset.url;
     };
   });
 
-  // + / − TOGGLE ONLY
+  // + / − → TOGGLE ONLY
   document.querySelectorAll('.menu-toggle').forEach(toggle => {
     toggle.onclick = e => {
       e.stopPropagation();
       const target = document.getElementById(toggle.dataset.target);
       if (!target) return;
-
-      const expanded = target.classList.toggle('expanded');
-      toggle.textContent = expanded ? '−' : '+';
+      const open = target.classList.toggle('expanded');
+      toggle.textContent = open ? '−' : '+';
     };
   });
 
