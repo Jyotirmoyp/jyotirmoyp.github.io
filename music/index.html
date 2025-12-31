@@ -19,22 +19,18 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 16px;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
 }
 
 /* HEADER */
 .header {
   text-align: center;
-  padding-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .header h1 {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 400;
   letter-spacing: -0.4px;
-  margin-bottom: 4px;
 }
 
 .header p {
@@ -42,43 +38,36 @@ body {
   color: #777;
 }
 
-/* COVER (clean + minimal) */
+/* COVER */
 .cover {
-  margin: 20px 0 30px;
-  padding: 40px 20px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  padding: 32px 16px;
+  margin-bottom: 32px;
   text-align: center;
 }
 
 .cover p {
+  font-size: 0.88rem;
   font-style: italic;
-  font-size: 0.9rem;
   color: #666;
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 720px;
+  margin: auto;
 }
 
-/* MAIN LAYOUT */
+/* LAYOUT */
 .main-container {
   display: flex;
   gap: 28px;
-  flex: 1;
-  overflow: hidden;
 }
 
+/* CONTENT */
 .content {
   flex: 1;
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-
-.content::-webkit-scrollbar {
-  display: none;
 }
 
 .content h2 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 12px;
 }
@@ -93,13 +82,14 @@ body {
 /* FOOTER */
 .footer {
   border-top: 1px solid #eee;
+  margin-top: 40px;
   padding-top: 12px;
   font-size: 0.72rem;
   color: #777;
   text-align: center;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 900px) {
   .main-container {
     flex-direction: column;
@@ -112,14 +102,19 @@ body {
 
 <header class="header">
   <h1>Lost World of Hindustani Classical Music</h1>
-  <p>Make the sound of your sa merge into the sa of the tanpura until both are one.
-  	<br>— Dhondutai Kulkarni
-  </p>
+  <p>Preserving musical heritage</p>
 </header>
 
+<section class="cover">
+  <p>
+    “Make the sound of your sa merge into the sa of the tanpura until both are one.”
+    <br>— Dhondutai Kulkarni
+  </p>
+</section>
 
 <div class="main-container">
 
+  <!-- MAIN CONTENT FIRST -->
   <main class="content">
     <h2>Hindustani Classical Music</h2>
     <p>
@@ -129,7 +124,7 @@ body {
     </p>
   </main>
 
-  <!-- NAVIGATION -->
+  <!-- MENU COMES AFTER CONTENT -->
   <div include-html="navigation-template.html"></div>
 
 </div>
