@@ -1,0 +1,109 @@
+<style>
+.menu-container {
+  width: 270px;
+  height: calc(100vh - 260px);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-scroll {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.menu-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.menu {
+  list-style: none;
+  font-size: 0.78rem;
+}
+
+.menu li {
+  margin-bottom: 4px;
+}
+
+/* LABEL ROW */
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+}
+
+.menu-text {
+  cursor: pointer;
+  color: #444;
+}
+
+.menu-text:hover {
+  color: #000;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  color: #888;
+  width: 14px;
+  text-align: center;
+}
+
+.menu-toggle:hover {
+  color: #000;
+}
+
+/* SUBMENUS */
+.submenu,
+.artist-menu {
+  list-style: none;
+  margin-left: 14px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.submenu.expanded,
+.artist-menu.expanded {
+  max-height: 1000px;
+}
+
+.artist-menu li a {
+  text-decoration: none;
+  color: #555;
+}
+
+.artist-menu li a:hover {
+  color: #000;
+}
+</style>
+
+<aside class="menu-container">
+  <div class="menu-scroll">
+    <ul class="menu">
+
+      <li>
+        <div class="menu-row">
+          <span class="menu-text" data-url="/lost-world-of-hindustani-music/Dhrupad/index.html">Dhrupad</span>
+          <span class="menu-toggle" data-target="dhrupad">+</span>
+        </div>
+        <ul class="submenu" id="dhrupad">
+
+          <li>
+            <div class="menu-row">
+              <span class="menu-text" data-url="/lost-world-of-hindustani-music/Dhrupad/Dagar/index.html">Dagar</span>
+              <span class="menu-toggle" data-target="dagar">+</span>
+            </div>
+            <ul class="artist-menu" id="dagar">
+              <li><a href="#">Zia Mohiuddin Dagar</a></li>
+              <li><a href="#">Zia Fariuddin Dagar</a></li>
+              <li><a href="#">Uday Bhawalkar</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</aside>
