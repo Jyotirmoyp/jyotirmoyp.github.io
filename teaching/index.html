@@ -45,6 +45,7 @@
             padding: 20px;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section {
@@ -116,35 +117,55 @@
             height: auto;
         }
 
-        .bluesky-icon {
-            width: 32px;
-            height: 32px;
-            margin-right: 8px;
-        }
-
-        /* Desktop Sticky Note */
+        /* Sticky Note CSS - Desktop only */
         .sticky-note {
             position: fixed;
             left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 100px; /* Positioned below the main menu */
             width: 200px;
-            padding: 15px;
+            padding: 10px; /* Reduced padding */
             background-color: #fffae6;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            z-index: 1000;
+            z-index: 999; /* Lower z-index than menu */
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .sticky-note h4 {
-            margin-top: 0;
-            font-size: 18px;
+            margin: 5px 0; /* Reduced margin */
+            font-size: 16px; /* Slightly smaller font */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sticky-note h4:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .sticky-note h4.collapsed:after {
+            transform: rotate(-90deg);
+        }
+
+        .sticky-note ul {
+            margin: 5px 0; /* Reduced margin */
+            padding-left: 15px; /* Reduced padding */
+            display: block;
+        }
+
+        .sticky-note ul.collapsed {
+            display: none;
         }
 
         .sticky-note a {
             display: block;
-            padding: 8px 0;
+            padding: 5px 0; /* Reduced padding */
             color: #0073e6;
+            font-size: 14px; /* Slightly smaller font */
         }
 
         .sticky-note a:hover {
@@ -169,54 +190,67 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Mobile Connect Menu */
+        .mobile-connect {
+            display: none;
+            background-color: #fffae6;
+            padding: 10px 15px; /* Reduced padding */
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
         
-        .publications-list {
-            list-style-type: none;
-            padding-left: 0;
-            line-height: 1.6;
+        .mobile-connect.active {
+            display: block;
         }
-
-        .publications-list li {
-            margin-bottom: 15px;
-            padding-left: 2em;
-            text-indent: -2em;
-        }
-
-        .pub-number {
-            font-weight: bold;
-            margin-right: 5px;
-        }
-
-        .pub-authors {
-            font-style: italic;
-        }
-
-        .pub-title {
-            font-weight: 500;
-        }
-
-        .pub-journal {
-            font-style: italic;
-        }
-
-        .pub-link {
-            margin-left: 8px;
-            padding: 2px 6px;
+        
+        .connect-toggle {
+            display: none;
+            width: 100%;
+            padding: 10px;
             background-color: #f0f0f0;
-            border-radius: 3px;
-            font-size: 0.85em;
-            text-decoration: none;
-        }
-
-        .pub-link:hover {
-            background-color: #e0e0e0;
-        }
-
-        a {
-            word-break: break-word;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 4px;
         }
         
-        /* Mobile-specific styles */
+        .mobile-connect h4 {
+            margin: 5px 0; /* Reduced margin */
+            font-size: 16px; /* Slightly smaller font */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-connect h4:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .mobile-connect h4.collapsed:after {
+            transform: rotate(-90deg);
+        }
+        
+        .mobile-connect ul {
+            padding-left: 15px; /* Reduced padding */
+            display: block;
+            margin: 5px 0; /* Reduced margin */
+        }
+
+        .mobile-connect ul.collapsed {
+            display: none;
+        }
+        
+        .mobile-connect li {
+            margin-bottom: 5px; /* Reduced margin */
+        }
+
         @media (max-width: 768px) {
             .menu-icon {
                 display: block;
@@ -238,62 +272,9 @@
                 display: none;
             }
             
-            /* Mobile Connect Menu */
-            .mobile-connect {
-                display: none;
-                background-color: #f8f8f8;
-                padding: 15px;
-                text-align: center;
-            }
-            
-            .mobile-connect.active {
-                display: block;
-            }
-            
+            /* Show connect toggle on mobile */
             .connect-toggle {
                 display: block;
-                width: 100%;
-                padding: 10px;
-                background-color: #f0f0f0;
-                border: none;
-                cursor: pointer;
-                text-align: center;
-                font-weight: bold;
-                margin-top: 10px;
-            }
-            
-            .connect-toggle:hover {
-                background-color: #e0e0e0;
-            }
-            
-            /* Connect menu icons */
-            .connect-icon {
-                width: 40px;
-                height: 40px;
-                margin: 5px;
-                vertical-align: middle;
-            }
-            
-            .connect-item {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 10px 0;
-            }
-            
-            .connect-item a {
-                display: flex;
-                align-items: center;
-                color: #333;
-            }
-        }
-
-        /* Desktop-specific styles */
-        @media (min-width: 769px) {
-            /* Hide all mobile connect elements on desktop */
-            .mobile-connect,
-            .connect-toggle {
-                display: none !important;
             }
         }
     </style>
@@ -303,228 +284,277 @@
 
     <!-- Navbar (sit on top) -->
 	<div include-html="../nav.html"></div>
+<!--naviation menu ends-->
 
+ <main class="content">
+        <!-- Mobile Connect Toggle Button -->
+        <button class="connect-toggle" onclick="toggleConnectMenu()">List of Important Tools ▼</button>
         
-        <!-- Mobile Connect Menu (only visible on mobile) -->
+        <!-- Mobile Connect Menu -->
         <div class="mobile-connect" id="mobileConnect">
-            <h4>Connect</h4>
-            <div class="connect-item">
-                <a href="https://twitter.com/GeophyJo" target="_blank">
-                    <img src="https://abs.twimg.com/favicons/twitter.ico" alt="Twitter" class="connect-icon">
-                    <span>Twitter</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://orcid.org/0000-0002-7972-1868" target="_blank">
-                    <img src="https://orcid.org/assets/vectors/orcid.logo.svg" alt="ORCID" class="connect-icon">
-                    <span>ORCID</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky" class="connect-icon">
-                    <span>Bluesky</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">
-                    <img src="https://scholar.google.com/intl/en/scholar/images/1x/scholar_logo_64dp.png" alt="Google Scholar" class="connect-icon">
-                    <span>Google Scholar</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://www.linkedin.com/in/jyotirmoy-paul-213580356/" target="_blank">
-                    <img src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" alt="LinkedIn" class="connect-icon">
-                    <span>LinkedIn</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://publons.com/researcher/3811932/jyotirmoy-paul/" target="_blank">
-                    <img src="https://publons.com/static/images/favicons/favicon.ico" alt="Publons" class="connect-icon">
-                    <span>Publons</span>
-                </a>
-            </div>
-            <div class="connect-item">
-                <a href="https://www.scopus.com/authid/detail.uri?authorId=57208082848" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Scopus_logo.svg/1024px-Scopus_logo.svg.png" alt="Scopus" class="connect-icon">
-                    <span>Scopus</span>
-                </a>
-            </div>
+            <h4 onclick="toggleSection('mobileVizSection')">Visualization/database</h4>
+            <ul id="mobileVizSection">
+                <li><a href="#submachine">Submachine</a></li>
+                <li><a href="#gplates">GPlates</a></li>
+                <li><a href="#paraview">Paraview</a></li>
+                <li><a href="#gmt">GMT</a></li>
+                <li><a href="#atlas">Atlas of Underworld</a></li>
+            </ul>
+            
+            <h4 onclick="toggleSection('mobileMantleSection')">Open source mantle convection codes</h4>
+            <ul id="mobileMantleSection" class="collapsed">
+                <li><a href="#citcoms">CitcomS</a></li>
+                <li><a href="#lamem">LaMEM</a></li>
+                <li><a href="#aspect">ASPECT</a></li>
+                <li><a href="#underworld">Underworld</a></li>
+            </ul>
         </div>
-    </div>
+
+        <div class="main-content">
 
     <!-- Desktop Sticky Note -->
     <div id="stickyNote" class="sticky-note">
         <span class="closebtn" onclick="closeStickyNote()">&times;</span>
-        <h4>Connect</h4>
-        <div class="icon-list">
-            <a href="https://twitter.com/GeophyJo" class="twitter-follow-button">Follow @GeophyJo</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <a href="https://orcid.org/0000-0002-7972-1868" target="orcid.widget">
-                <img src="https://orcid.org/assets/vectors/orcid.logo.svg" style="width: 45%;">
-            </a>
-
-           <a href="https://bsky.app/profile/geophyjo.bsky.social" target="_blank" class="bluesky-link" aria-label="Bluesky Profile">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bluesky_Logo.svg/900px-Bluesky_Logo.svg.png" alt="Bluesky Logo" class="bluesky-icon">
-           </a>
-
-            <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">
-                <img src="https://scholar.google.com/intl/en/scholar/images/1x/scholar_logo_64dp.png" style="width: 50%;">
-            </a>
-
-            <a href="https://www.linkedin.com/in/jyotirmoy-paul-213580356/" target="_blank">
-                <img src="https://content.linkedin.com/content/dam/brand/site/img/logo/logo-tm.png" style="width: 60%;">
-            </a>
-
-            <span id="badgeCont654">
-                <script type="text/javascript" src="https://publons.com/mashlets?el=badgeCont654&rid=AAX-2221-2020"></script>
-            </span>
-            <a href="https://www.scopus.com/authid/detail.uri?authorId=57208082848" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Scopus_logo.svg/1024px-Scopus_logo.svg.png" style="width: 40%;">
-            </a>
-        </div>
+	<br>
+        <h4 onclick="toggleSection('desktopVizSection')">Visualization/database</h4>
+        <ul id="desktopVizSection">
+            <li><a href="#submachine">Submachine</a></li>
+            <li><a href="#gplates">GPlates</a></li>
+            <li><a href="#paraview">Paraview</a></li>
+            <li><a href="#gmt">GMT</a></li>
+            <li><a href="#atlas">Atlas of Underworld</a></li>
+        </ul>
+        
+        <h4 onclick="toggleSection('desktopMantleSection')">Open source mantle convection codes</h4>
+        <ul id="desktopMantleSection" class="collapsed">
+            <li><a href="#citcoms">CitcomS</a></li>
+            <li><a href="#lamem">LaMEM</a></li>
+            <li><a href="#aspect">ASPECT</a></li>
+            <li><a href="#underworld">Underworld</a></li>
+        </ul>
     </div>
 
-    <!-- Main content -->
-    <main class="content">
-        <!-- Connect Toggle Button (Mobile only) -->
-        <button class="connect-toggle" onclick="toggleConnectMenu()">Connect with Me ▼</button>
-        
-        <div class="main-content">
-            <!-- About Me Section -->
-            <div class="section fade-in">
-                <div class="w3-container">
-                   <div class="w3-center">
-                    <h2>Jyotirmoy Paul</h2>
-                    </div>
-                    <img class="mySlides" src="dp.jpg" alt="Profile Picture" class="w3-round">
-                    <img class="mySlides" src="coor.jpg" alt="Profile Picture" class="w3-round">
-                    <img class="mySlides" src="iisc_l.jpg" alt="Profile Picture" class="w3-round">
-                    <script>
-                        var myIndex = 0;
-                        carousel();
+<!--------submachine---------------->
 
-                        function carousel() {
-                            var i;
-                            var x = document.getElementsByClassName("mySlides");
-                            for (i = 0; i < x.length; i++) {
-                                x[i].style.display = "none";
-                            }
-                            myIndex++;
-                            if (myIndex > x.length) {
-                                myIndex = 1
-                            }
-                            x[myIndex - 1].style.display = "block";
-                            setTimeout(carousel, 2000); // Change image every 2 seconds
-                        }
-                    </script>
-                    <p> I am a solid Earth geophysicist studying the dynamics and evolution of Earth's deep interior. My research focuses on continental cratons—the ancient, stable cores of continents—and the mechanisms that have preserved them for billions of years. Using numerical models of mantle convection, I investigate the thermo-chemico-mechanical processes governing craton stability, grain size dependent rheology, providing insights into the long-term evolution of Earth's lithosphere and mantle.
-                    <p>Email: <a href="mailto:jyotirmoy.paul@geo.uio.no">jyotirmoy.paul@geo.uio.no</a></p>
-                </div>
-            </div>
-
-            <!-- Appointments Section -->
-            <div class="section fade-in">
-                <div class="w3-container">
-                    <h3>Appointments</h3>
-                    <ul>
-                        <li>2024 - Present: <a href='https://www.mn.uio.no/geo/english/people/aca/phab/jyotirmp/' target="_blank">Marie Skłodowska-Curie Fellow</a>, Centre for Planetary Habitability, University of Oslo</li>
-                        <li>2021 - 2024: <a href="https://www.bgi.uni-bayreuth.de/?page=4&lng=en&mode=s&id=374" target="_blank">Post-doctoral Researcher</a>, Bavarian Research Institute of Experimental Geochemistry and Geophysics (BGI), University of Bayreuth</li>
-                        <li>July 2021 - October 2021: Research Associate, IISc, Bangalore</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Education Section -->
-            <div class="section fade-in">
-                <div class="w3-container">
-                    <h3>Education</h3>
-                    <ul>
-                        <li>PhD, IISc, Bangalore (2015-2021) - <a href="https://shodhganga.inflibnet.ac.in/handle/10603/426053" target="_blank">PhD Thesis</a> - Supervisor: <a href="https://ceas.iisc.ac.in/~aghosh/index.html" target="_blank">Prof. Attreyee Ghosh</a></li>
-                        <li>M.Sc, Applied Geology, Jadavpur University (2015)</li>
-                        <li>B.Sc, Geology, Jadavpur University (2013)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Publications Section -->
-            <div class="section fade-in">
-                <div class="w3-container">
-                    <h3>Recent Publications</h3>
-                    <p>Click here for <a href="https://scholar.google.co.in/citations?user=jqL2PHkAAAAJ&hl=en" target="_blank">Full list of publications</a></p>
-                    
-                    <ul class="publications-list">
-                        <li>
-                            <span class="pub-number">8.</span>
-                            <span class="pub-authors">J. Paul, A. Spang, A. Piccolo (2025).</span>
-                            <span class="pub-title">Hydration weakening and destruction of the North China Craton,</span>
-                            <span class="pub-journal">Tectonophysics, 908, 230756,</span>
-                            <a href="https://www.sciencedirect.com/science/article/pii/S0040195125001428" target="_blank">https://doi.org/10.1016/j.tecto.2025.230756</a>.
-			    <a href="https://blogs.egu.eu/divisions/gd/2025/11/12/destruction-of-the-north-china-craton-and-its-global-impact/" target="_blank" class="pub-link">[EGU Geodynamics blog]</a>.
-
-                        </li>
-                        <li>
-                            <span class="pub-number">7.</span>
-                            <span class="pub-authors">J. Paul, G. J. Golabek, A. B. Rozel, P. J. Tackley, T. Katsura and H. Fei (2024).</span>
-                            <span class="pub-title">Effect of bridgmanite-ferropericlase grain size evolution on Earth's average mantle viscosity: Implications for mantle convection in early and present-day Earth.</span>
-                            <span class="pub-journal">Progress in Earth and Planetary Sciences, 11 (64),</span>
-                            <a href="https://doi.org/10.1186/s40645-024-00658-3" target="_blank">https://doi.org/10.1186/s40645-024-00658-3</a>.
-                        </li>
-                        <li>
-                            <span class="pub-number">6.</span>
-                            <span class="pub-authors">J. Paul, C.P. Conrad, T.W. Becker, A. Ghosh (2023).</span>
-                            <span class="pub-title">Convective self-compression of cratons and the stabilization of old lithosphere,</span>
-                            <span class="pub-journal">Geophysical Research Letters, 50, e2022GL101842,</span>
-                            <a href="https://doi.org/10.1029/2022GL101842" target="_blank">https://doi.org/10.1029/2022GL101842</a>.
-                        </li>
-                        <li>
-                            <span class="pub-number">5.</span>
-                            <span class="pub-authors">J. Paul, A. Ghosh (2022).</span>
-                            <span class="pub-title">Could the Reunion plume have thinned the Indian craton?,</span>
-                            <span class="pub-journal">Geology, 50(3): 346-350.</span>
-                            <a href="https://doi.org/10.1130/G49492.1" target="_blank">https://doi.org/10.1130/G49492.1</a>
-                            <a href="https://iisc.ac.in/tracking-the-movement-of-the-indian-plate-since-the-last-mass-extinction/" target="_blank" class="pub-link">[IISc News]</a>
-                            <a href="https://blogs.egu.eu/divisions/gd/2022/03/30/journey-of-the-indian-plate/" target="_blank" class="pub-link">[EGU Geodynamics blog]</a>.
-                        </li>
-                        <li>
-                            <span class="pub-number">4.</span>
-                            <span class="pub-authors">J. Paul, A. Ghosh (2020).</span>
-                            <span class="pub-title">Evolution of cratons through the ages: A time-dependent study,</span>
-                            <span class="pub-journal">Earth and Planetary Science Letters 531, p.115962</span>
-                            <a href="https://doi.org/10.1016/j.epsl.2019.115962" target="_blank">https://doi.org/10.1016/j.epsl.2019.115962</a>
-                            <a href="https://eos.org/features/cratons-why-are-you-still-here?/" target="_blank" class="pub-link">[AGU Eos]</a>.
-                        </li>
-                        <li>
-                            <span class="pub-number">3.</span>
-                            <span class="pub-authors">J. Paul, S. Mondal, R. Koyal, D. Sarkar (2019).</span>
-                            <span class="pub-title">Burrow morphology of the ocypodid crab Ocypode ceratophthalma at Chandipur Coast, Eastern India and its implications.</span>
-                            <span class="pub-journal">Current Science</span>
-                            <a href="https://www.jstor.org/stable/27138320" target="_blank" class="pub-link">[Online version]</a>.
-                        </li>
-                        <li>
-                            <span class="pub-number">2.</span>
-                            <span class="pub-authors">J. Paul, A. Ghosh, C.P. Conrad (2019).</span>
-                            <span class="pub-title">Traction and strain-rate at the base of the lithosphere: An insight into cratonic survival.</span>
-                            <span class="pub-journal">Geophysical Journal International, 217(2): 1024-1039</span>
-                            <a href="https://doi.org/10.1093/gji/ggz079" target="_blank">https://doi.org/10.1093/gji/ggz079</a>
-                            <a href="https://doi.org/10.1093/gji/ggz491" target="_blank" class="pub-link">[Erratum]</a>.
-                        </li>
-                        <li>
-                            <span class="pub-number">1.</span>
-                            <span class="pub-authors">A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay (2017).</span>
-                            <span class="pub-title">Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight into the ore-forming process.</span>
-                            <span class="pub-journal">Ore Geology Reviews, 80:1092-1110</span>
-                            <a href="https://doi.org/10.1016/j.oregeorev.2016.08.032" target="_blank">https://doi.org/10.1016/j.oregeorev.2016.08.032</a>.
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<div id="submachine"></div>
+  <div class="w3-container">
+          <h4>SubMachine: Web-based tools for the interactive visualisation</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+          <img src="https://users.earth.ox.ac.uk/~smachine/cgi/images/submachine_logo.png" style="width:50%">
         </div>
+        <div class="w3-col s8">
+          <p><a href="https://users.earth.ox.ac.uk/~smachine/cgi/index.php" target="_blank">SubMachine</a> 
+            is a collection of web-based tools for the interactive visualisation, 
+            analysis, and quantitative comparison of global-scale, volumetric (3-D) 
+            data sets of the subsurface, with supporting tools for interacting with other, 
+            complementary models and data sets.
+          </p>
+          <p>This visualisation tool is self-explanatory and well instructed on their website.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <footer class="w3-container w3-teal w3-center w3-margin-top">
-            <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
-        </footer>
-    </main>
+<!--------GPlates---------------->
+  <div id="gplates">
+    <div class = "w3-container">
+          <h4> GPlates: Desktop software for the interactive visualisation of plate-tectonics</h4>
+        <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+          <img src="gplates_reconstruction.jpg" style="width:80%">
+          <br> <br> 
+          <img src="gplates_3dmodel.jpg" style="width: 80%">
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://www.gplates.org" target="_blank">GPlates</a> 
+     		 offers a novel combination of interactive plate-tectonic reconstructions, 
+      		 geographic information system (GIS) functionality and raster data visualisation. 
+      		 GPlates enables both the visualisation and the manipulation of plate-tectonic 
+     		 reconstructions and associated data through geological time.
+
+     		 <br> A very well documented instruction to running GPlates can be found 
+     		 <a href="https://www.gplates.org/user-manual/" target="_blank">here.</a>
+     		 <br> <br>
+      		Primarily the software can be used for tectonic reconstructions, however, 
+      		quite handy for plotting 3-D images of earth in a spherical cell.<br> <br>
+      		
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--------Paraview---------------->
+  <div  id="paraview">
+	<div class = "w3-container">
+          <h4> Paraview</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="paraview_3d.jpg" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://www.paraview.org" target="_blank">ParaView</a> 
+       	is an open-source, multi-platform data analysis and visualization application. 
+      		ParaView users can quickly build visualizations to analyze their data using 
+      		qualitative and quantitative techniques. The data exploration can be done 
+      		interactively in 3D or programmatically using ParaView's batch processing 
+      		capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--------gmt---------------->
+  <div id="gmt">
+  <div class="w3-container">
+          <h4> Generic Mapping Tool: An open-source, code based geophysical map plotting tool</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="lithospheric-age.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://www.soest.hawaii.edu/gmt/" target="_blank">GMT</a> 
+      		 is an open-source, code based visualisation tool for geophysical data.
+       	 The updated version of GMT 5 and 6 are now available. 
+       	 <br> <br> 
+       	 For beginners, it could be difficult to install GMT in their machine. Linux (Ububtu)
+       	 is the recommended OS to work. I will update the installation process for GMT soon.
+
+      		 <br> <br> I have some basic <a href="https://jyotirmoyp.github.io/resource/gmt/" target="_blank"> GMT resources </a> 
+      		 for students who are new in coding and are getting lost in huge repository of the GMT website. 
+       	 
+         	<a href="https://jyotirmoyp.github.io/resource/gmt/">Check out some GMT instructions here </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------- atlas of the underworld---------------->
+  <div id="atlas">
+  <div class="w3-container">
+          <h4> The Atlas of the underworld</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://www.atlas-of-the-underworld.org/wp-content/uploads/2020/10/AotU_logo.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://www.atlas-of-the-underworld.org/" target="_blank">The Atlas of the underworld</a> 
+      		 is the first complete mapping of subducted plates in the Earth's mantle and their geological interpretation.
+       	 <br> <br> 
+       	 This website covers the structure of Earth's entire mantle and its plate tectonic evolution of the last 300 million years. Every geological record is under active study by the geological community, and undoubtedly improvements can be made on the geological interpretations or the tomographic imaging and interpretation of the slabs. Therefore, we provide a 'post-publication peer review' system through a forum below every slab where you can leave references to new published information and its implication or alternative geological interpretations. We would appreciate if this forum would be used for geoscientific debate only.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------- Mantle Convection codes ------------------------->
+
+<!-------- CitcomS---------------->
+  <div id="citcoms">
+  <div class="w3-container">
+          <h4> CitcomS</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://geodynamics.org/resources/1745/download/cover-small-citcoms.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://github.com/geodynamics/citcoms" target="_blank">CitcomS</a> 	  
+       	  is a finite element code designed to solve thermal convection problems relevant to earth’s mantle released
+under the GNU General Public License (see Appendix D on page 97). Written in C, the code runs on a variety of
+parallel processing computers, including shared and distributed memory platforms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-------- LaMEM---------------->
+  <div id="lamem">
+  <div class="w3-container">
+          <h4> LaMEM </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://opengraph.githubassets.com/fca1759b01f917a84b8bff61c74b9283bfacfd4beecd79175e7ed7912551d0df/UniMainzGeo/LaMEM" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://github.com/UniMainzGeo/LaMEM" target="_blank">LaMEM</a> 	  
+       	   (Lithosphere and Mantle Evolution Model) is a parallel 3D numerical code that can be used to simulate various thermo-mechanical geodynamical processes such as mantle-lithosphere interaction for rocks that have visco-elasto-plastic rheologies. It was developed to better understand geological processes, particularly related to the dynamics of the crust and lithosphere and their interaction with the mantle. It can also be used to solve geomechanical problems, includes (compressible) poroelasticity, has a gravity solver and an (adjoint) inversion framework. The code uses a marker-in-cell approach with a staggered finite difference discretization and is built on top of PETSc such that it can run on anything from a laptop to a massively parallel machine.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------- ASPECT---------------->
+  <div id="aspect">
+  <div class="w3-container">
+          <h4> ASPECT </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://aspect-documentation.readthedocs.io/en/latest/_images/aspect_logo.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://aspect-documentation.readthedocs.io/en/latest/" target="_blank">ASPECT</a> 	  
+       	  is a code to simulate problems in thermal convection. Its primary focus is on the simulation of processes in the Earth’s mantle, but its design is more general than that.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------- Underworld ---------------->
+  <div id="underworld">
+  <div class="w3-container">
+          <h4> Underworld </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://nbviewer.org/github/underworldcode/underworld2/blob/main/docs/UWGeodynamics/tutorials/images/Tutorial4.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://underworld2.readthedocs.io/en/latest/index.html" target="_blank">Underworld</a> 	  
+       	  is a Python API (Application Programming Interface) which provides functionality for the modelling of geodynamics processes, and is designed to work (almost) seamlessly across PC, cloud and HPC infrastructure. Primarily the API consists of a set of Python classes from which numerical geodynamics models may be constructed. The API also provides the tools required for inline analysis and data management. For scalability across multiprocessor platforms, MPI (Message Passing Interface) is leveraged, and for performant operation all heavy computations are executed within a statically typed layer.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- End page content -->
+<!-------------footer--------->
+    <footer class="w3-container w3-teal w3-center w3-margin-top">
+        <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+    </footer>
 
     <script>
         function closeStickyNote() {
@@ -535,8 +565,6 @@
             const menuItems = document.querySelector('.menu-items');
             if (menuItems.style.display === "block") {
                 menuItems.style.display = "none";
-                // Also hide the connect menu when main menu is closed
-                document.getElementById('mobileConnect').classList.remove('active');
             } else {
                 menuItems.style.display = "block";
             }
@@ -548,10 +576,23 @@
             
             if (connectMenu.classList.contains('active')) {
                 connectMenu.classList.remove('active');
-                button.innerHTML = 'Connect with Me ▼';
+                button.innerHTML = 'List of Important Tools ▼';
             } else {
                 connectMenu.classList.add('active');
-                button.innerHTML = 'Connect with Me ▲';
+                button.innerHTML = 'List of Important Tools ▲';
+            }
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const header = section.previousElementSibling;
+            
+            if (section.classList.contains('collapsed')) {
+                section.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+            } else {
+                section.classList.add('collapsed');
+                header.classList.add('collapsed');
             }
         }
 
@@ -567,18 +608,9 @@
             document.querySelectorAll('.fade-in').forEach(element => {
                 observer.observe(element);
             });
-            
-            // Load Twitter widget only on desktop
-            if (window.innerWidth > 768) {
-                const twitterScript = document.createElement('script');
-                twitterScript.src = 'https://platform.twitter.com/widgets.js';
-                twitterScript.charset = 'utf-8';
-                twitterScript.async = true;
-                document.body.appendChild(twitterScript);
-            }
         });
     </script>
-</body>
+
 
 <script>
 function includeHTML() {
@@ -603,5 +635,5 @@ function includeHTML() {
 }
 includeHTML();
 </script>
-
+</body>
 </html>
