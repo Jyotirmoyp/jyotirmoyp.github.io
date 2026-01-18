@@ -1,157 +1,33 @@
-// Update the includeHTML function
 function includeHTML() {
-  var z, i, elmnt, file, xhttp;
-  z = document.getElementsByTagName("*");
-  for (i = 0; i < z.length; i++) {
-    elmnt = z[i];
-    file = elmnt.getAttribute("include-html");
-    if (file) {
-      xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4) {
-          if (this.status == 200) {
-            elmnt.innerHTML = this.responseText;
-            // Re-initialize navigation after content is loaded
-            initNavigation();
-          }
-          if (this.status == 404) {
-            elmnt.innerHTML = "Page not found.";
-          }
-          elmnt.removeAttribute("include-html");
-          includeHTML();
-        }
-      }
-      xhttp.open("GET", file, true);
-      xhttp.send();
-      return;
-    }
-  }
-}
-
-// Global function for navigation
-function navigateAndToggle(menuId, url) {
-  // Toggle the menu
-  const menu = document.getElementById(menuId);
-  if (menu) {
-    const isExpanded = menu.classList.contains('expanded');
-    
-    // Close all menus at the same level first
-    const parent = menu.parentElement;
-    if (parent) {
-      const siblings = parent.querySelectorAll('.submenu.expanded, .artist-menu.expanded');
-      siblings.forEach(sibling => {
-        if (sibling !== menu) {
-          sibling.classList.remove('expanded');
-          // Find the previous element that is an LI with data-url attribute
-          let siblingLabel = sibling.previousElementSibling;
-          while (siblingLabel && !siblingLabel.hasAttribute('data-url')) {
-            siblingLabel = siblingLabel.previousElementSibling;
-          }
-          if (siblingLabel && siblingLabel.classList.contains('expanded')) {
-            siblingLabel.classList.remove('expanded');
-          }
-        }
+  document.querySelectorAll('[include-html]').forEach(el => {
+    fetch(el.getAttribute('include-html'))
+      .then(r => r.text())
+      .then(data => {
+        el.innerHTML = data;
+        initNavigation();
       });
-    }
-    
-    // Toggle the current menu
-    menu.classList.toggle('expanded');
-    
-    // Toggle the label - find the previous LI element with data-url
-    let label = menu.previousElementSibling;
-    while (label && !label.hasAttribute('data-url')) {
-      label = label.previousElementSibling;
-    }
-    if (label) {
-      label.classList.toggle('expanded');
-    }
-    
-    // If we're collapsing, also collapse any nested expanded menus
-    if (!menu.classList.contains('expanded')) {
-      const nestedMenus = menu.querySelectorAll('.submenu.expanded, .artist-menu.expanded');
-      nestedMenus.forEach(nestedMenu => {
-        nestedMenu.classList.remove('expanded');
-        // Find the previous element that is an LI with data-url attribute
-        let nestedLabel = nestedMenu.previousElementSibling;
-        while (nestedLabel && !nestedLabel.hasAttribute('data-url')) {
-          nestedLabel = nestedLabel.previousElementSibling;
-        }
-        if (nestedLabel && nestedLabel.classList.contains('expanded')) {
-          nestedLabel.classList.remove('expanded');
-        }
-      });
-    }
-  }
-  
-  // Navigate to the URL if provided
-  if (url) {
-    window.location.href = url;
-  }
+  });
 }
 
 function initNavigation() {
-  // Add event listeners to all menu items
-  const menuLabels = document.querySelectorAll('.menu-label');
-  menuLabels.forEach(label => {
-    // Remove existing onclick to avoid duplicates
-    label.removeAttribute('onclick');
-    label.addEventListener('click', function(e) {
+
+  // TEXT → NAVIGATE
+  document.querySelectorAll('.menu-text').forEach(text => {
+    text.onclick = e => {
       e.stopPropagation();
-      const menuId = this.nextElementSibling.id;
-      const url = this.getAttribute('data-url');
-      navigateAndToggle(menuId, url);
-    });
+      window.location.href = text.dataset.url;
+    };
   });
-  
-  const submenuItems = document.querySelectorAll('.submenu > li');
-  submenuItems.forEach(item => {
-    // Remove existing onclick to avoid duplicates
-    item.removeAttribute('onclick');
-    item.addEventListener('click', function(e) {
+
+  // + / − → TOGGLE ONLY
+  document.querySelectorAll('.menu-toggle').forEach(toggle => {
+    toggle.onclick = e => {
       e.stopPropagation();
-      // Find the next artist-menu (could be a div instead of ul)
-      let nextElement = this.nextElementSibling;
-      while (nextElement && !nextElement.classList.contains('artist-menu')) {
-        nextElement = nextElement.nextElementSibling;
-      }
-      if (nextElement) {
-        const menuId = nextElement.id;
-        const url = this.getAttribute('data-url');
-        navigateAndToggle(menuId, url);
-      }
-    });
+      const target = document.getElementById(toggle.dataset.target);
+      if (!target) return;
+      const open = target.classList.toggle('expanded');
+      toggle.textContent = open ? '−' : '+';
+    };
   });
-  
-  // Add event listeners for artist menu items to prevent propagation
-  const artistMenuItems = document.querySelectorAll('.artist-menu a');
-  artistMenuItems.forEach(item => {
-    item.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  });
-  
-  // Auto-expand current section based on URL
-  const path = window.location.pathname;
-  if (path.includes("Dhrupad")) {
-    const dhrupadMenu = document.getElementById('dhrupad');
-    if (dhrupadMenu) {
-      const dhrupadLabel = dhrupadMenu.previousElementSibling;
-      dhrupadMenu.classList.add('expanded');
-      dhrupadLabel.classList.add('expanded');
-      
-      // If we're in a specific gharana, expand that too
-      if (path.includes("Dagar")) {
-        const dagarMenu = document.getElementById('dagar');
-        if (dagarMenu) {
-          // Find the previous LI element with data-url
-          let dagarLabel = dagarMenu.previousElementSibling;
-          while (dagarLabel && !dagarLabel.hasAttribute('data-url')) {
-            dagarLabel = dagarLabel.previousElementSibling;
-          }
-          dagarMenu.classList.add('expanded');
-          if (dagarLabel) dagarLabel.classList.add('expanded');
-        }
-      }
-    }
-  }
+
 }

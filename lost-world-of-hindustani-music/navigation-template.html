@@ -1,160 +1,216 @@
 <style>
 .menu-container {
-  height: 50vh;          /* full viewport height */
+  width: 270px;
+  height: calc(100vh - 260px);
   display: flex;
   flex-direction: column;
 }
 
 .menu-scroll {
-  flex: 1;                /* take remaining space */
-  overflow-y: auto;       /* scroll only inside this area */
-  padding-right: 0.5rem;  /* optional, prevents scrollbar from covering text */
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.menu-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .menu {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  font-size: 0.78rem;
 }
 
+.menu li {
+  margin-bottom: 4px;
+}
+
+/* LABEL ROW */
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+}
+
+.menu-text {
+  cursor: pointer;
+  color: #444;
+}
+
+.menu-text:hover {
+  color: #000;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  color: #888;
+  width: 14px;
+  text-align: center;
+}
+
+.menu-toggle:hover {
+  color: #000;
+}
+
+/* SUBMENUS */
+.submenu,
+.artist-menu {
+  list-style: none;
+  margin-left: 14px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.submenu.expanded,
+.artist-menu.expanded {
+  max-height: 1000px;
+}
+
+.artist-menu li a {
+  text-decoration: none;
+  color: #555;
+}
+
+.artist-menu li a:hover {
+  color: #000;
+}
 </style>
 
 <aside class="menu-container">
-  <div class="menu-title"></div>
   <div class="menu-scroll">
     <ul class="menu">
 
-      <!-- Dhrupad -->
+	<!-- DHRUPAD -->
+	 <li>
+  	  <div class="menu-row">
+    	  <span class="menu-text" data-url="/lost-world-of-hindustani-music/Dhrupad/index.html">
+      	   Dhrupad
+    	  </span>
+    	  <span class="menu-toggle" data-target="dhrupad">+</span>
+  	 </div>
+
+  	<ul class="submenu" id="dhrupad">
+
+    	<!-- DAGAR -->
+    	 <li>
+          <div class="menu-row">
+           <span class="menu-text" data-url="/lost-world-of-hindustani-music/Dhrupad/Dagar/index.html">
+            Dagar
+           </span>
+           <span class="menu-toggle" data-target="dagar-dhrupad">+</span>
+           </div>
+
+      	   <ul class="artist-menu" id="dagar-dhrupad">
+            <li><a href="#">Zia Mohiuddin Dagar</a></li>
+            <li><a href="#">Zia Fariuddin Dagar</a></li>
+            <li><a href="#">Uday Bhawalkar</a></li>
+          </ul>
+        </li>
+
+    <!-- KHANDAR -->
+    <li>
+      <div class="menu-row">
+        <span class="menu-text" data-url="/lost-world-of-hindustani-music/Dhrupad/Khandar/index.html">
+          Khandar
+        </span>
+        <span class="menu-toggle" data-target="khandar-dhrupad">+</span>
+      </div>
+
+      <ul class="artist-menu" id="khandar-dhrupad">
+        <li><a href="#">Zia Ram Chatur Mallik</a></li>
+      </ul>
+    </li>
+
+  </ul>
+</li>
+
+      <!-- KHEYAL -->
       <li>
-        <div class="menu-label" data-url="/lost-world-of-hindustani-music/Dhrupad/index.html">Dhrupad</div>
-        <ul class="submenu" id="dhrupad">
+        <div class="menu-row">
+          <span class="menu-text" data-url="/lost-world-of-hindustani-music/Kheyal/index.html">
+            Kheyal
+          </span>
+          <span class="menu-toggle" data-target="kheyal">+</span>
+        </div>
 
-          <li data-url="/lost-world-of-hindustani-music/Dhrupad/Dagar/index.html">Dagar</li>
-          <ul class="artist-menu" id="dagar">
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/nancy_lesh/index.html">Hussain Sayeeduddin Dagar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/nancy_lesh/index.html">Nancy Lesh</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/nancy_lesh/index.html">Nasir Aminuddin Dagar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/nancy_lesh/index.html">Nasir Moinuddin Dagar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/nancy_lesh/index.html">Pelva Naik</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/pusparaj_koshti/index.html">Pushpraj Koshti</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/pusparaj_koshti/index.html">Uday Bhawalkar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/mohiuddin_dagar/index.html">Zia Mohiuddin Dagar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Dagar/mohiuddin_dagar/index.html">Zia Fariuddin Dagar</a></li>
-          </ul>
-
-          <li data-url="/lost-world-of-hindustani-music/Dhrupad/Nauhar/index.html">Nauhar</li>
-          <ul class="artist-menu" id="nauhar">
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Nauhar/artist1/index.html">Rudra Veena Player 1</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Nauhar/artist2/index.html">Vocalist 1</a></li>
-          </ul>
-
-          <li data-url="/lost-world-of-hindustani-music/Dhrupad/Khandar/index.html">Khandar</li>
-          <ul class="artist-menu" id="khandar">
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Khandar/artist1/index.html">Artist 1</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Khandar/artist2/index.html">Artist 2</a></li>
-          </ul>
-
-          <li data-url="/lost-world-of-hindustani-music/Dhrupad/Gauhar/index.html">Gauhar</li>
-          <ul class="artist-menu" id="gauhar">
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Gauhar/gauhar_khan/index.html">Gauhar Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Dhrupad/Gauhar/other_artist/index.html">Other Artist</a></li>
-          </ul>
-        </ul>
-      </li>
-
-      <!-- Kheyal -->
-      <li>
-        <div class="menu-label" data-url="/lost-world-of-hindustani-music/Kheyal/index.html">Kheyal</div>
         <ul class="submenu" id="kheyal">
+	    <!-- AGRA -->
+    	      <li>
+                <div class="menu-row">
+                  <span class="menu-text" data-url="/lost-world-of-hindustani-music/Kheyal/Agra/index.html">
+          	    Agra
+        	  </span>
+        	  <span class="menu-toggle" data-target="agra-kheyal">+</span>
+      		</div>
 
-          <li data-url="/lost-world-of-hindustani-music/Kheyal/Agra/index.html">Agra</li>
-          <ul class="artist-menu" id="agra">
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Agra/faiyaz_khan/index.html">Faiyaz Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Agra/khadim_hussain_khan/index.html">Khadim Hussain Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Agra/latafat_hussain_khan/index.html">Latafat Hussain Khan</a></li>
-          </ul>
+      		<ul class="artist-menu" id="agra-kheyal">
+        	 <li><a href="#">Faiyaz Khan</a></li>
+        	 <li><a href="#">Khadim Hussain Khan</a></li>
+      		</ul>
+    	      </li>
 
-          <li data-url="/lost-world-of-hindustani-music/Kheyal/Jaipur/index.html">Jaipur</li>
-          <ul class="artist-menu" id="jaipur">
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Jaipur/alladiya_khan/index.html">Alladiya Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Jaipur/kesarbai_kerkar/index.html">Kesarbai Kerkar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Jaipur/mogubai_kurdikar/index.html">Mogubai Kurdikar</a></li>
-          </ul>
+    	<!-- JAIPUR -->
+   	     <li>
+      		<div class="menu-row">
+        	  <span class="menu-text" data-url="/lost-world-of-hindustani-music/Kheyal/Jaipur/index.html">
+          	    Jaipur
+        	  </span>
+        	 <span class="menu-toggle" data-target="jaipur-kheyal">+</span>
+      	       </div>
 
-          <li data-url="/lost-world-of-hindustani-music/Kheyal/Kirana/index.html">Kirana</li>
-          <ul class="artist-menu" id="kirana">
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Kirana/abdul_karim_khan/index.html">Abdul Karim Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Kirana/hirabai_barodekar/index.html">Hirabai Barodekar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Kirana/bhimsen_joshi/index.html">Bhimsen Joshi</a></li>
+      	       <ul class="artist-menu" id="jaipur-kheyal">
+        	<li><a href="#">Kesarbai Kerkar</a></li>
+        	<li><a href="#">Kishori Amonkar</a></li>
+      	       </ul>
           </ul>
-
-          <li data-url="/lost-world-of-hindustani-music/Kheyal/Gwalior/index.html">Gwalior</li>
-          <ul class="artist-menu" id="gwalior">
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Gwalior/naththan_khan/index.html">Naththan Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Gwalior/vishnu_digambar_paluskar/index.html">Vishnu Digambar Paluskar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Kheyal/Gwalior/dv_paluskar/index.html">DV Paluskar</a></li>
-          </ul>
-        </ul>
       </li>
 
-      <!-- Instrumental -->
+
+	<!-- INSTRUMENTAL -->
+	<li>
+  	<div class="menu-row">
+    	  <span class="menu-text" data-url="/lost-world-of-hindustani-music/Instrumental/index.html">
+      	   Instrumental
+    	  </span>
+    	  <span class="menu-toggle" data-target="instrumental">+</span>
+  	</div>
+
+  	<ul class="submenu" id="instrumental">
+
+    	<!-- SENIA MAIHAR -->
+    	<li>
+      	 <div class="menu-row">
+          <span class="menu-text" data-url="/lost-world-of-hindustani-music/Instrumental/Senia-maihar/index.html">
+           Senia Maihar
+          </span>
+         <span class="menu-toggle" data-target="senia-maihar">+</span>
+        </div>
+
+        <ul class="artist-menu" id="senia-maihar">
+          <li><a href="#">Alauddin Khan</a></li>
+          <li><a href="#">Ali Akbar Khan</a></li>
+        </ul>
+       </li>
+
+    <!-- SENIA BANGASH -->
       <li>
-        <div class="menu-label" data-url="/lost-world-of-hindustani-music/Instrumental/index.html">Instrumental</div>
-        <ul class="submenu" id="instrumental">
+        <div class="menu-row">
+          <span class="menu-text" data-url="/lost-world-of-hindustani-music/Instrumental/Senia-bangash/index.html">
+           Senia Bangash
+          </span>
+          <span class="menu-toggle" data-target="senia-bangash">+</span>
+          </div>
 
-          <li data-url="/lost-world-of-hindustani-music/Instrumental/Senia_Bangash/index.html">Senia Bangash</li>
-          <ul class="artist-menu" id="senia">
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Senia_Bangash/vilayat_khan/index.html">Ustad Vilayat Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Senia_Bangash/shahid_parvez/index.html">Ustad Shahid Parvez</a></li>
+          <ul class="artist-menu" id="senia-bangash">
+           <li><a href="#">Hussain Ali Khan</a></li>
+           <li><a href="#">Amjad Ali Khan</a></li>
           </ul>
+         </li>
 
-          <li data-url="/lost-world-of-hindustani-music/Instrumental/Maihar/index.html">Maihar</li>
-          <ul class="artist-menu" id="maihar">
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Maihar/ravi_shankar/index.html">Ravi Shankar</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Maihar/ali_akbar_khan/index.html">Ali Akbar Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Maihar/annapurna_devi/index.html">Annapurna Devi</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Maihar/nikhil_banerjee/index.html">Nikhil Banerjee</a></li>
-          </ul>
-
-          <li data-url="/lost-world-of-hindustani-music/Instrumental/Other/index.html">Other Traditions</li>
-          <ul class="artist-menu" id="other_inst">
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Other/hariprasad_chaurasia/index.html">Hariprasad Chaurasia</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Other/zakir_hussain/index.html">Zakir Hussain</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Instrumental/Other/shivkumar_sharma/index.html">Shivkumar Sharma</a></li>
-          </ul>
-        </ul>
-      </li>
-
-      <!-- Baj -->
-      <li>
-        <div class="menu-label" data-url="/lost-world-of-hindustani-music/Baj/index.html">Baj</div>
-        <ul class="submenu" id="baj">
-
-          <li data-url="/lost-world-of-hindustani-music/Baj/Lucknow/index.html">Lucknow</li>
-          <ul class="artist-menu" id="lucknow">
-            <li><a href="/lost-world-of-hindustani-music/Baj/Lucknow/biru_mishra/index.html">Ustad Biru Mishra</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Baj/Lucknow/afaq_hussain_khan/index.html">Ustad Afaq Hussain Khan</a></li>
-          </ul>
-
-          <li data-url="/lost-world-of-hindustani-music/Baj/Farukkabad/index.html">Farukkabad</li>
-          <ul class="artist-menu" id="farukkabad">
-            <li><a href="/lost-world-of-hindustani-music/Baj/Farukkabad/hussain_baksh/index.html">Ustad Hussain Baksh</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Baj/Farukkabad/ahmad_jan_thirakwa/index.html">Ustad Ahmad Jan Thirakwa</a></li>
-          </ul>
-
-          <li data-url="/lost-world-of-hindustani-music/Baj/Delhi/index.html">Delhi</li>
-          <ul class="artist-menu" id="delhi">
-            <li><a href="/lost-world-of-hindustani-music/Baj/Delhi/inam_ali_khan/index.html">Ustad Inam Ali Khan</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Baj/Delhi/latif_ahmed_khan/index.html">Ustad Latif Ahmed Khan</a></li>
-          </ul>
-
-          <li data-url="/lost-world-of-hindustani-music/Baj/Puran/index.html">Puran</li>
-          <ul class="artist-menu" id="puran">
-            <li><a href="/lost-world-of-hindustani-music/Baj/Puran/artist1/index.html">Artist 1</a></li>
-            <li><a href="/lost-world-of-hindustani-music/Baj/Puran/artist2/index.html">Artist 2</a></li>
-          </ul>
-        </ul>
-      </li>
+       </ul>
+     </li>
 
     </ul>
   </div>
