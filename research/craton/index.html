@@ -1,153 +1,347 @@
+<!DOCTYPE html>
 <html>
- 
-<title>craton</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <head>
+  <title>Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+
 <style>
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color:white;
-  position: fixed;
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  margin:0;
 }
 
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
+.w3-bar .w3-bar-item {
+  padding:14px 20px;
 }
 
-a:link {
-    color: teal;
-    text-decoration: none;
+.w3-bar .w3-bar-item:hover {
+  background-color:#ddd;
 }
 
-a:visited {
-    color: teal;
-    text-decoration: none;
+.w3-top{
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-a:hover {
-    text-decoration: underline;
+.menu-icon{
+  display:none;
+  font-size:24px;
+  cursor:pointer;
 }
 
-a:active {
-    text-decoration: underline;
+.w3-bar .menu-items{
+  display:flex;
+  flex-wrap:wrap;
 }
 
-li a:hover:not(.active) {
+.content{
+  padding:30px 20px;
+  max-width:900px;
+  margin:auto;
+}
+
+.section{
+  margin-bottom:40px;
+}
+
+.w3-container{
+  background-color:#fff;
+  border-radius:8px;
+  padding:20px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+}
+
+a{
+  color:teal;
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+.row{
+  display:flex;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.column-left{
+  flex:1;
+  min-width:180px;
+  font-weight:bold;
+}
+
+.column-right{
+  flex:3;
+}
+
+.button{
   background-color:teal;
-  color: white;
+  border:none;
+  color:white;
+  padding:12px 20px;
+  text-align:center;
+  text-decoration:none;
+  display:inline-block;
+  font-size:15px;
+  margin:6px 6px 6px 0;
+  cursor:pointer;
 }
 
-a:link {
-    color: teal;
-    text-decoration: none;
+.button1{
+  border-radius:8px;
 }
 
-p.main {
-    text-align: justify;
+.key-insights{
+  background-color:#f8f9fa;
+  padding:15px;
+  border-left:4px solid #3498db;
+  margin:20px 0;
 }
 
-.button {
-  background-color: teal;
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+.insight-list{
+  padding-left:20px;
 }
 
-.button1 {border-radius: 12px;}
+.highlight{
+  font-weight:bold;
+  color:teal;
+}
+
+.fade-in{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:768px){
+
+.menu-icon{
+  display:block;
+}
+
+.w3-bar .menu-items{
+  display:none;
+  flex-direction:column;
+  width:100%;
+}
+
+.w3-bar .menu-items a{
+  text-align:center;
+  padding:10px;
+}
+
+.row{
+  flex-direction:column;
+}
+
+}
 
 </style>
 </head>
 
+<body>
 
-
-<!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
-      <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button"> Home</a>
-      <a href="https://jyotirmoyp.github.io/Short_cv.pdf" class="w3-bar-item w3-button">CV</a>
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+    <div class="menu-items">
+      <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button">Home</a>
+      <a href="https://jyotirmoyp.github.io/cv" class="w3-bar-item w3-button">CV</a>
       <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
       <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
       <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
       <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
-    
     </div>
   </div>
 </div>
 
 
+<!-- Navigation ends -->
 
-<div class="w3-container w3-teal">
-  <h2>Jyotirmoy's Home Page</h2>
+
+<div class="content">
+
+
+<!-- Section 1 -->
+
+<div class="section fade-in">
+
+<div class="w3-container">
+<h3>Convective Self‐Compression of Cratons and the Stabilization of Old Lithosphere</h3>
+
+
+
+<p>Relative viscosity parameters used in the model:</p>
+
+<div class="key-insights">
+
+<ul class="insight-list">
+<li><span class="highlight">Lithosphere:</span> 30× reference viscosity</li>
+<li><span class="highlight">Asthenosphere:</span> 0.1× reference viscosity</li>
+<li><span class="highlight">Craton:</span> 100× lithosphere viscosity</li>
+</ul>
+
+</div>
+
+<a class="button button1"
+href="https://jyotirmoyp.github.io/research/craton/CIG_clb_0_1_100_65_3smac_time10.input"
+target="_blank">
+Download Input File
+</a>
+
+<a class="button button1"
+href="https://jyotirmoyp.github.io/research/craton/3smac_uni.tar.xz"
+download>
+Download Viscosity Files
+</a>
 </div>
 
 
 
-<!--naviation menu ends-->
+</div>
 
 
-<div class="w3-card w3-margin w3-col w3 l8 ">
-    <div class="w3-container w3-teal w3 l7">
-      <h4>Input files for "Convective Self‐Compression of Cratons and the Stabilization of Old Lithosphere" </h4>
-    </div>
-      <div class="w3-container ">
-       <div class="w3-col w3 l4"> 
-       Relative viscosity of lithosphere=30x, asthenosphere=0.1x, craton=100xlithosphere
-       <br>
-       <a href="https://jyotirmoyp.github.io/research/craton/CIG_clb_0_1_100_65_3smac_time10.input" target="_blank">[Input file]</a>
-        <a href="https://jyotirmoyp.github.io/research/craton/3smac_uni.tar.xz" download>[viscosity files]</a> 
-      
-    </div> 
-      </div>
-   </div>
-   
+<!-- Section 2 -->
 
-<div class="w3-card w3-margin w3-col w3 l8 ">
-    <div class="w3-container w3-teal w3 l7">
-      <h4>Input files for "Flat slab-induced hydration weakening and destruction of the North China Craton" </h4>
-    </div>
-      <div class="w3-container ">
-       <div class="w3-col w3 l4"> 
-       
-       <br>
-       LaMEM input file <a href="https://jyotirmoyp.github.io/research/craton/ncc_complex.dat" target="_blank">[ncc_complex]</a>
-       <br>
-       Polygon file zipped <a href="https://jyotirmoyp.github.io/research/craton/Output_512x256_ref_20wz.zip" download>[polygon]</a> 
-       <br>
-       Temperature file zipped  <a href="https://jyotirmoyp.github.io/research/craton/Temp_ref_20wz.zip" download>[polygon]</a> 
-       <br>
-       geomIO input <a href="https://jyotirmoyp.github.io/research/craton/Geom_ML_shortWZ_512x256.m" download>[MATLAB file]</a> 
-       <br>
-       geometry <a href="https://jyotirmoyp.github.io/research/craton/ML_6_fixedslabEnd_shortWZ_noAsth.EW.svg" download>[SVG file]</a> 
-      
-    </div> 
-      </div>
-   </div>
+<div class="section fade-in">
 
+<div class="w3-container">
+<h3>Flat Slab-Induced Hydration Weakening and Destruction of the North China Craton</h3>
+
+
+
+
+<div class="row">
+
+<div class="column-left">
+Model Files
+</div>
+
+<div class="column-right">
+
+<p>
+LaMEM Input File<br>
+<a href="https://jyotirmoyp.github.io/research/craton/ncc_complex.dat" target="_blank">
+[ncc_complex.dat]
+</a>
+</p>
+
+<p>
+Polygon File<br>
+<a href="https://jyotirmoyp.github.io/research/craton/Output_512x256_ref_20wz.zip" download>
+[Download ZIP]
+</a>
+</p>
+
+<p>
+Temperature File<br>
+<a href="https://jyotirmoyp.github.io/research/craton/Temp_ref_20wz.zip" download>
+[Download ZIP]
+</a>
+</p>
+
+<p>
+geomIO MATLAB Input<br>
+<a href="https://jyotirmoyp.github.io/research/craton/Geom_ML_shortWZ_512x256.m" download>
+[MATLAB File]
+</a>
+</p>
+
+<p>
+Geometry File<br>
+<a href="https://jyotirmoyp.github.io/research/craton/ML_6_fixedslabEnd_shortWZ_noAsth.EW.svg" download>
+[SVG File]
+</a>
+</p>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
 
 
 <!-- Footer -->
-<div class=w3-col l12>
-    <footer class="w3-center w3-light-grey w3-padding-32">
-        <p>copyright @ <a href="https://jyotirmoyp.github.io/" title="" class="w3-hover-text-green"> Jyotirmoy Paul</a></p>
-      </footer>
+
+<div class="w3-col l12">
+
+<footer class="w3-center w3-light-grey w3-padding-32">
+
+<p>
+copyright @
+<a href="https://jyotirmoyp.github.io/"
+class="w3-hover-text-green">
+Jyotirmoy Paul
+</a>
+</p>
+
+</footer>
+
 </div>
 
 
 
+<script>
+
+function toggleMenu(){
+var x=document.querySelector(".menu-items");
+
+if(x.style.display==="flex"){
+x.style.display="none";
+}
+else{
+x.style.display="flex";
+}
+
+}
+
+
+const faders=document.querySelectorAll('.fade-in');
+
+const appearOptions={
+threshold:0.2
+};
+
+const appearOnScroll=new IntersectionObserver(function(entries,appearOnScroll){
+
+entries.forEach(entry=>{
+if(!entry.isIntersecting){
+return;
+}else{
+entry.target.classList.add("show");
+appearOnScroll.unobserve(entry.target);
+}
+
+});
+
+},appearOptions);
+
+faders.forEach(fader=>{
+appearOnScroll.observe(fader);
+});
+
+</script>
+
+
 </body>
-<html>
+</html>
