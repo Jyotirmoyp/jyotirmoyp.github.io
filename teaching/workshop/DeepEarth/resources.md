@@ -12,5 +12,5 @@ $$
 ## Range 
 
 $$
-X(p) = 2 \int_{0}^{z_p} \frac{1}{\sqrt{u^2(z) - p^2}} \, dz
+X(p) = 2p \int_{0}^{z_p} \frac{1}{\sqrt{u^2(z) - p^2}} \, dz
 $$
