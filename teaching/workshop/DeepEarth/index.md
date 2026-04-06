@@ -13,7 +13,11 @@ Undergraduate, postgraduate students
 
 ### Day 1: 
 
-- 
+- Ray theory - Seismic wave propagation through homogeneous layered media - Travel time curve - Delay times 
+- 1-D velocity inversion - Layer cake model
+- Exercise 
+- Assignment 
+
 
 ## Pages
 - [Participants](participants.md)
