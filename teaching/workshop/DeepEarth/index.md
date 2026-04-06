@@ -1,8 +1,10 @@
 # Understanding Earth's Deep Interior
 
-An Online Workshop
+### An Online Workshop
 
-![Deep Earth](deep_earth.png)
+<p align="center">
+<img src="deep_earth.png" width="500">
+</p>
 
 
 ## Description
