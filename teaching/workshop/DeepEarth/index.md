@@ -2,7 +2,7 @@
 
 An Online Workshop
 
-![Deep Earth](deep-earth.png)
+![Deep Earth](deep_earth.png)
 
 
 ## Description
