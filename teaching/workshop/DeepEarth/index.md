@@ -1,6 +1,6 @@
 # My Workshop
 
-Welcome to the workshop website.
+Workshop - Understanding Earth's Deep Interior
 
 ## Description
 This workshop introduces practical AI tools for research.
