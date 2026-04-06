@@ -283,7 +283,20 @@
 <body>
 
     <!-- Navbar (sit on top) -->
-	<div include-html="../nav.html"></div>
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+            <div class="menu-items">
+                <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button">Home</a>
+                <a href="https://jyotirmoyp.github.io/cv" class="w3-bar-item w3-button">CV</a>
+                <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
+                <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
+                <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
+                <a href="https://jyotirmoyp.github.io/the-art-space/" class="w3-bar-item w3-button w3-right w3-black">The Art Space</a>
+            </div>
+        </div>
+    </div>
+
 <!--naviation menu ends-->
 
  <main class="content">
@@ -292,18 +305,21 @@
         
         <!-- Mobile Connect Menu -->
         <div class="mobile-connect" id="mobileConnect">
-            <h4 onclick="toggleSection('mobileVizSection')">Workshop</h4>
+            <h4 onclick="toggleSection('mobileVizSection')">Visualization/database</h4>
             <ul id="mobileVizSection">
-                <li><a href="#deepEarth">Deep Earth Workshop</a></li>
-                <li><a href="#dsdays">Data Science Day 2026</a></li>
+                <li><a href="#submachine">Submachine</a></li>
+                <li><a href="#gplates">GPlates</a></li>
+                <li><a href="#paraview">Paraview</a></li>
+                <li><a href="#gmt">GMT</a></li>
+                <li><a href="#atlas">Atlas of Underworld</a></li>
             </ul>
             
-            <h4 onclick="toggleSection('mobileMantleSection')">Regular Classes</h4>
+            <h4 onclick="toggleSection('mobileMantleSection')">Open source mantle convection codes</h4>
             <ul id="mobileMantleSection" class="collapsed">
-		<li><a href="#ert">Electrical Resistivity Tomography</a></li>
-                <li><a href="#geodynamicsII">Computational Geodynamics II </a></li>
-                <li><a href="#geodynamicsI">Computational Geodynamics I</a></li>
-                
+                <li><a href="#citcoms">CitcomS</a></li>
+                <li><a href="#lamem">LaMEM</a></li>
+                <li><a href="#aspect">ASPECT</a></li>
+                <li><a href="#underworld">Underworld</a></li>
             </ul>
         </div>
 
@@ -313,95 +329,167 @@
     <div id="stickyNote" class="sticky-note">
         <span class="closebtn" onclick="closeStickyNote()">&times;</span>
 	<br>
-        <h4 onclick="toggleSection('desktopVizSection')">Workshop</h4>
+        <h4 onclick="toggleSection('desktopVizSection')">Visualization/database</h4>
         <ul id="desktopVizSection">
-                <li><a href="#deepEarth">Deep Earth Workshop</a></li>
-                <li><a href="#dsdays">Data Science Day 2026</a></li>
+            <li><a href="#submachine">Submachine</a></li>
+            <li><a href="#gplates">GPlates</a></li>
+            <li><a href="#paraview">Paraview</a></li>
+            <li><a href="#gmt">GMT</a></li>
+            <li><a href="#atlas">Atlas of Underworld</a></li>
         </ul>
         
-        <h4 onclick="toggleSection('desktopMantleSection')">Regular Classes</h4>
+        <h4 onclick="toggleSection('desktopMantleSection')">Open source mantle convection codes</h4>
         <ul id="desktopMantleSection" class="collapsed">
- 		<li><a href="#ert">Electrical Resistivity Tomography</a></li>
-                <li><a href="#geodynamicsII">Computational Geodynamics II </a></li>
-                <li><a href="#geodynamicsI">Computational Geodynamics I</a></li>
+            <li><a href="#citcoms">CitcomS</a></li>
+            <li><a href="#lamem">LaMEM</a></li>
+            <li><a href="#aspect">ASPECT</a></li>
+            <li><a href="#underworld">Underworld</a></li>
         </ul>
     </div>
 
-<!--------Deep Earth---------------->
+<!--------submachine---------------->
 
-<div id="deepEarth"></div>
+<div id="submachine"></div>
   <div class="w3-container">
-          <h4>Workshop Understanding Earth's Deep Interior</h4>
+          <h4>SubMachine: Web-based tools for the interactive visualisation</h4>
     <div class="fade-in">
       <div class="w3-row">
         <div class="w3-col s4">
-          <img src="deep_earth.png" style="width:80%">
+          <img src="https://users.earth.ox.ac.uk/~smachine/cgi/images/submachine_logo.png" style="width:50%">
         </div>
         <div class="w3-col s8">
-          <p><u> Goal: </u> Earth is the only rocky planet of the solar system that exhibits plate tectonics, which means the top part of the earth, known as lithosphere, is broken into pieces called plate. Plates can relatively move past each. But it has been a long time debate, what drives the plate motion. Using modern seismological network accorss the globe, we can now image the interior of earth. From these images we interpret the density structure of earth, that shows how the regions of downwelling and upwellings are distributed that could potentially pull and pushe the plates to move on surface. In this discussion, we will investigate how we can numerically calculate surface motion using density anomalies obtained from seismic measurements. Thus to integrate Earth's interior dynamics with the GPS measurement.
+          <p><a href="https://users.earth.ox.ac.uk/~smachine/cgi/index.php" target="_blank">SubMachine</a> 
+            is a collection of web-based tools for the interactive visualisation, 
+            analysis, and quantitative comparison of global-scale, volumetric (3-D) 
+            data sets of the subsurface, with supporting tools for interacting with other, 
+            complementary models and data sets.
           </p>
-         
+          <p>This visualisation tool is self-explanatory and well instructed on their website.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-
-<!--------DS Days 2026 Earth---------------->
-
-<div id="deepEarth"></div>
-  <div class="w3-container">
-          <h4> Scientific Illustrations with Generic Mapping Tools (GMT): DS Days 2026</h4>
-    <div class="fade-in">
+<!--------GPlates---------------->
+  <div id="gplates">
+    <div class = "w3-container">
+          <h4> GPlates: Desktop software for the interactive visualisation of plate-tectonics</h4>
+        <div class="fade-in">
       <div class="w3-row">
         <div class="w3-col s4">
-          <img src="https://www.ub.uio.no/english/courses-events/events/dsc/dsdays/2026/colourbox-guy-1000-667.jpg" style="width:80%">
+          <img src="gplates_reconstruction.jpg" style="width:80%">
+          <br> <br> 
+          <img src="gplates_3dmodel.jpg" style="width: 80%">
         </div>
         <div class="w3-col s8">
-          <p><u> Course description: </u> Workshop covered basic handling of spatial data. Learning about netCDF and other data formats. Plotting data on a map, political borders, coastlines, rivers, slope maps. How to customize regions, geographic projection, ticks, labels, geographic grids and frames for a figure.
-	  <br> 
-	  <u> Target audience: </u> Master students, PhD candidates, and researchers within earth sciences or any field working with spatial data.
-	  <br> 
-	  <u> Co-organised with: </u> Alexander Minakov
-	  <br> 
-	  <a href = 'https://www.ub.uio.no/english/courses-events/events/dsc/dsdays/2026/13-scientific-illustration-with-gmt-20260107' target="_blank" > [More details at UiO Website] </a>
+          <p><a href="https://www.gplates.org" target="_blank">GPlates</a> 
+     		 offers a novel combination of interactive plate-tectonic reconstructions, 
+      		 geographic information system (GIS) functionality and raster data visualisation. 
+      		 GPlates enables both the visualisation and the manipulation of plate-tectonic 
+     		 reconstructions and associated data through geological time.
+
+     		 <br> A very well documented instruction to running GPlates can be found 
+     		 <a href="https://www.gplates.org/user-manual/" target="_blank">here.</a>
+     		 <br> <br>
+      		Primarily the software can be used for tectonic reconstructions, however, 
+      		quite handy for plotting 3-D images of earth in a spherical cell.<br> <br>
+      		
           </p>
-         
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<!--------Paraview---------------->
+  <div  id="paraview">
+	<div class = "w3-container">
+          <h4> Paraview</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="paraview_3d.jpg" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://www.paraview.org" target="_blank">ParaView</a> 
+       	is an open-source, multi-platform data analysis and visualization application. 
+      		ParaView users can quickly build visualizations to analyze their data using 
+      		qualitative and quantitative techniques. The data exploration can be done 
+      		interactively in 3D or programmatically using ParaView's batch processing 
+      		capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!--------gmt---------------->
+  <div id="gmt">
+  <div class="w3-container">
+          <h4> Generic Mapping Tool: An open-source, code based geophysical map plotting tool</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="lithospheric-age.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://www.soest.hawaii.edu/gmt/" target="_blank">GMT</a> 
+      		 is an open-source, code based visualisation tool for geophysical data.
+       	 The updated version of GMT 5 and 6 are now available. 
+       	 <br> <br> 
+       	 For beginners, it could be difficult to install GMT in their machine. Linux (Ububtu)
+       	 is the recommended OS to work. I will update the installation process for GMT soon.
 
+      		 <br> <br> I have some basic <a href="https://jyotirmoyp.github.io/resource/gmt/" target="_blank"> GMT resources </a> 
+      		 for students who are new in coding and are getting lost in huge repository of the GMT website. 
+       	 
+         	<a href="https://jyotirmoyp.github.io/resource/gmt/">Check out some GMT instructions here </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-
-
-
+<!-------- atlas of the underworld---------------->
+  <div id="atlas">
+  <div class="w3-container">
+          <h4> The Atlas of the underworld</h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://www.atlas-of-the-underworld.org/wp-content/uploads/2020/10/AotU_logo.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://www.atlas-of-the-underworld.org/" target="_blank">The Atlas of the underworld</a> 
+      		 is the first complete mapping of subducted plates in the Earth's mantle and their geological interpretation.
+       	 <br> <br> 
+       	 This website covers the structure of Earth's entire mantle and its plate tectonic evolution of the last 300 million years. Every geological record is under active study by the geological community, and undoubtedly improvements can be made on the geological interpretations or the tomographic imaging and interpretation of the slabs. Therefore, we provide a 'post-publication peer review' system through a forum below every slab where you can leave references to new published information and its implication or alternative geological interpretations. We would appreciate if this forum would be used for geoscientific debate only.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!---------------------- Mantle Convection codes ------------------------->
 
-<!-------- ERT---------------->
-  <div id="ert">
+<!-------- CitcomS---------------->
+  <div id="citcoms">
   <div class="w3-container">
-          <h4> Electrical Resistivity Tomography</h4>
+          <h4> CitcomS</h4>
     <div class="fade-in">
       <div class="w3-row">
         <div class="w3-col s4">
-        <img src="https://www.pygimli.org/_images/sphx_glr_plot_8-regionWise_002.png" style="width: 80%"> 
+        <img src="https://geodynamics.org/resources/1745/download/cover-small-citcoms.png" style="width: 80%"> 
         </div>
         <div class="w3-col s8">
-          <p> <u>Syllabus:</u> Introduction to electrical methods, electrical arrays and survey techniques, Electrical sounding and profiling, inversion of electrical data using pyGIMLi, constructing ERT and interpretation
-	  <br>
-	  <u> Course level: </u> Masters (as a part of Near Surface Geophysics, GEO4120)
-	  <br> Department of Geosciences, University of Oslo
-	  <br>
-	  <a href='https://github.com/Jyotirmoyp/GEO4120_ERT_2025' target='_blank'> Course material on github </a>
-
+          <p><a href="https://github.com/geodynamics/citcoms" target="_blank">CitcomS</a> 	  
+       	  is a finite element code designed to solve thermal convection problems relevant to earth’s mantle released
+under the GNU General Public License (see Appendix D on page 97). Written in C, the code runs on a variety of
+parallel processing computers, including shared and distributed memory platforms.
           </p>
         </div>
       </div>
@@ -411,22 +499,18 @@
 
 
 
-<!-------- geodynamics II---------------->
+<!-------- LaMEM---------------->
   <div id="lamem">
   <div class="w3-container">
-          <h4> Computational Geodynamics II </h4>
+          <h4> LaMEM </h4>
     <div class="fade-in">
       <div class="w3-row">
         <div class="w3-col s4">
-        <img src="https://www.gplates.org/static/hero-img-1-f1a359475244b3a66d66c691dff3f884.png" style="width: 80%"> 
+        <img src="https://opengraph.githubassets.com/fca1759b01f917a84b8bff61c74b9283bfacfd4beecd79175e7ed7912551d0df/UniMainzGeo/LaMEM" style="width: 80%"> 
         </div>
         <div class="w3-col s8">
-          <p> <u>Syllabus:</u> Introduction to scientific modelling, governing principles of mantle convection models, advanced plotting techniques in GMT, plate reconstruction techniques in GPlates.
-	  <br>
-	  <u> Course level: </u> M. Tech (as a part of Geophysics course)
-	  <br> Centre for Earth Sciences, IISc, Bangalore
-	  <br>
-
+          <p><a href="https://github.com/UniMainzGeo/LaMEM" target="_blank">LaMEM</a> 	  
+       	   (Lithosphere and Mantle Evolution Model) is a parallel 3D numerical code that can be used to simulate various thermo-mechanical geodynamical processes such as mantle-lithosphere interaction for rocks that have visco-elasto-plastic rheologies. It was developed to better understand geological processes, particularly related to the dynamics of the crust and lithosphere and their interaction with the mantle. It can also be used to solve geomechanical problems, includes (compressible) poroelasticity, has a gravity solver and an (adjoint) inversion framework. The code uses a marker-in-cell approach with a staggered finite difference discretization and is built on top of PETSc such that it can run on anything from a laptop to a massively parallel machine.
 
           </p>
         </div>
@@ -436,22 +520,18 @@
 </div>
 
 
-<!-------- geodynamics I---------------->
-  <div id="lamem">
+<!-------- ASPECT---------------->
+  <div id="aspect">
   <div class="w3-container">
-          <h4> Computational Geodynamics I </h4>
+          <h4> ASPECT </h4>
     <div class="fade-in">
       <div class="w3-row">
         <div class="w3-col s4">
-        <img src="https://www.generic-mapping-tools.org/_static/gmt-logo.png" style="width: 80%"> 
+        <img src="https://aspect-documentation.readthedocs.io/en/latest/_images/aspect_logo.png" style="width: 80%"> 
         </div>
         <div class="w3-col s8">
-          <p> <u>Syllabus:</u>  Geophysical quantities, solving differential equation using Euler method and finite distance method, solution of heat conduction equation in 2D, basic plotting techniques in GMT
-	  <br>
-	  <u> Course level: </u> M. Tech (as a part of Geophysics course)
-	  <br> Centre for Earth Sciences, IISc, Bangalore
-	  <br>
-
+          <p><a href="https://aspect-documentation.readthedocs.io/en/latest/" target="_blank">ASPECT</a> 	  
+       	  is a code to simulate problems in thermal convection. Its primary focus is on the simulation of processes in the Earth’s mantle, but its design is more general than that.
 
           </p>
         </div>
@@ -461,6 +541,25 @@
 </div>
 
 
+<!-------- Underworld ---------------->
+  <div id="underworld">
+  <div class="w3-container">
+          <h4> Underworld </h4>
+    <div class="fade-in">
+      <div class="w3-row">
+        <div class="w3-col s4">
+        <img src="https://nbviewer.org/github/underworldcode/underworld2/blob/main/docs/UWGeodynamics/tutorials/images/Tutorial4.png" style="width: 80%"> 
+        </div>
+        <div class="w3-col s8">
+          <p><a href="https://underworld2.readthedocs.io/en/latest/index.html" target="_blank">Underworld</a> 	  
+       	  is a Python API (Application Programming Interface) which provides functionality for the modelling of geodynamics processes, and is designed to work (almost) seamlessly across PC, cloud and HPC infrastructure. Primarily the API consists of a set of Python classes from which numerical geodynamics models may be constructed. The API also provides the tools required for inline analysis and data management. For scalability across multiprocessor platforms, MPI (Message Passing Interface) is leveraged, and for performant operation all heavy computations are executed within a statically typed layer.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -525,29 +624,5 @@
         });
     </script>
 
-
-<script>
-function includeHTML() {
-  const elements = document.querySelectorAll('[include-html]');
-  elements.forEach(el => {
-    const file = el.getAttribute('include-html');
-    if (file) {
-      fetch(file)
-        .then(response => {
-          if (!response.ok) throw new Error("Page not found");
-          return response.text();
-        })
-        .then(data => {
-          el.innerHTML = data;
-          el.removeAttribute("include-html");
-        })
-        .catch(() => {
-          el.innerHTML = "Navbar not found.";
-        });
-    }
-  });
-}
-includeHTML();
-</script>
 </body>
 </html>
