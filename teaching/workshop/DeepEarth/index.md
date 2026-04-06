@@ -21,6 +21,12 @@ Undergraduate, postgraduate students
 - Exercise 
 - Assignment 
 
+### Day 2: 
+
+- Why numerical model?
+- Governing equation of mantle convection
+- Integrating mantle convection and plate tectonics 
+- Mantle convection codes
 
 ## Pages
 - [Participants](participants.md)
