@@ -15,3 +15,6 @@ $$
 X(p) = 2p \int_{0}^{z_p} \frac{1}{\sqrt{u^2(z) - p^2}} \, dz
 = 2p \int_{0}^{z_p} \frac{1}{\eta} \, dz
 $$
+
+
+## Delay time
