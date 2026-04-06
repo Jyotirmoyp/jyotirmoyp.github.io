@@ -3,7 +3,7 @@
 ### An Online Workshop
 
 <p align="center">
-<img src="deep_earth.png" width="500">
+<img src="deep_earth.png" width="50%">
 </p>
 
 
