@@ -1,1 +1,32 @@
+---
+---
 
+@import "{{ site.theme }}";
+
+/* widen page */
+.main-content {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* improve fonts */
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* nicer headings */
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+/* more spacing between sections */
+.main-content h2 {
+  margin-top: 50px;
+}
+
+/* improve links */
+a {
+  color: #2a7ae2;
+}
