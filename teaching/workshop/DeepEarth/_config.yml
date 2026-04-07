@@ -1,7 +1,0 @@
-
-theme: cayman
-title: Deep Earth Interior
-
-markdown: kramdown
-kramdown:
-  math_engine: mathjax
