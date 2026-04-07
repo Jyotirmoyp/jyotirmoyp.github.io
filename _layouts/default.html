@@ -135,6 +135,7 @@ body{
 </head>
 
 <body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
 <div class="sidebar">
 {% include nav.html %}
@@ -143,6 +144,12 @@ body{
 <div class="content">
 {{ content }}
 </div>
+
+<script>
+function toggleMenu(){
+  document.getElementById("sidebar").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
