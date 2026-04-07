@@ -18,7 +18,7 @@ Earth is the only rocky planet of the solar system that exhibits plate tectonics
 
 ## Target audience
 
-Undergraduate, postgraduate students
+Undergraduate, postgraduate students, Any one interested
 
 ## Schedule
 
