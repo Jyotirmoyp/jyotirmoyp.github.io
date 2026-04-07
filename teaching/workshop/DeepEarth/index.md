@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="assets/css/style.css">
-
+---
+layout: default
+title: Deep Earth Interior
+---
 # Understanding Earth's Deep Interior
 
 ### An Online Workshop
