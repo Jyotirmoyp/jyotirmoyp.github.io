@@ -48,3 +48,5 @@ Undergraduate, postgraduate students, Any one interested
 - [Participants](participants.md)
 - [Resources](resources.md)
 - [Feedback](feedback.md)
+
+</div>
