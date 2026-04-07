@@ -1,0 +1,51 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* hide subtitle under title */
+.project-tagline {
+  display: none;
+}
+
+/* page background */
+body {
+  background-color: black;
+  color: white;
+}
+
+/* main content area */
+.main-content {
+  background-color: black;
+  color: white;
+}
+
+/* links */
+a {
+  color: #4da6ff;
+}
+
+/* widen page */
+.main-content {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* improve fonts */
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* nicer headings */
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+/* more spacing between sections */
+.main-content h2 {
+  margin-top: 50px;
+}
+
+

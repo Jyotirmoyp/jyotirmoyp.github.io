@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }}</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+<body style="background:red;">
+<style>
+body {
+  display: flex;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  background: #111;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sidebar a {
+  color: white;
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: #4da6ff;
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+{% include nav.html %}
+</div>
+
+<div class="content">
+{{ content }}
+</div>
+
+</body>
+</html>
