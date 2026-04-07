@@ -3,7 +3,6 @@ layout: default
 title: Deep Earth Interior
 ---
 
-<link rel="stylesheet" href="assets/css/style.css">
 
 # Understanding Earth's Deep Interior
 
