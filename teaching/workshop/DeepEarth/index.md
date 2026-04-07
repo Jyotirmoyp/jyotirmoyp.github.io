@@ -21,25 +21,26 @@ Undergraduate, postgraduate students, Any one interested
 
 ## Schedule
 
-### Day 1: 
+### Module 1: 
 
-- Ray theory - Seismic wave propagation through homogeneous layered media - Travel time curve - Delay times 
-- 1-D velocity inversion - Layer cake model
+- Ray theory 
+- Seismic wave propagation through homogeneous layered media 
+- Travel time curve - Delay times 
+- 1-D velocity inversion 
+- Layer cake model
 - Exercise 
 - Assignment 
 
-### Day 2: 
+### Module 2: 
 
 - Why numerical model?
 - Governing equation of mantle convection
+- Principles of plate tectonics
 - Integrating mantle convection and plate tectonics 
 - Mantle convection codes
+- Exercise
+- Assignment
 
 
 
-
-!## Pages
-!- [Participants](participants.md)
-!- [Resources](resources.md)
-!- [Feedback](feedback.md)
 
