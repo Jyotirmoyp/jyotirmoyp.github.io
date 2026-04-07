@@ -9,9 +9,10 @@
 }
 
 
-body {
-  background-color: #000 !important;
-  color: white;
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
 }
 
 /* main content area */
