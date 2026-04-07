@@ -22,7 +22,7 @@ body {
 
 /* links */
 a {
-  color: #4da6ff;
+  color: #a6c6e6;
 }
 
 /* widen page */
@@ -48,4 +48,18 @@ h1, h2, h3 {
   margin-top: 50px;
 }
 
+.icons{
+  margin-top:20px;
+}
+
+.icons a{
+  color:var(--muted);
+  font-size:20px;
+  margin-right:15px;
+  text-decoration:none;
+}
+
+.icons a:hover{
+  color:var(--accent);
+}
 
