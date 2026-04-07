@@ -66,39 +66,24 @@ h1, h2, h3 {
 
 .menu-toggle{
   display:none;
+  position:fixed;
+  top:15px;
+  left:15px;
+  font-size:28px;
+  color:var(--text);
+  background:none;
+  border:none;
+  padding:0;
+  margin:0;
+  line-height:1;
+  cursor:pointer;
 }
 
 @media (max-width:800px){
 
   .menu-toggle{
     display:block;
-    position:fixed;
-    top:15px;
-    left:15px;
-    font-size:26px;
-    background:none;
-    border:none;
-    color:white;
     z-index:1001;
-    cursor:pointer;
-  }
-
-  .sidebar{
-    position:fixed;
-    left:-260px;
-    top:0;
-    height:100%;
-    width:240px;
-    transition:0.3s;
-    z-index:1000;
-  }
-
-  .sidebar.active{
-    left:0;
-  }
-
-  body{
-    flex-direction:column;
   }
 
 }
