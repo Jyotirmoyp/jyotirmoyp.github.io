@@ -98,8 +98,6 @@ h1, h2, h3 {
 /* Mobile layout */
 /* ========================= */
 
-/* Top mobile bar */
-
 .topbar{
   display:none;
 }
@@ -109,8 +107,6 @@ h1, h2, h3 {
   body{
     display:block;
   }
-
-  /* top bar */
 
   .topbar{
     display:flex;
@@ -125,8 +121,6 @@ h1, h2, h3 {
     right:0;
     z-index:1003;
   }
-
-  /* sidebar */
 
   .sidebar{
     position:fixed;
@@ -143,8 +137,6 @@ h1, h2, h3 {
     transform:translateX(0);
   }
 
-  /* overlay */
-
   .overlay{
     display:none;
     position:fixed;
@@ -159,8 +151,6 @@ h1, h2, h3 {
   .overlay.active{
     display:block;
   }
-
-  /* push content below top bar */
 
   .content{
     padding:30px;
