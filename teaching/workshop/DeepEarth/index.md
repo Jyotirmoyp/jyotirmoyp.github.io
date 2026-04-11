@@ -34,6 +34,7 @@ Undergraduate, postgraduate students, Any one interested
 - Travel time curve - Delay times 
 - 1-D velocity inversion 
 - Layer cake model
+- Seismic tomography
 - Exercise 
 - Assignment 
 
