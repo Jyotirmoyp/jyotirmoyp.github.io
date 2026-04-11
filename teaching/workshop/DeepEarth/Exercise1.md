@@ -11,6 +11,6 @@ title: Deep Earth Interior
 
 <img src="exercise1.png" width="100%">
 
-#Exercise 2
+# Exercise 2
 
 <img src="exercise2.png" width="100%">
