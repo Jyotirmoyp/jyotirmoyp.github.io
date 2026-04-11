@@ -9,4 +9,8 @@ title: Deep Earth Interior
 
 # Exercise 1
 
-<img src="exercise1.png" width="50%">
+<img src="exercise1.png" width="100%">
+
+#Exercise 2
+
+<img src="exercise2.png" width="100%">
