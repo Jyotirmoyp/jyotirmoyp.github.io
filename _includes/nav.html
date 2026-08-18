@@ -1,11 +1,19 @@
 
 <nav>
-<a href="/teaching/workshop/DeepEarth/index.html">Home</a>
+<a href="/teaching/workshop/DeepEarth/index.html" {% if page.url == '/index.html' or page.url == '/' %}style="color:var(--accent);"{% endif %}>Home</a>
+<a href="/teaching/workshop/DeepEarth/resources.html" {% if page.url contains 'resources' %}style="color:var(--accent);"{% endif %}>Resources</a>
 </nav>
 
-
-
-
+<!--
+  To add another page to the menu:
+  1. Create a new .md file at the site root (e.g. module1.md) with front matter:
+       ---
+       layout: default
+       title: Module 1
+       ---
+  2. Add a link here following the same pattern, e.g.:
+       <a href="/teaching/workshop/DeepEarth/module1.html" {% if page.url contains 'module1' %}style="color:var(--accent);"{% endif %}>Module 1</a>
+-->
 
 <div class="icons">
 

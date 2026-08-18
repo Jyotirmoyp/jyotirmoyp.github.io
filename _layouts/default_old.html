@@ -81,21 +81,6 @@ body{
   box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
-.menu-toggle{
-  display:none;
-  position:fixed;
-  top:16px;
-  left:16px;
-  z-index:10;
-  background:var(--sidebar);
-  color:var(--text);
-  border:1px solid #1e293b;
-  border-radius:6px;
-  padding:8px 12px;
-  font-size:18px;
-  cursor:pointer;
-}
-
 /* Mobile */
 
 @media (max-width:800px){
@@ -104,21 +89,11 @@ body{
     flex-direction:column;
   }
 
-  .menu-toggle{
-    display:block;
-  }
-
   .sidebar{
     width:100%;
     height:auto;
     border-right:none;
     border-bottom:1px solid #1e293b;
-    display:none;
-    padding-top:60px;
-  }
-
-  .sidebar.active{
-    display:block;
   }
 
   .content{
@@ -161,11 +136,7 @@ body{
 
 <body>
 
-<button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-  <i class="fa-solid fa-bars"></i>
-</button>
-
-<div class="sidebar" id="sidebar">
+<div class="sidebar">
 {% include nav.html %}
 </div>
 
