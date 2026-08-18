@@ -24,4 +24,15 @@ X(p) = 2p \int_{0}^{z_p} \frac{1}{\sqrt{u^2(z) - p^2}} \, dz
 $$
 
 
-## Delay time
+## Exercise
+
+<p align="center">
+<img src="exercise1.png" width="50%">
+</p>
+
+
+<p align="center">
+<img src="exercise2.png" width="50%">
+</p>
+
+
