@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Cultural Map of the World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>A Cultural Map of the World</h1>
+    <p class="site-sub">Hover a country to see it. Click to step inside.</p>
+  </header>
+
+  <main class="layout">
+
+    <section class="map-pane" id="mapPane">
+      <svg id="map" aria-label="World map"></svg>
+      <button class="reset-btn" id="resetBtn" hidden>&larr; World</button>
+      <div class="map-hint" id="mapHint">Hover or click a country to explore</div>
+    </section>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-empty" id="sidebarEmpty">
+        <p>Select a country on the map to read about its culture, or a city for a closer look.</p>
+      </div>
+
+      <div class="sidebar-content" id="sidebarContent" hidden>
+        <p class="sidebar-eyebrow" id="sidebarEyebrow"></p>
+        <h2 id="sidebarTitle"></h2>
+        <p class="sidebar-desc" id="sidebarDesc"></p>
+
+        <div class="sidebar-images" id="sidebarImages"></div>
+
+        <div class="sidebar-cities" id="sidebarCities" hidden>
+          <p class="sidebar-cities-label">Cities</p>
+          <div class="city-list" id="cityList"></div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="data/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
