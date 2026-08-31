@@ -11,7 +11,7 @@ const DEFAULT_COLOR = "#c9a86a"; // muted gold — matches the hover/active acce
 
 const HIGHLIGHTED_COUNTRIES = [
   { code: "JP" },
-  { code: "FR" },
+  { code: "FR", color: "#a8b98a" },
   { code: "IN" },
   { code: "BR" },
   { code: "EG" }
