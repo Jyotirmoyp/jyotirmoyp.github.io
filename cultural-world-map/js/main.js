@@ -1,4 +1,7 @@
 import CONTENT from "../data/index.js";
+import HIGHLIGHTED_COUNTRIES from "../data/highlighted-countries.js";
+
+const highlightColorByCode = new Map(HIGHLIGHTED_COUNTRIES.map((h) => [h.code, h.color]));
 
 const svg = d3.select("#map");
 const g = svg.append("g"); // countries only — this group is what zoom transforms
@@ -273,7 +276,12 @@ fetch("data/countries.geo.json")
       .append("path")
       .attr("class", "country hoverable")
       .attr("d", path)
+      .style("--base-fill", (d) => highlightColorByCode.get(d.properties.iso_a2) || null)
       .on("click", onCountryClick);
+
+    if (highlightColorByCode.size) {
+      mapHint.textContent = "Hover or click a country to explore — highlighted countries have a full profile";
+    }
 
     window.addEventListener("resize", () => {
       size();

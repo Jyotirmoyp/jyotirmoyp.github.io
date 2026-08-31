@@ -64,7 +64,7 @@ h1, h2 {
 }
 
 .country {
-  fill: var(--land);
+  fill: var(--base-fill, var(--land));
   stroke: var(--white);
   stroke-width: 0.75px;
   transition: fill 180ms ease;
