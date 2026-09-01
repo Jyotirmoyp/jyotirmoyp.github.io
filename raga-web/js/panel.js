@@ -6,7 +6,7 @@ import { nodesById, hierRaw, KIND, revealAndSelect } from './graph.js';
 
 function escapeHtml(str){ const d = document.createElement('div'); d.textContent = str; return d.innerHTML; }
 
-export function showPanel(node){
+export function showPanel(node, interactive = true){
   const panelBody = document.getElementById('panelBody');
   const parentLink = hierRaw.find(l => l.targetId === node.id);
   const parent = parentLink ? nodesById[parentLink.sourceId] : null;
@@ -60,4 +60,9 @@ export function showPanel(node){
   panelBody.querySelectorAll('.hier-chip, .rel-chip').forEach(chip => {
     chip.addEventListener('click', () => revealAndSelect(chip.dataset.id));
   });
+
+  if(interactive && window.matchMedia('(max-width: 720px)').matches){
+    document.getElementById('panel').classList.add('open');
+    document.getElementById('panelScrim').classList.add('open');
+  }
 }

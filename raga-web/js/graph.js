@@ -109,6 +109,10 @@ export function rebuild(){
           .call(dragBehavior())
           .on('click', (event, d) => { event.stopPropagation(); nodeClicked(d); });
         eg.append('circle')
+          .attr('r', d => RADII[d._depth] + 14)
+          .attr('fill', 'transparent')
+          .attr('class', 'hit-area');
+        eg.append('circle')
           .attr('r', d => RADII[d._depth])
           .attr('fill', d => COLORS[d._depth])
           .attr('fill-opacity', d => d._depth === 3 ? 0.85 : 0.9)
@@ -153,15 +157,15 @@ simulation.on('tick', () => {
   nodeGroup.attr('transform', d => `translate(${d.x},${d.y})`);
 });
 
-function selectNode(node){
+function selectNode(node, interactive = true){
   selectedId = node.id;
   rebuild();
-  onSelectCallback(node);
+  onSelectCallback(node, interactive);
 }
 
 function nodeClicked(d){
   if(d.children && d.children.length) d.expanded = !d.expanded;
-  selectNode(d);
+  selectNode(d, true);
 }
 
 export function revealAndSelect(targetId){
@@ -175,7 +179,7 @@ export function revealAndSelect(targetId){
     parent.expanded = true;
     cur = parent;
   }
-  selectNode(target);
+  selectNode(target, true);
 }
 
 function applyFocus(){
@@ -199,7 +203,7 @@ function applyFocus(){
 
 svg.on('click', () => { selectedId = null; applyFocus(); });
 
-export function selectInitial(){ selectNode(data); }
+export function selectInitial(){ selectNode(data, false); }
 
 export function refreshSize(){
   width = wrap.clientWidth; height = wrap.clientHeight;

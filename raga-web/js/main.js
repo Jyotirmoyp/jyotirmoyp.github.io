@@ -27,4 +27,11 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 
 window.addEventListener('resize', refreshSize);
 
+function closePanel(){
+  document.getElementById('panel').classList.remove('open');
+  document.getElementById('panelScrim').classList.remove('open');
+}
+document.getElementById('panelCloseBtn').addEventListener('click', closePanel);
+document.getElementById('panelScrim').addEventListener('click', closePanel);
+
 selectInitial();
