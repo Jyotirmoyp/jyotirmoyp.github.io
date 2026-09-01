@@ -60,9 +60,4 @@ export function showPanel(node, interactive = true){
   panelBody.querySelectorAll('.hier-chip, .rel-chip').forEach(chip => {
     chip.addEventListener('click', () => revealAndSelect(chip.dataset.id));
   });
-
-  if(interactive && window.matchMedia('(max-width: 720px)').matches){
-    document.getElementById('panel').classList.add('open');
-    document.getElementById('panelScrim').classList.add('open');
-  }
 }
