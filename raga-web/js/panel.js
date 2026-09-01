@@ -1,11 +1,12 @@
 /* Renders the right-hand description panel: title, kind,
    description, "branches here" chips, and "connections"
-   chips. Depends on nodesById / hierRaw / KIND / revealAndSelect
-   from graph.js. */
+   chips. Imports the shared graph state from graph.js. */
+
+import { nodesById, hierRaw, KIND, revealAndSelect } from './graph.js';
 
 function escapeHtml(str){ const d = document.createElement('div'); d.textContent = str; return d.innerHTML; }
 
-function showPanel(node){
+export function showPanel(node){
   const panelBody = document.getElementById('panelBody');
   const parentLink = hierRaw.find(l => l.targetId === node.id);
   const parent = parentLink ? nodesById[parentLink.sourceId] : null;

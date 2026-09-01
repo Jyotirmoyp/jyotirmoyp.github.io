@@ -1,6 +1,12 @@
-/* Wires up the toolbar buttons and kicks off the first
-   render. Runs last, after data.js + graph.js + panel.js
-   have all loaded. */
+/* Entry point (loaded as type="module" from index.html).
+   Wires the toolbar buttons up to the graph, hooks the
+   panel into node-selection, and kicks off the first render. */
+
+import { data } from '../data/index.js';
+import { rebuild, selectInitial, onSelect, svg, zoom, refreshSize } from './graph.js';
+import { showPanel } from './panel.js';
+
+onSelect(showPanel);
 
 function setAllExpanded(node, val){
   if(node.children && node.children.length){
@@ -8,6 +14,7 @@ function setAllExpanded(node, val){
     node.children.forEach(c => setAllExpanded(c, val));
   }
 }
+
 document.getElementById('expandAllBtn').addEventListener('click', () => { setAllExpanded(data, true); rebuild(); });
 document.getElementById('collapseAllBtn').addEventListener('click', () => {
   data.children.forEach(c => setAllExpanded(c, false));
@@ -18,12 +25,6 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
 });
 
-window.addEventListener('resize', () => {
-  width = wrap.clientWidth; height = wrap.clientHeight;
-  simulation.force('center', d3.forceCenter(width / 2, height / 2));
-  simulation.alpha(0.3).restart();
-});
+window.addEventListener('resize', refreshSize);
 
-selectedId = data.id;
-rebuild();
-showPanel(data);
+selectInitial();

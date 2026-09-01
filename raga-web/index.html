@@ -35,10 +35,9 @@
   <div class="panel"><div id="panelBody"></div></div>
 </div>
 
-<!-- Load order matters: each file uses variables/functions defined by the one before it. -->
-<script src="js/data.js"></script>
-<script src="js/graph.js"></script>
-<script src="js/panel.js"></script>
-<script src="js/main.js"></script>
+<!-- Everything is wired through imports now: main.js pulls in
+     data/index.js, graph.js and panel.js itself. This requires
+     the page to be served over http(s) — see README.md. -->
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -1,18 +1,19 @@
-/* Builds the force-directed graph: flattens data.js into
+/* Builds the force-directed graph: flattens data/index.js into
    node/link lists, sets up the D3 simulation, and handles
-   expand/collapse + click-to-focus behaviour. Depends on
-   `data` from data.js. Exposes nodesById, hierRaw, relRaw,
-   rebuild(), nodeClicked(), revealAndSelect() for panel.js
-   and main.js to use. */
+   expand/collapse + click-to-focus behaviour. Everything the
+   rest of the app needs (nodesById, rebuild, revealAndSelect,
+   etc.) is exported for panel.js and main.js to import. */
 
-const COLORS = { 0:'#c99a44', 1:'#c99a44', 2:'#7f77dd', 3:'#5dcaa5' };
-const RADII  = { 0:22, 1:16, 2:12, 3:8 };
-const KIND   = { 0:'Tradition', 1:'Genre', 2:'Gharana / bani / instrument', 3:'Musician' };
+import { data } from '../data/index.js';
 
-const allNodes = [];
-const nodesById = {};
-const hierRaw = [];
-const relRaw = [];
+export const COLORS = { 0:'#c99a44', 1:'#c99a44', 2:'#7f77dd', 3:'#5dcaa5' };
+export const RADII  = { 0:22, 1:16, 2:12, 3:8 };
+export const KIND   = { 0:'Tradition', 1:'Genre', 2:'Gharana / bani / instrument', 3:'Musician' };
+
+export const allNodes = [];
+export const nodesById = {};
+export const hierRaw = [];
+export const relRaw = [];
 
 function flatten(node, depth, parent){
   node._depth = Math.min(depth, 3);
@@ -31,11 +32,11 @@ allNodes.forEach(n => {
   });
 });
 
-const svg = d3.select('#net');
-const wrap = document.getElementById('canvasWrap');
+export const svg = d3.select('#net');
+export const wrap = document.getElementById('canvasWrap');
 let width = wrap.clientWidth, height = wrap.clientHeight;
 const g = svg.append('g');
-const zoom = d3.zoom().scaleExtent([0.2, 3]).on('zoom', e => g.attr('transform', e.transform));
+export const zoom = d3.zoom().scaleExtent([0.2, 3]).on('zoom', e => g.attr('transform', e.transform));
 svg.call(zoom);
 
 const hierLayer = g.append('g').attr('stroke', 'rgba(201,154,68,0.35)').attr('stroke-width', 1);
@@ -47,6 +48,11 @@ let hierLinkSel = hierLayer.selectAll('line');
 let relLinkSel = relLayer.selectAll('path');
 let nodeGroup = nodeLayer.selectAll('g.node-group');
 let selectedId = null;
+
+/* main.js hooks up showPanel() here, so graph.js never needs
+   to import panel.js (that would create a circular import). */
+let onSelectCallback = () => {};
+export function onSelect(fn){ onSelectCallback = fn; }
 
 function visibleSet(){
   const vis = new Set();
@@ -64,7 +70,7 @@ function dragBehavior(){
     .on('end', (event, d) => { if(!event.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; });
 }
 
-function rebuild(){
+export function rebuild(){
   const vis = visibleSet();
   const vNodes = allNodes.filter(n => vis.has(n.id));
 
@@ -147,14 +153,18 @@ simulation.on('tick', () => {
   nodeGroup.attr('transform', d => `translate(${d.x},${d.y})`);
 });
 
-function nodeClicked(d){
-  if(d.children && d.children.length) d.expanded = !d.expanded;
-  selectedId = d.id;
+function selectNode(node){
+  selectedId = node.id;
   rebuild();
-  showPanel(d);
+  onSelectCallback(node);
 }
 
-function revealAndSelect(targetId){
+function nodeClicked(d){
+  if(d.children && d.children.length) d.expanded = !d.expanded;
+  selectNode(d);
+}
+
+export function revealAndSelect(targetId){
   const target = nodesById[targetId];
   if(!target) return;
   let cur = target;
@@ -165,9 +175,7 @@ function revealAndSelect(targetId){
     parent.expanded = true;
     cur = parent;
   }
-  selectedId = targetId;
-  rebuild();
-  showPanel(target);
+  selectNode(target);
 }
 
 function applyFocus(){
@@ -190,3 +198,11 @@ function applyFocus(){
 }
 
 svg.on('click', () => { selectedId = null; applyFocus(); });
+
+export function selectInitial(){ selectNode(data); }
+
+export function refreshSize(){
+  width = wrap.clientWidth; height = wrap.clientHeight;
+  simulation.force('center', d3.forceCenter(width / 2, height / 2));
+  simulation.alpha(0.3).restart();
+}
