@@ -1,8 +1,8 @@
 /* Dhrupad — imports its gharanas/instruments. */
 
-import dagarvaniDagarBani from './dagarvani-dagar-bani/index.js';
-import darbhangaGharana from './darbhanga-gharana/index.js';
-import bettiahGharana from './bettiah-gharana/index.js';
+import dagarvaniDagarBani from './Dagar/index.js';
+import darbhangaGharana from './Gauhar/index.js';
+import bettiahGharana from './Khandar/index.js';
 
 export default {
   name: "Dhrupad",

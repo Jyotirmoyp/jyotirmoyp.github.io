@@ -21,7 +21,7 @@ export function showPanel(node){
 
   let relHtml = '';
   if(node.relations && node.relations.length){
-    relHtml = `<div class="relations"><p class="rel-heading">Connections</p><div class="rel-chips">` +
+    relHtml = `<div class="relations connections-top"><p class="rel-heading">Connections</p><div class="rel-chips">` +
       node.relations.map(rel => {
         const t = nodesById[rel.targetId];
         if(!t) return '';
@@ -29,13 +29,31 @@ export function showPanel(node){
       }).join('') + `</div></div>`;
   }
 
+  const imageHtml = node.image
+    ? `<img class="panel-image" src="${escapeHtml(node.image)}" alt="${escapeHtml(node.name)}" onerror="this.remove()">`
+    : '';
+
+  let linksHtml = '';
+  if(node.links && node.links.length){
+    linksHtml = `<div class="relations"><p class="rel-heading">Watch &amp; read</p><div class="media-links">` +
+      node.links.map(link => {
+        const isVideo = /youtube\.com|youtu\.be|vimeo\.com/i.test(link.url || '');
+        return `<a class="media-link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">
+          <span class="media-icon">${isVideo ? '\u25B6' : '\u2197'}</span>
+          <span class="media-label">${escapeHtml(link.label || link.url)}</span>
+        </a>`;
+      }).join('') + `</div></div>`;
+  }
+
   panelBody.innerHTML = `
+    ${imageHtml}
     <div class="crumb">${crumb}</div>
     <h2>${escapeHtml(node.name)}</h2>
+    ${relHtml}
     <p class="kind">${KIND[node._depth]}</p>
     ${node.description ? `<p class="desc">${escapeHtml(node.description)}</p>` : `<p class="empty">No description yet.</p>`}
+    ${linksHtml}
     ${hierHtml}
-    ${relHtml}
     ${node.children && node.children.length ? `<p class="hint">Click the circle on the map to ${node.expanded ? 'hide' : 'reveal'} these on the graph.</p>` : ''}
   `;
 

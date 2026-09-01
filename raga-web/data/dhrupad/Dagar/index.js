@@ -8,7 +8,7 @@ import rahimFahimuddinDagar from './rahim-fahimuddin-dagar.js';
 import gundechaBrothers from './gundecha-brothers.js';
 
 export default {
-  name: "Dagarvani (Dagar Bani)",
+  name: "Dagar",
   expanded: false,
   description: "The best-known dhrupad lineage of the 20th century, carried by the Dagar family across many generations, known for long, deeply contemplative alap and a spiritual, restrained aesthetic.",
   children: [ ziaMohiuddinDagar, bahauddinDagar, nancyLesh, ziaFariduddinDagar, rahimFahimuddinDagar, gundechaBrothers ]
