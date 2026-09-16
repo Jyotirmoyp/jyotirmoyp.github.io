@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+    <div class="header-container">
+        <div class="book-title-header" id="bookTitleHeader">Select a Book</div>
+        <div class="icon-links">
+            <a class="icon-link" href="https://jyotirmoyp.github.io/library/" title="Books">
+                <i class="fas fa-book"></i> 
+            </a>
+            <a class="icon-link" href="https://jyotirmoyp.github.io/khanhabados" title="Home">
+                <i class="fas fa-home"></i> 
+            </a>
+
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="left-content">
+            <div class="book-cover-container" id="bookCoverContainer">
+                <img id="bookCover" src="https://via.placeholder.com/250x375?text=Book+Cover" alt="Book Cover" class="book-cover">
+            </div>
+            
+            <div class="book-description-container" id="bookDescriptionContainer">
+                <div id="bookAuthor" class="book-authors"></div>
+                <div id="bookGenres" class="book-genres"></div>
+                <div id="bookRating" class="book-rating"></div>
+                <div id="bookDescription" class="book-description">
+                    <p>Click on any book title from the list to display its details here.</p>
+                </div>
+                <div id="readingStatus" class="reading-status"></div>
+                <div id="bookPublisher" class="book-publisher"></div>
+            </div>
+            
+            <div class="status-list-container hide" id="statusListContainer"></div>
+        </div>
+        
+        <div class="book-slider">
+            <div class="slider-columns">
+                <div class="genre-column">
+                    <div class="genre-list-container">
+                        <ul id="genreList" class="genre-list"></ul>
+                    </div>
+                </div>
+                <div class="book-column">
+                    <div class="book-list-container">
+                        <ul id="bookList" class="book-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; Jyotirmoy Paul <span id="year"></span>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

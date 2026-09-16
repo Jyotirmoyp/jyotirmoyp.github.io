@@ -1,0 +1,543 @@
+/* ============================================================
+   style.css — Library layout & design (unchanged from original)
+   ============================================================ */
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            color: #333;
+            line-height: 1.4;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+        }
+        
+        .book-title-header {
+            text-align: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            flex-grow: 1;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            padding: 0 0.5rem;
+        }
+        
+        .home-link {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        
+        .left-content {
+            flex: 3;
+            display: flex;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .book-cover-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 1rem;
+            min-width: 250px;
+            background-color: white;
+        }
+        
+        .book-cover {
+            width: 250px;
+            height: 375px;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .book-description-container {
+            flex: 2;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            background-color: white;
+        }
+        
+        .book-description-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .book-authors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .author-tag {
+            color: #8e6c88;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .author-tag:hover {
+            text-decoration: bold;
+	    color: #8f8c88;
+        }
+        
+        .book-genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .genre-tag {
+            color: #5fb8b0;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        
+        .genre-tag:hover {
+            text-decoration: underline;
+        }
+        
+        .book-rating {
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stars-container {
+            display: flex;
+            position: relative;
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+        
+        .stars-filled {
+            position: absolute;
+            display: flex;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #ffc107;
+        }
+        
+        .book-description {
+            margin-bottom: 1rem;
+            color: #555;
+            font-size: 0.85rem;
+        }
+        
+        .book-publisher {
+            font-size: 0.75rem;
+            color: #777;
+            margin-top: auto;
+        }
+        
+        .status-list-container {
+            flex: 3;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: white;
+        }
+        
+        .book-slider {
+            width: 350px;
+            padding: 1rem;
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background-color: white;
+        }
+        
+        .slider-columns {
+            display: flex;
+            gap: 0.5rem;
+            height: 100%;
+        }
+        
+        .genre-column, .book-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .genre-list-container, .book-list-container {
+            flex: 1;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .genre-list-container::-webkit-scrollbar,
+        .book-list-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .genre-list, .book-list {
+            list-style: none;
+        }
+        
+        .genre-item {
+            padding: 0.25rem 0;
+            cursor: pointer;
+            color: #555;
+            font-size: 0.8rem;
+        }
+        
+        .book-item {
+            padding: 0.25rem 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #555;
+            font-size: 0.8rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .genre-item:hover, .book-item:hover {
+            color: #5fb8b0;
+        }
+        
+        .active-book {
+            font-style: italic;
+            color: #5fb8b0;
+        }
+        
+        .active-genre {
+            font-style: italic;
+            color: #5fb8b0;
+        }
+        
+        .alphabet-index {
+            font-size: 0.65rem;
+            color: #999;
+            margin-right: 0.5rem;
+            width: 0.8rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.7rem;
+            color: #777;
+            flex-shrink: 0;
+            background-color: white;
+        }
+        
+        /* Reading status styles */
+        .reading-status {
+            margin-bottom: 1rem;
+        }
+        
+        .status-tag {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            color: #5fb8b0;
+            background-color: #f0f9f8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-tag:hover {
+            background-color: #e0f2f1;
+        }
+        
+        .progress-container {
+            width: 100%;
+            margin-top: 0.3rem;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            color: #777;
+            margin-bottom: 0.1rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background-color: #f0f0f0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #5fb8b0;
+        }
+        
+        /* Status list styles */
+        .status-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 0.8rem;
+        }
+        
+        .status-list-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 0.5rem;
+            padding: 0.2rem 0;
+            font-weight: bold;
+            color: #555;
+            font-size: 0.75rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .status-list-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 0.5rem;
+            padding: 0.2rem 0;
+        }
+        
+        .status-list-item:hover {
+            color: #5fb8b0;
+        }
+        
+        .status-list-genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        
+        .status-list-rating {
+            display: flex;
+            align-items: center;
+        }
+        
+        .small-stars-container {
+            display: flex;
+            position: relative;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        .small-stars-filled {
+            position: absolute;
+            display: flex;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #ffc107;
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        .book-link {
+            color: #555;
+            text-decoration: none;
+        }
+        
+        .book-link:hover {
+            color: #5fb8b0;
+        }
+         .icon-link {
+            color: #aaa; /* Light gray */
+            text-decoration: none;
+            font-size: 1.2em;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+        .icon-link:hover {
+            color: #888; /* Slightly darker gray on hover */
+        }
+        .icon-links {
+            display: flex;
+            align-items: center;
+        }
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        overflow: auto;
+    }
+    
+    .main-content {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .left-content {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+    
+    .book-cover-container {
+        order: 1;
+        padding: 1rem 0;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .book-description-container {
+        order: 2;
+        overflow-y: visible;
+        width: 100%;
+        padding: 0;
+        margin-top: 1rem;
+    }
+    
+    .book-slider {
+        order: 3;
+        height: 300px;
+        width: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+    
+    .book-cover {
+        width: 200px;
+        height: 300px;
+    }
+    
+    .header-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end; /* Align icons to the right */
+        padding: 1rem;
+        position: relative; /* For absolute positioning of title */
+    }
+
+    .icon-links {
+        order: 1; /* Icons come first */
+        margin-left: auto; /* Push to the right */
+    }
+
+    .book-title-header {
+        order: 2; /* Title comes after icons */
+        width: 100%; /* Full width */
+        text-align: left;
+        padding: 0.5rem 0 0 0; /* Space above the title */
+        margin-top: 0.5rem; /* Space between icons and title */
+        font-size: 1.2rem;
+        line-height: 1.4;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    
+    .book-description {
+        width: 100%;
+        max-width: 100%;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+    }
+
+    /* Mobile styles for status list */
+    .status-list-header {
+        display: none;
+    }
+    
+    .status-list-item {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        padding: 0.4rem 0;
+        border-bottom: 1px solid #eee;
+        align-items: center;
+    }
+    
+    .status-list-item > div {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    
+    .status-list-item > div:not(:last-child)::after {
+        content: "•";
+        color: #ccc;
+        margin-left: 0.3rem;
+    }
+    
+    .status-list-genres {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+    
+    .status-list-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    
+    .authors-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+    
+    .authors-list::after {
+        content: "•";
+        color: #ccc;
+        margin-left: 0.3rem;
+    }
+    .book-description h3 {
+        font-size: 1.1rem;
+        margin: 1rem 0 0.5rem 0;
+        color: #444;
+   }
+   .book-description strong {
+       font-weight: 600;
+       color: #333;
+   }
+   .book-description em {
+       font-style: italic;
+   }
+    .book-description ul {
+       padding-left: 1.2rem;
+       margin: 0.5rem 0;
+   }
+   .book-description li {
+       margin-bottom: 0.3rem;
+  }
+}
