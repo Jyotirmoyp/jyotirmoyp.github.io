@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teaching | Jyotirmoy Paul</title>
+    <meta name="description" content="Teaching by Jyotirmoy Paul: workshops on Earth's deep interior and scientific illustration with GMT, and courses in Electrical Resistivity Tomography and Computational Geodynamics.">
+    <meta name="theme-color" content="#F2F5F5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap">
+
+    <link rel="stylesheet" href="../css/site.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-nav" include-html="../nav.html"></header>
+
+    <main id="main">
+
+        <!-- Mantle-convection banner, shared engine in /js/mantle.js -->
+        <section class="page-banner" aria-label="Introduction">
+            <div class="flow-stage">
+                <canvas id="mantle" aria-hidden="true"></canvas>
+                <div class="landing__title">
+                    <div class="landing__inner">
+                        <h1>Teaching</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="flow-legend">
+                <span class="legend" aria-hidden="true">cool <i></i> hot</span>
+                <button type="button" class="flow-toggle" aria-label="Pause animation" title="Pause animation">
+                    <svg class="i-pause" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5v9M9 1.5v9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <svg class="i-play" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5l7.5 4.5L3 10.5z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <nav class="page-subnav" aria-label="On this page">
+            <div class="page-head__links">
+                <a class="chip" href="#deepEarth">Deep Earth Workshop</a>
+                <a class="chip" href="#dsdays">Data Science Day 2026</a>
+                <a class="chip" href="#ert">Electrical Resistivity Tomography</a>
+                <a class="chip" href="#geodynamics">Computational Geodynamics</a>
+            </div>
+        </nav>
+
+        <!-- Workshop: Understanding Earth's Deep Interior -->
+        <section class="block" id="deepEarth" aria-labelledby="h-deepEarth">
+            <div class="block__head"><h2 id="h-deepEarth">Workshop: Understanding Earth's Deep Interior</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="deep_earth.png" alt="Illustration for the Understanding Earth's Deep Interior workshop" loading="lazy"></figure>
+                </div>
+                <p><strong>Goal:</strong> Earth is the only rocky planet in the solar system that exhibits plate tectonics: its outer shell, the lithosphere, is broken into plates that move relative to one another. What drives that motion has long been debated. Modern seismological networks across the globe now let us image Earth's interior, and from these images we can interpret its density structure &#8212; showing how regions of downwelling and upwelling are distributed, potentially pulling and pushing the plates at the surface.</p>
+                <p>In this workshop, we investigate how to numerically calculate surface motion from density anomalies obtained from seismic measurements, integrating Earth's interior dynamics with GPS measurements.</p>
+                <p><a href="https://jyotirmoyp.github.io/teaching/workshop/DeepEarth/index.html" target="_blank" rel="noopener">More details about the workshop</a></p>
+            </div>
+        </section>
+
+        <!-- Workshop: Data Science Day 2026 (GMT) -->
+        <section class="block" id="dsdays" aria-labelledby="h-dsdays">
+            <div class="block__head"><h2 id="h-dsdays">Scientific Illustrations with Generic Mapping Tools (GMT): DS Days 2026</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://www.ub.uio.no/english/courses-events/events/dsc/dsdays/2026/colourbox-guy-1000-667.jpg" alt="Data Science Day 2026 illustration" loading="lazy"></figure>
+                </div>
+                <p><strong>Course description:</strong> Basic handling of spatial data, including netCDF and other data formats; plotting data on a map with political borders, coastlines, rivers and slope maps; and customizing regions, geographic projections, ticks, labels, and geographic grids and frames for a figure.</p>
+                <p><strong>Target audience:</strong> Master's students, PhD candidates, and researchers in Earth sciences or any field working with spatial data.</p>
+                <p><strong>Co-organised with:</strong> Alexander Minakov</p>
+                <p><a href="https://www.ub.uio.no/english/courses-events/events/dsc/dsdays/2026/13-scientific-illustration-with-gmt-20260107" target="_blank" rel="noopener">More details at the UiO website</a></p>
+            </div>
+        </section>
+
+        <!-- Regular class: Electrical Resistivity Tomography -->
+        <section class="block" id="ert" aria-labelledby="h-ert">
+            <div class="block__head"><h2 id="h-ert">Electrical Resistivity Tomography</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://www.pygimli.org/_images/sphx_glr_plot_8-regionWise_002.png" alt="Electrical resistivity tomography inversion example, from pyGIMLi" loading="lazy"></figure>
+                </div>
+                <p><strong>Syllabus:</strong> Introduction to electrical methods, electrical arrays and survey techniques; electrical sounding and profiling; inversion of electrical data using pyGIMLi; constructing and interpreting ERT.</p>
+                <p><strong>Course level:</strong> Master's, as part of Near Surface Geophysics (GEO4120).<br>Department of Geosciences, University of Oslo.</p>
+                <p><a href="https://github.com/Jyotirmoyp/GEO4120_ERT_2025" target="_blank" rel="noopener">Course material on GitHub</a></p>
+            </div>
+        </section>
+
+        <!-- Regular class: Computational Geodynamics -->
+        <section class="block" id="geodynamics" aria-labelledby="h-geodynamics">
+            <div class="block__head"><h2 id="h-geodynamics">Computational Geodynamics</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://www.generic-mapping-tools.org/_static/gmt-logo.png" alt="Generic Mapping Tools logo" loading="lazy"></figure>
+                </div>
+                <p><strong>Syllabus:</strong> Introduction to scientific modelling; governing principles of mantle convection models; geophysical quantities; solving differential equations using the finite-difference method; solution of the heat conduction equation in 2D; basic plotting techniques in GMT; plate reconstruction using GPlates.</p>
+                <p><strong>Course level:</strong> M.Tech, as part of a Geophysics course.<br>Centre for Earth Sciences, IISc Bangalore.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <p>&copy; <span id="year">2026</span> Jyotirmoy Paul. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/site.js"></script>
+    <script src="../js/mantle.js"></script>
+    <script src="../js/teaching.js"></script>
+</body>
+
+</html>

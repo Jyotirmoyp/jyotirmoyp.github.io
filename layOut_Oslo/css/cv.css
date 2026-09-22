@@ -1,0 +1,16 @@
+/* ==========================================================================
+   cv.css: styles used only on the CV page. Loads after site.css.
+   ========================================================================== */
+
+.cv-role { font-family: var(--sans); color: var(--muted); }
+.cv-links { font-family: var(--sans); font-size: 0.95rem; }
+.cv-interests { margin-top: 0.75rem; }
+
+/* Plain bullet lists (achievements, synergistic activities): no numbering, just tidy spacing. */
+.cv-list {
+    margin: 0;
+    padding-left: 1.3rem;
+    display: grid;
+    gap: 0.6rem;
+    line-height: 1.55;
+}
