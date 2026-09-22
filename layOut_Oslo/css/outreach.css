@@ -1,0 +1,17 @@
+/* ==========================================================================
+   outreach.css: styles used only on the Outreach page. Loads after site.css.
+   ========================================================================== */
+
+.lang-note {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+/* Bengali text sits a little taller and benefits from more line-height than the Latin body copy. */
+[lang="bn"] { line-height: 1.75; }
+[lang="bn"] .pub__title { line-height: 1.55; }
+
+/* A right-to-left-looking mix of Bengali punctuation and an em dash reads better with a touch more
+   letter-spacing on the heading. */
+#h-bengali, #h-history { letter-spacing: 0.01em; }

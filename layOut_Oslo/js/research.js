@@ -658,6 +658,9 @@
     }
 })();
 
+/* Page banner: same mantle-convection engine as the home page (see /js/mantle.js). */
+MantleFlow(document.getElementById('mantle'), document.querySelector('.flow-toggle'));
+
 /* Only one video plays at a time. */
 (function () {
     var vids = [].slice.call(document.querySelectorAll('video'));

@@ -24,9 +24,24 @@
 
     <main id="main">
 
-        <div class="page-head">
-            <h1>Research</h1>
-        </div>
+        <!-- Mantle-convection banner, shared engine in /js/mantle.js -->
+        <section class="page-banner" aria-label="Introduction">
+            <div class="flow-stage">
+                <canvas id="mantle" aria-hidden="true"></canvas>
+                <div class="landing__title">
+                    <div class="landing__inner">
+                        <h1>Research</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="flow-legend">
+                <span class="legend" aria-hidden="true">cool <i></i> hot</span>
+                <button type="button" class="flow-toggle" aria-label="Pause animation" title="Pause animation">
+                    <svg class="i-pause" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5v9M9 1.5v9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <svg class="i-play" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5l7.5 4.5L3 10.5z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </section>
 
         <!-- A full sub-nav bar, not nested inside .page-head, so it can stay stuck through the whole page
              (position: sticky only holds an element within its own parent's height). -->
@@ -198,6 +213,7 @@
     </footer>
 
     <script src="../js/site.js"></script>
+    <script src="../js/mantle.js"></script>
     <script src="../js/cite.js"></script>
     <script src="../js/research.js"></script>
 </body>
