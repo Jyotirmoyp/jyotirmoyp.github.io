@@ -16,10 +16,10 @@
     var mapWrap = document.querySelector('.map-wrap');
     var mapEl = document.getElementById('map');
     var zoomEl = document.getElementById('net-zoom');
-    var toolsEl = document.getElementById('net-tools');
+    var topicLinks = document.querySelectorAll('.page-head__links a[data-topic]');
     var hintEl = document.getElementById('net-hint');
     var detailEl = document.getElementById('net-detail');
-    if (!block || !listEl || !netEl || !mapEl || !mapWrap || !zoomEl || !toolsEl || !hintEl || !detailEl) return;
+    if (!block || !listEl || !netEl || !mapEl || !mapWrap || !zoomEl || !hintEl || !detailEl) return;
 
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var SVGNS = 'http://www.w3.org/2000/svg';
@@ -370,8 +370,8 @@
         order.forEach(function (id) {
             people[id].li.classList.toggle('is-dim', !!act && !act[id]);
         });
-        [].forEach.call(toolsEl.children, function (b) {
-            b.setAttribute('aria-pressed', b.dataset.topic === state.topic ? 'true' : 'false');
+        topicLinks.forEach(function (a) {
+            a.setAttribute('aria-current', a.dataset.topic === state.topic ? 'true' : 'false');
         });
         highlightGlobe();
     }
@@ -590,7 +590,6 @@
         netEl.hidden = v !== 'network';
         listEl.hidden = v !== 'list';
         mapEl.hidden = zoomEl.hidden = v !== 'globe';
-        toolsEl.hidden = false;                                        // the topic filter applies to all three views
         bNet.setAttribute('aria-pressed', String(v === 'network'));
         bList.setAttribute('aria-pressed', String(v === 'list'));
         bGlobe.setAttribute('aria-pressed', String(v === 'globe'));
@@ -604,17 +603,14 @@
     bList.addEventListener('click', function () { view('list'); });
     bGlobe.addEventListener('click', function () { view('globe'); });
 
-    /* ---------------------------------------------------------------- topic dots
-       The topic names themselves are already in the fixed sub-nav above, so this row stays as a
-       compact colour key: small dots, click to filter, name available on hover/for screen readers. */
-    Object.keys(TOPICS).forEach(function (k) {
-        var b = el('button', 'topic-dot');
-        b.type = 'button'; b.dataset.topic = k; b.setAttribute('aria-pressed', 'false');
-        b.title = TOPICS[k].label;
-        b.setAttribute('aria-label', TOPICS[k].label);
-        b.style.setProperty('--dot', TOPICS[k].color);
-        b.addEventListener('click', function () { setState(state.topic === k ? {} : { topic: k }); });
-        toolsEl.appendChild(b);
+    /* ---------------------------------------------------------------- colour the topic links in the fixed sub-nav
+       These already jump to each section; clicking one also marks that topic as selected here, so the
+       colour-matching stays connected if the visitor scrolls back up to the network, list or globe. */
+    topicLinks.forEach(function (a) {
+        var k = a.dataset.topic;
+        if (!TOPICS[k]) return;
+        a.style.setProperty('--dot', TOPICS[k].color);
+        a.addEventListener('click', function () { setState({ topic: k }); });
     });
 
     /* ---------------------------------------------------------------- links from the rest of the page into the network */

@@ -128,19 +128,15 @@
 .block--wide .block__body { max-width: none; }
 
 /* ---------- Collaboration network ---------- */
-.net-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0 0 1rem; }
-.topic-dot {
-    width: 1.15rem;
-    height: 1.15rem;
-    padding: 0;
-    border: 0;
+.topic-link { display: inline-flex; align-items: center; gap: 0.5rem; }
+.topic-link::before {
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
     border-radius: 50%;
     background: var(--dot);
-    box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px transparent;
-    cursor: pointer;
 }
-.topic-dot:hover { box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--muted); }
-.topic-dot[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--ink); }
+.topic-link[aria-current="true"] { border-color: var(--ink); background: #fff; }
 
 .net { position: relative; width: 100%; height: clamp(22rem, 40vw, 34rem); }
 .net svg { display: block; width: 100%; height: 100%; touch-action: pan-y; }
