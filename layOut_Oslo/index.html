@@ -11,338 +11,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/home.css">
 
-    <style>
-        :root {
-            --paper: #F2F5F5;
-            --ink: #15222C;
-            --muted: #56646E;
-            --rule: #CBD5D8;
-            --link: #0B6B70;
-            --serif: "Newsreader", Georgia, "Times New Roman", serif;
-            --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            --wrap: 70rem;
-            --gutter: clamp(1.25rem, 4vw, 2rem);
-            --radius: 3px;
-        }
-
-        *, *::before, *::after { box-sizing: border-box; }
-
-        html {
-            -webkit-text-size-adjust: 100%;
-            scroll-padding-top: 4.5rem;
-        }
-
-        body {
-            margin: 0;
-            background: var(--paper);
-            color: var(--ink);
-            font-family: var(--serif);
-            font-optical-sizing: auto;
-            font-size: 1.125rem;
-            line-height: 1.6;
-        }
-
-        a {
-            color: var(--link);
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-decoration-color: color-mix(in srgb, var(--link) 45%, transparent);
-            text-underline-offset: 0.2em;
-            overflow-wrap: anywhere;
-        }
-        a:hover { text-decoration-thickness: 2px; text-decoration-color: currentColor; }
-
-        a:focus-visible, button:focus-visible {
-            outline: 2px solid var(--link);
-            outline-offset: 2px;
-            border-radius: 2px;
-        }
-
-        .skip-link {
-            position: absolute;
-            left: 1rem;
-            top: -4rem;
-            z-index: 200;
-            padding: 0.6rem 1rem;
-            background: var(--ink);
-            color: var(--paper);
-            font: 500 0.95rem var(--sans);
-            text-decoration: none;
-        }
-        .skip-link:focus { top: 1rem; }
-
-        /* ---------- Navigation host (content comes from nav.html) ---------- */
-        #site-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            min-height: 3.5rem;
-            background: var(--paper);
-        }
-
-        /* ---------- Hero ---------- */
-        .hero {
-            max-width: var(--wrap);
-            margin: 0 auto;
-            padding: clamp(2.5rem, 7vw, 5.5rem) var(--gutter) clamp(2.5rem, 5vw, 4rem);
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(15rem, 21rem);
-            grid-template-areas:
-                "name photo"
-                "bio  photo";
-            column-gap: clamp(2rem, 6vw, 6rem);
-            row-gap: 2rem;
-            align-items: start;
-        }
-        .hero__name { grid-area: name; }
-        .hero__bio  { grid-area: bio; }
-
-        h1 {
-            margin: 0;
-            font-weight: 500;
-            font-size: clamp(2.9rem, 8vw, 5.5rem);
-            line-height: 1;
-            letter-spacing: -0.03em;
-        }
-        h1 span { display: block; }
-
-        .role {
-            max-width: 30rem;
-            margin: 1.5rem 0 0;
-            font-family: var(--sans);
-            font-size: 1.05rem;
-            line-height: 1.5;
-            color: var(--muted);
-        }
-
-        .lead {
-            max-width: 36rem;
-            margin: 0;
-            font-size: clamp(1.15rem, 1.5vw, 1.3rem);
-            line-height: 1.6;
-        }
-
-        .contact {
-            margin: 1.75rem 0 0;
-            font-family: var(--sans);
-            font-size: 1rem;
-        }
-
-        .profiles {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.35rem 1.4rem;
-            margin: 0.75rem 0 0;
-            padding: 0;
-            list-style: none;
-            font-family: var(--sans);
-            font-size: 0.95rem;
-        }
-
-        /* ---------- Portrait slideshow ---------- */
-        .portrait {
-            grid-area: photo;
-            justify-self: end;
-            width: 100%;
-            max-width: 21rem;
-            margin: 0;
-        }
-        .slides {
-            position: relative;
-            aspect-ratio: 4 / 5;
-            overflow: hidden;
-            background: var(--rule);
-            border-radius: 2px;
-        }
-        .slide {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 50% 25%;
-            opacity: 0;
-            transition: opacity 0.9s ease;
-        }
-        .slide.is-active { opacity: 1; }
-
-        .portrait__dots { display: flex; gap: 0.1rem; margin-top: 0.4rem; }
-        .portrait__dots button {
-            display: grid;
-            place-items: center;
-            width: 1.5rem;
-            height: 1.5rem;
-            padding: 0;
-            border: 0;
-            background: none;
-            cursor: pointer;
-        }
-        .portrait__dots button::before {
-            content: "";
-            width: 0.5rem;
-            height: 0.5rem;
-            border: 1px solid var(--muted);
-            border-radius: 50%;
-        }
-        .portrait__dots button[aria-current="true"]::before { background: var(--ink); border-color: var(--ink); }
-
-        /* ---------- Craton cross-section: the one memorable element ---------- */
-        .strata-fig { margin: 0; }
-        .strata {
-            display: block;
-            width: 100%;
-            height: clamp(12rem, 25vw, 22rem);
-        }
-        .strata .flow path {
-            stroke-dasharray: 0.1 13;
-            animation: drift 5s linear infinite;
-        }
-        @keyframes drift { to { stroke-dashoffset: -13; } }
-
-        .strata-fig figcaption {
-            max-width: var(--wrap);
-            margin: 0.5rem auto 0;
-            padding: 0 var(--gutter);
-            font-family: var(--sans);
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: var(--muted);
-        }
-
-        /* ---------- CV blocks ---------- */
-        .block {
-            max-width: var(--wrap);
-            margin: 0 auto;
-            padding: clamp(2rem, 4vw, 3rem) var(--gutter);
-            display: grid;
-            grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
-            column-gap: clamp(2rem, 6vw, 6rem);
-        }
-        .strata-fig + .block { margin-top: clamp(1rem, 3vw, 2rem); }
-        .block + .block { border-top: 1px solid var(--rule); }
-
-        .block__head {
-            position: sticky;
-            top: 4.75rem;
-            align-self: start;
-        }
-        .block__head h2 {
-            margin: 0;
-            font-weight: 500;
-            font-size: 1.6rem;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-        }
-        .block__head p {
-            margin: 0.6rem 0 0;
-            font-family: var(--sans);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .block__body { max-width: 44rem; }
-
-        .rows { margin: 0; padding: 0; display: grid; gap: 1.5rem; }
-        .row {
-            display: grid;
-            grid-template-columns: 9.5rem minmax(0, 1fr);
-            gap: 0.25rem 1rem;
-            align-items: baseline;
-        }
-        .row dt {
-            font-family: var(--sans);
-            font-size: 0.9rem;
-            color: var(--muted);
-            font-variant-numeric: tabular-nums;
-        }
-        .row dd { margin: 0; }
-        .row__what { font-weight: 500; }
-        .row__where { display: block; color: var(--muted); font-size: 1rem; }
-
-        /* ---------- Publications ---------- */
-        .pubs {
-            margin: 0;
-            padding: 0 0 0 2.4rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        .pubs li::marker {
-            font-family: var(--sans);
-            font-size: 0.9rem;
-            color: var(--muted);
-        }
-        .pubs p { margin: 0; }
-        .pub__title { font-weight: 600; font-size: 1.175rem; line-height: 1.35; }
-        .pub__cite { margin-top: 0.3rem; }
-        .pub__cite .me { font-weight: 600; }
-        .pub__links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.65rem; }
-
-        .chip {
-            padding: 0.5rem 0.75rem;
-            border: 1px solid var(--rule);
-            border-radius: var(--radius);
-            font-family: var(--sans);
-            font-size: 0.8rem;
-            font-weight: 500;
-            line-height: 1;
-            text-decoration: none;
-        }
-        .chip:hover { border-color: var(--link); background: #fff; text-decoration: none; }
-
-        /* ---------- Footer ---------- */
-        .foot {
-            max-width: var(--wrap);
-            margin: clamp(1.5rem, 4vw, 3rem) auto 0;
-            padding: 1.5rem var(--gutter) 2.5rem;
-            border-top: 1px solid var(--rule);
-            font-family: var(--sans);
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
-        .foot p { margin: 0; }
-
-        /* ---------- Small screens ---------- */
-        @media (max-width: 820px) {
-            .hero {
-                grid-template-columns: minmax(0, 1fr);
-                grid-template-areas: "name" "photo" "bio";
-                row-gap: 1.75rem;
-            }
-            .portrait { justify-self: start; max-width: 14rem; }
-            .lead { font-size: 1.15rem; }
-
-            .block { grid-template-columns: minmax(0, 1fr); row-gap: 1.25rem; }
-            .block__head { position: static; }
-            .row { grid-template-columns: minmax(0, 1fr); gap: 0; }
-            .pubs { padding-left: 1.9rem; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .strata .flow path { animation: none; }
-            .slide { transition: none; }
-        }
-    </style>
 </head>
 
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <div id="live" class="sr-only" role="status" aria-live="polite"></div>
 
     <header id="site-nav" include-html="nav.html"></header>
 
     <main id="main">
 
-        <!-- Intro -->
-        <section class="hero" aria-label="About">
-            <div class="hero__name">
-                <h1><span>Jyotirmoy</span> <span>Paul</span></h1>
-                <p class="role">Marie Skłodowska-Curie Fellow at the Centre for Planetary Habitability, University of Oslo</p>
-            </div>
+        <!-- Landing: the simulation is the first thing on the page; name and role sit on a paper-coloured fade at the left -->
+        <section class="landing" aria-label="Introduction">
+            <div class="flow-stage">
+                <canvas id="mantle" aria-hidden="true"></canvas>
 
+                <div class="landing__title">
+                    <div class="landing__inner">
+                        <h1><span>Jyotirmoy</span> <span>Paul</span></h1>
+                        <p class="role">Marie Skłodowska-Curie Fellow at the Centre for Planetary Habitability, University of Oslo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flow-legend">
+                <span class="legend" aria-hidden="true">cool <i></i> hot</span>
+                <button type="button" class="flow-toggle" aria-label="Pause animation" title="Pause animation">
+                    <svg class="i-pause" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5v9M9 1.5v9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <svg class="i-play" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5l7.5 4.5L3 10.5z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="hero" aria-label="About">
             <figure class="portrait">
                 <div class="slides">
-                    <img class="slide is-active" src="dp.jpg" alt="Portrait of Jyotirmoy Paul">
-                    <img class="slide" src="coor.jpg" alt="Jyotirmoy Paul, photo 2" loading="lazy">
+                    <img class="slide is-active" src="dp.jpg" alt="Portrait of Jyotirmoy Paul" style="object-position: 6% 50%">
+                    <img class="slide" src="dp_2.jpg" alt="Jyotirmoy Paul, photo 2" loading="lazy">
                     <img class="slide" src="iisc_l.jpg" alt="Jyotirmoy Paul, photo 3" loading="lazy">
                 </div>
                 <div class="portrait__dots" role="group" aria-label="Choose photo"></div>
@@ -364,93 +72,56 @@
             </div>
         </section>
 
-        <!-- Schematic craton: cold lithospheric keel in the convecting mantle -->
-        <figure class="strata-fig">
-            <svg class="strata" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
-                <defs>
-                    <linearGradient id="mantle" gradientUnits="userSpaceOnUse" x1="0" y1="90" x2="0" y2="300">
-                        <stop offset="0" stop-color="#E4BE78"/>
-                        <stop offset="0.45" stop-color="#D98B45"/>
-                        <stop offset="1" stop-color="#9C3B2E"/>
-                    </linearGradient>
-                    <linearGradient id="lithosphere" gradientUnits="userSpaceOnUse" x1="0" y1="30" x2="0" y2="250">
-                        <stop offset="0" stop-color="#3A6377"/>
-                        <stop offset="1" stop-color="#1B3547"/>
-                    </linearGradient>
-                    <linearGradient id="haze" gradientUnits="userSpaceOnUse" x1="0" y1="256" x2="0" y2="300">
-                        <stop offset="0" stop-color="#F2F5F5" stop-opacity="0"/>
-                        <stop offset="1" stop-color="#F2F5F5" stop-opacity="1"/>
-                    </linearGradient>
-                </defs>
+        <!-- Career. The two lists are the single source of truth: the script builds the timeline from their data-* attributes.
+             data-from / data-to are decimal years (year-only entries span the whole year; "now" = today). -->
+        <section class="block" id="career" aria-labelledby="h-career">
+            <div class="block__head"><h2 id="h-career">Career</h2></div>
+            <div class="block__body" id="career-body">
+                <div class="career-list">
+                    <h3 class="subhead">Appointments</h3>
+                    <dl class="rows" data-kind="job">
+                        <div class="row" data-from="2024" data-to="now" data-label="MSCA Fellow">
+                            <dt>2024 – Present</dt>
+                            <dd>
+                                <a class="row__what" href="https://www.mn.uio.no/geo/english/people/aca/phab/jyotirmp/" target="_blank" rel="noopener">Marie Skłodowska-Curie Fellow</a>
+                                <span class="row__where">Centre for Planetary Habitability, University of Oslo</span>
+                            </dd>
+                        </div>
+                        <div class="row" data-from="2021.9" data-to="2024.1" data-label="Postdoc">
+                            <dt>2021 – 2024</dt>
+                            <dd>
+                                <a class="row__what" href="https://www.bgi.uni-bayreuth.de/?page=4&amp;lng=en&amp;mode=s&amp;id=374" target="_blank" rel="noopener">Post-doctoral Researcher</a>
+                                <span class="row__where">Bavarian Research Institute of Experimental Geochemistry and Geophysics (BGI), University of Bayreuth</span>
+                            </dd>
+                        </div>
+                        <div class="row" data-from="2021.7" data-to="2021.9" data-label="RA">
+                            <dt>July – October 2021</dt>
+                            <dd>
+                                <span class="row__what">Research Associate</span>
+                                <span class="row__where">IISc, Bangalore</span>
+                            </dd>
+                        </div>
+                    </dl>
 
-                <!-- convecting mantle -->
-                <rect y="20" width="1200" height="280" fill="url(#mantle)"/>
-                <!-- lithosphere with a thick cratonic keel -->
-                <path fill="url(#lithosphere)" d="M0 20H1200V96C1110 98 990 102 860 110C838 152 806 210 744 232C692 250 616 250 566 236C506 218 474 164 452 118C400 102 200 100 0 100Z"/>
-                <!-- crust -->
-                <rect y="20" width="1200" height="14" fill="#8FB0B3"/>
-                <!-- mantle flow: down beside the keel, across beneath it, up on the far side -->
-                <g class="flow" fill="none" stroke="#FFF6E5" stroke-opacity="0.85" stroke-width="3.2" stroke-linecap="round">
-                    <path d="M60 132C230 138 350 196 452 262"/>
-                    <path d="M130 216C320 222 440 274 650 276C830 278 950 234 1110 210"/>
-                    <path d="M920 268C1000 226 1070 160 1170 134"/>
-                </g>
-                <rect y="256" width="1200" height="44" fill="url(#haze)"/>
-            </svg>
-            <figcaption>Schematic of a craton: a thick, cold lithospheric keel sitting in the convecting mantle. Not to scale.</figcaption>
-        </figure>
-
-        <!-- Appointments -->
-        <section class="block" aria-labelledby="h-appointments">
-            <div class="block__head"><h2 id="h-appointments">Appointments</h2></div>
-            <div class="block__body">
-                <dl class="rows">
-                    <div class="row">
-                        <dt>2024 – Present</dt>
-                        <dd>
-                            <a class="row__what" href="https://www.mn.uio.no/geo/english/people/aca/phab/jyotirmp/" target="_blank" rel="noopener">Marie Skłodowska-Curie Fellow</a>
-                            <span class="row__where">Centre for Planetary Habitability, University of Oslo</span>
-                        </dd>
-                    </div>
-                    <div class="row">
-                        <dt>2021 – 2024</dt>
-                        <dd>
-                            <a class="row__what" href="https://www.bgi.uni-bayreuth.de/?page=4&amp;lng=en&amp;mode=s&amp;id=374" target="_blank" rel="noopener">Post-doctoral Researcher</a>
-                            <span class="row__where">Bavarian Research Institute of Experimental Geochemistry and Geophysics (BGI), University of Bayreuth</span>
-                        </dd>
-                    </div>
-                    <div class="row">
-                        <dt>July – October 2021</dt>
-                        <dd>
-                            <span class="row__what">Research Associate</span>
-                            <span class="row__where">IISc, Bangalore</span>
-                        </dd>
-                    </div>
-                </dl>
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section class="block" aria-labelledby="h-education">
-            <div class="block__head"><h2 id="h-education">Education</h2></div>
-            <div class="block__body">
-                <dl class="rows">
-                    <div class="row">
-                        <dt>2015 – 2021</dt>
-                        <dd>
-                            <span class="row__what">PhD, IISc, Bangalore</span>
-                            <span class="row__where"><a href="https://shodhganga.inflibnet.ac.in/handle/10603/426053" target="_blank" rel="noopener">PhD thesis</a>. Supervisor: <a href="https://ceas.iisc.ac.in/~aghosh/index.html" target="_blank" rel="noopener">Prof. Attreyee Ghosh</a></span>
-                        </dd>
-                    </div>
-                    <div class="row">
-                        <dt>2015</dt>
-                        <dd><span class="row__what">M.Sc, Applied Geology</span> <span class="row__where">Jadavpur University</span></dd>
-                    </div>
-                    <div class="row">
-                        <dt>2013</dt>
-                        <dd><span class="row__what">B.Sc, Geology</span> <span class="row__where">Jadavpur University</span></dd>
-                    </div>
-                </dl>
+                    <h3 class="subhead">Education</h3>
+                    <dl class="rows" data-kind="edu">
+                        <div class="row" data-from="2015.6" data-to="2021.6" data-label="PhD">
+                            <dt>2015 – 2021</dt>
+                            <dd>
+                                <span class="row__what">PhD, IISc, Bangalore</span>
+                                <span class="row__where"><a href="https://shodhganga.inflibnet.ac.in/handle/10603/426053" target="_blank" rel="noopener">PhD thesis</a>. Supervisor: <a href="https://ceas.iisc.ac.in/~aghosh/index.html" target="_blank" rel="noopener">Prof. Attreyee Ghosh</a></span>
+                            </dd>
+                        </div>
+                        <div class="row" data-from="2013.6" data-to="2015.6" data-label="M.Sc">
+                            <dt>2015</dt>
+                            <dd><span class="row__what">M.Sc, Applied Geology</span> <span class="row__where">Jadavpur University</span></dd>
+                        </div>
+                        <div class="row" data-from="2010.6" data-to="2013.6" data-label="B.Sc">
+                            <dt>2013</dt>
+                            <dd><span class="row__what">B.Sc, Geology</span> <span class="row__where">Jadavpur University</span></dd>
+                        </div>
+                    </dl>
+                </div>
             </div>
         </section>
 
@@ -462,7 +133,7 @@
             </div>
             <div class="block__body">
                 <ol class="pubs" reversed>
-                    <li>
+                    <li value="8" data-year="2025" data-topics="cratons rheology">
                         <p class="pub__title">Hydration weakening and destruction of the North China Craton</p>
                         <p class="pub__cite"><span class="me">J. Paul</span>, A. Spang, A. Piccolo (2025). <em>Tectonophysics</em>, 908, 230756.</p>
                         <p class="pub__links">
@@ -470,21 +141,21 @@
                             <a class="chip" href="https://blogs.egu.eu/divisions/gd/2025/11/12/destruction-of-the-north-china-craton-and-its-global-impact/" target="_blank" rel="noopener">EGU Geodynamics blog</a>
                         </p>
                     </li>
-                    <li>
+                    <li value="7" data-year="2024" data-topics="convection rheology">
                         <p class="pub__title">Effect of bridgmanite-ferropericlase grain size evolution on Earth's average mantle viscosity: Implications for mantle convection in early and present-day Earth</p>
                         <p class="pub__cite"><span class="me">J. Paul</span>, G. J. Golabek, A. B. Rozel, P. J. Tackley, T. Katsura and H. Fei (2024). <em>Progress in Earth and Planetary Sciences</em>, 11 (64).</p>
                         <p class="pub__links">
                             <a class="chip" href="https://doi.org/10.1186/s40645-024-00658-3" target="_blank" rel="noopener">DOI</a>
                         </p>
                     </li>
-                    <li>
+                    <li value="6" data-year="2023" data-topics="cratons convection">
                         <p class="pub__title">Convective self-compression of cratons and the stabilization of old lithosphere</p>
                         <p class="pub__cite"><span class="me">J. Paul</span>, C.P. Conrad, T.W. Becker, A. Ghosh (2023). <em>Geophysical Research Letters</em>, 50, e2022GL101842.</p>
                         <p class="pub__links">
                             <a class="chip" href="https://doi.org/10.1029/2022GL101842" target="_blank" rel="noopener">DOI</a>
                         </p>
                     </li>
-                    <li>
+                    <li value="5" data-year="2022" data-topics="cratons convection">
                         <p class="pub__title">Could the Reunion plume have thinned the Indian craton?</p>
                         <p class="pub__cite"><span class="me">J. Paul</span>, A. Ghosh (2022). <em>Geology</em>, 50(3): 346-350.</p>
                         <p class="pub__links">
@@ -493,7 +164,7 @@
                             <a class="chip" href="https://blogs.egu.eu/divisions/gd/2022/03/30/journey-of-the-indian-plate/" target="_blank" rel="noopener">EGU Geodynamics blog</a>
                         </p>
                     </li>
-                    <li>
+                    <li value="4" data-year="2020" data-topics="cratons convection">
                         <p class="pub__title">Evolution of cratons through the ages: A time-dependent study</p>
                         <p class="pub__cite"><span class="me">J. Paul</span>, A. Ghosh (2020). <em>Earth and Planetary Science Letters</em>, 531, 115962.</p>
                         <p class="pub__links">
@@ -501,14 +172,14 @@
                             <a class="chip" href="https://eos.org/features/cratons-why-are-you-still-here?/" target="_blank" rel="noopener">AGU Eos</a>
                         </p>
                     </li>
-                    <li>
+                    <li value="3" data-year="2019" data-topics="geology">
                         <p class="pub__title">Burrow morphology of the ocypodid crab <em>Ocypode ceratophthalma</em> at Chandipur Coast, Eastern India and its implications</p>
                         <p class="pub__cite"><span class="me">J. Paul</span>, S. Mondal, R. Koyal, D. Sarkar (2019). <em>Current Science</em>.</p>
                         <p class="pub__links">
                             <a class="chip" href="https://www.jstor.org/stable/27138320" target="_blank" rel="noopener">Online version</a>
                         </p>
                     </li>
-                    <li>
+                    <li value="2" data-year="2019" data-topics="cratons convection">
                         <p class="pub__title">Traction and strain-rate at the base of the lithosphere: An insight into cratonic survival</p>
                         <p class="pub__cite"><span class="me">J. Paul</span>, A. Ghosh, C.P. Conrad (2019). <em>Geophysical Journal International</em>, 217(2): 1024-1039.</p>
                         <p class="pub__links">
@@ -516,7 +187,7 @@
                             <a class="chip" href="https://doi.org/10.1093/gji/ggz491" target="_blank" rel="noopener">Erratum</a>
                         </p>
                     </li>
-                    <li>
+                    <li value="1" data-year="2017" data-topics="geology">
                         <p class="pub__title">Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight into the ore-forming process</p>
                         <p class="pub__cite">A.S. Baidya, <span class="me">J. Paul</span>, D.C. Pal, and D. Upadhyay (2017). <em>Ore Geology Reviews</em>, 80: 1092-1110.</p>
                         <p class="pub__links">
@@ -532,71 +203,8 @@
         <p>&copy; <span id="year">2026</span> Jyotirmoy Paul. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Load the shared navigation, then mark the link for the current page.
-        (function () {
-            var host = document.querySelector('[include-html]');
-            if (!host) return;
-
-            function clean(url) {
-                var a = document.createElement('a');
-                a.href = url;
-                return (a.origin + a.pathname).replace(/index\.html$/, '').replace(/\/$/, '');
-            }
-
-            fetch(host.getAttribute('include-html'))
-                .then(function (r) { if (!r.ok) throw new Error('nav not found'); return r.text(); })
-                .then(function (html) {
-                    host.innerHTML = html;
-                    var here = clean(location.href);
-                    host.querySelectorAll('a[href]').forEach(function (a) {
-                        if (clean(a.href) === here) a.setAttribute('aria-current', 'page');
-                    });
-                })
-                .catch(function () {
-                    host.innerHTML = '<a href="https://jyotirmoyp.github.io" style="display:block;padding:1rem 2rem;font:600 1rem system-ui,sans-serif">Jyotirmoy Paul</a>';
-                });
-        })();
-
-        // Portrait slideshow: slow crossfade, dots to choose, pauses on hover/focus, off for reduced motion.
-        (function () {
-            var fig = document.querySelector('.portrait');
-            var slides = [].slice.call(fig.querySelectorAll('.slide'));
-            var wrap = fig.querySelector('.portrait__dots');
-            if (slides.length < 2) { wrap.hidden = true; return; }
-
-            var current = 0, timer = null;
-            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-            var dots = slides.map(function (_, n) {
-                var b = document.createElement('button');
-                b.type = 'button';
-                b.setAttribute('aria-label', 'Show photo ' + (n + 1) + ' of ' + slides.length);
-                b.addEventListener('click', function () { show(n); });
-                wrap.appendChild(b);
-                return b;
-            });
-
-            function show(n) {
-                current = n;
-                slides.forEach(function (s, k) {
-                    s.classList.toggle('is-active', k === n);
-                    s.setAttribute('aria-hidden', k === n ? 'false' : 'true');
-                });
-                dots.forEach(function (d, k) { d.setAttribute('aria-current', k === n ? 'true' : 'false'); });
-            }
-            function start() { if (!reduce.matches && !timer) timer = setInterval(function () { show((current + 1) % slides.length); }, 6000); }
-            function stop() { clearInterval(timer); timer = null; }
-
-            ['mouseenter', 'focusin'].forEach(function (e) { fig.addEventListener(e, stop); });
-            ['mouseleave', 'focusout'].forEach(function (e) { fig.addEventListener(e, start); });
-
-            show(0);
-            start();
-        })();
-
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    <script src="js/site.js"></script>
+    <script src="js/home.js"></script>
 </body>
 
 </html>

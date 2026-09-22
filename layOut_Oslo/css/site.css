@@ -1,0 +1,236 @@
+/* ==========================================================================
+   site.css: shared by every page (tokens, base type, layout blocks, controls)
+   Page-specific styles live in their own file, e.g. home.css.
+   ========================================================================== */
+
+:root {
+    --paper: #F2F5F5;
+    --ink: #15222C;
+    --muted: #56646E;
+    --rule: #CBD5D8;
+    --link: #0B6B70;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --wrap: 70rem;
+    --gutter: clamp(1.25rem, 4vw, 2rem);
+    --radius: 3px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 4.5rem;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, var(--link) 45%, transparent);
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+}
+a:hover { text-decoration-thickness: 2px; text-decoration-color: currentColor; }
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 200;
+    padding: 0.6rem 1rem;
+    background: var(--ink);
+    color: var(--paper);
+    font: 500 0.95rem var(--sans);
+    text-decoration: none;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Navigation host (content comes from nav.html) ---------- */
+#site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    min-height: 3.5rem;
+    background: var(--paper);
+}
+
+/* ---------- CV blocks ---------- */
+.block {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter);
+    display: grid;
+    grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
+    column-gap: clamp(2rem, 6vw, 6rem);
+}
+.block + .block { border-top: 1px solid var(--rule); }
+
+.block__head {
+    position: sticky;
+    top: 4.75rem;
+    align-self: start;
+}
+.block__head h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+.block__head p {
+    margin: 0.6rem 0 0;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.block__body { max-width: 44rem; }
+
+.rows { margin: 0; padding: 0; display: grid; gap: 1.5rem; }
+.row {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: 0.25rem 1rem;
+    align-items: baseline;
+}
+.row dt {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+.row dd { margin: 0; }
+.row__what { font-weight: 500; }
+.row__where { display: block; color: var(--muted); font-size: 1rem; }
+
+.chip {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+}
+.chip:hover { border-color: var(--link); background: #fff; text-decoration: none; }
+
+/* ---------- Footer ---------- */
+.foot {
+    max-width: var(--wrap);
+    margin: clamp(1.5rem, 4vw, 3rem) auto 0;
+    padding: 1.5rem var(--gutter) 2.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+.foot p { margin: 0; }
+
+/* ---------- Shared small controls ---------- */
+[hidden] { display: none !important; }
+.sr-only {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+button.chip { cursor: pointer; background: transparent; color: var(--link); }
+button.chip:hover { border-color: var(--link); background: #fff; }
+button.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* ---------- Two-option view switch (e.g. Timeline / List) ---------- */
+.viewtoggle {
+    display: inline-flex;
+    margin-top: 0.9rem;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.viewtoggle button {
+    padding: 0.55rem 0.85rem;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1;
+    cursor: pointer;
+}
+.viewtoggle button + button { border-left: 1px solid var(--rule); }
+.viewtoggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* ---------- Page title (inner pages) ---------- */
+.page-head {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: clamp(2.25rem, 5vw, 4rem) var(--gutter) clamp(1.5rem, 3vw, 2.25rem);
+}
+.page-head h1 {
+    margin: 0;
+    font-weight: 500;
+    font-size: clamp(2.6rem, 6.5vw, 4.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+}
+.page-subnav {
+    position: sticky;
+    top: 3.5rem;                    /* sits right below the site nav, which is the same height */
+    z-index: 90;
+    margin-top: 1.5rem;
+    background: var(--paper);
+    border-block: 1px solid var(--rule);
+}
+.page-head__links {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0.75rem var(--gutter);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* ---------- Publications ---------- */
+.pubs {
+    margin: 0;
+    padding: 0 0 0 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.pubs li::marker {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+.pubs p { margin: 0; }
+.pub__title { font-weight: 600; font-size: 1.175rem; line-height: 1.35; }
+.pub__cite { margin-top: 0.3rem; }
+.pub__cite .me { font-weight: 600; }
+.pub__links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.65rem; }
+
+
+/* ---------- Small screens ---------- */
+@media (max-width: 820px) {
+    .block { grid-template-columns: minmax(0, 1fr); row-gap: 1.25rem; }
+    .block__head { position: static; }
+    .row { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .pubs { padding-left: 1.9rem; }
+}
