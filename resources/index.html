@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resources | Jyotirmoy Paul</title>
+    <meta name="description" content="Resources from Jyotirmoy Paul: visualization and database tools (SubMachine, GPlates, ParaView, GMT, Atlas of the Underworld) and open-source mantle convection codes (CitcomS, LaMEM, ASPECT, Underworld).">
+    <meta name="theme-color" content="#F2F5F5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap">
+
+    <link rel="stylesheet" href="../css/site.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-nav" include-html="../nav.html"></header>
+
+    <main id="main">
+
+        <!-- Mantle-convection banner, shared engine in /js/mantle.js -->
+        <section class="page-banner" aria-label="Introduction">
+            <div class="flow-stage">
+                <canvas id="mantle" aria-hidden="true"></canvas>
+                <div class="landing__title">
+                    <div class="landing__inner">
+                        <h1>Resources</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="flow-legend">
+                <span class="legend" aria-hidden="true">cool <i></i> hot</span>
+                <button type="button" class="flow-toggle" aria-label="Pause animation" title="Pause animation">
+                    <svg class="i-pause" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5v9M9 1.5v9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <svg class="i-play" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5l7.5 4.5L3 10.5z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <nav class="page-subnav" aria-label="On this page">
+            <div class="page-head__links">
+                <a class="chip" href="#submachine">SubMachine</a>
+                <a class="chip" href="#gplates">GPlates</a>
+                <a class="chip" href="#paraview">ParaView</a>
+                <a class="chip" href="#gmt">GMT</a>
+                <a class="chip" href="#atlas">Atlas of the Underworld</a>
+                <a class="chip" href="#citcoms">CitcomS</a>
+                <a class="chip" href="#lamem">LaMEM</a>
+                <a class="chip" href="#aspect">ASPECT</a>
+                <a class="chip" href="#underworld">Underworld</a>
+            </div>
+        </nav>
+
+        <!-- SubMachine -->
+        <section class="block" id="submachine" aria-labelledby="h-submachine">
+            <div class="block__head"><h2 id="h-submachine">SubMachine</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://users.earth.ox.ac.uk/~smachine/cgi/images/submachine_logo.png" alt="SubMachine logo" loading="lazy"></figure>
+                </div>
+                <p><a href="https://users.earth.ox.ac.uk/~smachine/cgi/index.php" target="_blank" rel="noopener">SubMachine</a> is a collection of web-based tools for the interactive visualisation, analysis, and quantitative comparison of global-scale, volumetric (3D) data sets of the subsurface, with supporting tools for interacting with other, complementary models and data sets.</p>
+                <p>This visualisation tool is self-explanatory and well instructed on their website.</p>
+            </div>
+        </section>
+
+        <!-- GPlates -->
+        <section class="block" id="gplates" aria-labelledby="h-gplates">
+            <div class="block__head"><h2 id="h-gplates">GPlates: desktop software for the interactive visualisation of plate tectonics</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="gplates_reconstruction.jpg" alt="GPlates plate reconstruction" loading="lazy"></figure>
+                    <figure class="media"><img src="gplates_3dmodel.jpg" alt="GPlates 3D model on a spherical globe" loading="lazy"></figure>
+                </div>
+                <p><a href="https://www.gplates.org" target="_blank" rel="noopener">GPlates</a> offers a novel combination of interactive plate-tectonic reconstructions, geographic information system (GIS) functionality, and raster data visualisation. GPlates enables both the visualisation and the manipulation of plate-tectonic reconstructions and associated data through geological time.</p>
+                <p>A very well documented instruction to running GPlates can be found <a href="https://www.gplates.org/user-manual/" target="_blank" rel="noopener">here</a>.</p>
+                <p>Primarily the software can be used for tectonic reconstructions, but it's also quite handy for plotting 3D images of Earth in a spherical cell.</p>
+            </div>
+        </section>
+
+        <!-- ParaView -->
+        <section class="block" id="paraview" aria-labelledby="h-paraview">
+            <div class="block__head"><h2 id="h-paraview">ParaView</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="paraview_3d.jpg" alt="ParaView 3D visualization" loading="lazy"></figure>
+                </div>
+                <p><a href="https://www.paraview.org" target="_blank" rel="noopener">ParaView</a> is an open-source, multi-platform data analysis and visualization application. ParaView users can quickly build visualizations to analyze their data using qualitative and quantitative techniques. Data exploration can be done interactively in 3D, or programmatically using ParaView's batch processing capabilities.</p>
+            </div>
+        </section>
+
+        <!-- GMT -->
+        <section class="block" id="gmt" aria-labelledby="h-gmt">
+            <div class="block__head"><h2 id="h-gmt">Generic Mapping Tools: an open-source, code-based geophysical map plotting tool</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="lithospheric-age.png" alt="Map of lithospheric age made with GMT" loading="lazy"></figure>
+                </div>
+                <p><a href="https://www.soest.hawaii.edu/gmt/" target="_blank" rel="noopener">GMT</a> is an open-source, code-based visualisation tool for geophysical data. Updated versions, GMT 5 and 6, are now available.</p>
+                <p>For beginners, it can be difficult to install GMT on their machine. Linux (Ubuntu) is the recommended OS to work in &#8212; I'll update the installation process for GMT soon.</p>
+                <p>I have some basic <a href="https://jyotirmoyp.github.io/resource/gmt/" target="_blank" rel="noopener">GMT resources</a> for students who are new to coding and are getting lost in the huge GMT documentation.</p>
+                <p><a href="https://jyotirmoyp.github.io/resource/gmt/" target="_blank" rel="noopener">Check out some GMT instructions here</a></p>
+            </div>
+        </section>
+
+        <!-- Atlas of the Underworld -->
+        <section class="block" id="atlas" aria-labelledby="h-atlas">
+            <div class="block__head"><h2 id="h-atlas">The Atlas of the Underworld</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://www.atlas-of-the-underworld.org/wp-content/uploads/2020/10/AotU_logo.png" alt="Atlas of the Underworld logo" loading="lazy"></figure>
+                </div>
+                <p><a href="https://www.atlas-of-the-underworld.org/" target="_blank" rel="noopener">The Atlas of the Underworld</a> is the first complete mapping of subducted plates in the Earth's mantle and their geological interpretation.</p>
+                <p>The website covers the structure of Earth's entire mantle and its plate-tectonic evolution over the last 300 million years. Every geological record is under active study by the geological community, and improvements can undoubtedly be made to the geological interpretations, or to the tomographic imaging and interpretation of the slabs. A "post-publication peer review" forum sits below every slab, where you can leave references to newly published information and its implications, or alternative geological interpretations &#8212; please use it for geoscientific debate only.</p>
+            </div>
+        </section>
+
+        <!-- CitcomS -->
+        <section class="block" id="citcoms" aria-labelledby="h-citcoms">
+            <div class="block__head"><h2 id="h-citcoms">CitcomS</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://geodynamics.org/resources/1745/download/cover-small-citcoms.png" alt="CitcomS cover image" loading="lazy"></figure>
+                </div>
+                <p><a href="https://github.com/geodynamics/citcoms" target="_blank" rel="noopener">CitcomS</a> is a finite element code designed to solve thermal convection problems relevant to Earth's mantle, released under the GNU General Public License (see Appendix D, page 97, of the user manual). Written in C, the code runs on a variety of parallel processing computers, including shared- and distributed-memory platforms.</p>
+            </div>
+        </section>
+
+        <!-- LaMEM -->
+        <section class="block" id="lamem" aria-labelledby="h-lamem">
+            <div class="block__head"><h2 id="h-lamem">LaMEM</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://opengraph.githubassets.com/fca1759b01f917a84b8bff61c74b9283bfacfd4beecd79175e7ed7912551d0df/UniMainzGeo/LaMEM" alt="LaMEM GitHub repository preview" loading="lazy"></figure>
+                </div>
+                <p><a href="https://github.com/UniMainzGeo/LaMEM" target="_blank" rel="noopener">LaMEM</a> (Lithosphere and Mantle Evolution Model) is a parallel 3D numerical code used to simulate thermo-mechanical geodynamic processes such as mantle&#8211;lithosphere interaction for rocks with visco-elasto-plastic rheologies. It was developed to better understand geological processes, particularly the dynamics of the crust and lithosphere and their interaction with the mantle.</p>
+                <p>It can also be used to solve geomechanical problems, including (compressible) poroelasticity, and has a gravity solver and an (adjoint) inversion framework. The code uses a marker-in-cell approach with a staggered finite-difference discretization and is built on top of PETSc, so it can run on anything from a laptop to a massively parallel machine.</p>
+            </div>
+        </section>
+
+        <!-- ASPECT -->
+        <section class="block" id="aspect" aria-labelledby="h-aspect">
+            <div class="block__head"><h2 id="h-aspect">ASPECT</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://aspect-documentation.readthedocs.io/en/latest/_images/aspect_logo.png" alt="ASPECT logo" loading="lazy"></figure>
+                </div>
+                <p><a href="https://aspect-documentation.readthedocs.io/en/latest/" target="_blank" rel="noopener">ASPECT</a> is a code for simulating problems in thermal convection. Its primary focus is on processes in the Earth's mantle, though its design is more general than that.</p>
+            </div>
+        </section>
+
+        <!-- Underworld -->
+        <section class="block" id="underworld" aria-labelledby="h-underworld">
+            <div class="block__head"><h2 id="h-underworld">Underworld</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://nbviewer.org/github/underworldcode/underworld2/blob/main/docs/UWGeodynamics/tutorials/images/Tutorial4.png" alt="Underworld tutorial example" loading="lazy"></figure>
+                </div>
+                <p><a href="https://underworld2.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">Underworld</a> is a Python API that provides functionality for modelling geodynamic processes, and is designed to work almost seamlessly across PC, cloud, and HPC infrastructure. The API consists primarily of a set of Python classes from which numerical geodynamics models may be constructed, along with tools for inline analysis and data management. For scalability across multiprocessor platforms, MPI (Message Passing Interface) is leveraged, and all heavy computations are executed within a statically typed layer for performance.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <p>&copy; <span id="year">2026</span> Jyotirmoy Paul. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/site.js"></script>
+    <script src="../js/mantle.js"></script>
+    <script src="../js/resources.js"></script>
+</body>
+
+</html>

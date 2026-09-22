@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page title | Jyotirmoy Paul</title>
+    <meta name="description" content="">
+    <meta name="theme-color" content="#F2F5F5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap">
+
+    <!-- Shared styles. Paths are relative: "../" because this page sits one folder down (cv/index.html, research/index.html).
+         For a page in the site root (like the home page) remove the "../" from the css, js and nav.html paths. -->
+    <link rel="stylesheet" href="../css/site.css">
+    <!-- Styles for this page only, if needed: <link rel="stylesheet" href="../css/cv.css"> -->
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header id="site-nav" include-html="../nav.html"></header>
+
+    <main id="main">
+        <!-- Page title. Optional: quick links to sections on this page, as <a class="chip" href="#id"> inside .page-head__links -->
+        <div class="page-head">
+            <h1>Page title</h1>
+        </div>
+
+        <!-- Reuse this block for each section: label on the left, content on the right -->
+        <section class="block" aria-labelledby="h-example">
+            <div class="block__head"><h2 id="h-example">Section title</h2></div>
+            <div class="block__body">
+                <p>Section content.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <p>&copy; <span id="year">2026</span> Jyotirmoy Paul. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/site.js"></script>
+    <!-- Scripts for this page only, if needed: <script src="../js/cv.js"></script> -->
+</body>
+
+</html>

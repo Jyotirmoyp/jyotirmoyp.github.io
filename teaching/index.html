@@ -3,534 +3,113 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jyotirmoy Paul</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teaching | Jyotirmoy Paul</title>
+    <meta name="description" content="Teaching by Jyotirmoy Paul: workshops on Earth's deep interior and scientific illustration with GMT, and courses in Electrical Resistivity Tomography and Computational Geodynamics.">
+    <meta name="theme-color" content="#F2F5F5">
 
-        .w3-bar .w3-bar-item {
-            padding: 14px 20px;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap">
 
-        .w3-bar .w3-bar-item:hover {
-            background-color: #ddd;
-        }
-
-        .w3-top {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .w3-bar .menu-items {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .content {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .section {
-            margin-bottom: 40px;
-            width: 100%;
-        }
-
-        .w3-container {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .w3-container img,
-        .w3-container video {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .w3-container h2,
-        .w3-container h3,
-        .w3-container h4 {
-            font-weight: 700;
-        }
-
-        .w3-container p {
-            margin: 0;
-            padding: 10px 0;
-        }
-
-        a {
-            color: teal;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .icon-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .row {
-            display: flex;
-            margin-bottom: 20px;
-            justify-content: center;
-            text-align: left;
-        }
-
-        .column-left {
-            flex: 1;
-            max-width: 300px;
-            padding: 10px;
-        }
-
-        .column-right {
-            flex: 2;
-            padding: 10px;
-        }
-
-        .figure {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Sticky Note CSS - Desktop only */
-        .sticky-note {
-            position: fixed;
-            left: 20px;
-            top: 100px; /* Positioned below the main menu */
-            width: 200px;
-            padding: 10px; /* Reduced padding */
-            background-color: #fffae6;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 999; /* Lower z-index than menu */
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .sticky-note h4 {
-            margin: 5px 0; /* Reduced margin */
-            font-size: 16px; /* Slightly smaller font */
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .sticky-note h4:after {
-            content: '▼';
-            font-size: 12px;
-            transition: transform 0.3s;
-        }
-
-        .sticky-note h4.collapsed:after {
-            transform: rotate(-90deg);
-        }
-
-        .sticky-note ul {
-            margin: 5px 0; /* Reduced margin */
-            padding-left: 15px; /* Reduced padding */
-            display: block;
-        }
-
-        .sticky-note ul.collapsed {
-            display: none;
-        }
-
-        .sticky-note a {
-            display: block;
-            padding: 5px 0; /* Reduced padding */
-            color: #0073e6;
-            font-size: 14px; /* Slightly smaller font */
-        }
-
-        .sticky-note a:hover {
-            text-decoration: underline;
-        }
-
-        .sticky-note .closebtn {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s, transform 1s;
-        }
-
-        .fade-in.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Connect Menu */
-        .mobile-connect {
-            display: none;
-            background-color: #fffae6;
-            padding: 10px 15px; /* Reduced padding */
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .mobile-connect.active {
-            display: block;
-        }
-        
-        .connect-toggle {
-            display: none;
-            width: 100%;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        
-        .mobile-connect h4 {
-            margin: 5px 0; /* Reduced margin */
-            font-size: 16px; /* Slightly smaller font */
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .mobile-connect h4:after {
-            content: '▼';
-            font-size: 12px;
-            transition: transform 0.3s;
-        }
-
-        .mobile-connect h4.collapsed:after {
-            transform: rotate(-90deg);
-        }
-        
-        .mobile-connect ul {
-            padding-left: 15px; /* Reduced padding */
-            display: block;
-            margin: 5px 0; /* Reduced margin */
-        }
-
-        .mobile-connect ul.collapsed {
-            display: none;
-        }
-        
-        .mobile-connect li {
-            margin-bottom: 5px; /* Reduced margin */
-        }
-
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
-
-            .w3-bar .menu-items {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .w3-bar .menu-items a {
-                text-align: center;
-                padding: 10px;
-            }
-            
-            /* Hide sticky note on mobile */
-            .sticky-note {
-                display: none;
-            }
-            
-            /* Show connect toggle on mobile */
-            .connect-toggle {
-                display: block;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/site.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Navbar (sit on top) -->
-<div class="w3-top">
-	<div include-html="../nav.html"></div>
-<!--naviation menu ends-->
+    <header id="site-nav" include-html="../nav.html"></header>
+
+    <main id="main">
+
+        <!-- Mantle-convection banner, shared engine in /js/mantle.js -->
+        <section class="page-banner" aria-label="Introduction">
+            <div class="flow-stage">
+                <canvas id="mantle" aria-hidden="true"></canvas>
+                <div class="landing__title">
+                    <div class="landing__inner">
+                        <h1>Teaching</h1>
+                    </div>
+                </div>
             </div>
-        </div>
-        
+            <div class="flow-legend">
+                <span class="legend" aria-hidden="true">cool <i></i> hot</span>
+                <button type="button" class="flow-toggle" aria-label="Pause animation" title="Pause animation">
+                    <svg class="i-pause" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5v9M9 1.5v9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <svg class="i-play" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5l7.5 4.5L3 10.5z" fill="currentColor"/></svg>
+                </button>
+            </div>
+        </section>
 
- <main class="content">
-        <!-- Mobile Connect Toggle Button -->
-        <button class="connect-toggle" onclick="toggleConnectMenu()">List of Important Tools ▼</button>
-        
-        <!-- Mobile Connect Menu -->
-        <div class="mobile-connect" id="mobileConnect">
-            <h4 onclick="toggleSection('mobileVizSection')">Workshop</h4>
-            <ul id="mobileVizSection">
-                <li><a href="#deepEarth">Deep Earth Workshop</a></li>
-                <li><a href="#dsdays">Data Science Day 2026</a></li>
-            </ul>
-            
-            <h4 onclick="toggleSection('mobileMantleSection')">Regular Classes</h4>
-            <ul id="mobileMantleSection" class="collapsed">
-		<li><a href="#ert">Electrical Resistivity Tomography</a></li>
-                <li><a href="#geodynamics">Computational Geodynamics </a></li>
-                                
-            </ul>
-        </div>
+        <nav class="page-subnav" aria-label="On this page">
+            <div class="page-head__links">
+                <a class="chip" href="#deepEarth">Deep Earth Workshop</a>
+                <a class="chip" href="#dsdays">Data Science Day 2026</a>
+                <a class="chip" href="#ert">Electrical Resistivity Tomography</a>
+                <a class="chip" href="#geodynamics">Computational Geodynamics</a>
+            </div>
+        </nav>
 
-        <div class="main-content">
+        <!-- Workshop: Understanding Earth's Deep Interior -->
+        <section class="block" id="deepEarth" aria-labelledby="h-deepEarth">
+            <div class="block__head"><h2 id="h-deepEarth">Workshop: Understanding Earth's Deep Interior</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="deep_earth.png" alt="Illustration for the Understanding Earth's Deep Interior workshop" loading="lazy"></figure>
+                </div>
+                <p><strong>Goal:</strong> Earth is the only rocky planet in the solar system that exhibits plate tectonics: its outer shell, the lithosphere, is broken into plates that move relative to one another. What drives that motion has long been debated. Modern seismological networks across the globe now let us image Earth's interior, and from these images we can interpret its density structure &#8212; showing how regions of downwelling and upwelling are distributed, potentially pulling and pushing the plates at the surface.</p>
+                <p>In this workshop, we investigate how to numerically calculate surface motion from density anomalies obtained from seismic measurements, integrating Earth's interior dynamics with GPS measurements.</p>
+                <p><a href="https://jyotirmoyp.github.io/teaching/workshop/DeepEarth/index.html" target="_blank" rel="noopener">More details about the workshop</a></p>
+            </div>
+        </section>
 
-    <!-- Desktop Sticky Note -->
-    <div id="stickyNote" class="sticky-note">
-        <span class="closebtn" onclick="closeStickyNote()">&times;</span>
-	<br>
-        <h4 onclick="toggleSection('desktopVizSection')">Workshop</h4>
-        <ul id="desktopVizSection">
-                <li><a href="#deepEarth">Deep Earth Workshop</a></li>
-                <li><a href="#dsdays">Data Science Day 2026</a></li>
-        </ul>
-        
-        <h4 onclick="toggleSection('desktopMantleSection')">Regular Classes</h4>
-        <ul id="desktopMantleSection" class="collapsed">
- 		<li><a href="#ert">Electrical Resistivity Tomography</a></li>
-                <li><a href="#geodynamics">Computational Geodynamics</a></li>
-                        </ul>
-    </div>
+        <!-- Workshop: Data Science Day 2026 (GMT) -->
+        <section class="block" id="dsdays" aria-labelledby="h-dsdays">
+            <div class="block__head"><h2 id="h-dsdays">Scientific Illustrations with Generic Mapping Tools (GMT): DS Days 2026</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://www.ub.uio.no/english/courses-events/events/dsc/dsdays/2026/colourbox-guy-1000-667.jpg" alt="Data Science Day 2026 illustration" loading="lazy"></figure>
+                </div>
+                <p><strong>Course description:</strong> Basic handling of spatial data, including netCDF and other data formats; plotting data on a map with political borders, coastlines, rivers and slope maps; and customizing regions, geographic projections, ticks, labels, and geographic grids and frames for a figure.</p>
+                <p><strong>Target audience:</strong> Master's students, PhD candidates, and researchers in Earth sciences or any field working with spatial data.</p>
+                <p><strong>Co-organised with:</strong> Alexander Minakov</p>
+                <p><a href="https://www.ub.uio.no/english/courses-events/events/dsc/dsdays/2026/13-scientific-illustration-with-gmt-20260107" target="_blank" rel="noopener">More details at the UiO website</a></p>
+            </div>
+        </section>
 
-<!--------Deep Earth---------------->
+        <!-- Regular class: Electrical Resistivity Tomography -->
+        <section class="block" id="ert" aria-labelledby="h-ert">
+            <div class="block__head"><h2 id="h-ert">Electrical Resistivity Tomography</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://www.pygimli.org/_images/sphx_glr_plot_8-regionWise_002.png" alt="Electrical resistivity tomography inversion example, from pyGIMLi" loading="lazy"></figure>
+                </div>
+                <p><strong>Syllabus:</strong> Introduction to electrical methods, electrical arrays and survey techniques; electrical sounding and profiling; inversion of electrical data using pyGIMLi; constructing and interpreting ERT.</p>
+                <p><strong>Course level:</strong> Master's, as part of Near Surface Geophysics (GEO4120).<br>Department of Geosciences, University of Oslo.</p>
+                <p><a href="https://github.com/Jyotirmoyp/GEO4120_ERT_2025" target="_blank" rel="noopener">Course material on GitHub</a></p>
+            </div>
+        </section>
 
-<div id="deepEarth"></div>
-  <div class="w3-container">
-          <h4>Workshop Understanding Earth's Deep Interior</h4>
-    <div class="fade-in">
-      <div class="w3-row">
-        <div class="w3-col s4">
-          <img src="deep_earth.png" style="width:80%">
-        </div>
-        <div class="w3-col s8">
-          <p><u> Goal: </u> Earth is the only rocky planet of the solar system that exhibits plate tectonics, which means the top part of the earth, known as lithosphere, is broken into pieces called plate. Plates can relatively move past each. But it has been a long time debate, what drives the plate motion. Using modern seismological network accorss the globe, we can now image the interior of earth. From these images we interpret the density structure of earth, that shows how the regions of downwelling and upwellings are distributed that could potentially pull and pushe the plates to move on surface. In this discussion, we will investigate how we can numerically calculate surface motion using density anomalies obtained from seismic measurements. Thus to integrate Earth's interior dynamics with the GPS measurement. 
-	  <br>
-	  <a href = 'https://jyotirmoyp.github.io/teaching/workshop/DeepEarth/index.html' target="_blank" > [More details about the workshop] </a>
+        <!-- Regular class: Computational Geodynamics -->
+        <section class="block" id="geodynamics" aria-labelledby="h-geodynamics">
+            <div class="block__head"><h2 id="h-geodynamics">Computational Geodynamics</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="https://www.generic-mapping-tools.org/_static/gmt-logo.png" alt="Generic Mapping Tools logo" loading="lazy"></figure>
+                </div>
+                <p><strong>Syllabus:</strong> Introduction to scientific modelling; governing principles of mantle convection models; geophysical quantities; solving differential equations using the finite-difference method; solution of the heat conduction equation in 2D; basic plotting techniques in GMT; plate reconstruction using GPlates.</p>
+                <p><strong>Course level:</strong> M.Tech, as part of a Geophysics course.<br>Centre for Earth Sciences, IISc Bangalore.</p>
+            </div>
+        </section>
+    </main>
 
-          </p>
-         
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!--------DS Days 2026 Earth---------------->
-
-<div id="deepEarth"></div>
-  <div class="w3-container">
-          <h4> Scientific Illustrations with Generic Mapping Tools (GMT): DS Days 2026</h4>
-    <div class="fade-in">
-      <div class="w3-row">
-        <div class="w3-col s4">
-          <img src="https://www.ub.uio.no/english/courses-events/events/dsc/dsdays/2026/colourbox-guy-1000-667.jpg" style="width:80%">
-        </div>
-        <div class="w3-col s8">
-          <p><u> Course description: </u> Workshop covered basic handling of spatial data. Learning about netCDF and other data formats. Plotting data on a map, political borders, coastlines, rivers, slope maps. How to customize regions, geographic projection, ticks, labels, geographic grids and frames for a figure.
-	  <br> 
-	  <u> Target audience: </u> Master students, PhD candidates, and researchers within earth sciences or any field working with spatial data.
-	  <br> 
-	  <u> Co-organised with: </u> Alexander Minakov
-	  <br> 
-	  <a href = 'https://www.ub.uio.no/english/courses-events/events/dsc/dsdays/2026/13-scientific-illustration-with-gmt-20260107' target="_blank" > [More details at UiO Website] </a>
-          </p>
-         
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-<!---------------------- Mantle Convection codes ------------------------->
-
-<!-------- ERT---------------->
-  <div id="ert">
-  <div class="w3-container">
-          <h4> Electrical Resistivity Tomography</h4>
-    <div class="fade-in">
-      <div class="w3-row">
-        <div class="w3-col s4">
-        <img src="https://www.pygimli.org/_images/sphx_glr_plot_8-regionWise_002.png" style="width: 80%"> 
-        </div>
-        <div class="w3-col s8">
-          <p> <u>Syllabus:</u> Introduction to electrical methods, electrical arrays and survey techniques, Electrical sounding and profiling, inversion of electrical data using pyGIMLi, constructing ERT and interpretation
-	  <br>
-	  <u> Course level: </u> Masters (as a part of Near Surface Geophysics, GEO4120)
-	  <br> Department of Geosciences, University of Oslo
-	  <br>
-	  <a href='https://github.com/Jyotirmoyp/GEO4120_ERT_2025' target='_blank'> Course material on github </a>
-
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<!-------- geodynamics I---------------->
-  <div id="geodynamics">
-  <div class="w3-container">
-          <h4> Computational Geodynamics </h4>
-    <div class="fade-in">
-      <div class="w3-row">
-        <div class="w3-col s4">
-        <img src="https://www.generic-mapping-tools.org/_static/gmt-logo.png" style="width: 80%"> 
-        </div>
-        <div class="w3-col s8">
-          <p> <u>Syllabus:</u> Introduction to scientific modelling, governing principles of mantle convection models, Geophysical quantities, solving differential equation using finite distance method, solution of heat conduction equation in 2D, basic plotting techniques in GMT, Plate reconstruction using GPlates
-	  <br>
-	  <u> Course level: </u> M. Tech (as a part of Geophysics course)
-	  <br> Centre for Earth Sciences, IISc, Bangalore
-	  <br>
-
-
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<!-- End page content -->
-<!-------------footer--------->
-    <footer class="w3-container w3-teal w3-center w3-margin-top">
-        <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
+    <footer class="foot">
+        <p>&copy; <span id="year">2026</span> Jyotirmoy Paul. All rights reserved.</p>
     </footer>
 
-    <script>
-        function closeStickyNote() {
-            document.getElementById("stickyNote").style.display = "none";
-        }
-
-        function toggleMenu() {
-            const menuItems = document.querySelector('.menu-items');
-            if (menuItems.style.display === "block") {
-                menuItems.style.display = "none";
-            } else {
-                menuItems.style.display = "block";
-            }
-        }
-        
-        function toggleConnectMenu() {
-            const connectMenu = document.getElementById('mobileConnect');
-            const button = document.querySelector('.connect-toggle');
-            
-            if (connectMenu.classList.contains('active')) {
-                connectMenu.classList.remove('active');
-                button.innerHTML = 'List of Important Tools ▼';
-            } else {
-                connectMenu.classList.add('active');
-                button.innerHTML = 'List of Important Tools ▲';
-            }
-        }
-
-        function toggleSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            const header = section.previousElementSibling;
-            
-            if (section.classList.contains('collapsed')) {
-                section.classList.remove('collapsed');
-                header.classList.remove('collapsed');
-            } else {
-                section.classList.add('collapsed');
-                header.classList.add('collapsed');
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                    }
-                });
-            });
-
-            document.querySelectorAll('.fade-in').forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
-
-
-<script>
-function includeHTML() {
-  const elements = document.querySelectorAll('[include-html]');
-  elements.forEach(el => {
-    const file = el.getAttribute('include-html');
-    if (file) {
-      fetch(file)
-        .then(response => {
-          if (!response.ok) throw new Error("Page not found");
-          return response.text();
-        })
-        .then(data => {
-          el.innerHTML = data;
-          el.removeAttribute("include-html");
-        })
-        .catch(() => {
-          el.innerHTML = "Navbar not found.";
-        });
-    }
-  });
-}
-includeHTML();
-</script>
-
+    <script src="../js/site.js"></script>
+    <script src="../js/mantle.js"></script>
+    <script src="../js/teaching.js"></script>
 </body>
+
 </html>

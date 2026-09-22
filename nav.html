@@ -1,17 +1,140 @@
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:2px;">
-    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
-    <div class="menu-items">
-      <a href="https://jyotirmoyp.github.io" class="w3-bar-item w3-button">Home</a>
-      <a href="https://jyotirmoyp.github.io/cv" class="w3-bar-item w3-button">CV</a>
-      <a href="https://jyotirmoyp.github.io/resource/" class="w3-bar-item w3-button">Resources</a>
-      <a href="https://jyotirmoyp.github.io/research/" class="w3-bar-item w3-button">Research</a>
-      <a href="https://jyotirmoyp.github.io/teaching/" class="w3-bar-item w3-button">Teaching</a>
-      <a href="https://jyotirmoyp.github.io/outreach/" class="w3-bar-item w3-button">Outreach</a>
-      <a href="https://jyotirmoyp.github.io/the-art-space/" 
-         class="w3-bar-item w3-button w3-right w3-black">
-         The Art Space
-      </a>
-    </div>
+<style>
+  .site-nav {
+    --nav-bg: #F2F5F5;
+    --nav-ink: #15222C;
+    --nav-accent: #0B6B70;
+    --nav-rule: #CBD5D8;
+    --nav-radius: 3px;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-rule);
+    font-family: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem;
+    line-height: 1.2;
+    box-sizing: border-box;
+  }
+  .site-nav *, .site-nav *::before, .site-nav *::after { box-sizing: border-box; }
+
+  .site-nav__inner {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 2rem);
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0 1rem;
+  }
+
+  /* The wordmark only appears on small screens, where the bar would otherwise be empty. */
+  .site-nav .site-nav__brand {
+    display: none;
+    color: var(--nav-ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .site-nav .site-nav__toggle {
+    display: none;
+    margin-left: auto;
+    min-height: 2.75rem;
+    padding: 0 0.9rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--nav-ink);
+    background: transparent;
+    border: 1px solid var(--nav-rule);
+    border-radius: var(--nav-radius);
+    cursor: pointer;
+  }
+
+  .site-nav .site-nav__links {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 0.125rem;
+    list-style: none;
+    margin: 0 0 0 -0.75rem;   /* pulls the first label into line with the page's left edge */
+    padding: 0;
+  }
+  .site-nav .site-nav__links li { margin: 0; padding: 0; }
+
+  .site-nav .site-nav__link {
+    display: block;
+    padding: 1.05rem 0.75rem;
+    color: var(--nav-ink);
+    text-decoration: none;
+    box-shadow: inset 0 -2px 0 transparent;
+  }
+  .site-nav .site-nav__link:hover {
+    color: var(--nav-accent);
+    text-decoration: none;
+  }
+  .site-nav .site-nav__link[aria-current="page"] {
+    color: var(--nav-accent);
+    box-shadow: inset 0 -2px 0 var(--nav-accent);
+  }
+
+  .site-nav .site-nav__art { margin-left: auto; }
+  .site-nav .site-nav__art .site-nav__link {
+    padding: 0.5rem 0.95rem;
+    border: 1px solid var(--nav-ink);
+    border-radius: var(--nav-radius);
+    box-shadow: none;
+  }
+  .site-nav .site-nav__art .site-nav__link:hover {
+    background: var(--nav-ink);
+    color: var(--nav-bg);
+  }
+
+  .site-nav a:focus-visible,
+  .site-nav button:focus-visible {
+    outline: 2px solid var(--nav-accent);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 760px) {
+    .site-nav .site-nav__brand { display: block; padding: 1rem 0; }
+    .site-nav .site-nav__toggle { display: block; }
+
+    .site-nav .site-nav__links {
+      display: none;
+      flex: 0 0 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      margin: 0 0 0.75rem;
+    }
+    .site-nav.is-open .site-nav__links { display: flex; }
+
+    .site-nav .site-nav__link {
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--nav-rule);
+      box-shadow: none;
+    }
+    .site-nav .site-nav__link[aria-current="page"] { box-shadow: none; font-weight: 600; }
+
+    .site-nav .site-nav__art { margin: 0.75rem 0 0; }
+    .site-nav .site-nav__art .site-nav__link { text-align: center; padding: 0.8rem 1rem; }
+  }
+</style>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="https://jyotirmoyp.github.io">Jyotirmoy Paul</a>
+
+    <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-links"
+            onclick="var n=this.closest('.site-nav'),o=n.classList.toggle('is-open');this.setAttribute('aria-expanded',o)">Menu</button>
+
+    <ul class="site-nav__links" id="site-nav-links">
+      <li><a class="site-nav__link" href="https://jyotirmoyp.github.io">Home</a></li>
+      <li><a class="site-nav__link" href="https://jyotirmoyp.github.io/cv">CV</a></li>
+      <li><a class="site-nav__link" href="https://jyotirmoyp.github.io/resource/">Resources</a></li>
+      <li><a class="site-nav__link" href="https://jyotirmoyp.github.io/research/">Research</a></li>
+      <li><a class="site-nav__link" href="https://jyotirmoyp.github.io/teaching/">Teaching</a></li>
+      <li><a class="site-nav__link" href="https://jyotirmoyp.github.io/outreach/">Outreach</a></li>
+      <li class="site-nav__art"><a class="site-nav__link" href="https://jyotirmoyp.github.io/the-art-space/">The Art Space</a></li>
+    </ul>
   </div>
-</div>
+</nav>

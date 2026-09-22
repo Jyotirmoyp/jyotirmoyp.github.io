@@ -1,724 +1,221 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Research</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research | Jyotirmoy Paul</title>
+    <meta name="description" content="Research by Jyotirmoy Paul: craton dynamics, grain size dependent rheology, a layered hydrothermal ore complex and mangrove crab ecology, with a map of research collaborations.">
+    <meta name="theme-color" content="#F2F5F5">
 
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap">
 
-    .w3-bar .w3-bar-item {
-      padding: 14px 20px;
-    }
-
-    .w3-bar .w3-bar-item:hover {
-      background-color: #ddd;
-    }
-
-    .w3-top {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    
-    .menu-icon {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .w3-bar .menu-items {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .content {
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .section {
-      margin-bottom: 40px;
-      width: 100%;
-    }
-
-    .w3-container {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
-
-    .w3-container img,
-    .w3-container video {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .w3-container h2,
-    .w3-container h3,
-    .w3-container h4 {
-      font-weight: 700;
-    }
-
-    .w3-container p {
-      margin: 0;
-      padding: 10px 0;
-    }
-
-    a {
-      color: teal;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .icon-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .row {
-      display: flex;
-      margin-bottom: 20px;
-      justify-content: center;
-      text-align: left;
-    }
-
-    .column-left {
-      flex: 1;
-      max-width: 300px;
-      padding: 10px;
-    }
-
-    .column-right {
-      flex: 2;
-      padding: 10px;
-    }
-
-    .figure {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Sticky Note CSS - Desktop only */
-    .sticky-note {
-      position: fixed;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 200px;
-      padding: 15px;
-      background-color: #fffae6;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      z-index: 1000;
-    }
-
-    .sticky-note h4 {
-      margin-top: 0;
-      font-size: 18px;
-    }
-
-    .sticky-note a {
-      display: block;
-      padding: 8px 0;
-      color: #0073e6;
-    }
-
-    .sticky-note a:hover {
-      text-decoration: underline;
-    }
-
-    .sticky-note .closebtn {
-      position: absolute;
-      top: 5px;
-      right: 10px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    /* Mobile Connect Menu */
-    .mobile-connect {
-      display: none;
-      background-color: #f8f8f8;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .mobile-connect.active {
-      display: block;
-    }
-    
-    .connect-toggle {
-      display: none;
-      width: 100%;
-      padding: 10px;
-      background-color: #f0f0f0;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      font-weight: bold;
-      margin-bottom: 20px;
-      border-radius: 4px;
-    }
-    
-    .mobile-connect h4 {
-      margin-top: 0;
-      text-align: center;
-    }
-    
-    .mobile-connect ul {
-      padding-left: 20px;
-    }
-    
-    .mobile-connect li {
-      margin-bottom: 8px;
-    }
-
-    @media (max-width: 768px) {
-      .menu-icon {
-        display: block;
-      }
-
-      .w3-bar .menu-items {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .w3-bar .menu-items a {
-        text-align: center;
-        padding: 10px;
-      }
-      
-      /* Hide sticky note on mobile */
-      .sticky-note {
-        display: none;
-      }
-      
-      /* Show connect toggle on mobile */
-      .connect-toggle {
-        display: block;
-      }
-    }
-
-    .button {
-      background-color: teal;
-      border: none;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-    
-    .button1 {
-      border-radius: 12px;
-    }
-    
-    .key-insights {
-      background-color: #f8f9fa;
-      padding: 15px;
-      border-left: 4px solid #3498db;
-      margin: 20px 0;
-    }
-    
-    .insight-list {
-      padding-left: 20px;
-    }
-    
-    .highlight {
-      font-weight: bold;
-      color: teal;
-    }
-    
-    .subtext {
-      font-size: 0.9em;
-      color: #7f8c8d;
-      margin-top: 30px;
-    }
-    
-    #map {
-      width: 100%;
-      height: 600px;
-    }
-
-    .fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-  </style>
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/research.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="live" class="sr-only" role="status" aria-live="polite"></div>
 
-<div class="w3-top">
-	<div include-html="../nav.html"></div>
-<!--naviation menu ends-->
+    <header id="site-nav" include-html="../nav.html"></header>
+
+    <main id="main">
+
+        <!-- Mantle-convection banner, shared engine in /js/mantle.js -->
+        <section class="page-banner" aria-label="Introduction">
+            <div class="flow-stage">
+                <canvas id="mantle" aria-hidden="true"></canvas>
+                <div class="landing__title">
+                    <div class="landing__inner">
+                        <h1>Research</h1>
+                    </div>
+                </div>
             </div>
-        </div>
-
-<main class="content">
-  <!-- Mobile Connect Toggle Button -->
-  <button class="connect-toggle" onclick="toggleConnectMenu()">Research Topics ▼</button>
-  
-  <!-- Mobile Connect Menu -->
-  <div class="mobile-connect" id="mobileConnect">
-    <h4>Research Topics</h4>
-    <ul>
-      <li><a href="#craton">Craton dynamics</a></li>
-      <li><a href="#grainSize">Grain size dependent Rheology</a></li>
-      <li><a href="#ore">Layered ore complex</a></li>
-      <li><a href="#crab">Crab ecology</a></li>
-    </ul>
-  </div>
-
-  <div class="main-content">
-    <!-- Desktop Sticky Note -->
-    <div id="stickyNote" class="sticky-note">
-      <span class="closebtn" onclick="closeStickyNote()">&times;</span>
-      <h4>Research topics</h4>
-      <div class="icon-list">
-        <ul>
-          <li><a href="#craton">Craton dynamics</a></li>
-          <li><a href="#grainSize">Grain size dependent Rheology</a></li>
-          <li><a href="#ore">Layered ore complex</a></li>
-          <li><a href="#crab">Crab ecology</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!---------------------- Map ------------> 
-    <h2>Research Collaborations</h2>  	
-    <div class="w3-container fade-in">
-      <div id="map"></div>
-    </div>
-
-    <!---------- craton ---------->
-    <div id="craton"></div>
-    <div class="w3-container">
-      <h3>Craton Dynamics</h3>
-      <div class="fade-in">
-        <div class="w3-row">
-          <div class="w3-col fade-in">
-            <p>Understanding the stability of cratons on a tectonically active planet like Earth remains one of the grand challenges in geodynamics. Through the development of numerical models of craton evolution, our research aims to shed light on why some cratons have remained stable for over 3 billion years, while others, like the North China Craton, have undergone complete destruction.</p>
-            <br>
-            <div class="w3-col fade-in" style="text-align: center;">
-              <video width="70%" controls>
-                <source src="Crat_high_visc.mp4" type="video/mp4">
-              </video>
-              <div class="w3-center"><small><i>Paul and Ghosh, 2020, EPSL.</i></small></div>
+            <div class="flow-legend">
+                <span class="legend" aria-hidden="true">cool <i></i> hot</span>
+                <button type="button" class="flow-toggle" aria-label="Pause animation" title="Pause animation">
+                    <svg class="i-pause" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5v9M9 1.5v9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                    <svg class="i-play" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true" focusable="false"><path d="M3 1.5l7.5 4.5L3 10.5z" fill="currentColor"/></svg>
+                </button>
             </div>
-          </div>
-          <div class="w3-col fade-in">
-            <div class="key-insights">
-              <h4>Key Findings</h4>
-              <p>Our findings suggest that <span class="highlight">the combination of viscosity and thickness</span> plays a crucial role in enhancing cratonic strength, shielding them from tectonic recycling. Two key theoretical insights emerge:</p>
-              
-              <ol class="insight-list">
-                <li><span class="highlight">Stress and strain rates exhibit an inverse relationship</span> at the lithosphere's base, reducing deformation beneath thick cratons.</li>
-                <li><span class="highlight">Cratonic thickness and viscosity induce convective self-compression</span>, further reinforcing their resistance to disintegration.</li>
-              </ol>
-              
-              <p>Our research also indicates that cratons require a <span class="highlight">minimum viscosity of 10²³ Pa·s</span> and that the surrounding asthenosphere must have a viscosity <span class="highlight">no lower than 10²⁰ Pa·s</span> to sustain long-term stability.</p>
+        </section>
+
+        <!-- A full sub-nav bar, not nested inside .page-head, so it can stay stuck through the whole page
+             (position: sticky only holds an element within its own parent's height). -->
+        <nav class="page-subnav" aria-label="On this page">
+            <div class="page-head__links">
+                <a class="chip topic-link" href="#craton" data-topic="craton">Craton dynamics</a>
+                <a class="chip topic-link" href="#grainSize" data-topic="grain">Grain size dependent rheology</a>
+                <a class="chip topic-link" href="#ore" data-topic="ore">Layered ore complex</a>
+                <a class="chip topic-link" href="#crab" data-topic="crab">Crab ecology</a>
             </div>
-            
-            <h4>Mechanisms of Destruction</h4>
-            <div class="w3-col fade-in" style="text-align: center;">
-              <video width="70%" controls>
-                <source src="NCC_ref.mp4" type="video/mp4">
-              </video>
-              <div class="w3-center"><small><i>Paul et al., 2025, Tectonophysics.</i></small></div>
+        </nav>
+
+        <!-- Collaborations. The list below is the data for the network and the globe: add a person by adding an <li>
+             (data-id, data-short, coordinates), then list their id in data-people on the papers you wrote together. -->
+        <section class="block block--wide" id="collaborations" aria-labelledby="h-collab">
+            <div class="block__head"><h2 id="h-collab">Research collaborations</h2></div>
+            <div class="block__body">
+                <!-- Everything between here and the list is built by /js/research.js (and stays hidden without JavaScript) -->
+                <div class="net" id="net" hidden></div>
+                <div class="map-wrap">
+                    <div id="map" class="map" data-lat="59.9139" data-lng="10.7528" data-label="My office" hidden></div>
+                    <div class="net-zoom" id="net-zoom" hidden></div>
+                </div>
+                <p class="map__hint" id="net-hint" hidden></p>
+                <div class="net-detail" id="net-detail" aria-live="polite" hidden></div>
+                <ol class="collab" id="collab">
+                    <li data-id="ghosh" data-short="Ghosh" data-lat="12.9716" data-lng="77.5946"><a href="https://ceas.iisc.ac.in/~aghosh/index.html" target="_blank" rel="noopener">Attreyee Ghosh, IISc Bangalore, India</a></li>
+                    <li data-id="conrad" data-short="Conrad" data-lat="59.9111" data-lng="10.7528"><a href="https://www.clintconrad.no/" target="_blank" rel="noopener">Clint Conrad, University of Oslo, Norway</a></li>
+                    <li data-id="spang" data-short="Spang" data-lat="49.9452" data-lng="11.574"><a href="https://scholar.google.com/citations?user=toFHfvQAAAAJ&amp;hl=en" target="_blank" rel="noopener">Arne Spang, University of Bayreuth, Germany</a></li>
+                    <li data-id="piccolo" data-short="Piccolo" data-lat="53.8008" data-lng="-1.5491"><a href="https://scholar.google.com/citations?user=we6q2eUAAAAJ&amp;hl=en/" target="_blank" rel="noopener">Andrea Piccolo, University of Leeds, Leeds, UK</a></li>
+                    <li data-id="tackley" data-short="Tackley" data-lat="47.3769" data-lng="8.5417"><a href="http://jupiter.ethz.ch/~pjt/" target="_blank" rel="noopener">Paul Tackley, ETH Zurich, Switzerland</a></li>
+                    <li data-id="golabek" data-short="Golabek" data-lat="49.9405" data-lng="11.578"><a href="https://www.staff.uni-bayreuth.de/~bt303373/" target="_blank" rel="noopener">Gregor Golabek, University of Bayreuth, Germany</a></li>
+                    <li data-id="becker" data-short="Becker" data-lat="30.2849" data-lng="-97.7341"><a href="http://www-udc.ig.utexas.edu/external/becker/" target="_blank" rel="noopener">Thorsten Becker, University of Texas, Austin, USA</a></li>
+                    <li data-id="katsura" data-short="Katsura" data-lat="49.945" data-lng="11.578"><a href="https://katsurabgi.jimdoweb.com/" target="_blank" rel="noopener">Tomo Katsura, University of Bayreuth, Germany</a></li>
+                    <li data-id="fei" data-short="Fei" data-lat="30.2655" data-lng="120.1536"><a href="https://sites.google.com/view/feihongzhan" target="_blank" rel="noopener">Hongzhan Fei, Zhejiang University, Hangzhou, China</a></li>
+                    <li data-id="pal" data-short="Pal" data-lat="22.498" data-lng="88.3719"><a href="http://www.jaduniv.edu.in/profile.php?uid=278" target="_blank" rel="noopener">Dipak C Pal, Jadavpur University, India</a></li>
+                    <li data-id="baidya" data-short="Baidya" data-lat="56.3398" data-lng="-2.7967"><a href="https://research-portal.st-andrews.ac.uk/en/persons/abu-saeed-baidya" target="_blank" rel="noopener">Abu Saeed Baidya, University of St. Andrews, Scotland</a></li>
+                    <li data-id="mondal" data-short="Mondal" data-lat="22.5765" data-lng="88.4345"><a href="https://sites.google.com/site/subhronilindia/Home" target="_blank" rel="noopener">Subhronil Mondal, IISER Kolkata, India</a></li>
+                </ol>
             </div>
-            <br>
-            <p>However, cratons can undergo thinning or destruction under certain conditions. <span class="highlight">Thermal weakening</span> by mantle plumes (e.g., the Indian Craton) or <span class="highlight">hydration weakening</span> from mantle/slab fluids (e.g., the North China Craton) can lead to their demise. My work explores these destruction mechanisms and compares their associated timescales.</p>
-            
-            <div class="subtext">
-              <br>
-              <b>Publications</b>
-              <br>
-              >>  8. J. Paul, A. Spang, A. Piccolo (2025). Hydration weakening and destruction of the North China Craton, Tectonophysics, 908, 230756, <a href ='https://www.sciencedirect.com/science/article/pii/S0040195125001428' target='_blank'>https://doi.org/10.1016/j.tecto.2025.230756</a>. 
-              <br>
-              >> [6] <b>J. Paul*,</b> C.P. Conrad, T.W. Becker, A. Ghosh, 2023. Convective self-compression of cratons and the
-              stabilization of old lithosphere. Geophysical Research Letters, 50, e2022GL101842. <a href="https://doi.org/10.1029/2022GL101842" target="_blank">[Open access]</a>
-              <br> 
-              >> [5]. J. Paul, A. Ghosh, 2022. Could the Reunion plume have thinned the Indian craton?, Geology
-              <br>
-              >> [4] <i><b>J. Paul,</b> A. Ghosh, 2020. Evolution of cratons through the ages: A time-dependent study, 
-              Earth and Planetary Science Letters, , 531, 115962. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X19306545?via%3Dihub" target="_blank" >
-              [Online version] </a></i>
-              <br>
-              >> [2] <i> <b>J. Paul*,</b> A. Ghosh, C.P. Conrad, 2019. Traction and strain-rate at the base of the lithosphere:
-              An insight into cratonic survival. Geophysical Journal International, 217(2), 1024-1033</i>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
+        </section>
 
-    <!-----------------------Grain size ------------->
-    <div id="grainSize"></div>
-    <div class="w3-container">
-      <h4>Grain size dependent Rheology</h4>
-      <div class="fade-in">
-        <div class="w3-row">
-          <div class="w3-col s4">
-            <br>
-            <img src="grain.jpg" style="width:80%">
-            <br>
-            <img src="peps_graphical_abs.jpg" style="width:80%">
-          </div>
-          <div class="w3-col s8">
-            <p>Numerous speculations surround the impact of grain size on mantle dynamics, yet the lack of available data, 
-            whether experimental or natural, poses a substantial challenge in precisely determining this influence. 
-            Recent mineral physics experiments have, however, provided estimates for the grain growth rate of bridgmanite-ferropericlase, 
-            the primary mineral assemblage in the lower mantle. As part of the European Research Council project 
-            <a href='https://cordis.europa.eu/project/id/787527' target="_blank"
-            <b>UltraLVP: Chemistry and transport properties of bridgmanite controlling lower-mantle dynamics</b> </a>, I incorporated bridgmanite-ferropericlase
-            grain growth data into numerical models to investigate the effect of grain size in lower mantle viscosity. 
-            <br>
-            The outcomes of the study revealed no significant impact of grain size on 
-            controlling lower mantle viscosity. This result can be attributed to the slow growth of bridgmanite-ferropericlase compared 
-            to upper mantle olivine grain growth, where small grain sizes have minimal influence on lower mantle viscosity. Conversely, 
-            if forced to increase like olivine, the growth of bridgmanite-ferropericlase grains leads to a dislocation creep-induced deformation, 
-            resulting in grain size-independent viscosity.
-            <br>
-            <b>Publications</b>
-            <br>
-            >> J. Paul*, G. J. Golabek, A. B. Rozel, P. J. Tackley, T. Katsura and H. Fei (2024). Effect of bridgmanite-ferropericlase grain size evolution on Earth's average mantle viscosity: Implications for mantle convection in early and present-day Earth. Progress in Earth and Planetary Sciences, 11 (64) <a href='https://doi.org/10.1186/s40645-024-00658-3' target="_blank" >[https://doi.org/10.1186/s40645-024-00658-3] </a>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+        <!-- Craton dynamics -->
+        <section class="block" id="craton" aria-labelledby="h-craton">
+            <div class="block__head"><h2 id="h-craton">Craton dynamics</h2></div>
+            <div class="block__body topic">
+                <p>Understanding the stability of cratons on a tectonically active planet like Earth remains one of the grand challenges in geodynamics. Through the development of numerical models of craton evolution, our research aims to shed light on why some cratons have remained stable for over 3 billion years, while others, like the North China Craton, have undergone complete destruction.</p>
 
-    <!------- Amphibole---------------->
-    <div id="ore"></div>
-    <div class="w3-container">
-      <h4>Layered structure of hydrothermal ore complex and Geostatistics</h4>
-      <div class="fade-in">
-        <div class="w3-row">
-          <div class="w3-col s4">
-            <br>
-            <img src="hydro.jpg" style="width:80%">
-            <br><br>
-          </div>
-          <div class="w3-col s8">
-            <p>This work is part of a project investigating the style of hydrothermal mineralisation and ore formation
-              in and around Delhi-Aravalli fold belt. I have worked on the geochemical and geostatistical nalysis of amphibole
-              originated from the hydrothermal processes. We detected three generations of amphiboles. The last stage of amphibole
-              formation (A3) is probably associated with IOCG type mineralisation of this area.
-              <br>
-              <b>Publications</b>
-              <br>
-              1. A.S. Baidya, J. Paul, D.C. Pal, and D. Upadhyay, 2017. Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari 
-              copper deposits, Rajasthan, India: Insight into the ore-forming process. Ore Geology Reviews. 
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+                <figure class="media">
+                    <video controls preload="metadata" playsinline>
+                        <source src="Crat_high_visc.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Paul and Ghosh, 2020, EPSL.</figcaption>
+                </figure>
 
-    <!------------------------ Crab --------------------->
-    <div id="crab"></div>
-    <div class="w3-container">
-      <h4>Ecology of mangrove crab</h4>
-      <div class="fade-in">
-        <div class="w3-row">
-          <div class="w3-col s4">
-            <br>
-            <img src="crab.JPG" style="width:80%">
-            <br><br>
-          </div>
-          <div class="w3-col s8">
-            <p>Crabs near chandipur sea beach show a strange behavior in their pattern of burrowing. 
-            Larger the burrow diameter, they become more horizontal. All these large burrows are found only in the 
-            backshore of the sea beach and they are oriented opposite to the sea. Geometrically they are more complex with "I", "J", and "Y" shaped burrow.
-            We explain all these parameter as a result of crab energitics. 
-            <br>
-            <b>Publications</b>
-            <br>
-            >> 3. J. Paul, S. Mondal, R. Koyal, D. Sarkar, 2019. Burrow morphology of the ocypodid crab Ocypode ceratophthalma at 
-            Chandipur Coast, Eastern India and its implications. Current Science 
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
+                <div class="callout">
+                    <h3>Key findings</h3>
+                    <p>Our findings suggest that <span class="emph">the combination of viscosity and thickness</span> plays a crucial role in enhancing cratonic strength, shielding them from tectonic recycling. Two key theoretical insights emerge:</p>
+                    <ol>
+                        <li><span class="emph">Stress and strain rates exhibit an inverse relationship</span> at the lithosphere's base, reducing deformation beneath thick cratons.</li>
+                        <li><span class="emph">Cratonic thickness and viscosity induce convective self-compression</span>, further reinforcing their resistance to disintegration.</li>
+                    </ol>
+                    <p>Our research also indicates that cratons require a <span class="emph">minimum viscosity of 10²³ Pa·s</span> and that the surrounding asthenosphere must have a viscosity <span class="emph">no lower than 10²⁰ Pa·s</span> to sustain long-term stability.</p>
+                </div>
 
-<!-------------footer--------->
-<footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>&copy; 2024 Jyotirmoy Paul. All rights reserved.</p>
-</footer>
+                <h3>Mechanisms of destruction</h3>
+                <figure class="media">
+                    <video controls preload="metadata" playsinline>
+                        <source src="NCC_ref.mp4" type="video/mp4">
+                    </video>
+                    <figcaption>Paul et al., 2025, Tectonophysics.</figcaption>
+                </figure>
+                <p>However, cratons can undergo thinning or destruction under certain conditions. <span class="emph">Thermal weakening</span> by mantle plumes (e.g., the Indian Craton) or <span class="emph">hydration weakening</span> from mantle/slab fluids (e.g., the North China Craton) can lead to their demise. My work explores these destruction mechanisms and compares their associated timescales.</p>
 
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script>
-  // Define locations data
-  const locations = [
-    { lat: 12.9716, lng: 77.5946, name: 'Attreyee Ghosh, IISc Bangalore, India', url: 'https://ceas.iisc.ac.in/~aghosh/index.html' },
-    { lat: 59.9111, lng: 10.7528, name: 'Clint Conrad, University of Oslo, Norway', url: 'https://www.clintconrad.no/' },
-    { lat: 49.9452, lng: 11.574, name: 'Arne Spang, University of Bayreuth, Germany', url: 'https://scholar.google.com/citations?user=toFHfvQAAAAJ&hl=en' },
-    { lat: 53.8008, lng: -1.5491, name: 'Andrea Piccolo, University of Leeds, Leeds, UK', url: 'https://scholar.google.com/citations?user=we6q2eUAAAAJ&hl=en/' },
-    { lat: 47.3769, lng: 8.5417, name: 'Paul Tackley, ETH Zurich, Switzerland', url: 'http://jupiter.ethz.ch/~pjt/' },
-    { lat: 49.9405, lng: 11.578, name: 'Gregor Golabek, University of Bayreuth, Germany', url: 'https://www.staff.uni-bayreuth.de/~bt303373/' },
-    { lat: 30.2849, lng: -97.7341, name: 'Thorsten Becker, University of Texas, Austin, USA', url: 'http://www-udc.ig.utexas.edu/external/becker/' },
-    { lat: 49.9450, lng: 11.578, name: 'Tomo Katsura, University of Bayreuth, Germany', url: 'https://katsurabgi.jimdoweb.com/' },
-    { lat: 30.2655, lng: 120.1536, name: 'Hongzhan Fei,  Zhejiang University, Hangzhou, China', url: 'https://sites.google.com/view/feihongzhan' },
-    { lat: 22.498, lng: 88.3719, name: 'Dipak C Pal, Jadavpur University, India', url: 'http://www.jaduniv.edu.in/profile.php?uid=278' },
-    { lat: 56.3398, lng: -2.7967, name: 'Abu Saeed Baidya, University of St. Andrews, Scotland', url: 'https://research-portal.st-andrews.ac.uk/en/persons/abu-saeed-baidya' },
-    { lat: 22.5765, lng: 88.4345, name: 'Subhronil Mondal, IISER Kolkata, India', url: 'https://sites.google.com/site/subhronilindia/Home' }
-  ];
+                <h3>Publications</h3>
+                <ol class="pubs">
+                    <li value="8" id="pub-8" data-people="spang piccolo" data-topic="craton">
+                        <p class="pub__title">Hydration weakening and destruction of the North China Craton</p>
+                        <p class="pub__cite"><span class="me">J. Paul</span>, A. Spang, A. Piccolo (2025). <em>Tectonophysics</em>, 908, 230756.</p>
+                        <p class="pub__links"><a class="chip" href="https://doi.org/10.1016/j.tecto.2025.230756" target="_blank" rel="noopener">DOI</a></p>
+                    </li>
+                    <li value="6" id="pub-6" data-people="conrad becker ghosh" data-topic="craton">
+                        <p class="pub__title">Convective self-compression of cratons and the stabilization of old lithosphere</p>
+                        <p class="pub__cite"><span class="me">J. Paul*</span>, C.P. Conrad, T.W. Becker, A. Ghosh (2023). <em>Geophysical Research Letters</em>, 50, e2022GL101842.</p>
+                        <p class="pub__links"><a class="chip" href="https://doi.org/10.1029/2022GL101842" target="_blank" rel="noopener">Open access</a></p>
+                    </li>
+                    <li value="5" id="pub-5" data-people="ghosh" data-topic="craton">
+                        <p class="pub__title">Could the Reunion plume have thinned the Indian craton?</p>
+                        <p class="pub__cite"><span class="me">J. Paul</span>, A. Ghosh (2022). <em>Geology</em>.</p>
+                    </li>
+                    <li value="4" id="pub-4" data-people="ghosh" data-topic="craton">
+                        <p class="pub__title">Evolution of cratons through the ages: A time-dependent study</p>
+                        <p class="pub__cite"><span class="me">J. Paul</span>, A. Ghosh (2020). <em>Earth and Planetary Science Letters</em>, 531, 115962.</p>
+                        <p class="pub__links"><a class="chip" href="https://www.sciencedirect.com/science/article/abs/pii/S0012821X19306545?via%3Dihub" target="_blank" rel="noopener">Online version</a></p>
+                    </li>
+                    <li value="2" id="pub-2" data-people="ghosh conrad" data-topic="craton">
+                        <p class="pub__title">Traction and strain-rate at the base of the lithosphere: An insight into cratonic survival</p>
+                        <p class="pub__cite"><span class="me">J. Paul*</span>, A. Ghosh, C.P. Conrad (2019). <em>Geophysical Journal International</em>, 217(2), 1024-1033.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
 
-  // Central point (Oslo, Norway)
-  const centralPoint = { lat: 59.9139, lng: 10.7528, name: 'Current location' };
+        <!-- Grain size dependent rheology -->
+        <section class="block" id="grainSize" aria-labelledby="h-grain">
+            <div class="block__head"><h2 id="h-grain">Grain size dependent rheology</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="grain.jpg" alt="Illustration for the grain size study" loading="lazy"></figure>
+                    <figure class="media"><img src="peps_graphical_abs.jpg" alt="Graphical abstract of Paul et al. 2024, Progress in Earth and Planetary Sciences" loading="lazy"></figure>
+                </div>
+                <p>Numerous speculations surround the impact of grain size on mantle dynamics, yet the lack of available data, whether experimental or natural, poses a substantial challenge in precisely determining this influence. Recent mineral physics experiments have, however, provided estimates for the grain growth rate of bridgmanite-ferropericlase, the primary mineral assemblage in the lower mantle. As part of the European Research Council project <a href="https://cordis.europa.eu/project/id/787527" target="_blank" rel="noopener"><strong>UltraLVP: Chemistry and transport properties of bridgmanite controlling lower-mantle dynamics</strong></a>, I incorporated bridgmanite-ferropericlase grain growth data into numerical models to investigate the effect of grain size in lower mantle viscosity.</p>
+                <p>The outcomes of the study revealed no significant impact of grain size on controlling lower mantle viscosity. This result can be attributed to the slow growth of bridgmanite-ferropericlase compared to upper mantle olivine grain growth, where small grain sizes have minimal influence on lower mantle viscosity. Conversely, if forced to increase like olivine, the growth of bridgmanite-ferropericlase grains leads to a dislocation creep-induced deformation, resulting in grain size-independent viscosity.</p>
 
-  // Prepare data for Plotly
-  const markerData = {
-    type: 'scattergeo',
-    mode: 'markers+text',
-    lat: locations.map(loc => loc.lat),
-    lon: locations.map(loc => loc.lng),
-    text: locations.map((_, i) => i+1), // Number markers
-    textposition: 'top right',
-    textfont: {
-      size: 10,
-      color: 'black'
-    },
-    customdata: locations.map(loc => loc.url),
-    hovertext: locations.map(loc => loc.name),
-    hoverinfo: 'text',
-    marker: {
-      size: 8,
-      color: 'red',
-      line: {
-        width: 1,
-        color: 'black'
-      }
-    },
-    name: 'Collaborators'
-  };
+                <h3>Publications</h3>
+                <ol class="pubs">
+                    <li value="7" id="pub-7" data-people="golabek tackley katsura fei" data-topic="grain">
+                        <p class="pub__title">Effect of bridgmanite-ferropericlase grain size evolution on Earth's average mantle viscosity: Implications for mantle convection in early and present-day Earth</p>
+                        <p class="pub__cite"><span class="me">J. Paul*</span>, G. J. Golabek, A. B. Rozel, P. J. Tackley, T. Katsura and H. Fei (2024). <em>Progress in Earth and Planetary Sciences</em>, 11 (64).</p>
+                        <p class="pub__links"><a class="chip" href="https://doi.org/10.1186/s40645-024-00658-3" target="_blank" rel="noopener">DOI</a></p>
+                    </li>
+                </ol>
+            </div>
+        </section>
 
-  // Add central point
-  const centralMarker = {
-    type: 'scattergeo',
-    mode: 'markers',
-    lat: [centralPoint.lat],
-    lon: [centralPoint.lng],
-    text: ['Center'],
-    hovertext: [centralPoint.name],
-    hoverinfo: 'text',
-    marker: {
-      size: 12,
-      color: 'blue',
-      symbol: 'star'
-    },
-    name: 'My office'
-  };
+        <!-- Layered ore complex -->
+        <section class="block" id="ore" aria-labelledby="h-ore">
+            <div class="block__head"><h2 id="h-ore">Layered ore complex</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="hydro.jpg" alt="Illustration for the hydrothermal ore complex study" loading="lazy"></figure>
+                </div>
+                <h3>Layered structure of hydrothermal ore complex and Geostatistics</h3>
+                <p>This work is part of a project investigating the style of hydrothermal mineralisation and ore formation in and around Delhi-Aravalli fold belt. I have worked on the geochemical and geostatistical analysis of amphibole originated from the hydrothermal processes. We detected three generations of amphiboles. The last stage of amphibole formation (A3) is probably associated with IOCG type mineralisation of this area.</p>
 
-  // Create lines from central point to each location
-  const lineData = {
-    type: 'scattergeo',
-    mode: 'lines',
-    lat: [],
-    lon: [],
-    line: {
-      width: 1,
-      color: 'rgba(0, 0, 255, 0.9)'
-    },
-    hoverinfo: 'none',
-    name: 'Connections'
-  };
+                <h3>Publications</h3>
+                <ol class="pubs">
+                    <li value="1" id="pub-1" data-people="baidya pal" data-topic="ore">
+                        <p class="pub__title">Mode of occurrence and geochemistry of amphibole in the Kolihan-Chandmari copper deposits, Rajasthan, India: Insight into the ore-forming process</p>
+                        <p class="pub__cite">A.S. Baidya, <span class="me">J. Paul</span>, D.C. Pal, and D. Upadhyay (2017). <em>Ore Geology Reviews</em>.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
 
-  locations.forEach(loc => {
-    lineData.lat.push(centralPoint.lat, loc.lat, null);
-    lineData.lon.push(centralPoint.lng, loc.lng, null);
-  });
+        <!-- Crab ecology -->
+        <section class="block" id="crab" aria-labelledby="h-crab">
+            <div class="block__head"><h2 id="h-crab">Crab ecology</h2></div>
+            <div class="block__body topic">
+                <div class="media-side">
+                    <figure class="media"><img src="crab.JPG" alt="Illustration for the crab burrow study" loading="lazy"></figure>
+                </div>
+                <h3>Ecology of mangrove crab</h3>
+                <p>Crabs near Chandipur sea beach show a strange behavior in their pattern of burrowing. Larger the burrow diameter, they become more horizontal. All these large burrows are found only in the backshore of the sea beach and they are oriented opposite to the sea. Geometrically they are more complex with "I", "J", and "Y" shaped burrow. We explain all these parameter as a result of crab energetics.</p>
 
-  // Create the map with orthographic projection
-  const layout = {
-    title: 'Network ',
-    geo: {
-      projection: {
-        type: 'orthographic',
-        rotation: {
-          lon: -30,
-          lat: 30
-        }
-      },
-      showland: true,
-      landcolor: 'rgb(200, 200, 200)',
-      countrycolor: 'rgb(150, 150, 150)',
-      coastlinecolor: 'rgb(100, 100, 100)',
-      showcountries: true,
-      showocean: true,
-      oceancolor: 'rgb(200, 222, 246)',
-      showlakes: true,
-      lakecolor: 'rgb(200, 222, 246)',
-      showrivers: false,
-      bgcolor: 'rgba(0,0,0,0)',
-      framecolor: 'black',
-      framewidth: 1
-    },
-    hovermode: 'closest',
-    margin: {
-      l: 0,
-      r: 0,
-      b: 0,
-      t: 40
-    },
-    showlegend: false,
-    annotations: [
-      {
-        x: 0.5,
-        y: 0,
-        xref: 'paper',
-        yref: 'paper',
-        text: '',
-        showarrow: false,
-        font: {
-          size: 10
-        }
-      }
-    ]
-  };
+                <h3>Publications</h3>
+                <ol class="pubs">
+                    <li value="3" id="pub-3" data-people="mondal" data-topic="crab">
+                        <p class="pub__title">Burrow morphology of the ocypodid crab <em>Ocypode ceratophthalma</em> at Chandipur Coast, Eastern India and its implications</p>
+                        <p class="pub__cite"><span class="me">J. Paul</span>, S. Mondal, R. Koyal, D. Sarkar (2019). <em>Current Science</em>.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </main>
 
-  // Create a numbered key for the collaborators
-  const collaboratorKey = locations.map((loc, i) => 
-    `${i+1}. <a href="${loc.url}" target="_blank">${loc.name.split('<br>')[0]}</a>`
-  ).join('<br>');
+    <footer class="foot">
+        <p>&copy; <span id="year">2026</span> Jyotirmoy Paul. All rights reserved.</p>
+    </footer>
 
-  layout.annotations.push({
-    x: 0.02,
-    y: 0.1,
-    xref: 'paper',
-    yref: 'paper',
-    text: '<b>Collaborators:</b><br>' + collaboratorKey,
-    showarrow: false,
-    align: 'left',
-    bgcolor: 'rgba(255,255,255,0.9)',
-    bordercolor: 'rgba(0,0,0,0.5)',
-    borderpad: 5,
-    font: {
-      size: 10
-    }
-  });
-
-  const config = {
-    responsive: true,
-    displayModeBar: false, // This removes the entire toolbar
-    scrollZoom: true // Disables zooming with scroll
-  };
-
-  // Combine all data
-  const data = [lineData, markerData, centralMarker];
-  
-  // Create the plot
-  Plotly.newPlot('map', data, layout, config).then(function() {
-    // Add click handler to open URLs
-    document.getElementById('map').on('plotly_click', function(data) {
-      if (data.points[0].data.name === 'Collaborators') {
-        const pointIndex = data.points[0].pointNumber;
-        window.open(locations[pointIndex].url, '_blank');
-      }
-    });
-  });
-</script>
-
-<script>
-  function closeStickyNote() {
-    document.getElementById("stickyNote").style.display = "none";
-  }
-
-  function toggleMenu() {
-    const menuItems = document.querySelector('.menu-items');
-    if (menuItems.style.display === "block") {
-      menuItems.style.display = "none";
-    } else {
-      menuItems.style.display = "block";
-    }
-  }
-  
-  function toggleConnectMenu() {
-    const connectMenu = document.getElementById('mobileConnect');
-    const button = document.querySelector('.connect-toggle');
-    
-    if (connectMenu.classList.contains('active')) {
-      connectMenu.classList.remove('active');
-      button.innerHTML = 'Research Topics ▼';
-    } else {
-      connectMenu.classList.add('active');
-      button.innerHTML = 'Research Topics ▲';
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    });
-
-    document.querySelectorAll('.fade-in').forEach(element => {
-      observer.observe(element);
-    });
-  });
-</script>
-
-<script>
-function includeHTML() {
-  const elements = document.querySelectorAll('[include-html]');
-  elements.forEach(el => {
-    const file = el.getAttribute('include-html');
-    if (file) {
-      fetch(file)
-        .then(response => {
-          if (!response.ok) throw new Error("Page not found");
-          return response.text();
-        })
-        .then(data => {
-          el.innerHTML = data;
-          el.removeAttribute("include-html");
-        })
-        .catch(() => {
-          el.innerHTML = "Navbar not found.";
-        });
-    }
-  });
-}
-includeHTML();
-</script>
-
+    <script src="../js/site.js"></script>
+    <script src="../js/mantle.js"></script>
+    <script src="../js/cite.js"></script>
+    <script src="../js/research.js"></script>
 </body>
+
 </html>

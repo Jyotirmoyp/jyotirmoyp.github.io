@@ -1,0 +1,258 @@
+/* ==========================================================================
+   home.css: styles used only on the home page (landing, about, career, publications)
+   Loads after site.css.
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+.hero {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: clamp(2.25rem, 5vw, 4rem) var(--gutter) clamp(2.25rem, 5vw, 3.5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 21rem);
+    grid-template-areas: "bio photo";
+    column-gap: clamp(2rem, 6vw, 6rem);
+    row-gap: 2rem;
+    align-items: start;
+}
+.hero__bio  { grid-area: bio; }
+
+h1 {
+    margin: 0;
+    font-weight: 500;
+    font-size: clamp(3.2rem, 9vw, 6.75rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+h1 span { display: block; }
+
+.role {
+    max-width: 26rem;
+    margin: 1.25rem 0 0;
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+.lead {
+    max-width: 36rem;
+    margin: 0;
+    font-size: clamp(1.15rem, 1.5vw, 1.3rem);
+    line-height: 1.6;
+}
+
+.contact {
+    margin: 1.75rem 0 0;
+    font-family: var(--sans);
+    font-size: 1rem;
+}
+
+.profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.4rem;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+}
+
+/* ---------- Portrait slideshow ---------- */
+.portrait {
+    grid-area: photo;
+    justify-self: end;
+    width: 100%;
+    max-width: 21rem;
+    margin: 0;
+}
+.slides {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--rule);
+    border-radius: 2px;
+}
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 25%;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+.slide.is-active { opacity: 1; }
+
+.portrait__dots { display: flex; gap: 0.1rem; margin-top: 0.4rem; }
+.portrait__dots button {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+.portrait__dots button::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid var(--muted);
+    border-radius: 50%;
+}
+.portrait__dots button[aria-current="true"]::before { background: var(--ink); border-color: var(--ink); }
+
+.hero + .block { border-top: 1px solid var(--rule); }
+
+/* ---------- Career: timeline + list ---------- */
+.subhead { margin: 0 0 1rem; font-size: 1.1rem; font-weight: 500; }
+.rows + .subhead { margin-top: 2.25rem; }
+
+.tl { overflow-x: auto; padding-bottom: 0.75rem; }
+.tl__inner { min-width: 42rem; }
+.tl__years {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+.tl__group { margin-top: 1rem; }
+.tl__label {
+    position: sticky;
+    left: 0;
+    width: max-content;
+    margin: 0 0 0.35rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+.tl__lanes {
+    position: relative;
+    height: calc(var(--lanes) * 2.4rem + 0.2rem);
+    border-top: 1px solid var(--rule);
+    background-image: linear-gradient(to right, var(--rule) 1px, transparent 1px);
+    background-size: calc(100% / var(--cols)) 100%;
+}
+.tl-bar {
+    position: absolute;
+    height: 2rem;
+    min-width: 1.5rem;
+    margin: 0;
+    padding: 0 0.5rem;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.tl-bar--edu { background-color: #3A6377; }
+.tl-bar--job { background-color: #A8532A; }
+.tl-bar--narrow { padding: 0; text-align: center; font-size: 0.7rem; }
+.tl-bar--now { background-image: linear-gradient(90deg, transparent 70%, rgba(242, 245, 245, 0.4)); }
+.tl-bar:hover { filter: brightness(1.12); }
+.tl-bar[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
+
+.tl-detail {
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--rule);
+}
+.tl-detail__when { margin: 0; font-family: var(--sans); font-size: 0.9rem; color: var(--muted); }
+.tl-detail__body { margin-top: 0.15rem; }
+
+/* ---------- Career: timeline + list ---------- */
+.subhead { margin: 0 0 1rem; font-size: 1.1rem; font-weight: 500; }
+.rows + .subhead { margin-top: 2.25rem; }
+
+.tl { overflow-x: auto; padding-bottom: 0.75rem; }
+.tl__inner { min-width: 42rem; }
+.tl__years {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+.tl__group { margin-top: 1rem; }
+.tl__label {
+    position: sticky;
+    left: 0;
+    width: max-content;
+    margin: 0 0 0.35rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+.tl__lanes {
+    position: relative;
+    height: calc(var(--lanes) * 2.4rem + 0.2rem);
+    border-top: 1px solid var(--rule);
+    background-image: linear-gradient(to right, var(--rule) 1px, transparent 1px);
+    background-size: calc(100% / var(--cols)) 100%;
+}
+.tl-bar {
+    position: absolute;
+    height: 2rem;
+    min-width: 1.5rem;
+    margin: 0;
+    padding: 0 0.5rem;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.tl-bar--edu { background-color: #3A6377; }
+.tl-bar--job { background-color: #A8532A; }
+.tl-bar--narrow { padding: 0; text-align: center; font-size: 0.7rem; }
+.tl-bar--now { background-image: linear-gradient(90deg, transparent 70%, rgba(242, 245, 245, 0.4)); }
+.tl-bar:hover { filter: brightness(1.12); }
+.tl-bar[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
+
+.tl-detail {
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--rule);
+}
+.tl-detail__when { margin: 0; font-family: var(--sans); font-size: 0.9rem; color: var(--muted); }
+.tl-detail__body { margin-top: 0.15rem; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 820px) {
+    .hero {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "photo" "bio";
+        row-gap: 1.75rem;
+    }
+    .portrait { justify-self: start; max-width: 14rem; }
+    .role { font-size: 1rem; }
+    .lead { font-size: 1.15rem; }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slide { transition: none; }
+}
