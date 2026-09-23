@@ -1,0 +1,38 @@
+---
+layout: default
+title: Deep Earth Interior
+---
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link rel="stylesheet" href="assets/css/style.css">
+
+
+# Seismic wave propagation
+
+## Surface to Surface travel time 
+
+$$
+T(p) = 2 \int_{0}^{z_p} \frac{u^2(z)}{\sqrt{u^2(z) - p^2}} \, dz
+= 2 \int_{0}^{z_p} \frac{u^2(z)}{\eta} \, dz
+$$
+
+## Range 
+
+$$
+X(p) = 2p \int_{0}^{z_p} \frac{1}{\sqrt{u^2(z) - p^2}} \, dz
+= 2p \int_{0}^{z_p} \frac{1}{\eta} \, dz
+$$
+
+
+## Exercise
+
+<p align="center">
+<img src="exercise1.png" width="50%">
+</p>
+
+
+<p align="center">
+<img src="exercise2.png" width="50%">
+</p>
+
+
